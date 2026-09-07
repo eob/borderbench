@@ -53,6 +53,24 @@ bun run benchmark:mock
 bun run export
 ```
 
+## Benchmark Results (120 Tasks / 600 Evaluations)
+
+Interactive results and Pareto frontier are published at [edwardbenson.com/benchmarks/borderbench](https://edwardbenson.com/benchmarks/borderbench).
+
+| Model | All Correct (Exact Match) | Border Presence | Stroke Width | Corner Radius | Edge Selectivity | Latency / Task | Cost / Task |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Gemini 3.1 Pro Preview** | **68.33%** | 95.83% | 75.83% | 85.83% | 85.83% | 4.28s | $0.0068 |
+| **Gemini 3.8 Flash** | **61.67%** | 98.33% | 70.83% | 84.17% | 83.33% | 4.17s | $0.0042 |
+| **GPT-5.6 Luna** | **47.50%** | 97.50% | 55.83% | 81.67% | 80.83% | 3.12s | $0.00055 |
+| **GPT-5.6 Terra** | **45.00%** | 97.50% | 53.33% | 75.83% | 84.17% | 1.98s | $0.0044 |
+| **Gemini 3.5 Flash-Lite** | **38.33%** | 94.17% | 48.33% | 75.00% | 73.33% | 0.94s | $0.00066 |
+
+### Key Findings
+
+1. **High Presence Discrimination, Low Stroke Precision**: Models reliably detect whether a container has a border (94%–98%), but classifying exact stroke width (`hairline` 1px vs `regular` 2px vs `thick` 4px) is the primary failure mode (sub-50% on lighter models).
+2. **Frontier Champion**: **Gemini 3.1 Pro** achieves highest overall fidelity (**68.33%**), closely followed by **Gemini 3.8 Flash** (**61.67%**).
+3. **Cost Efficiency**: **GPT-5.6 Luna** offers the best Pareto efficiency ($0.00055/task for 47.5% all-correct accuracy).
+
 ## License
 
 MIT © Edward Benson
