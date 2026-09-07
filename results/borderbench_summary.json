@@ -1,0 +1,855 @@
+{
+  "benchmark_id": "borderbench-1",
+  "name": "BorderBench-1",
+  "version": "1.0.0",
+  "description": "Visual border, corner radius, stroke style, and elevation identification benchmark for multimodal vision-language models.",
+  "eval_date": "2026-09-07",
+  "generated_at": "2026-09-07T22:40:01.508421+00:00",
+  "total_tasks_per_model": 120,
+  "taxonomies": {
+    "attributes": [
+      "all_correct",
+      "has_border",
+      "border_sides",
+      "stroke_style",
+      "stroke_width",
+      "corner_radius",
+      "corner_uniformity",
+      "elevation"
+    ],
+    "border_sides": [
+      "all-4",
+      "bottom-only",
+      "left-only",
+      "top-only",
+      "none"
+    ],
+    "stroke_styles": [
+      "solid",
+      "dashed",
+      "dotted",
+      "double",
+      "none"
+    ],
+    "stroke_widths": [
+      "0px",
+      "1px",
+      "2px",
+      "4px",
+      "8px"
+    ],
+    "corner_radii": [
+      "sharp",
+      "subtle",
+      "medium",
+      "large",
+      "pill"
+    ],
+    "corner_uniformity": [
+      "all-corners",
+      "top-only",
+      "asymmetric"
+    ],
+    "elevations": [
+      "none",
+      "subtle-drop",
+      "floating-drop",
+      "ring-only",
+      "stroke+shadow"
+    ],
+    "themes": [
+      "white-on-gray",
+      "white-on-white",
+      "gray-tint-on-white",
+      "blue-tint-on-white",
+      "dark-mode"
+    ]
+  },
+  "models": [
+    {
+      "model_id": "gemini-3.1-pro-preview",
+      "display_name": "Gemini 3.1 Pro Preview",
+      "provider": "google",
+      "family": "Gemini",
+      "total_tasks": 120,
+      "evaluated_at": "2026-09-07T22:39:55.432102+00:00",
+      "all_correct_accuracy": 68.3,
+      "has_border_accuracy": 95.8,
+      "border_sides_accuracy": 95.8,
+      "stroke_style_accuracy": 95.8,
+      "stroke_width_accuracy": 95.0,
+      "corner_radius_accuracy": 99.2,
+      "corner_uniformity_accuracy": 96.7,
+      "elevation_accuracy": 71.7,
+      "avg_latency_sec": 4.28,
+      "avg_cost_usd": 0.00192,
+      "pricing": {
+        "input_per_m": 2.0,
+        "output_per_m": 12.0
+      },
+      "by_theme": {
+        "white-on-gray": {
+          "total": 43,
+          "exact_accuracy": 88.4,
+          "presence_accuracy": 97.7
+        },
+        "white-on-white": {
+          "total": 16,
+          "exact_accuracy": 56.2,
+          "presence_accuracy": 93.8
+        },
+        "gray-tint-on-white": {
+          "total": 25,
+          "exact_accuracy": 64.0,
+          "presence_accuracy": 88.0
+        },
+        "blue-tint-on-white": {
+          "total": 13,
+          "exact_accuracy": 61.5,
+          "presence_accuracy": 100.0
+        },
+        "dark-mode": {
+          "total": 23,
+          "exact_accuracy": 47.8,
+          "presence_accuracy": 100.0
+        }
+      },
+      "by_curvature": {
+        "sharp": {
+          "total": 21,
+          "exact_accuracy": 57.1,
+          "presence_accuracy": 95.2
+        },
+        "subtle": {
+          "total": 21,
+          "exact_accuracy": 57.1,
+          "presence_accuracy": 95.2
+        },
+        "medium": {
+          "total": 43,
+          "exact_accuracy": 79.1,
+          "presence_accuracy": 97.7
+        },
+        "large": {
+          "total": 14,
+          "exact_accuracy": 64.3,
+          "presence_accuracy": 92.9
+        },
+        "pill": {
+          "total": 21,
+          "exact_accuracy": 71.4,
+          "presence_accuracy": 95.2
+        }
+      },
+      "by_thickness": {
+        "1px": {
+          "total": 50,
+          "exact_accuracy": 68.0,
+          "presence_accuracy": 100.0
+        },
+        "0px": {
+          "total": 28,
+          "exact_accuracy": 60.7,
+          "presence_accuracy": 82.1
+        },
+        "2px": {
+          "total": 24,
+          "exact_accuracy": 62.5,
+          "presence_accuracy": 100.0
+        },
+        "4px": {
+          "total": 14,
+          "exact_accuracy": 85.7,
+          "presence_accuracy": 100.0
+        },
+        "8px": {
+          "total": 4,
+          "exact_accuracy": 100.0,
+          "presence_accuracy": 100.0
+        }
+      },
+      "by_sides": {
+        "all-4": {
+          "total": 36,
+          "exact_accuracy": 86.1,
+          "presence_accuracy": 100.0
+        },
+        "none": {
+          "total": 28,
+          "exact_accuracy": 60.7,
+          "presence_accuracy": 82.1
+        },
+        "bottom-only": {
+          "total": 19,
+          "exact_accuracy": 68.4,
+          "presence_accuracy": 100.0
+        },
+        "left-only": {
+          "total": 24,
+          "exact_accuracy": 45.8,
+          "presence_accuracy": 100.0
+        },
+        "top-only": {
+          "total": 13,
+          "exact_accuracy": 76.9,
+          "presence_accuracy": 100.0
+        }
+      },
+      "by_elevation": {
+        "none": {
+          "total": 78,
+          "exact_accuracy": 96.2,
+          "presence_accuracy": 100.0
+        },
+        "subtle-drop": {
+          "total": 22,
+          "exact_accuracy": 18.2,
+          "presence_accuracy": 90.9
+        },
+        "floating-drop": {
+          "total": 1,
+          "exact_accuracy": 100.0,
+          "presence_accuracy": 100.0
+        },
+        "ring-only": {
+          "total": 4,
+          "exact_accuracy": 25.0,
+          "presence_accuracy": 25.0
+        },
+        "stroke+shadow": {
+          "total": 15,
+          "exact_accuracy": 6.7,
+          "presence_accuracy": 100.0
+        }
+      }
+    },
+    {
+      "model_id": "gemini-3.8-flash",
+      "display_name": "Gemini 3.8 Flash",
+      "provider": "google",
+      "family": "Gemini",
+      "total_tasks": 120,
+      "evaluated_at": "2026-09-07T22:39:55.467748+00:00",
+      "all_correct_accuracy": 61.7,
+      "has_border_accuracy": 98.3,
+      "border_sides_accuracy": 98.3,
+      "stroke_style_accuracy": 98.3,
+      "stroke_width_accuracy": 97.5,
+      "corner_radius_accuracy": 87.5,
+      "corner_uniformity_accuracy": 95.8,
+      "elevation_accuracy": 77.5,
+      "avg_latency_sec": 4.17,
+      "avg_cost_usd": 0.000675,
+      "pricing": {
+        "input_per_m": 0.75,
+        "output_per_m": 3.75
+      },
+      "by_theme": {
+        "white-on-gray": {
+          "total": 43,
+          "exact_accuracy": 65.1,
+          "presence_accuracy": 97.7
+        },
+        "white-on-white": {
+          "total": 16,
+          "exact_accuracy": 81.2,
+          "presence_accuracy": 100.0
+        },
+        "gray-tint-on-white": {
+          "total": 25,
+          "exact_accuracy": 68.0,
+          "presence_accuracy": 96.0
+        },
+        "blue-tint-on-white": {
+          "total": 13,
+          "exact_accuracy": 53.8,
+          "presence_accuracy": 100.0
+        },
+        "dark-mode": {
+          "total": 23,
+          "exact_accuracy": 39.1,
+          "presence_accuracy": 100.0
+        }
+      },
+      "by_curvature": {
+        "sharp": {
+          "total": 21,
+          "exact_accuracy": 76.2,
+          "presence_accuracy": 95.2
+        },
+        "subtle": {
+          "total": 21,
+          "exact_accuracy": 57.1,
+          "presence_accuracy": 95.2
+        },
+        "medium": {
+          "total": 43,
+          "exact_accuracy": 48.8,
+          "presence_accuracy": 100.0
+        },
+        "large": {
+          "total": 14,
+          "exact_accuracy": 64.3,
+          "presence_accuracy": 100.0
+        },
+        "pill": {
+          "total": 21,
+          "exact_accuracy": 76.2,
+          "presence_accuracy": 100.0
+        }
+      },
+      "by_thickness": {
+        "1px": {
+          "total": 50,
+          "exact_accuracy": 66.0,
+          "presence_accuracy": 100.0
+        },
+        "0px": {
+          "total": 28,
+          "exact_accuracy": 28.6,
+          "presence_accuracy": 92.9
+        },
+        "2px": {
+          "total": 24,
+          "exact_accuracy": 66.7,
+          "presence_accuracy": 100.0
+        },
+        "4px": {
+          "total": 14,
+          "exact_accuracy": 92.9,
+          "presence_accuracy": 100.0
+        },
+        "8px": {
+          "total": 4,
+          "exact_accuracy": 100.0,
+          "presence_accuracy": 100.0
+        }
+      },
+      "by_sides": {
+        "all-4": {
+          "total": 36,
+          "exact_accuracy": 75.0,
+          "presence_accuracy": 100.0
+        },
+        "none": {
+          "total": 28,
+          "exact_accuracy": 28.6,
+          "presence_accuracy": 92.9
+        },
+        "bottom-only": {
+          "total": 19,
+          "exact_accuracy": 78.9,
+          "presence_accuracy": 100.0
+        },
+        "left-only": {
+          "total": 24,
+          "exact_accuracy": 58.3,
+          "presence_accuracy": 100.0
+        },
+        "top-only": {
+          "total": 13,
+          "exact_accuracy": 76.9,
+          "presence_accuracy": 100.0
+        }
+      },
+      "by_elevation": {
+        "none": {
+          "total": 78,
+          "exact_accuracy": 80.8,
+          "presence_accuracy": 100.0
+        },
+        "floating-drop": {
+          "total": 1,
+          "exact_accuracy": 0.0,
+          "presence_accuracy": 100.0
+        },
+        "ring-only": {
+          "total": 4,
+          "exact_accuracy": 0.0,
+          "presence_accuracy": 50.0
+        },
+        "subtle-drop": {
+          "total": 22,
+          "exact_accuracy": 9.1,
+          "presence_accuracy": 100.0
+        },
+        "stroke+shadow": {
+          "total": 15,
+          "exact_accuracy": 60.0,
+          "presence_accuracy": 100.0
+        }
+      }
+    },
+    {
+      "model_id": "gpt-5.6-luna",
+      "display_name": "GPT-5.6 Luna",
+      "provider": "openai",
+      "family": "GPT",
+      "total_tasks": 120,
+      "evaluated_at": "2026-09-07T22:39:55.490344+00:00",
+      "all_correct_accuracy": 47.5,
+      "has_border_accuracy": 97.5,
+      "border_sides_accuracy": 97.5,
+      "stroke_style_accuracy": 97.5,
+      "stroke_width_accuracy": 85.8,
+      "corner_radius_accuracy": 63.3,
+      "corner_uniformity_accuracy": 95.8,
+      "elevation_accuracy": 85.8,
+      "avg_latency_sec": 3.12,
+      "avg_cost_usd": 0.000192,
+      "pricing": {
+        "input_per_m": 0.2,
+        "output_per_m": 1.2
+      },
+      "by_theme": {
+        "white-on-gray": {
+          "total": 43,
+          "exact_accuracy": 39.5,
+          "presence_accuracy": 97.7
+        },
+        "white-on-white": {
+          "total": 16,
+          "exact_accuracy": 75.0,
+          "presence_accuracy": 100.0
+        },
+        "gray-tint-on-white": {
+          "total": 25,
+          "exact_accuracy": 64.0,
+          "presence_accuracy": 92.0
+        },
+        "blue-tint-on-white": {
+          "total": 13,
+          "exact_accuracy": 30.8,
+          "presence_accuracy": 100.0
+        },
+        "dark-mode": {
+          "total": 23,
+          "exact_accuracy": 34.8,
+          "presence_accuracy": 100.0
+        }
+      },
+      "by_curvature": {
+        "sharp": {
+          "total": 21,
+          "exact_accuracy": 76.2,
+          "presence_accuracy": 95.2
+        },
+        "subtle": {
+          "total": 21,
+          "exact_accuracy": 33.3,
+          "presence_accuracy": 95.2
+        },
+        "medium": {
+          "total": 43,
+          "exact_accuracy": 23.3,
+          "presence_accuracy": 100.0
+        },
+        "large": {
+          "total": 14,
+          "exact_accuracy": 57.1,
+          "presence_accuracy": 92.9
+        },
+        "pill": {
+          "total": 21,
+          "exact_accuracy": 76.2,
+          "presence_accuracy": 100.0
+        }
+      },
+      "by_thickness": {
+        "1px": {
+          "total": 50,
+          "exact_accuracy": 42.0,
+          "presence_accuracy": 100.0
+        },
+        "0px": {
+          "total": 28,
+          "exact_accuracy": 39.3,
+          "presence_accuracy": 89.3
+        },
+        "2px": {
+          "total": 24,
+          "exact_accuracy": 66.7,
+          "presence_accuracy": 100.0
+        },
+        "4px": {
+          "total": 14,
+          "exact_accuracy": 35.7,
+          "presence_accuracy": 100.0
+        },
+        "8px": {
+          "total": 4,
+          "exact_accuracy": 100.0,
+          "presence_accuracy": 100.0
+        }
+      },
+      "by_sides": {
+        "all-4": {
+          "total": 36,
+          "exact_accuracy": 36.1,
+          "presence_accuracy": 100.0
+        },
+        "none": {
+          "total": 28,
+          "exact_accuracy": 39.3,
+          "presence_accuracy": 89.3
+        },
+        "bottom-only": {
+          "total": 19,
+          "exact_accuracy": 57.9,
+          "presence_accuracy": 100.0
+        },
+        "left-only": {
+          "total": 24,
+          "exact_accuracy": 50.0,
+          "presence_accuracy": 100.0
+        },
+        "top-only": {
+          "total": 13,
+          "exact_accuracy": 76.9,
+          "presence_accuracy": 100.0
+        }
+      },
+      "by_elevation": {
+        "none": {
+          "total": 78,
+          "exact_accuracy": 52.6,
+          "presence_accuracy": 100.0
+        },
+        "floating-drop": {
+          "total": 1,
+          "exact_accuracy": 0.0,
+          "presence_accuracy": 100.0
+        },
+        "subtle-drop": {
+          "total": 22,
+          "exact_accuracy": 45.5,
+          "presence_accuracy": 100.0
+        },
+        "ring-only": {
+          "total": 4,
+          "exact_accuracy": 0.0,
+          "presence_accuracy": 25.0
+        },
+        "stroke+shadow": {
+          "total": 15,
+          "exact_accuracy": 40.0,
+          "presence_accuracy": 100.0
+        }
+      }
+    },
+    {
+      "model_id": "gpt-5.6-terra",
+      "display_name": "GPT-5.6 Terra",
+      "provider": "openai",
+      "family": "GPT",
+      "total_tasks": 120,
+      "evaluated_at": "2026-09-07T22:39:55.506924+00:00",
+      "all_correct_accuracy": 45.0,
+      "has_border_accuracy": 97.5,
+      "border_sides_accuracy": 97.5,
+      "stroke_style_accuracy": 97.5,
+      "stroke_width_accuracy": 75.0,
+      "corner_radius_accuracy": 80.8,
+      "corner_uniformity_accuracy": 94.2,
+      "elevation_accuracy": 83.3,
+      "avg_latency_sec": 1.98,
+      "avg_cost_usd": 0.00192,
+      "pricing": {
+        "input_per_m": 2.0,
+        "output_per_m": 12.0
+      },
+      "by_theme": {
+        "white-on-gray": {
+          "total": 43,
+          "exact_accuracy": 44.2,
+          "presence_accuracy": 97.7
+        },
+        "white-on-white": {
+          "total": 16,
+          "exact_accuracy": 75.0,
+          "presence_accuracy": 100.0
+        },
+        "gray-tint-on-white": {
+          "total": 25,
+          "exact_accuracy": 56.0,
+          "presence_accuracy": 92.0
+        },
+        "blue-tint-on-white": {
+          "total": 13,
+          "exact_accuracy": 38.5,
+          "presence_accuracy": 100.0
+        },
+        "dark-mode": {
+          "total": 23,
+          "exact_accuracy": 17.4,
+          "presence_accuracy": 100.0
+        }
+      },
+      "by_curvature": {
+        "sharp": {
+          "total": 21,
+          "exact_accuracy": 66.7,
+          "presence_accuracy": 95.2
+        },
+        "subtle": {
+          "total": 21,
+          "exact_accuracy": 42.9,
+          "presence_accuracy": 95.2
+        },
+        "medium": {
+          "total": 43,
+          "exact_accuracy": 16.3,
+          "presence_accuracy": 100.0
+        },
+        "large": {
+          "total": 14,
+          "exact_accuracy": 57.1,
+          "presence_accuracy": 92.9
+        },
+        "pill": {
+          "total": 21,
+          "exact_accuracy": 76.2,
+          "presence_accuracy": 100.0
+        }
+      },
+      "by_thickness": {
+        "1px": {
+          "total": 50,
+          "exact_accuracy": 34.0,
+          "presence_accuracy": 100.0
+        },
+        "0px": {
+          "total": 28,
+          "exact_accuracy": 35.7,
+          "presence_accuracy": 89.3
+        },
+        "2px": {
+          "total": 24,
+          "exact_accuracy": 54.2,
+          "presence_accuracy": 100.0
+        },
+        "4px": {
+          "total": 14,
+          "exact_accuracy": 71.4,
+          "presence_accuracy": 100.0
+        },
+        "8px": {
+          "total": 4,
+          "exact_accuracy": 100.0,
+          "presence_accuracy": 100.0
+        }
+      },
+      "by_sides": {
+        "all-4": {
+          "total": 36,
+          "exact_accuracy": 25.0,
+          "presence_accuracy": 100.0
+        },
+        "none": {
+          "total": 28,
+          "exact_accuracy": 35.7,
+          "presence_accuracy": 89.3
+        },
+        "bottom-only": {
+          "total": 19,
+          "exact_accuracy": 68.4,
+          "presence_accuracy": 100.0
+        },
+        "left-only": {
+          "total": 24,
+          "exact_accuracy": 58.3,
+          "presence_accuracy": 100.0
+        },
+        "top-only": {
+          "total": 13,
+          "exact_accuracy": 61.5,
+          "presence_accuracy": 100.0
+        }
+      },
+      "by_elevation": {
+        "none": {
+          "total": 78,
+          "exact_accuracy": 51.3,
+          "presence_accuracy": 100.0
+        },
+        "subtle-drop": {
+          "total": 22,
+          "exact_accuracy": 36.4,
+          "presence_accuracy": 100.0
+        },
+        "floating-drop": {
+          "total": 1,
+          "exact_accuracy": 0.0,
+          "presence_accuracy": 100.0
+        },
+        "ring-only": {
+          "total": 4,
+          "exact_accuracy": 0.0,
+          "presence_accuracy": 25.0
+        },
+        "stroke+shadow": {
+          "total": 15,
+          "exact_accuracy": 40.0,
+          "presence_accuracy": 100.0
+        }
+      }
+    },
+    {
+      "model_id": "gemini-3.5-flash-lite",
+      "display_name": "Gemini 3.5 Flash-Lite",
+      "provider": "google",
+      "family": "Gemini",
+      "total_tasks": 120,
+      "evaluated_at": "2026-09-07T22:39:55.453890+00:00",
+      "all_correct_accuracy": 38.3,
+      "has_border_accuracy": 94.2,
+      "border_sides_accuracy": 92.5,
+      "stroke_style_accuracy": 94.2,
+      "stroke_width_accuracy": 92.5,
+      "corner_radius_accuracy": 72.5,
+      "corner_uniformity_accuracy": 92.5,
+      "elevation_accuracy": 65.8,
+      "avg_latency_sec": 0.94,
+      "avg_cost_usd": 0.00033,
+      "pricing": {
+        "input_per_m": 0.3,
+        "output_per_m": 2.5
+      },
+      "by_theme": {
+        "white-on-gray": {
+          "total": 43,
+          "exact_accuracy": 37.2,
+          "presence_accuracy": 90.7
+        },
+        "white-on-white": {
+          "total": 16,
+          "exact_accuracy": 50.0,
+          "presence_accuracy": 93.8
+        },
+        "gray-tint-on-white": {
+          "total": 25,
+          "exact_accuracy": 48.0,
+          "presence_accuracy": 92.0
+        },
+        "blue-tint-on-white": {
+          "total": 13,
+          "exact_accuracy": 30.8,
+          "presence_accuracy": 100.0
+        },
+        "dark-mode": {
+          "total": 23,
+          "exact_accuracy": 26.1,
+          "presence_accuracy": 100.0
+        }
+      },
+      "by_curvature": {
+        "sharp": {
+          "total": 21,
+          "exact_accuracy": 52.4,
+          "presence_accuracy": 90.5
+        },
+        "subtle": {
+          "total": 21,
+          "exact_accuracy": 38.1,
+          "presence_accuracy": 90.5
+        },
+        "medium": {
+          "total": 43,
+          "exact_accuracy": 11.6,
+          "presence_accuracy": 97.7
+        },
+        "large": {
+          "total": 14,
+          "exact_accuracy": 57.1,
+          "presence_accuracy": 85.7
+        },
+        "pill": {
+          "total": 21,
+          "exact_accuracy": 66.7,
+          "presence_accuracy": 100.0
+        }
+      },
+      "by_thickness": {
+        "1px": {
+          "total": 50,
+          "exact_accuracy": 38.0,
+          "presence_accuracy": 96.0
+        },
+        "0px": {
+          "total": 28,
+          "exact_accuracy": 35.7,
+          "presence_accuracy": 85.7
+        },
+        "2px": {
+          "total": 24,
+          "exact_accuracy": 37.5,
+          "presence_accuracy": 95.8
+        },
+        "4px": {
+          "total": 14,
+          "exact_accuracy": 50.0,
+          "presence_accuracy": 100.0
+        },
+        "8px": {
+          "total": 4,
+          "exact_accuracy": 25.0,
+          "presence_accuracy": 100.0
+        }
+      },
+      "by_sides": {
+        "all-4": {
+          "total": 36,
+          "exact_accuracy": 36.1,
+          "presence_accuracy": 100.0
+        },
+        "none": {
+          "total": 28,
+          "exact_accuracy": 35.7,
+          "presence_accuracy": 85.7
+        },
+        "bottom-only": {
+          "total": 19,
+          "exact_accuracy": 36.8,
+          "presence_accuracy": 84.2
+        },
+        "left-only": {
+          "total": 24,
+          "exact_accuracy": 37.5,
+          "presence_accuracy": 100.0
+        },
+        "top-only": {
+          "total": 13,
+          "exact_accuracy": 53.8,
+          "presence_accuracy": 100.0
+        }
+      },
+      "by_elevation": {
+        "none": {
+          "total": 78,
+          "exact_accuracy": 48.7,
+          "presence_accuracy": 98.7
+        },
+        "subtle-drop": {
+          "total": 22,
+          "exact_accuracy": 31.8,
+          "presence_accuracy": 100.0
+        },
+        "floating-drop": {
+          "total": 1,
+          "exact_accuracy": 0.0,
+          "presence_accuracy": 100.0
+        },
+        "ring-only": {
+          "total": 4,
+          "exact_accuracy": 0.0,
+          "presence_accuracy": 0.0
+        },
+        "stroke+shadow": {
+          "total": 15,
+          "exact_accuracy": 6.7,
+          "presence_accuracy": 86.7
+        }
+      }
+    }
+  ]
+}
