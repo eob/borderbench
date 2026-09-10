@@ -31,7 +31,8 @@ describe("card neutrality", () => {
   test("footer carries no divider border", () => {
     const html = generateCardHtml(SPECIMENS[0]);
     const css = html.slice(0, html.indexOf("</style>"));
-    expect(css).not.toContain("border-top: 1px solid");
+    const footer = css.match(/\.footer\s*\{[^}]*\}/)?.[0] ?? "";
+    expect(footer).not.toContain("border");
   });
 
   test("inner chrome geometry is constant across specimens", () => {

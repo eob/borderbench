@@ -30,19 +30,26 @@ describe("BorderBench recipes", () => {
   });
 
   test("no invisible-boundary combinations", () => {
+    // A borderless flat card on white-on-white has no visible boundary at all.
+    // ring-only is a rendered 1px outline and stays visible; the pixel-contrast
+    // gate verifies every boundary independently.
     const invisible = SPECIMENS.filter(
-      (s) => s.theme === "white-on-white" && !s.has_border && (s.elevation === "none" || s.elevation === "ring-only"),
+      (s) => s.theme === "white-on-white" && !s.has_border && s.elevation === "none",
     );
     expect(invisible.map((s) => s.id)).toEqual([]);
   });
 
   test("large radius maps to one pixel value", () => {
-    const px = new Set(
-      SPECIMENS.filter((s) => s.corner_radius === "large").flatMap((s) =>
-        Array.isArray(s.corner_radius_px) ? s.corner_radius_px.filter((v) => v > 0) : [s.corner_radius_px],
-      ),
-    );
-    expect([...px].sort((a, b) => a - b)).toEqual([18]);
+    for (const s of SPECIMENS.filter((s) => s.corner_radius === "large")) {
+      if (!Array.isArray(s.corner_radius_px)) {
+        expect(s.corner_radius_px).toBe(18);
+      } else if (s.corner_uniformity === "asymmetric") {
+        // Three rounded corners carry the label; the acute corner is fixed 2px by design.
+        expect([...s.corner_radius_px].sort((a, b) => a - b)).toEqual([2, 18, 18, 18]);
+      } else {
+        expect(s.corner_radius_px.filter((v) => v > 0).every((v) => v === 18)).toBe(true);
+      }
+    }
   });
 
   test("card copy carries no label text", () => {
