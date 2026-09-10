@@ -1,0 +1,82 @@
+{
+  "validation_version": 1,
+  "valid": true,
+  "sample_count": 120,
+  "errors": [],
+  "distributions": {
+    "border_sides": {
+      "all-4": 47,
+      "bottom-only": 12,
+      "left-only": 12,
+      "none": 37,
+      "top-only": 12
+    },
+    "stroke_style": {
+      "dashed": 14,
+      "dotted": 11,
+      "double": 9,
+      "none": 37,
+      "solid": 49
+    },
+    "stroke_width": {
+      "0px": 37,
+      "1px": 30,
+      "2px": 28,
+      "4px": 16,
+      "8px": 9
+    },
+    "corner_radius": {
+      "large": 30,
+      "medium": 36,
+      "pill": 15,
+      "sharp": 20,
+      "subtle": 19
+    },
+    "corner_uniformity": {
+      "all-corners": 102,
+      "asymmetric": 9,
+      "top-only": 9
+    },
+    "elevation": {
+      "floating-drop": 9,
+      "none": 81,
+      "ring-only": 9,
+      "stroke+shadow": 9,
+      "subtle-drop": 12
+    },
+    "theme": {
+      "blue-tint-on-white": 26,
+      "dark-mode": 23,
+      "gray-tint-on-white": 26,
+      "white-on-gray": 25,
+      "white-on-white": 20
+    }
+  },
+  "shortcut_accuracy": {
+    "border_sides": {
+      "majority_class": 0.3917,
+      "theme_lookup": 0.3917
+    },
+    "stroke_style": {
+      "majority_class": 0.4083,
+      "theme_lookup": 0.4083
+    },
+    "stroke_width": {
+      "majority_class": 0.3083,
+      "theme_lookup": 0.3167
+    },
+    "corner_radius": {
+      "majority_class": 0.3,
+      "theme_lookup": 0.375
+    },
+    "corner_uniformity": {
+      "majority_class": 0.85,
+      "theme_lookup": 0.85
+    },
+    "elevation": {
+      "majority_class": 0.675,
+      "theme_lookup": 0.675
+    }
+  },
+  "manifest_sha256": "53311c5de0ec0885b2d0d9531d1d014c069f515daab86eda4311edb7f9f40aa8"
+}

@@ -7,6 +7,7 @@ from collections import deque
 from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
 from contextlib import ExitStack, contextmanager
 from dataclasses import asdict, fields
+from datetime import datetime, timezone
 import hashlib
 import json
 import math
@@ -17,19 +18,25 @@ import signal
 import threading
 from typing import Any
 
-from baseline.evaluator import BaselineEvaluator, TaskEvaluationResult, load_manifest
+from baseline.evaluator import BaselineEvaluator, TaskEvaluationResult, evaluation_protocol_fingerprint, load_manifest
 from baseline.model_config import load_model_config
+from baseline.releases import (
+    DEFAULT_RELEASE,
+    git_code_identity,
+    load_release,
+    release_manifest_path,
+    validate_release,
+)
 from baseline.run_state import RunStore
+from baseline.validate_dataset import require_valid_dataset
 
 
 def dataset_fingerprint(items: list[dict]) -> str:
-    digest = hashlib.sha256(b"borderbench-grading-1\n")
+    digest = hashlib.sha256(b"borderbench-dataset-2\n")
     for item in sorted(items, key=lambda x: x["taskId"]):
         metadata = {k: v for k, v in item.items() if k not in {"imagePath", "imageFilename"}}
-        digest.update(json.dumps(metadata, sort_keys=True, ensure_ascii=False).encode())
-        img_p = Path(item["imagePath"])
-        if img_p.exists():
-            digest.update(hashlib.sha256(img_p.read_bytes()).digest())
+        digest.update(json.dumps(metadata, sort_keys=True, ensure_ascii=False, allow_nan=False).encode())
+        digest.update(hashlib.sha256(Path(item["imagePath"]).read_bytes()).digest())
     return digest.hexdigest()
 
 
@@ -55,16 +62,22 @@ def _run_lock(directory: Path):
 
 
 def run_benchmark(
-    manifest_path: str | Path = "dataset/borderbench-1/manifest.json",
+    manifest_path: str | Path | None = None,
     config_path: str | Path = "config/models.json",
     output_dir: str | Path = "results/runs",
-    run_id: str = "default",
+    run_id: str | None = None,
+    release: str | None = None,
     selected_models: list[str] | None = None,
     budget_usd: float | None = 25.0,
     max_tasks: int | None = None,
     concurrency: int = 3,
     mock: bool = False,
 ) -> dict[str, Any]:
+    if manifest_path is not None and release is not None:
+        raise ValueError("Choose either --release or an unversioned custom --manifest")
+    descriptor = load_release(DEFAULT_RELEASE if release is None else release) if manifest_path is None else None
+    if run_id is None:
+        run_id = "run-" + datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S")
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]*", run_id):
         raise ValueError("run_id must be a simple name, without directory separators")
     if budget_usd is not None and (budget_usd < 0 or not math.isfinite(budget_usd)):
@@ -81,13 +94,24 @@ def run_benchmark(
     if not models:
         raise ValueError("No enabled models selected")
 
-    items = load_manifest(str(manifest_path))
+    if descriptor is not None:
+        manifest_path = release_manifest_path(descriptor)
+        items = validate_release(descriptor)
+    else:
+        assert manifest_path is not None
+        if not mock:
+            require_valid_dataset(manifest_path)
+        items = load_manifest(str(manifest_path))
     fingerprint = dataset_fingerprint(items)
     items.sort(key=lambda x: x["taskId"])
     selected_items = items[:max_tasks] if max_tasks is not None else items
 
-    directory = Path(output_dir) / (f"mock-{run_id}" if mock else run_id)
+    version = descriptor["benchmark_version"] if descriptor else None
+    leaf = f"mock-{run_id}" if mock else run_id
+    directory = Path(output_dir) / version / leaf if version else Path(output_dir) / leaf
     directory.mkdir(parents=True, exist_ok=True)
+    code_identity = git_code_identity()
+    protocol = evaluation_protocol_fingerprint()
 
     with _run_lock(directory), ExitStack() as resources:
         state_path = directory / "state.sqlite3"
@@ -113,15 +137,78 @@ def run_benchmark(
         }
 
         with RunStore(state_path) as store:
+            run_path = directory / "run.json"
+            identity = {
+                "release": version,
+                "dataset_git_commit": descriptor["dataset_git_commit"] if descriptor else None,
+                "dataset_fingerprint": fingerprint,
+                "evaluation_protocol": protocol,
+                "manifest_path": str(Path(manifest_path).resolve()),
+                "mock": mock,
+                "expected_task_count": len(items),
+            }
+            if run_path.exists():
+                try:
+                    run_metadata = json.loads(run_path.read_text(encoding="utf-8"))
+                except (OSError, ValueError) as error:
+                    raise ValueError(f"Run metadata {run_path} is unreadable: {error}") from error
+                if not isinstance(run_metadata, dict) or any(
+                    run_metadata.get(key) != value for key, value in identity.items()
+                ):
+                    raise ValueError("Run metadata disagrees with the checkpoint/release identity")
+                history = run_metadata.get("invocations")
+                if not isinstance(history, list):
+                    raise ValueError("Run metadata has malformed invocation history")
+            else:
+                if any((directory / name).exists() for name in ("summary.json", "attempts.jsonl")) or store.list_runs():
+                    raise ValueError("Existing checkpoint has lost run metadata. Restore run.json before resuming.")
+                run_metadata = {
+                    **identity,
+                    **code_identity,
+                    "created_at": datetime.now(timezone.utc).isoformat(),
+                    "invocations": [],
+                    "model_configs": {},
+                }
+            invocation = {
+                **code_identity,
+                "started_at": datetime.now(timezone.utc).isoformat(),
+                "max_tasks": max_tasks,
+                "budget_usd": budget_usd,
+                "concurrency": concurrency,
+                "models": [model["id"] for model in models],
+            }
+            run_metadata["invocations"].append(invocation)
+            for model in models:
+                run_metadata.setdefault("model_configs", {})[model["id"]] = model
+            write_json(run_path, run_metadata)
+
+            prior = {run["run_id"]: run for run in store.list_runs()}.get(run_id)
+            if prior is not None and prior["metadata"].get("evaluation_protocol") != protocol:
+                raise ValueError(
+                    f"Run {run_id!r} already exists with a different evaluation protocol; use a new run ID"
+                )
             store.register_run(
                 run_id, fingerprint,
-                {"manifest_path": str(Path(manifest_path).resolve()), "mock": mock, "expected_task_count": len(items)}
+                {"manifest_path": str(Path(manifest_path).resolve()), "mock": mock,
+                 "expected_task_count": len(items), "evaluation_protocol": protocol}
             )
             for model in models:
                 store.register_model(run_id, model["id"], model)
 
             reported_models = [state["config"] for state in store.model_states(run_id).values()]
+            lost_configs = [model["id"] for model in reported_models if model["id"] not in run_metadata["model_configs"]]
+            if lost_configs:
+                raise ValueError(f"Run invocation history has lost a checkpoint model configuration: {lost_configs[0]!r}")
             completed = {model["id"]: store.completed_results(run_id, model["id"]) for model in reported_models}
+            known_tasks = {item["taskId"] for item in items}
+            foreign = sorted(
+                {task_id for saved in completed.values() for task_id in saved} - known_tasks
+            )
+            if foreign:
+                raise ValueError(
+                    f"Checkpoint for run {run_id!r} contains {len(foreign)} unknown task IDs "
+                    f"(e.g. {foreign[0]!r}); restore the matching manifest or use a new run ID"
+                )
             pending = deque(
                 (model["id"], item)
                 for item in selected_items
@@ -138,13 +225,20 @@ def run_benchmark(
                 state = store.model_states(run_id)
                 summary = {
                     "run_id": run_id,
+                    "release": version,
+                    "dataset_git_commit": descriptor["dataset_git_commit"] if descriptor else None,
                     "dataset_fingerprint": fingerprint,
+                    "evaluation_protocol": protocol,
                     "mock": mock,
                     "expected_task_count": len(items),
                     "budget_usd": budget_usd,
                     "spent_cost_usd": store.spent_cost(run_id),
                     "status": status,
                     "models": {},
+                    **code_identity,
+                    "created_at": run_metadata["created_at"],
+                    "updated_at": datetime.now(timezone.utc).isoformat(),
+                    "invocations": len(run_metadata["invocations"]),
                 }
                 for model in reported_models:
                     m_id = model["id"]
@@ -160,7 +254,9 @@ def run_benchmark(
                         scorecard["tasks"] = list(saved.values())
                         scorecard.update(
                             mock=mock,
+                            release=version,
                             dataset_fingerprint=fingerprint,
+                            evaluation_protocol=protocol,
                             model_id=m_id,
                             model_name=model["model"],
                             display_name=model.get("display_name", m_id),
@@ -188,6 +284,14 @@ def run_benchmark(
                         "avg_latency_sec": scorecard["avg_latency_sec"],
                     }
                 write_json(directory / "summary.json", summary)
+                attempts_path = directory / "attempts.jsonl"
+                attempts_path.write_text(
+                    "".join(
+                        json.dumps(attempt, sort_keys=True, ensure_ascii=False) + "\n"
+                        for attempt in store.attempts(run_id)
+                    ),
+                    encoding="utf-8",
+                )
                 return summary
 
             interrupted = False
@@ -309,6 +413,8 @@ def run_benchmark(
                     store.save_model_state(run_id, m_id, "complete")
 
             summary = snapshot()
+            invocation.update(status=status, finished_at=summary["updated_at"])
+            write_json(run_path, run_metadata)
             if fatal_error:
                 raise fatal_error
             return summary
@@ -316,10 +422,11 @@ def run_benchmark(
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--manifest", default="dataset/borderbench-1/manifest.json")
+    parser.add_argument("--manifest", default=None, help="Unversioned custom manifest (excluded from release comparisons)")
+    parser.add_argument("--release", default=None, help=f"Frozen benchmark version (default: {DEFAULT_RELEASE})")
     parser.add_argument("--config", default="config/models.json")
     parser.add_argument("--output-dir", default="results/runs")
-    parser.add_argument("--run-id", default="default")
+    parser.add_argument("--run-id", default=None, help="Run name; a unique one is generated when omitted")
     parser.add_argument("--models", nargs="+")
     parser.add_argument("--budget-usd", type=float, default=25.0)
     parser.add_argument("--no-budget-limit", action="store_true")
@@ -333,6 +440,7 @@ def main() -> None:
         config_path=args.config,
         output_dir=args.output_dir,
         run_id=args.run_id,
+        release=args.release,
         selected_models=args.models,
         budget_usd=None if args.no_budget_limit else args.budget_usd,
         max_tasks=args.max_tasks,

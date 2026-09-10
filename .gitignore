@@ -4,8 +4,26 @@ __pycache__/
 *.pyc
 .pytest_cache/
 .runner.lock
-results/runs/
 test_output/
 *.tmp
+*.tsbuildinfo
 .DS_Store
 *.egg-info/
+
+# Transient SQLite and lock files inside run directories.
+results/runs/**/*.sqlite3-wal
+results/runs/**/*.sqlite3-shm
+results/runs/**/.runner.lock
+results/runs/**/input/
+
+# Offline mock runs never enter the published run history.
+results/runs/**/mock-*/
+
+# Legacy unversioned run; preserved under results/historical-2026-09-07-default/.
+results/runs/default/
+
+# Render staging directories and development candidates.
+dataset/*.staging-*/
+dataset/candidate-rendered/
+build/
+dist/

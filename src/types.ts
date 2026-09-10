@@ -28,10 +28,20 @@ export interface BorderSpecimenConfig {
   tag: string;
 }
 
+export interface RenderedEvidence {
+  browser: string;
+  platform: string;
+  viewport: { width: number; height: number; deviceScaleFactor: number };
+  card: { x: number; y: number; width: number; height: number };
+  computed: Record<string, string>;
+}
+
 export interface BorderBenchmarkManifestItem {
   taskId: string;
   imagePath: string;
   imageFilename: string;
+  imageSha256?: string;
+  rendered?: RenderedEvidence;
   groundTruth: {
     has_border: boolean;
     border_sides: BorderSides;

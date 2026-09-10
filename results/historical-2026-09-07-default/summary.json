@@ -1,0 +1,71 @@
+{
+  "run_id": "default",
+  "dataset_fingerprint": "0c4e3cdb4ade7ef1123eaa95181cbfa7bcc3b58fa74a785ba0d9280543f02261",
+  "mock": false,
+  "expected_task_count": 120,
+  "budget_usd": 15.0,
+  "spent_cost_usd": 2.0051882000000005,
+  "status": "complete",
+  "models": {
+    "gemini-3.1-pro-preview": {
+      "provider": "google",
+      "model": "gemini-3.1-pro-preview",
+      "display_name": "Gemini 3.1 Pro Preview",
+      "completed": 120,
+      "attempted_tasks": 120,
+      "status": "complete",
+      "cost_usd": 0.780035999999999,
+      "all_correct_accuracy": 68.33,
+      "has_border_accuracy": 95.83,
+      "avg_latency_sec": 4.28
+    },
+    "gemini-3.5-flash-lite": {
+      "provider": "google",
+      "model": "gemini-3.5-flash-lite",
+      "display_name": "Gemini 3.5 Flash-Lite",
+      "completed": 120,
+      "attempted_tasks": 120,
+      "status": "complete",
+      "cost_usd": 0.07949449999999993,
+      "all_correct_accuracy": 38.33,
+      "has_border_accuracy": 94.17,
+      "avg_latency_sec": 0.944
+    },
+    "gemini-3.8-flash": {
+      "provider": "google",
+      "model": "gemini-3.8-flash",
+      "display_name": "Gemini 3.8 Flash",
+      "completed": 120,
+      "attempted_tasks": 120,
+      "status": "complete",
+      "cost_usd": 0.5411324999999999,
+      "all_correct_accuracy": 61.67,
+      "has_border_accuracy": 98.33,
+      "avg_latency_sec": 4.173
+    },
+    "gpt-5.6-luna": {
+      "provider": "openai",
+      "model": "gpt-5.6-luna",
+      "display_name": "GPT-5.6 Luna",
+      "completed": 120,
+      "attempted_tasks": 120,
+      "status": "complete",
+      "cost_usd": 0.06889320000000002,
+      "all_correct_accuracy": 47.5,
+      "has_border_accuracy": 97.5,
+      "avg_latency_sec": 3.124
+    },
+    "gpt-5.6-terra": {
+      "provider": "openai",
+      "model": "gpt-5.6-terra",
+      "display_name": "GPT-5.6 Terra",
+      "completed": 120,
+      "attempted_tasks": 120,
+      "status": "complete",
+      "cost_usd": 0.5356320000000002,
+      "all_correct_accuracy": 45.0,
+      "has_border_accuracy": 97.5,
+      "avg_latency_sec": 1.983
+    }
+  }
+}

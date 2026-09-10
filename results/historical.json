@@ -1,0 +1,33 @@
+{
+  "release": "1.0.0",
+  "invalid": [
+    {
+      "path": "results/scorecard_*.json",
+      "reason": "Prototype inputs rendered answers as card text; permissive grading version 1."
+    },
+    {
+      "path": "results/scorecard_*.md",
+      "reason": "Markdown summaries of the invalid prototype scores."
+    },
+    {
+      "path": "results/summary.json",
+      "reason": "Aggregate of the invalid prototype run."
+    },
+    {
+      "path": "results/borderbench_summary.json",
+      "reason": "Guessed-token export of the invalid prototype run."
+    },
+    {
+      "path": "results/historical-2026-09-07-default/",
+      "reason": "Paid September 7 pilot (600 observations, $2.01) on prototype inputs; preserved with checkpoint, excluded from V1.0.0."
+    },
+    {
+      "path": "dataset/borderbench-1/manifest.json",
+      "reason": "Prototype manifest: answer-bearing cards, single-sample classes, absolute image paths."
+    },
+    {
+      "path": "dataset/rendered/",
+      "reason": "Prototype images with label text rendered inside the judged card."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+Analyze the visual border and surface properties of the primary UI card container in this image.
+The image shows a standardized 400x240 CSS px card rendered on a canvas.
+
+Evaluate these 7 design attributes and respond ONLY with a valid JSON object matching this schema:
+{
+  "has_border": true | false,
+  "border_sides": "all-4" | "bottom-only" | "left-only" | "top-only" | "none",
+  "stroke_style": "solid" | "dashed" | "dotted" | "double" | "none",
+  "stroke_width": "0px" | "1px" | "2px" | "4px" | "8px",
+  "corner_radius": "sharp" | "subtle" | "medium" | "large" | "pill",
+  "corner_uniformity": "all-corners" | "top-only" | "asymmetric",
+  "elevation": "none" | "subtle-drop" | "floating-drop" | "ring-only" | "stroke+shadow"
+}
+
+Definitions:
+- has_border: true if the card has an explicit border stroke on any edge, false otherwise.
+- border_sides: which edges of the card have a stroke. If has_border is false, this is "none".
+- stroke_style: line pattern. If has_border is false, this is "none". "double" needs at least 4px to render two lines.
+- stroke_width: stroke thickness category: 0px (none), 1px (hairline), 2px (medium), 4px (thick), 8px (heavy).
+- corner_radius: corner curvature category: sharp (0px), subtle (3px), medium (8px), large (18px), pill (circular/capsule/9999px).
+- corner_uniformity: all-corners (equal curvature on all 4 corners), top-only (only top corners rounded, bottom sharp), asymmetric (different radii).
+- elevation: box-shadow appearance: none (flat), subtle-drop (soft shadow-sm/md), floating-drop (diffuse shadow-lg), ring-only (box-shadow outline ring without stroke), stroke+shadow (both stroke and shadow).
+
+Judge only the outer boundary, corners, and shadow of the primary card. Inner text, icons, badges, and buttons are identical across images and carry no information. Card and canvas colors vary by theme; a visible boundary may come from a stroke, a shadow, or a tonal step.

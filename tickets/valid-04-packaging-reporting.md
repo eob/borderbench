@@ -1,6 +1,6 @@
 # valid-04-packaging-reporting: Honest measurements and reports
 
-- **Status**: Planned
+- **Status**: Completed
 - **Branch**: `valid-01-benchmark-audit`
 - **Base**: `bd5523a`
 - **Machine**: `eob-dev2`
@@ -37,3 +37,7 @@ covers leakage removal verification, export integrity, and reporting honesty.
 - Export of the historical run shows metered (not guessed) costs.
 - Malformed-shape regressions fail on base, pass after fix.
 - No historical score appears in V1.0.0 outputs.
+
+## Completion
+
+History preserved and classified; export derives metered metrics from explicit rows with malformed-row warnings.

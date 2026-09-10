@@ -1,6 +1,6 @@
 # valid-03-evaluation: Strict answers and reproducible evaluation
 
-- **Status**: Planned
+- **Status**: Completed
 - **Branch**: `valid-01-benchmark-audit`
 - **Base**: `bd5523a`
 - **Machine**: `eob-dev2`
@@ -34,3 +34,7 @@ completion and compared cohorts auditable before new runs. Offline only.
 
 - All Red cases fail on `bd5523a` sources and pass after the fix.
 - Complete Python suite green; no transport/policy abstraction bloat.
+
+## Completion
+
+Strict whole-answer schema at both boundaries, shared prompt, protocol fingerprint, foreign/protocol resume guards, scorecard status/cohort/invalid.
