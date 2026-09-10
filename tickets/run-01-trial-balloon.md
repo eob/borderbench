@@ -1,6 +1,6 @@
 # run-01-trial-balloon: First V1.1.0 measurements (Gemini + Claude)
 
-- **Status**: In Progress
+- **Status**: Completed
 - **Branch**: `main` (PR #2 merged as `fc7bbec` before the campaign; results commit directly)
 - **Base**: `fc7bbec`
 - **Machine**: `eob-dev2`
@@ -35,3 +35,13 @@ leaderboard, and an unlinked trial-balloon page on edwardbenson.com.
 Per-request reserve enforcement active; invalid answers are final;
 infra failures retry with backoff. GPT models explicitly out of scope
 for this balloon.
+
+## Outcome (2026-09-10)
+
+Both campaigns complete: 840 observations, $9.15 total spend, zero
+invalid responses. Exact-match: gemini-3.1-pro-preview 52.5%,
+gemini-3.8-flash 47.5%, claude-fable-5-1 39.2%, claude-opus-5 19.2%,
+gemini-3.5-flash-lite 18.3%, claude-sonnet-5 8.3%, claude-haiku-4-5
+5.8%. Run history committed; leaderboard rebuilt (7 configs, 120
+shared inputs). Site preview: kaya-web PR #1256 (branch
+feat-borderbench-trial-balloon, unlinked route).
