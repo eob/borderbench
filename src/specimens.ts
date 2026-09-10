@@ -37,7 +37,7 @@ function radiusPx(radius: CornerRadius, uniformity: CornerUniformity): number | 
 
 function addSpecimen(cfg: Omit<BorderSpecimenConfig, "id" | "title" | "subtitle" | "tag">) {
   const index = SPECIMENS.length + 1;
-  SPECIMENS.push({ ...cfg, id: `borderbench-v1-${String(index).padStart(3, "0")}`, title: TITLE, subtitle: SUBTITLE, tag: TAG });
+  SPECIMENS.push({ ...cfg, id: `borderbench-${String(index).padStart(3, "0")}`, title: TITLE, subtitle: SUBTITLE, tag: TAG });
 }
 
 function bordered(sides: BorderSides, width: StrokeWidth, style: StrokeStyle, elevation: Elevation) {

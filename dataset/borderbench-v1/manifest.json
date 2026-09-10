@@ -13,9 +13,9 @@
   },
   "tasks": [
     {
-      "taskId": "borderbench-v1-001",
-      "imagePath": "borderbench-v1-001.png",
-      "imageFilename": "borderbench-v1-001.png",
+      "taskId": "borderbench-001",
+      "imagePath": "borderbench-001.png",
+      "imageFilename": "borderbench-001.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -62,9 +62,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-002",
-      "imagePath": "borderbench-v1-002.png",
-      "imageFilename": "borderbench-v1-002.png",
+      "taskId": "borderbench-002",
+      "imagePath": "borderbench-002.png",
+      "imageFilename": "borderbench-002.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -111,9 +111,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-003",
-      "imagePath": "borderbench-v1-003.png",
-      "imageFilename": "borderbench-v1-003.png",
+      "taskId": "borderbench-003",
+      "imagePath": "borderbench-003.png",
+      "imageFilename": "borderbench-003.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -160,9 +160,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-004",
-      "imagePath": "borderbench-v1-004.png",
-      "imageFilename": "borderbench-v1-004.png",
+      "taskId": "borderbench-004",
+      "imagePath": "borderbench-004.png",
+      "imageFilename": "borderbench-004.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -209,9 +209,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-005",
-      "imagePath": "borderbench-v1-005.png",
-      "imageFilename": "borderbench-v1-005.png",
+      "taskId": "borderbench-005",
+      "imagePath": "borderbench-005.png",
+      "imageFilename": "borderbench-005.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -258,9 +258,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-006",
-      "imagePath": "borderbench-v1-006.png",
-      "imageFilename": "borderbench-v1-006.png",
+      "taskId": "borderbench-006",
+      "imagePath": "borderbench-006.png",
+      "imageFilename": "borderbench-006.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -307,9 +307,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-007",
-      "imagePath": "borderbench-v1-007.png",
-      "imageFilename": "borderbench-v1-007.png",
+      "taskId": "borderbench-007",
+      "imagePath": "borderbench-007.png",
+      "imageFilename": "borderbench-007.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -356,9 +356,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-008",
-      "imagePath": "borderbench-v1-008.png",
-      "imageFilename": "borderbench-v1-008.png",
+      "taskId": "borderbench-008",
+      "imagePath": "borderbench-008.png",
+      "imageFilename": "borderbench-008.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -405,9 +405,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-009",
-      "imagePath": "borderbench-v1-009.png",
-      "imageFilename": "borderbench-v1-009.png",
+      "taskId": "borderbench-009",
+      "imagePath": "borderbench-009.png",
+      "imageFilename": "borderbench-009.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -454,9 +454,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-010",
-      "imagePath": "borderbench-v1-010.png",
-      "imageFilename": "borderbench-v1-010.png",
+      "taskId": "borderbench-010",
+      "imagePath": "borderbench-010.png",
+      "imageFilename": "borderbench-010.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -503,9 +503,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-011",
-      "imagePath": "borderbench-v1-011.png",
-      "imageFilename": "borderbench-v1-011.png",
+      "taskId": "borderbench-011",
+      "imagePath": "borderbench-011.png",
+      "imageFilename": "borderbench-011.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -552,9 +552,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-012",
-      "imagePath": "borderbench-v1-012.png",
-      "imageFilename": "borderbench-v1-012.png",
+      "taskId": "borderbench-012",
+      "imagePath": "borderbench-012.png",
+      "imageFilename": "borderbench-012.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -601,9 +601,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-013",
-      "imagePath": "borderbench-v1-013.png",
-      "imageFilename": "borderbench-v1-013.png",
+      "taskId": "borderbench-013",
+      "imagePath": "borderbench-013.png",
+      "imageFilename": "borderbench-013.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -650,9 +650,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-014",
-      "imagePath": "borderbench-v1-014.png",
-      "imageFilename": "borderbench-v1-014.png",
+      "taskId": "borderbench-014",
+      "imagePath": "borderbench-014.png",
+      "imageFilename": "borderbench-014.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -699,9 +699,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-015",
-      "imagePath": "borderbench-v1-015.png",
-      "imageFilename": "borderbench-v1-015.png",
+      "taskId": "borderbench-015",
+      "imagePath": "borderbench-015.png",
+      "imageFilename": "borderbench-015.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -748,9 +748,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-016",
-      "imagePath": "borderbench-v1-016.png",
-      "imageFilename": "borderbench-v1-016.png",
+      "taskId": "borderbench-016",
+      "imagePath": "borderbench-016.png",
+      "imageFilename": "borderbench-016.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "bottom-only",
@@ -797,9 +797,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-017",
-      "imagePath": "borderbench-v1-017.png",
-      "imageFilename": "borderbench-v1-017.png",
+      "taskId": "borderbench-017",
+      "imagePath": "borderbench-017.png",
+      "imageFilename": "borderbench-017.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "left-only",
@@ -846,9 +846,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-018",
-      "imagePath": "borderbench-v1-018.png",
-      "imageFilename": "borderbench-v1-018.png",
+      "taskId": "borderbench-018",
+      "imagePath": "borderbench-018.png",
+      "imageFilename": "borderbench-018.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "top-only",
@@ -895,9 +895,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-019",
-      "imagePath": "borderbench-v1-019.png",
-      "imageFilename": "borderbench-v1-019.png",
+      "taskId": "borderbench-019",
+      "imagePath": "borderbench-019.png",
+      "imageFilename": "borderbench-019.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -944,9 +944,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-020",
-      "imagePath": "borderbench-v1-020.png",
-      "imageFilename": "borderbench-v1-020.png",
+      "taskId": "borderbench-020",
+      "imagePath": "borderbench-020.png",
+      "imageFilename": "borderbench-020.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -993,9 +993,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-021",
-      "imagePath": "borderbench-v1-021.png",
-      "imageFilename": "borderbench-v1-021.png",
+      "taskId": "borderbench-021",
+      "imagePath": "borderbench-021.png",
+      "imageFilename": "borderbench-021.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -1047,9 +1047,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-022",
-      "imagePath": "borderbench-v1-022.png",
-      "imageFilename": "borderbench-v1-022.png",
+      "taskId": "borderbench-022",
+      "imagePath": "borderbench-022.png",
+      "imageFilename": "borderbench-022.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -1101,9 +1101,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-023",
-      "imagePath": "borderbench-v1-023.png",
-      "imageFilename": "borderbench-v1-023.png",
+      "taskId": "borderbench-023",
+      "imagePath": "borderbench-023.png",
+      "imageFilename": "borderbench-023.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -1150,9 +1150,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-024",
-      "imagePath": "borderbench-v1-024.png",
-      "imageFilename": "borderbench-v1-024.png",
+      "taskId": "borderbench-024",
+      "imagePath": "borderbench-024.png",
+      "imageFilename": "borderbench-024.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -1199,9 +1199,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-025",
-      "imagePath": "borderbench-v1-025.png",
-      "imageFilename": "borderbench-v1-025.png",
+      "taskId": "borderbench-025",
+      "imagePath": "borderbench-025.png",
+      "imageFilename": "borderbench-025.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -1248,9 +1248,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-026",
-      "imagePath": "borderbench-v1-026.png",
-      "imageFilename": "borderbench-v1-026.png",
+      "taskId": "borderbench-026",
+      "imagePath": "borderbench-026.png",
+      "imageFilename": "borderbench-026.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -1297,9 +1297,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-027",
-      "imagePath": "borderbench-v1-027.png",
-      "imageFilename": "borderbench-v1-027.png",
+      "taskId": "borderbench-027",
+      "imagePath": "borderbench-027.png",
+      "imageFilename": "borderbench-027.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -1346,9 +1346,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-028",
-      "imagePath": "borderbench-v1-028.png",
-      "imageFilename": "borderbench-v1-028.png",
+      "taskId": "borderbench-028",
+      "imagePath": "borderbench-028.png",
+      "imageFilename": "borderbench-028.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -1395,9 +1395,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-029",
-      "imagePath": "borderbench-v1-029.png",
-      "imageFilename": "borderbench-v1-029.png",
+      "taskId": "borderbench-029",
+      "imagePath": "borderbench-029.png",
+      "imageFilename": "borderbench-029.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -1444,9 +1444,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-030",
-      "imagePath": "borderbench-v1-030.png",
-      "imageFilename": "borderbench-v1-030.png",
+      "taskId": "borderbench-030",
+      "imagePath": "borderbench-030.png",
+      "imageFilename": "borderbench-030.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -1493,9 +1493,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-031",
-      "imagePath": "borderbench-v1-031.png",
-      "imageFilename": "borderbench-v1-031.png",
+      "taskId": "borderbench-031",
+      "imagePath": "borderbench-031.png",
+      "imageFilename": "borderbench-031.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -1542,9 +1542,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-032",
-      "imagePath": "borderbench-v1-032.png",
-      "imageFilename": "borderbench-v1-032.png",
+      "taskId": "borderbench-032",
+      "imagePath": "borderbench-032.png",
+      "imageFilename": "borderbench-032.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -1591,9 +1591,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-033",
-      "imagePath": "borderbench-v1-033.png",
-      "imageFilename": "borderbench-v1-033.png",
+      "taskId": "borderbench-033",
+      "imagePath": "borderbench-033.png",
+      "imageFilename": "borderbench-033.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -1640,9 +1640,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-034",
-      "imagePath": "borderbench-v1-034.png",
-      "imageFilename": "borderbench-v1-034.png",
+      "taskId": "borderbench-034",
+      "imagePath": "borderbench-034.png",
+      "imageFilename": "borderbench-034.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -1689,9 +1689,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-035",
-      "imagePath": "borderbench-v1-035.png",
-      "imageFilename": "borderbench-v1-035.png",
+      "taskId": "borderbench-035",
+      "imagePath": "borderbench-035.png",
+      "imageFilename": "borderbench-035.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -1738,9 +1738,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-036",
-      "imagePath": "borderbench-v1-036.png",
-      "imageFilename": "borderbench-v1-036.png",
+      "taskId": "borderbench-036",
+      "imagePath": "borderbench-036.png",
+      "imageFilename": "borderbench-036.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -1787,9 +1787,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-037",
-      "imagePath": "borderbench-v1-037.png",
-      "imageFilename": "borderbench-v1-037.png",
+      "taskId": "borderbench-037",
+      "imagePath": "borderbench-037.png",
+      "imageFilename": "borderbench-037.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -1836,9 +1836,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-038",
-      "imagePath": "borderbench-v1-038.png",
-      "imageFilename": "borderbench-v1-038.png",
+      "taskId": "borderbench-038",
+      "imagePath": "borderbench-038.png",
+      "imageFilename": "borderbench-038.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -1890,9 +1890,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-039",
-      "imagePath": "borderbench-v1-039.png",
-      "imageFilename": "borderbench-v1-039.png",
+      "taskId": "borderbench-039",
+      "imagePath": "borderbench-039.png",
+      "imageFilename": "borderbench-039.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -1944,9 +1944,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-040",
-      "imagePath": "borderbench-v1-040.png",
-      "imageFilename": "borderbench-v1-040.png",
+      "taskId": "borderbench-040",
+      "imagePath": "borderbench-040.png",
+      "imageFilename": "borderbench-040.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -1998,9 +1998,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-041",
-      "imagePath": "borderbench-v1-041.png",
-      "imageFilename": "borderbench-v1-041.png",
+      "taskId": "borderbench-041",
+      "imagePath": "borderbench-041.png",
+      "imageFilename": "borderbench-041.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -2052,9 +2052,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-042",
-      "imagePath": "borderbench-v1-042.png",
-      "imageFilename": "borderbench-v1-042.png",
+      "taskId": "borderbench-042",
+      "imagePath": "borderbench-042.png",
+      "imageFilename": "borderbench-042.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -2106,9 +2106,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-043",
-      "imagePath": "borderbench-v1-043.png",
-      "imageFilename": "borderbench-v1-043.png",
+      "taskId": "borderbench-043",
+      "imagePath": "borderbench-043.png",
+      "imageFilename": "borderbench-043.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -2160,9 +2160,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-044",
-      "imagePath": "borderbench-v1-044.png",
-      "imageFilename": "borderbench-v1-044.png",
+      "taskId": "borderbench-044",
+      "imagePath": "borderbench-044.png",
+      "imageFilename": "borderbench-044.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -2214,9 +2214,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-045",
-      "imagePath": "borderbench-v1-045.png",
-      "imageFilename": "borderbench-v1-045.png",
+      "taskId": "borderbench-045",
+      "imagePath": "borderbench-045.png",
+      "imageFilename": "borderbench-045.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -2268,9 +2268,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-046",
-      "imagePath": "borderbench-v1-046.png",
-      "imageFilename": "borderbench-v1-046.png",
+      "taskId": "borderbench-046",
+      "imagePath": "borderbench-046.png",
+      "imageFilename": "borderbench-046.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -2322,9 +2322,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-047",
-      "imagePath": "borderbench-v1-047.png",
-      "imageFilename": "borderbench-v1-047.png",
+      "taskId": "borderbench-047",
+      "imagePath": "borderbench-047.png",
+      "imageFilename": "borderbench-047.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -2376,9 +2376,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-048",
-      "imagePath": "borderbench-v1-048.png",
-      "imageFilename": "borderbench-v1-048.png",
+      "taskId": "borderbench-048",
+      "imagePath": "borderbench-048.png",
+      "imageFilename": "borderbench-048.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -2430,9 +2430,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-049",
-      "imagePath": "borderbench-v1-049.png",
-      "imageFilename": "borderbench-v1-049.png",
+      "taskId": "borderbench-049",
+      "imagePath": "borderbench-049.png",
+      "imageFilename": "borderbench-049.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -2484,9 +2484,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-050",
-      "imagePath": "borderbench-v1-050.png",
-      "imageFilename": "borderbench-v1-050.png",
+      "taskId": "borderbench-050",
+      "imagePath": "borderbench-050.png",
+      "imageFilename": "borderbench-050.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -2538,9 +2538,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-051",
-      "imagePath": "borderbench-v1-051.png",
-      "imageFilename": "borderbench-v1-051.png",
+      "taskId": "borderbench-051",
+      "imagePath": "borderbench-051.png",
+      "imageFilename": "borderbench-051.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -2592,9 +2592,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-052",
-      "imagePath": "borderbench-v1-052.png",
-      "imageFilename": "borderbench-v1-052.png",
+      "taskId": "borderbench-052",
+      "imagePath": "borderbench-052.png",
+      "imageFilename": "borderbench-052.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -2646,9 +2646,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-053",
-      "imagePath": "borderbench-v1-053.png",
-      "imageFilename": "borderbench-v1-053.png",
+      "taskId": "borderbench-053",
+      "imagePath": "borderbench-053.png",
+      "imageFilename": "borderbench-053.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -2700,9 +2700,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-054",
-      "imagePath": "borderbench-v1-054.png",
-      "imageFilename": "borderbench-v1-054.png",
+      "taskId": "borderbench-054",
+      "imagePath": "borderbench-054.png",
+      "imageFilename": "borderbench-054.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -2749,9 +2749,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-055",
-      "imagePath": "borderbench-v1-055.png",
-      "imageFilename": "borderbench-v1-055.png",
+      "taskId": "borderbench-055",
+      "imagePath": "borderbench-055.png",
+      "imageFilename": "borderbench-055.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -2798,9 +2798,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-056",
-      "imagePath": "borderbench-v1-056.png",
-      "imageFilename": "borderbench-v1-056.png",
+      "taskId": "borderbench-056",
+      "imagePath": "borderbench-056.png",
+      "imageFilename": "borderbench-056.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -2847,9 +2847,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-057",
-      "imagePath": "borderbench-v1-057.png",
-      "imageFilename": "borderbench-v1-057.png",
+      "taskId": "borderbench-057",
+      "imagePath": "borderbench-057.png",
+      "imageFilename": "borderbench-057.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -2896,9 +2896,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-058",
-      "imagePath": "borderbench-v1-058.png",
-      "imageFilename": "borderbench-v1-058.png",
+      "taskId": "borderbench-058",
+      "imagePath": "borderbench-058.png",
+      "imageFilename": "borderbench-058.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -2945,9 +2945,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-059",
-      "imagePath": "borderbench-v1-059.png",
-      "imageFilename": "borderbench-v1-059.png",
+      "taskId": "borderbench-059",
+      "imagePath": "borderbench-059.png",
+      "imageFilename": "borderbench-059.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -2994,9 +2994,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-060",
-      "imagePath": "borderbench-v1-060.png",
-      "imageFilename": "borderbench-v1-060.png",
+      "taskId": "borderbench-060",
+      "imagePath": "borderbench-060.png",
+      "imageFilename": "borderbench-060.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -3043,9 +3043,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-061",
-      "imagePath": "borderbench-v1-061.png",
-      "imageFilename": "borderbench-v1-061.png",
+      "taskId": "borderbench-061",
+      "imagePath": "borderbench-061.png",
+      "imageFilename": "borderbench-061.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -3092,9 +3092,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-062",
-      "imagePath": "borderbench-v1-062.png",
-      "imageFilename": "borderbench-v1-062.png",
+      "taskId": "borderbench-062",
+      "imagePath": "borderbench-062.png",
+      "imageFilename": "borderbench-062.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -3141,9 +3141,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-063",
-      "imagePath": "borderbench-v1-063.png",
-      "imageFilename": "borderbench-v1-063.png",
+      "taskId": "borderbench-063",
+      "imagePath": "borderbench-063.png",
+      "imageFilename": "borderbench-063.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -3190,9 +3190,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-064",
-      "imagePath": "borderbench-v1-064.png",
-      "imageFilename": "borderbench-v1-064.png",
+      "taskId": "borderbench-064",
+      "imagePath": "borderbench-064.png",
+      "imageFilename": "borderbench-064.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -3239,9 +3239,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-065",
-      "imagePath": "borderbench-v1-065.png",
-      "imageFilename": "borderbench-v1-065.png",
+      "taskId": "borderbench-065",
+      "imagePath": "borderbench-065.png",
+      "imageFilename": "borderbench-065.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -3288,9 +3288,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-066",
-      "imagePath": "borderbench-v1-066.png",
-      "imageFilename": "borderbench-v1-066.png",
+      "taskId": "borderbench-066",
+      "imagePath": "borderbench-066.png",
+      "imageFilename": "borderbench-066.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -3337,9 +3337,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-067",
-      "imagePath": "borderbench-v1-067.png",
-      "imageFilename": "borderbench-v1-067.png",
+      "taskId": "borderbench-067",
+      "imagePath": "borderbench-067.png",
+      "imageFilename": "borderbench-067.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -3386,9 +3386,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-068",
-      "imagePath": "borderbench-v1-068.png",
-      "imageFilename": "borderbench-v1-068.png",
+      "taskId": "borderbench-068",
+      "imagePath": "borderbench-068.png",
+      "imageFilename": "borderbench-068.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -3435,9 +3435,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-069",
-      "imagePath": "borderbench-v1-069.png",
-      "imageFilename": "borderbench-v1-069.png",
+      "taskId": "borderbench-069",
+      "imagePath": "borderbench-069.png",
+      "imageFilename": "borderbench-069.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -3484,9 +3484,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-070",
-      "imagePath": "borderbench-v1-070.png",
-      "imageFilename": "borderbench-v1-070.png",
+      "taskId": "borderbench-070",
+      "imagePath": "borderbench-070.png",
+      "imageFilename": "borderbench-070.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -3533,9 +3533,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-071",
-      "imagePath": "borderbench-v1-071.png",
-      "imageFilename": "borderbench-v1-071.png",
+      "taskId": "borderbench-071",
+      "imagePath": "borderbench-071.png",
+      "imageFilename": "borderbench-071.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "bottom-only",
@@ -3582,9 +3582,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-072",
-      "imagePath": "borderbench-v1-072.png",
-      "imageFilename": "borderbench-v1-072.png",
+      "taskId": "borderbench-072",
+      "imagePath": "borderbench-072.png",
+      "imageFilename": "borderbench-072.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "left-only",
@@ -3631,9 +3631,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-073",
-      "imagePath": "borderbench-v1-073.png",
-      "imageFilename": "borderbench-v1-073.png",
+      "taskId": "borderbench-073",
+      "imagePath": "borderbench-073.png",
+      "imageFilename": "borderbench-073.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "top-only",
@@ -3680,9 +3680,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-074",
-      "imagePath": "borderbench-v1-074.png",
-      "imageFilename": "borderbench-v1-074.png",
+      "taskId": "borderbench-074",
+      "imagePath": "borderbench-074.png",
+      "imageFilename": "borderbench-074.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -3729,9 +3729,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-075",
-      "imagePath": "borderbench-v1-075.png",
-      "imageFilename": "borderbench-v1-075.png",
+      "taskId": "borderbench-075",
+      "imagePath": "borderbench-075.png",
+      "imageFilename": "borderbench-075.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "bottom-only",
@@ -3778,9 +3778,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-076",
-      "imagePath": "borderbench-v1-076.png",
-      "imageFilename": "borderbench-v1-076.png",
+      "taskId": "borderbench-076",
+      "imagePath": "borderbench-076.png",
+      "imageFilename": "borderbench-076.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "left-only",
@@ -3827,9 +3827,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-077",
-      "imagePath": "borderbench-v1-077.png",
-      "imageFilename": "borderbench-v1-077.png",
+      "taskId": "borderbench-077",
+      "imagePath": "borderbench-077.png",
+      "imageFilename": "borderbench-077.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "top-only",
@@ -3876,9 +3876,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-078",
-      "imagePath": "borderbench-v1-078.png",
-      "imageFilename": "borderbench-v1-078.png",
+      "taskId": "borderbench-078",
+      "imagePath": "borderbench-078.png",
+      "imageFilename": "borderbench-078.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "bottom-only",
@@ -3925,9 +3925,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-079",
-      "imagePath": "borderbench-v1-079.png",
-      "imageFilename": "borderbench-v1-079.png",
+      "taskId": "borderbench-079",
+      "imagePath": "borderbench-079.png",
+      "imageFilename": "borderbench-079.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "left-only",
@@ -3974,9 +3974,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-080",
-      "imagePath": "borderbench-v1-080.png",
-      "imageFilename": "borderbench-v1-080.png",
+      "taskId": "borderbench-080",
+      "imagePath": "borderbench-080.png",
+      "imageFilename": "borderbench-080.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "top-only",
@@ -4023,9 +4023,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-081",
-      "imagePath": "borderbench-v1-081.png",
-      "imageFilename": "borderbench-v1-081.png",
+      "taskId": "borderbench-081",
+      "imagePath": "borderbench-081.png",
+      "imageFilename": "borderbench-081.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -4072,9 +4072,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-082",
-      "imagePath": "borderbench-v1-082.png",
-      "imageFilename": "borderbench-v1-082.png",
+      "taskId": "borderbench-082",
+      "imagePath": "borderbench-082.png",
+      "imageFilename": "borderbench-082.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "bottom-only",
@@ -4121,9 +4121,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-083",
-      "imagePath": "borderbench-v1-083.png",
-      "imageFilename": "borderbench-v1-083.png",
+      "taskId": "borderbench-083",
+      "imagePath": "borderbench-083.png",
+      "imageFilename": "borderbench-083.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "left-only",
@@ -4170,9 +4170,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-084",
-      "imagePath": "borderbench-v1-084.png",
-      "imageFilename": "borderbench-v1-084.png",
+      "taskId": "borderbench-084",
+      "imagePath": "borderbench-084.png",
+      "imageFilename": "borderbench-084.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "top-only",
@@ -4219,9 +4219,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-085",
-      "imagePath": "borderbench-v1-085.png",
-      "imageFilename": "borderbench-v1-085.png",
+      "taskId": "borderbench-085",
+      "imagePath": "borderbench-085.png",
+      "imageFilename": "borderbench-085.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "bottom-only",
@@ -4268,9 +4268,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-086",
-      "imagePath": "borderbench-v1-086.png",
-      "imageFilename": "borderbench-v1-086.png",
+      "taskId": "borderbench-086",
+      "imagePath": "borderbench-086.png",
+      "imageFilename": "borderbench-086.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "left-only",
@@ -4317,9 +4317,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-087",
-      "imagePath": "borderbench-v1-087.png",
-      "imageFilename": "borderbench-v1-087.png",
+      "taskId": "borderbench-087",
+      "imagePath": "borderbench-087.png",
+      "imageFilename": "borderbench-087.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "top-only",
@@ -4366,9 +4366,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-088",
-      "imagePath": "borderbench-v1-088.png",
-      "imageFilename": "borderbench-v1-088.png",
+      "taskId": "borderbench-088",
+      "imagePath": "borderbench-088.png",
+      "imageFilename": "borderbench-088.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "bottom-only",
@@ -4415,9 +4415,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-089",
-      "imagePath": "borderbench-v1-089.png",
-      "imageFilename": "borderbench-v1-089.png",
+      "taskId": "borderbench-089",
+      "imagePath": "borderbench-089.png",
+      "imageFilename": "borderbench-089.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "left-only",
@@ -4464,9 +4464,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-090",
-      "imagePath": "borderbench-v1-090.png",
-      "imageFilename": "borderbench-v1-090.png",
+      "taskId": "borderbench-090",
+      "imagePath": "borderbench-090.png",
+      "imageFilename": "borderbench-090.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "top-only",
@@ -4513,9 +4513,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-091",
-      "imagePath": "borderbench-v1-091.png",
-      "imageFilename": "borderbench-v1-091.png",
+      "taskId": "borderbench-091",
+      "imagePath": "borderbench-091.png",
+      "imageFilename": "borderbench-091.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "bottom-only",
@@ -4562,9 +4562,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-092",
-      "imagePath": "borderbench-v1-092.png",
-      "imageFilename": "borderbench-v1-092.png",
+      "taskId": "borderbench-092",
+      "imagePath": "borderbench-092.png",
+      "imageFilename": "borderbench-092.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "left-only",
@@ -4611,9 +4611,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-093",
-      "imagePath": "borderbench-v1-093.png",
-      "imageFilename": "borderbench-v1-093.png",
+      "taskId": "borderbench-093",
+      "imagePath": "borderbench-093.png",
+      "imageFilename": "borderbench-093.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "top-only",
@@ -4660,9 +4660,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-094",
-      "imagePath": "borderbench-v1-094.png",
-      "imageFilename": "borderbench-v1-094.png",
+      "taskId": "borderbench-094",
+      "imagePath": "borderbench-094.png",
+      "imageFilename": "borderbench-094.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -4709,9 +4709,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-095",
-      "imagePath": "borderbench-v1-095.png",
-      "imageFilename": "borderbench-v1-095.png",
+      "taskId": "borderbench-095",
+      "imagePath": "borderbench-095.png",
+      "imageFilename": "borderbench-095.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -4758,9 +4758,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-096",
-      "imagePath": "borderbench-v1-096.png",
-      "imageFilename": "borderbench-v1-096.png",
+      "taskId": "borderbench-096",
+      "imagePath": "borderbench-096.png",
+      "imageFilename": "borderbench-096.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -4807,9 +4807,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-097",
-      "imagePath": "borderbench-v1-097.png",
-      "imageFilename": "borderbench-v1-097.png",
+      "taskId": "borderbench-097",
+      "imagePath": "borderbench-097.png",
+      "imageFilename": "borderbench-097.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -4856,9 +4856,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-098",
-      "imagePath": "borderbench-v1-098.png",
-      "imageFilename": "borderbench-v1-098.png",
+      "taskId": "borderbench-098",
+      "imagePath": "borderbench-098.png",
+      "imageFilename": "borderbench-098.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -4905,9 +4905,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-099",
-      "imagePath": "borderbench-v1-099.png",
-      "imageFilename": "borderbench-v1-099.png",
+      "taskId": "borderbench-099",
+      "imagePath": "borderbench-099.png",
+      "imageFilename": "borderbench-099.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -4954,9 +4954,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-100",
-      "imagePath": "borderbench-v1-100.png",
-      "imageFilename": "borderbench-v1-100.png",
+      "taskId": "borderbench-100",
+      "imagePath": "borderbench-100.png",
+      "imageFilename": "borderbench-100.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -5003,9 +5003,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-101",
-      "imagePath": "borderbench-v1-101.png",
-      "imageFilename": "borderbench-v1-101.png",
+      "taskId": "borderbench-101",
+      "imagePath": "borderbench-101.png",
+      "imageFilename": "borderbench-101.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -5052,9 +5052,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-102",
-      "imagePath": "borderbench-v1-102.png",
-      "imageFilename": "borderbench-v1-102.png",
+      "taskId": "borderbench-102",
+      "imagePath": "borderbench-102.png",
+      "imageFilename": "borderbench-102.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "bottom-only",
@@ -5101,9 +5101,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-103",
-      "imagePath": "borderbench-v1-103.png",
-      "imageFilename": "borderbench-v1-103.png",
+      "taskId": "borderbench-103",
+      "imagePath": "borderbench-103.png",
+      "imageFilename": "borderbench-103.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "left-only",
@@ -5150,9 +5150,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-104",
-      "imagePath": "borderbench-v1-104.png",
-      "imageFilename": "borderbench-v1-104.png",
+      "taskId": "borderbench-104",
+      "imagePath": "borderbench-104.png",
+      "imageFilename": "borderbench-104.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "top-only",
@@ -5199,9 +5199,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-105",
-      "imagePath": "borderbench-v1-105.png",
-      "imageFilename": "borderbench-v1-105.png",
+      "taskId": "borderbench-105",
+      "imagePath": "borderbench-105.png",
+      "imageFilename": "borderbench-105.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -5248,9 +5248,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-106",
-      "imagePath": "borderbench-v1-106.png",
-      "imageFilename": "borderbench-v1-106.png",
+      "taskId": "borderbench-106",
+      "imagePath": "borderbench-106.png",
+      "imageFilename": "borderbench-106.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "bottom-only",
@@ -5297,9 +5297,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-107",
-      "imagePath": "borderbench-v1-107.png",
-      "imageFilename": "borderbench-v1-107.png",
+      "taskId": "borderbench-107",
+      "imagePath": "borderbench-107.png",
+      "imageFilename": "borderbench-107.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "left-only",
@@ -5346,9 +5346,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-108",
-      "imagePath": "borderbench-v1-108.png",
-      "imageFilename": "borderbench-v1-108.png",
+      "taskId": "borderbench-108",
+      "imagePath": "borderbench-108.png",
+      "imageFilename": "borderbench-108.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "top-only",
@@ -5395,9 +5395,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-109",
-      "imagePath": "borderbench-v1-109.png",
-      "imageFilename": "borderbench-v1-109.png",
+      "taskId": "borderbench-109",
+      "imagePath": "borderbench-109.png",
+      "imageFilename": "borderbench-109.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -5444,9 +5444,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-110",
-      "imagePath": "borderbench-v1-110.png",
-      "imageFilename": "borderbench-v1-110.png",
+      "taskId": "borderbench-110",
+      "imagePath": "borderbench-110.png",
+      "imageFilename": "borderbench-110.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -5493,9 +5493,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-111",
-      "imagePath": "borderbench-v1-111.png",
-      "imageFilename": "borderbench-v1-111.png",
+      "taskId": "borderbench-111",
+      "imagePath": "borderbench-111.png",
+      "imageFilename": "borderbench-111.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "bottom-only",
@@ -5542,9 +5542,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-112",
-      "imagePath": "borderbench-v1-112.png",
-      "imageFilename": "borderbench-v1-112.png",
+      "taskId": "borderbench-112",
+      "imagePath": "borderbench-112.png",
+      "imageFilename": "borderbench-112.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "left-only",
@@ -5591,9 +5591,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-113",
-      "imagePath": "borderbench-v1-113.png",
-      "imageFilename": "borderbench-v1-113.png",
+      "taskId": "borderbench-113",
+      "imagePath": "borderbench-113.png",
+      "imageFilename": "borderbench-113.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "top-only",
@@ -5640,9 +5640,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-114",
-      "imagePath": "borderbench-v1-114.png",
-      "imageFilename": "borderbench-v1-114.png",
+      "taskId": "borderbench-114",
+      "imagePath": "borderbench-114.png",
+      "imageFilename": "borderbench-114.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -5689,9 +5689,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-115",
-      "imagePath": "borderbench-v1-115.png",
-      "imageFilename": "borderbench-v1-115.png",
+      "taskId": "borderbench-115",
+      "imagePath": "borderbench-115.png",
+      "imageFilename": "borderbench-115.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",
@@ -5738,9 +5738,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-116",
-      "imagePath": "borderbench-v1-116.png",
-      "imageFilename": "borderbench-v1-116.png",
+      "taskId": "borderbench-116",
+      "imagePath": "borderbench-116.png",
+      "imageFilename": "borderbench-116.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "bottom-only",
@@ -5787,9 +5787,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-117",
-      "imagePath": "borderbench-v1-117.png",
-      "imageFilename": "borderbench-v1-117.png",
+      "taskId": "borderbench-117",
+      "imagePath": "borderbench-117.png",
+      "imageFilename": "borderbench-117.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "left-only",
@@ -5836,9 +5836,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-118",
-      "imagePath": "borderbench-v1-118.png",
-      "imageFilename": "borderbench-v1-118.png",
+      "taskId": "borderbench-118",
+      "imagePath": "borderbench-118.png",
+      "imageFilename": "borderbench-118.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "top-only",
@@ -5885,9 +5885,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-119",
-      "imagePath": "borderbench-v1-119.png",
-      "imageFilename": "borderbench-v1-119.png",
+      "taskId": "borderbench-119",
+      "imagePath": "borderbench-119.png",
+      "imageFilename": "borderbench-119.png",
       "groundTruth": {
         "has_border": false,
         "border_sides": "none",
@@ -5934,9 +5934,9 @@
       }
     },
     {
-      "taskId": "borderbench-v1-120",
-      "imagePath": "borderbench-v1-120.png",
-      "imageFilename": "borderbench-v1-120.png",
+      "taskId": "borderbench-120",
+      "imagePath": "borderbench-120.png",
+      "imageFilename": "borderbench-120.png",
       "groundTruth": {
         "has_border": true,
         "border_sides": "all-4",

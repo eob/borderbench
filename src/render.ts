@@ -6,8 +6,45 @@ import * as crypto from "node:crypto";
 import * as fs from "node:fs";
 import * as path from "node:path";
 
-const OUTPUT_DIR = path.resolve("dataset/borderbench-v1");
-const MANAGED_PREFIX = "borderbench-v1-";
+const MANAGED_PREFIX = "borderbench-";
+const HISTORICAL_DIRS = ["dataset/borderbench-1", "dataset/rendered"];
+
+function releaseDatasetPaths(): string[] {
+  const releasesDir = path.resolve("releases");
+  if (!fs.existsSync(releasesDir)) return [];
+  const registered: string[] = [];
+  for (const file of fs.readdirSync(releasesDir)) {
+    if (!file.endsWith(".json")) continue;
+    try {
+      const descriptor = JSON.parse(fs.readFileSync(path.join(releasesDir, file), "utf-8"));
+      if (typeof descriptor?.dataset_path === "string") registered.push(path.resolve(descriptor.dataset_path));
+    } catch {
+      continue;
+    }
+  }
+  return registered;
+}
+
+export function refuseProtectedDir(chosen: string, registered: string[]): void {
+  const resolved = path.resolve(chosen);
+  for (const historical of HISTORICAL_DIRS) {
+    if (resolved === path.resolve(historical)) {
+      throw new Error(`Refusing to overwrite historical dataset: ${chosen}`);
+    }
+  }
+  for (const releaseDir of registered) {
+    if (resolved === path.resolve(releaseDir)) {
+      throw new Error(`Refusing to overwrite registered release dataset: ${chosen}. Render a candidate instead.`);
+    }
+  }
+}
+
+function resolveOutputDir(): string {
+  const flag = process.argv.indexOf("--output-dir");
+  const chosen = flag >= 0 && process.argv[flag + 1] ? process.argv[flag + 1] : "dataset/candidate-rendered";
+  refuseProtectedDir(chosen, releaseDatasetPaths());
+  return path.resolve(chosen);
+}
 
 export function generateCardHtml(specimen: BorderSpecimenConfig): string {
   let canvasBg = "#f1f5f9";
@@ -300,6 +337,7 @@ function verifyComputed(specimen: BorderSpecimenConfig, computed: ComputedEviden
 }
 
 async function main() {
+  const OUTPUT_DIR = resolveOutputDir();
   const staging = `${OUTPUT_DIR}.staging-${process.pid}`;
   fs.rmSync(staging, { recursive: true, force: true });
   fs.mkdirSync(staging, { recursive: true });
@@ -392,9 +430,10 @@ async function main() {
       }
     }
 
+    const frozen = OUTPUT_DIR === path.resolve("dataset/borderbench-v1");
     const manifest = {
-      benchmark_id: "borderbench-v1",
-      name: "BorderBench V1",
+      benchmark_id: frozen ? "borderbench-v1" : "borderbench-candidate",
+      name: frozen ? "BorderBench V1" : "BorderBench candidate",
       version: "1.0.0",
       description: "Visual border, corner radius, stroke style, and elevation identification benchmark for multimodal vision-language models.",
       total_tasks: manifestItems.length,
@@ -425,7 +464,9 @@ async function main() {
   }
 }
 
-main().catch((err) => {
-  console.error("Render failed:", err);
-  process.exit(1);
-});
+if (import.meta.main) {
+  main().catch((err) => {
+    console.error("Render failed:", err);
+    process.exit(1);
+  });
+}
