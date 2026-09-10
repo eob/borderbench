@@ -92,5 +92,7 @@ Base `bd5523a`; implementation on `valid-01-benchmark-audit`.
 Theme is an unscored contrast condition; presence spans four coordinated
 fields; uniformity variants and shadow-only pale cards are documented
 special cases. The corpus favors cheap full reruns over exhaustive
-coverage. No paid model inference, push to main beyond tickets, or
-publication was performed. Tag `v1.0.0` after merge.
+coverage. No paid model inference or publication was performed.
+
+Merged to main as `64c5ca6` via PR #1 (merge commit; dataset commit
+`11adacb` is an ancestor of main). Release tooling tagged `v1.0.0`.
