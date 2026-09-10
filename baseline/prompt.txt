@@ -1,24 +1,26 @@
 Analyze the visual border and surface properties of the primary UI card container in this image.
 The image shows a standardized 400x240 CSS px card rendered on a canvas.
 
+Inner content is fixed and identical on every image: system font stack, title 16px semibold, subtitle 12px, body 13px, meta 11px; 40px pill avatar, 6px badge and button corners, 6px status dot. Judge only the outer boundary, corners, and shadow of the primary card. Labels below name Tailwind CSS utilities as a reference.
+
 Evaluate these 7 design attributes and respond ONLY with a valid JSON object matching this schema:
 {
   "has_border": true | false,
   "border_sides": "all-4" | "bottom-only" | "left-only" | "top-only" | "none",
-  "stroke_style": "solid" | "dashed" | "dotted" | "double" | "none",
+  "stroke_style": "solid" | "dashed" | "dotted" | "none",
   "stroke_width": "0px" | "1px" | "2px" | "4px" | "8px",
   "corner_radius": "sharp" | "subtle" | "medium" | "large" | "pill",
   "corner_uniformity": "all-corners" | "top-only" | "asymmetric",
   "elevation": "none" | "subtle-drop" | "floating-drop" | "ring-only" | "stroke+shadow"
 }
 
-Definitions:
+Definitions (Tailwind equivalents in parentheses):
 - has_border: true if the card has an explicit border stroke on any edge, false otherwise.
-- border_sides: which edges of the card have a stroke. If has_border is false, this is "none".
-- stroke_style: line pattern. If has_border is false, this is "none". "double" needs at least 4px to render two lines.
-- stroke_width: stroke thickness category: 0px (none), 1px (hairline), 2px (medium), 4px (thick), 8px (heavy).
-- corner_radius: corner curvature category: sharp (0px), subtle (3px), medium (8px), large (18px), pill (circular/capsule/9999px).
-- corner_uniformity: all-corners (equal curvature on all 4 corners), top-only (only top corners rounded, bottom sharp), asymmetric (different radii).
-- elevation: box-shadow appearance: none (flat), subtle-drop (soft shadow-sm/md), floating-drop (diffuse shadow-lg), ring-only (box-shadow outline ring without stroke), stroke+shadow (both stroke and shadow).
+- border_sides: which edges carry a stroke (border / border-b / border-l / border-t). If has_border is false, this is "none" (border-0).
+- stroke_style: line pattern (border-solid / border-dashed / border-dotted). If has_border is false, this is "none".
+- stroke_width: stroke thickness: 0px (border-0, none), 1px (border, hairline), 2px (border-2, medium), 4px (border-4, thick), 8px (border-8, heavy).
+- corner_radius: corner curvature: sharp 0px (rounded-none), subtle 3px (near rounded-sm), medium 8px (rounded-lg), large 18px (near rounded-2xl), pill 9999px circular/capsule (rounded-full).
+- corner_uniformity: all-corners (equal curvature on all 4 corners), top-only (only top corners rounded, bottom sharp; modal sheet), asymmetric (different radii; accent corner).
+- elevation: box-shadow appearance: none (flat), subtle-drop (shadow), floating-drop (shadow-lg), ring-only (1px neutral outline near ring-1, without stroke), stroke+shadow (border plus shadow-md).
 
-Judge only the outer boundary, corners, and shadow of the primary card. Inner text, icons, badges, and buttons are identical across images and carry no information. Card and canvas colors vary by theme; a visible boundary may come from a stroke, a shadow, or a tonal step.
+Card and canvas colors vary by theme; a visible boundary may come from a stroke, a shadow, or a tonal step.

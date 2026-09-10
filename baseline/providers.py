@@ -25,7 +25,7 @@ class BorderPrediction(BaseModel):
 
     has_border: bool = Field(description="True if the card has an explicit border stroke on any edge, false otherwise")
     border_sides: Literal["all-4", "bottom-only", "left-only", "top-only", "none"]
-    stroke_style: Literal["solid", "dashed", "dotted", "double", "none"]
+    stroke_style: Literal["solid", "dashed", "dotted", "none"]
     stroke_width: Literal["0px", "1px", "2px", "4px", "8px"]
     corner_radius: Literal["sharp", "subtle", "medium", "large", "pill"]
     corner_uniformity: Literal["all-corners", "top-only", "asymmetric"]

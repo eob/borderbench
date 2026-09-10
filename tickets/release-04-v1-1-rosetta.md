@@ -6,7 +6,7 @@
 - **Machine**: `eob-dev2`
 - **Harness**: muse
 - **Session ID**: `01a08932-89e6-7782-b859-de207f01941f`
-- **PR**: Pending
+- **PR**: https://github.com/eob/borderbench/pull/2
 - **Assignee**: Edward Benson
 
 ## Goal

@@ -149,7 +149,7 @@ def build_structured_benchmark(scorecards: list[str | Path]) -> Dict[str, Any]:
         "taxonomies": {
             "attributes": ["all_correct", *ATTRIBUTES],
             "border_sides": ["all-4", "bottom-only", "left-only", "top-only", "none"],
-            "stroke_styles": ["solid", "dashed", "dotted", "double", "none"],
+            "stroke_styles": ["solid", "dashed", "dotted", "none"],
             "stroke_widths": ["0px", "1px", "2px", "4px", "8px"],
             "corner_radii": ["sharp", "subtle", "medium", "large", "pill"],
             "corner_uniformity": ["all-corners", "top-only", "asymmetric"],

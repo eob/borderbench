@@ -45,7 +45,6 @@ function bordered(sides: BorderSides, width: StrokeWidth, style: StrokeStyle, el
   const has = sides !== "none";
   if (!has && (width !== "0px" || style !== "none")) throw new Error("borderless specimens need 0px/none stroke");
   if (has && (width === "0px" || style === "none")) throw new Error("bordered specimens need a visible stroke");
-  if (style === "double" && px < 4) throw new Error("double needs at least 4px");
   if (elevation === "stroke+shadow" && !has) throw new Error("stroke+shadow needs a border");
   if ((elevation === "subtle-drop" || elevation === "floating-drop" || elevation === "ring-only") && has) {
     throw new Error(`${elevation} is borderless by design; use stroke+shadow to combine`);
@@ -75,7 +74,7 @@ for (const w of WIDTHS) {
 }
 
 // 3. Style sweep: medium radius, all-4, flat, gray-tint.
-for (const [style, width] of [["solid", "2px"], ["dashed", "2px"], ["dotted", "2px"], ["double", "4px"]] as [StrokeStyle, StrokeWidth][]) {
+for (const [style, width] of [["solid", "2px"], ["dashed", "2px"], ["dotted", "2px"], ["dotted", "4px"]] as [StrokeStyle, StrokeWidth][]) {
   const b = bordered("all-4", width, style, "none");
   addSpecimen({
     has_border: b.has_border, border_sides: "all-4", stroke_style: style, stroke_width: width,
@@ -207,23 +206,24 @@ function take(count: number, candidate: (i: number) => Omit<BorderSpecimenConfig
   if (added < count) throw new Error("quota schedule exhausted without filling its quota");
 }
 
-// 8e. Double stroke x8 across sides; two carry stroke+shadow.
-const DOUBLE_SIDES: BorderSides[] = ["all-4", "bottom-only", "left-only", "top-only"];
+// 8e. Pattern heavies x8 across sides; two carry stroke+shadow.
+const HEAVY_SIDES: BorderSides[] = ["all-4", "bottom-only", "left-only", "top-only"];
+const HEAVY_STYLES: StrokeStyle[] = ["dashed", "dotted"];
 for (let i = 0; i < 8; i++) {
   const width: StrokeWidth = i % 2 === 0 ? "4px" : "8px";
   const r = RADII[i % 5];
   filler({
-    has_border: true, border_sides: DOUBLE_SIDES[i % 4], stroke_style: "double", stroke_width: width,
+    has_border: true, border_sides: HEAVY_SIDES[i % 4], stroke_style: HEAVY_STYLES[i % 2], stroke_width: width,
     stroke_width_px: width === "4px" ? 4 : 8, corner_radius: r.class, corner_radius_px: r.px,
     corner_uniformity: "all-corners", elevation: i >= 6 ? "stroke+shadow" : "none", theme: THEMES[(i + 4) % 5],
   });
 }
 
-// 8f. Heavy 8px non-double x4.
+// 8f. Heavy 8px solid/dashed x4.
 for (let i = 0; i < 4; i++) {
   const r = RADII[(i + 1) % 5];
   filler({
-    has_border: true, border_sides: DOUBLE_SIDES[(i + 1) % 4], stroke_style: i % 2 === 0 ? "solid" : "dashed",
+    has_border: true, border_sides: HEAVY_SIDES[(i + 1) % 4], stroke_style: i % 2 === 0 ? "solid" : "dashed",
     stroke_width: "8px", stroke_width_px: 8, corner_radius: r.class, corner_radius_px: r.px,
     corner_uniformity: "all-corners", elevation: "none", theme: THEMES[(i + 2) % 5],
   });

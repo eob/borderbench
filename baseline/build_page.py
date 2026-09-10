@@ -33,7 +33,7 @@ METRIC_LABELS = {
 
 AXES = [
     ("border_sides", "Edge selectivity", "Which card edges carry a stroke."),
-    ("stroke_style", "Stroke style", "Solid, dashed, dotted, double, or no stroke pattern."),
+    ("stroke_style", "Stroke style", "Solid, dashed, dotted, or no stroke pattern."),
     ("stroke_width", "Stroke width", "Hairline 1px through heavy 8px strokes."),
     ("corner_radius", "Corner radius", "Sharp corners through full pill capsules."),
     ("corner_uniformity", "Corner uniformity", "Equal, top-only, or asymmetric corner curvature."),
