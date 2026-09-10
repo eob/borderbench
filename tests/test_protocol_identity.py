@@ -204,7 +204,7 @@ def test_foreign_checkpoint_tasks_rejected(tmp_path):
         )
 
 
-def test_legacy_checkpoint_without_protocol_rejected(tmp_path):
+def test_legacy_run_without_protocol_rejected(tmp_path):
     from baseline.evaluator import load_manifest
 
     manifest = tmp_path / "manifest.json"
@@ -218,7 +218,23 @@ def test_legacy_checkpoint_without_protocol_rejected(tmp_path):
     with RunStore(directory / "state.sqlite3") as store:
         store.register_run("legacy", fingerprint, {"mock": True})
         store.register_model("legacy", "mock-model", {"id": "mock-model"})
-    with pytest.raises(ValueError, match="[Pp]rotocol"):
+    (directory / "run.json").write_text(
+        json.dumps(
+            {
+                "release": None,
+                "dataset_git_commit": None,
+                "dataset_fingerprint": fingerprint,
+                "manifest_path": str(manifest.resolve()),
+                "mock": True,
+                "expected_task_count": 1,
+                "created_at": "2026-09-10T00:00:00+00:00",
+                "invocations": [],
+                "model_configs": {},
+            }
+        ),
+        encoding="utf-8",
+    )
+    with pytest.raises(ValueError, match="[Dd]isagrees"):
         run_benchmark(
             manifest_path=manifest,
             config_path=config,
