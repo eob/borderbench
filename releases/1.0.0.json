@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "benchmark_version": "1.0.0",
+  "dataset_manifest": "dataset/borderbench-v1/manifest.json",
+  "dataset_path": "dataset/borderbench-v1",
+  "dataset_git_commit": "11adacbfebcf92fac4c8680c1a2541d3fed546bc",
+  "dataset_fingerprint": "dcbff0b1c76a788e9516dfafd13ab0a345743ee94783d7e226a02efb8886d64d",
+  "evaluation_protocol_fingerprint": "154aa49f7a90b1f35c4f97db5f4b70e129e9e8310992d3affbd0a75a7b1a0ed8",
+  "expected_task_count": 120
+}

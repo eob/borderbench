@@ -1,6 +1,6 @@
 # release-03-protect-frozen-artifacts: Freeze the corpus, isolate candidates
 
-- **Status**: Planned
+- **Status**: Completed
 - **Branch**: `valid-01-benchmark-audit`
 - **Base**: `bd5523a`
 - **Machine**: `eob-dev2`
@@ -34,3 +34,7 @@ generation to isolated candidate directories. Mirrors FontBench release-03.
 - Attempted in-place re-render of the frozen corpus exits nonzero with no
   bytes changed (verified by pre/post tree hash).
 - Candidate generation + validation works end to end offline.
+
+## Completion
+
+Renderer defaults to candidate output; refuses historical and registered release dirs; candidate flow verified end to end.

@@ -1,6 +1,6 @@
 # valid-05-experimental-design: Balanced coverage and disclosed limits
 
-- **Status**: Planned
+- **Status**: Completed
 - **Branch**: `valid-01-benchmark-audit`
 - **Base**: `bd5523a`
 - **Machine**: `eob-dev2`
@@ -38,3 +38,7 @@ be observable in pixels, and every design limit must be documented. Keep the
 
 - Frozen corpus: all graded values ≥8; zero invisible-boundary images; baselines disclosed.
 - Conditional correlations that remain are documented as accepted limits.
+
+## Completion
+
+120 unique combos, every value 9+, invisible cards forbidden, unified mappings, dependencies and limits documented.

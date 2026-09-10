@@ -160,6 +160,29 @@ def collect_observations(release: dict, results_dir: Path) -> tuple[dict, list[s
     return {"observations": observations, "configs": configs}, warnings
 
 
+def _breakdown_table(section: dict, models: list[dict]) -> str:
+    headings = "".join(f"<th scope=\"col\">{escape(model['display_name'])}</th>" for model in models)
+    rows = []
+    for group in section["groups"]:
+        cells = []
+        for model in models:
+            value = group["models"][model["id"]]
+            score = value["metrics"]["exact"]
+            cells.append(f"<td>{_percent(score)}<small>n={value['count']}</small></td>")
+        rows.append(f"<tr><th scope=\"row\">{escape(group['label'])}<small>{group['available']} inputs</small></th>{''.join(cells)}</tr>")
+    return f"<div class=\"table-scroll\"><table><thead><tr><th scope=\"col\">Input group<small>All seven correct</small></th>{headings}</tr></thead><tbody>{''.join(rows)}</tbody></table></div>"
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--release", default=DEFAULT_RELEASE)
+    parser.add_argument("--results-dir", default="results/runs")
+    parser.add_argument("--output-dir", default="site")
+    args = parser.parse_args()
+    benchmark = build_page(args.release, args.results_dir, args.output_dir)
+    print(f"Built page for release {args.release}: {len(benchmark['configs'])} configurations, {benchmark['shared_task_count']} shared inputs.")
+
+
 def build_page(
     release_version: str = DEFAULT_RELEASE,
     results_dir: str | Path = "results/runs",
@@ -202,11 +225,11 @@ def build_page(
     for key, title, blurb in AXES:
         groups = []
         for value in sorted(validity["distributions"].get(key, {})):
-            available = [item for item in items if item["groundTruth"][key] == value]
+            available = {item["taskId"] for item in items if item["groundTruth"][key] == value}
             per_model = {}
             for row in leaderboard:
                 config_id = row["id"]
-                measured = [t for t in per_config_tasks[config_id] if t["task_id"] in {i["taskId"] for i in available}]
+                measured = [t for t in per_config_tasks[config_id] if t["task_id"] in available]
                 per_model[config_id] = {"count": len(measured), "metrics": metrics(measured)}
             groups.append({"label": value, "available": len(available), "models": per_model})
         breakdowns.append({"key": key, "title": title, "blurb": blurb, "groups": groups})
@@ -293,29 +316,6 @@ code {{ font-size: 12px; }}
     }
     (output / "benchmark.json").write_text(json.dumps(benchmark, indent=2) + "\n", encoding="utf-8")
     return benchmark
-
-
-def _breakdown_table(section: dict, models: list[dict]) -> str:
-    headings = "".join(f"<th scope=\"col\">{escape(model['display_name'])}</th>" for model in models)
-    rows = []
-    for group in section["groups"]:
-        cells = []
-        for model in models:
-            value = group["models"][model["id"]]
-            score = value["metrics"]["exact"]
-            cells.append(f"<td>{_percent(score)}<small>n={value['count']}</small></td>")
-        rows.append(f"<tr><th scope=\"row\">{escape(group['label'])}<small>{group['available']} inputs</small></th>{''.join(cells)}</tr>")
-    return f"<div class=\"table-scroll\"><table><thead><tr><th scope=\"col\">Input group<small>All seven correct</small></th>{headings}</tr></thead><tbody>{''.join(rows)}</tbody></table></div>"
-
-
-def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--release", default=DEFAULT_RELEASE)
-    parser.add_argument("--results-dir", default="results/runs")
-    parser.add_argument("--output-dir", default="site")
-    args = parser.parse_args()
-    benchmark = build_page(args.release, args.results_dir, args.output_dir)
-    print(f"Built page for release {args.release}: {len(benchmark['configs'])} configurations, {benchmark['shared_task_count']} shared inputs.")
 
 
 if __name__ == "__main__":

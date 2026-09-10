@@ -1,6 +1,6 @@
 # release-02-aggregate-run-history: Combine compatible runs honestly
 
-- **Status**: Planned
+- **Status**: Completed
 - **Branch**: `valid-01-benchmark-audit`
 - **Base**: `bd5523a`
 - **Machine**: `eob-dev2`
@@ -38,3 +38,7 @@ Mirrors FontBench release-02.
 
 - Rebuilt page over zero V1.0.0 runs shows the corpus with empty leaderboard.
 - Aggregation regressions fail on base exporter behavior, pass on builder.
+
+## Completion
+
+Page builder aggregates compatible runs first-wins with deterministic ties, shared cohorts, breakdowns, contact sheets.

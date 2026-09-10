@@ -33,8 +33,6 @@ def _card_image(border_px: int = 2, radius_px: int = 8) -> bytes:
 
 
 def _write_corpus(root: Path, images: dict[str, bytes], ground_truth: dict | None = None) -> Path:
-    from baseline.evaluator import load_manifest  # noqa: F401  (pins loader availability)
-
     root.mkdir(parents=True, exist_ok=True)
     prompt = (REPO_ROOT / "baseline" / "prompt.txt").read_text(encoding="utf-8")
     tasks = []

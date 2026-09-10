@@ -1,0 +1,197 @@
+{
+  "release": "1.0.0",
+  "dataset_fingerprint": "dcbff0b1c76a788e9516dfafd13ab0a345743ee94783d7e226a02efb8886d64d",
+  "evaluation_protocol": "154aa49f7a90b1f35c4f97db5f4b70e129e9e8310992d3affbd0a75a7b1a0ed8",
+  "expected_task_count": 120,
+  "gate": {
+    "valid": true,
+    "sample_count": 120
+  },
+  "shared_task_count": 0,
+  "configs": [],
+  "breakdowns": [
+    {
+      "key": "border_sides",
+      "title": "Edge selectivity",
+      "blurb": "Which card edges carry a stroke.",
+      "groups": [
+        {
+          "label": "all-4",
+          "available": 47,
+          "models": {}
+        },
+        {
+          "label": "bottom-only",
+          "available": 12,
+          "models": {}
+        },
+        {
+          "label": "left-only",
+          "available": 12,
+          "models": {}
+        },
+        {
+          "label": "none",
+          "available": 37,
+          "models": {}
+        },
+        {
+          "label": "top-only",
+          "available": 12,
+          "models": {}
+        }
+      ]
+    },
+    {
+      "key": "stroke_style",
+      "title": "Stroke style",
+      "blurb": "Solid, dashed, dotted, double, or no stroke pattern.",
+      "groups": [
+        {
+          "label": "dashed",
+          "available": 14,
+          "models": {}
+        },
+        {
+          "label": "dotted",
+          "available": 11,
+          "models": {}
+        },
+        {
+          "label": "double",
+          "available": 9,
+          "models": {}
+        },
+        {
+          "label": "none",
+          "available": 37,
+          "models": {}
+        },
+        {
+          "label": "solid",
+          "available": 49,
+          "models": {}
+        }
+      ]
+    },
+    {
+      "key": "stroke_width",
+      "title": "Stroke width",
+      "blurb": "Hairline 1px through heavy 8px strokes.",
+      "groups": [
+        {
+          "label": "0px",
+          "available": 37,
+          "models": {}
+        },
+        {
+          "label": "1px",
+          "available": 30,
+          "models": {}
+        },
+        {
+          "label": "2px",
+          "available": 28,
+          "models": {}
+        },
+        {
+          "label": "4px",
+          "available": 16,
+          "models": {}
+        },
+        {
+          "label": "8px",
+          "available": 9,
+          "models": {}
+        }
+      ]
+    },
+    {
+      "key": "corner_radius",
+      "title": "Corner radius",
+      "blurb": "Sharp corners through full pill capsules.",
+      "groups": [
+        {
+          "label": "large",
+          "available": 30,
+          "models": {}
+        },
+        {
+          "label": "medium",
+          "available": 36,
+          "models": {}
+        },
+        {
+          "label": "pill",
+          "available": 15,
+          "models": {}
+        },
+        {
+          "label": "sharp",
+          "available": 20,
+          "models": {}
+        },
+        {
+          "label": "subtle",
+          "available": 19,
+          "models": {}
+        }
+      ]
+    },
+    {
+      "key": "corner_uniformity",
+      "title": "Corner uniformity",
+      "blurb": "Equal, top-only, or asymmetric corner curvature.",
+      "groups": [
+        {
+          "label": "all-corners",
+          "available": 102,
+          "models": {}
+        },
+        {
+          "label": "asymmetric",
+          "available": 9,
+          "models": {}
+        },
+        {
+          "label": "top-only",
+          "available": 9,
+          "models": {}
+        }
+      ]
+    },
+    {
+      "key": "elevation",
+      "title": "Elevation",
+      "blurb": "Flat cards, drop shadows, rings, and combined borders.",
+      "groups": [
+        {
+          "label": "floating-drop",
+          "available": 9,
+          "models": {}
+        },
+        {
+          "label": "none",
+          "available": 81,
+          "models": {}
+        },
+        {
+          "label": "ring-only",
+          "available": 9,
+          "models": {}
+        },
+        {
+          "label": "stroke+shadow",
+          "available": 9,
+          "models": {}
+        },
+        {
+          "label": "subtle-drop",
+          "available": 12,
+          "models": {}
+        }
+      ]
+    }
+  ],
+  "warnings": []
+}

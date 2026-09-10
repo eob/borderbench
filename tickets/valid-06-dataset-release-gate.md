@@ -1,6 +1,6 @@
 # valid-06-dataset-release-gate: Refuse unvalidated benchmark inputs
 
-- **Status**: Planned
+- **Status**: Completed
 - **Branch**: `valid-01-benchmark-audit`
 - **Base**: `bd5523a`
 - **Machine**: `eob-dev2`
@@ -34,3 +34,7 @@ spend on anything unvalidated. No validator exists at base.
 - Frozen corpus: valid, 120 unique decoded images, zero errors.
 - Historical manifest: rejected with actionable errors.
 - Guard tests prove rejected data causes zero clients/requests.
+
+## Completion
+
+Independent Pillow validator (11 finding codes) with CLI; live runs gated; CI runs tests, typecheck, dataset and release gates.

@@ -7,6 +7,7 @@ from collections import deque
 from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
 from contextlib import ExitStack, contextmanager
 from dataclasses import asdict, fields
+from datetime import datetime, timezone
 import hashlib
 import json
 import math
@@ -76,8 +77,6 @@ def run_benchmark(
         raise ValueError("Choose either --release or an unversioned custom --manifest")
     descriptor = load_release(DEFAULT_RELEASE if release is None else release) if manifest_path is None else None
     if run_id is None:
-        from datetime import datetime, timezone
-
         run_id = "run-" + datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S")
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]*", run_id):
         raise ValueError("run_id must be a simple name, without directory separators")
@@ -138,8 +137,6 @@ def run_benchmark(
         }
 
         with RunStore(state_path) as store:
-            from datetime import datetime, timezone
-
             run_path = directory / "run.json"
             identity = {
                 "release": version,
@@ -225,8 +222,6 @@ def run_benchmark(
             attempted_ids = {model["id"]: set(store.results(run_id, model["id"])) for model in reported_models}
 
             def snapshot(changed_model_id: str | None = None) -> dict:
-                from datetime import datetime, timezone
-
                 state = store.model_states(run_id)
                 summary = {
                     "run_id": run_id,

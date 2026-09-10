@@ -6,7 +6,6 @@ import argparse
 import hashlib
 import io
 import json
-import math
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -33,15 +32,12 @@ DPR = 2
 MIN_EDGE_CONTRAST = 2.5
 
 
-def _card_edges_px() -> tuple[int, int, int, int]:
-    left = CARD_CSS["x"] * DPR
-    top = CARD_CSS["y"] * DPR
-    return left, top, left + CARD_CSS["width"] * DPR, top + CARD_CSS["height"] * DPR
-
-
 def _edge_contrast(gray: Image.Image) -> float:
     """Strongest luminance step across the four card edges (midpoints)."""
-    left, top, right, bottom = _card_edges_px()
+    left = CARD_CSS["x"] * DPR
+    top = CARD_CSS["y"] * DPR
+    right = left + CARD_CSS["width"] * DPR
+    bottom = top + CARD_CSS["height"] * DPR
     width, height = gray.size
     px = gray.load()
     assert px is not None

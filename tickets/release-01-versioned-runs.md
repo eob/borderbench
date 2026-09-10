@@ -1,6 +1,6 @@
 # release-01-versioned-runs: V1.0.0 identity and resumable dated runs
 
-- **Status**: Planned
+- **Status**: Completed
 - **Branch**: `valid-01-benchmark-audit`
 - **Base**: `bd5523a`
 - **Machine**: `eob-dev2`
@@ -34,3 +34,7 @@ release-01; no paid inference here.
 
 - `bun run benchmark --release 1.0.0 --mock --run-id smoke --max-tasks 3` passes offline.
 - Versioned mock + resume gates green; historical data untouched and excluded.
+
+## Completion
+
+releases/1.0.0.json with Git anchor; run.json invocations, attempts.jsonl, provenance on scorecards/summaries; versioned Git-tracked runs.

@@ -1,6 +1,6 @@
 # valid-02-rendering: Neutral cards and verified rendered styles
 
-- **Status**: Planned
+- **Status**: Completed
 - **Branch**: `valid-01-benchmark-audit`
 - **Base**: `bd5523a`
 - **Machine**: `eob-dev2`
@@ -37,3 +37,7 @@ rendered. Preserve historical runs as audit evidence.
 - No specimen string in `src/specimens.ts` labels appears in its card HTML.
 - Manifest validates with zero errors under the valid-06 gate.
 - Re-render reproduces all PNG hashes byte-identically (same browser).
+
+## Completion
+
+Neutral fixed card copy/chrome, footer divider removed, computed-style verification, image hashes, relative paths, staged atomic writes.

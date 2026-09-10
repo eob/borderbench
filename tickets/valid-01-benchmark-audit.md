@@ -1,6 +1,6 @@
 # valid-01-benchmark-audit: Validate BorderBench before final runs
 
-- **Status**: In Progress
+- **Status**: Completed
 - **Branch**: `valid-01-benchmark-audit`
 - **Base**: `bd5523a`
 - **Machine**: `eob-dev2`
@@ -49,8 +49,48 @@ paid evaluation. No live model inference in this audit.
 - 120-image scale is kept (cheap reruns); balance is fixed by quotas, not
   growth. Minimum 8 samples per graded label value.
 
+## Findings and repaired behavior
+
+| Area | Original evidence | Accepted correction |
+| --- | --- | --- |
+| Pixel/label validity | Card titles, subtitles, tags, token IDs, and theme labels rendered inside the judged image (e.g. `Stroke Width 8px`); inner footer divider border | Fixed neutral copy and chrome on all 120 images; divider removed; computed border/corner/shadow styles verified per specimen |
+| Identity/portability | Absolute `/mnt/disks/data/...` image paths; no hashes, no browser provenance | Relative paths resolved beside the manifest; SHA-256 per image; browser/platform/card geometry recorded |
+| Experimental design | `asymmetric=1`, `floating-drop=1`, `double=4`, `8px=4`; invisible white-on-white flat cards; `large` mapped to 18px and 16px | Every graded value sampled 9+ times; invisible combinations forbidden by a measured boundary-contrast gate (4x margin); unified mappings |
+| Evaluation | Extra keys ignored, duplicate keys resolved, missing/blank/invalid enums earn partial credit; hardcoded grading marker; no protocol identity | Strict whole-answer schema at provider and evaluator boundaries; shared frozen prompt; protocol fingerprint with resume guards |
+| Checkpoints | Foreign task IDs completable by count; protocol changes mix silently; no status/cohort/invalid accounting | Foreign IDs rejected; protocol mismatch rejected; scorecards carry status, cohort hash, invalid counts |
+| Reporting | Export guessed costs from fixed tokens, hardcoded totals, latest-mtime score shopping; README showed 4 of 7 dims | Export derives metered metrics from explicit task rows with warnings; page aggregates first-wins observations with shared cohorts |
+| Release process | Unversioned `default` run, gitignored checkpoint, no descriptor, no CI | `releases/1.0.0.json` with Git anchor, versioned run ledgers, frozen-dir protection, candidate isolation, CI gate |
+
+## Release artifacts
+
+- `dataset/borderbench-v1/manifest.json`: 120 accepted inputs, relative paths, shared prompt, image hashes, rendering evidence.
+- `dataset/borderbench-v1/validation.json`: complete gate report; zero errors, 120 unique decoded images, quotas met, theme carries no shortcut.
+- `releases/1.0.0.json` + `CHANGELOG.md`: version identity, dataset commit `11adacb`, content/protocol fingerprints.
+- `results/historical-2026-09-07-default/`: preserved paid pilot ($2.01, 600 obs) with checkpoint; classified invalid in `results/historical.json`.
+- `site/index.html` + `site/benchmark.json`: validated empty leaderboard with six breakdowns and contact sheets; no inherited scores.
+
 ## Validation gate matrix
 
-Pending. Target: full Python + Bun suites, TypeScript typecheck, frozen
-validator exit 0, offline mock run + resume with zero spend, page build with
-desktop/mobile checks, base-code reversion evidence per ticket.
+Base `bd5523a`; implementation on `valid-01-benchmark-audit`.
+
+| Gate | Result |
+| --- | --- |
+| Baseline suites before changes | 43 Python, 3 Bun passed; existing tests did not detect the validity defects |
+| Red evidence | 19 Python + 6 Bun failures, 3 missing-module errors ([python](evidence/red-python.log), [bun](evidence/red-bun.log)) |
+| Final Python suite | 79 passed |
+| Final Bun suite + typecheck | 13 passed; `tsc --noEmit` clean |
+| Frozen dataset gate | 120 inputs, 120 unique pixels, zero errors; historical manifest rejected |
+| Offline release run + resume | 3 then 117 attempts, zero duplicates, $0 spend; SQLite integrity ok; 2 invocations |
+| Page build + Chromium desktop/mobile | 0 JS errors, 0 overflow, 48 montage images, 7 tables on both layouts |
+| Wheel build | `borderbench-1.0.0` wheel contains prompt, validator, releases, builder, reporting |
+| Isolated base-code reversions | Python: 20 failed + 1 control passed + validator import error; Bun: 6 failed + 2 errors ([python](evidence/reversion-python.log), [bun](evidence/reversion-bun.log)) |
+| Render protection | Registered release and historical dirs refused with zero bytes changed; candidate flow renders + validates |
+| Historical preservation | `git diff --quiet bd5523a -- dataset/borderbench-1 dataset/rendered results/scorecard_gemini-3.1-pro-preview.json` passed |
+
+## Review and limitations
+
+Theme is an unscored contrast condition; presence spans four coordinated
+fields; uniformity variants and shadow-only pale cards are documented
+special cases. The corpus favors cheap full reruns over exhaustive
+coverage. No paid model inference, push to main beyond tickets, or
+publication was performed. Tag `v1.0.0` after merge.

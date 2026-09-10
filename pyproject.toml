@@ -23,6 +23,9 @@ dependencies = [
 where = ["."]
 include = ["baseline*"]
 
+[tool.setuptools.package-data]
+baseline = ["prompt.txt"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = ["test_*.py"]
