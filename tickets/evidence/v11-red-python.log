@@ -1,0 +1,54 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+______________ test_prompt_is_tailwind_rosetta_with_fixed_context ______________
+
+    def test_prompt_is_tailwind_rosetta_with_fixed_context():
+        prompt = (REPO_ROOT / "baseline" / "prompt.txt").read_text(encoding="utf-8")
+        for token in ("Tailwind", "border-8", "rounded-full", "shadow-lg", "system font stack", "16px"):
+>           assert token in prompt, f"prompt must declare {token}"
+E           AssertionError: prompt must declare Tailwind
+E           assert 'Tailwind' in 'Analyze the visual border and surface properties of the primary UI card container in this image.\nThe image shows a s...rmation. Card and canvas colors vary by theme; a visible boundary may come from a stroke, a shadow, or a tonal step.\n'
+
+tests/test_taxonomy_v11.py:25: AssertionError
+___________________ test_double_rejected_at_schema_boundary ____________________
+
+    def test_double_rejected_at_schema_boundary():
+>       with pytest.raises(ValueError, match="[Ii]nvalid"):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_taxonomy_v11.py:30: Failed
+_____________________ test_rosetta_doc_covers_every_label ______________________
+
+    def test_rosetta_doc_covers_every_label():
+        guide = (REPO_ROOT / "dataset" / "README.md").read_text(encoding="utf-8")
+>       assert "Tailwind" in guide
+E       AssertionError: assert 'Tailwind' in '# BorderBench datasets\n\n## Current release: `borderbench-v1` (120 images)\n\nThe V1.0.0 corpus. Every card carries ...1.0.0. The files stay in Git history and in the worktree as audit\nevidence; the renderer refuses to overwrite them.\n'
+
+tests/test_taxonomy_v11.py:38: AssertionError
+______________________ test_exports_list_no_double_style _______________________
+
+    def test_exports_list_no_double_style():
+        from baseline.export_structured import build_structured_benchmark  # noqa: F401
+        import baseline.export_structured as export_module
+        import inspect
+    
+>       assert '"double"' not in inspect.getsource(export_module), "export taxonomy must drop double"
+E       AssertionError: export taxonomy must drop double
+E       assert '"double"' not in '"""BorderBe...    main()\n'
+E         
+E         '"double"' is contained here:
+E           "dotted", "double", "none"],
+E         ?           ++++++++
+E                       "stroke_widths": ["0px", "1px", "2px", "4px", "8px"],
+E                       "corner_radii": ["sharp", "subtle", "medium", "large", "pill"],
+E                       "corner_uniformity": ["all-corners", "top-only", "asymmetric"],...
+E         
+E         ...Full output truncated (28 lines hidden), use '-vv' to show
+
+tests/test_taxonomy_v11.py:53: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_taxonomy_v11.py::test_prompt_is_tailwind_rosetta_with_fixed_context
+FAILED tests/test_taxonomy_v11.py::test_double_rejected_at_schema_boundary - ...
+FAILED tests/test_taxonomy_v11.py::test_rosetta_doc_covers_every_label - Asse...
+FAILED tests/test_taxonomy_v11.py::test_exports_list_no_double_style - Assert...
+4 failed in 0.11s
