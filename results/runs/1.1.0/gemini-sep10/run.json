@@ -1,0 +1,79 @@
+{
+  "release": "1.1.0",
+  "dataset_git_commit": "ec1dc044f39b45be7c4b6fea018026722640b947",
+  "dataset_fingerprint": "506b7372566e3dab8022311df478ba78d608b0584d7eaabd1435b9f9f8b0764c",
+  "evaluation_protocol": "36f674d3004f400d7bdc10eded7df6a8f1e0bfef9a2e203fb390146b916bcd5d",
+  "manifest_path": "/mnt/disks/data/borderbench/dataset/borderbench-v1.1/manifest.json",
+  "mock": false,
+  "expected_task_count": 120,
+  "runner_git_commit": "62ced812519c7c9829f994229c6612e94e02346c",
+  "runner_git_dirty": true,
+  "created_at": "2026-09-10T04:22:31.352523+00:00",
+  "invocations": [
+    {
+      "runner_git_commit": "62ced812519c7c9829f994229c6612e94e02346c",
+      "runner_git_dirty": true,
+      "started_at": "2026-09-10T04:22:31.352549+00:00",
+      "max_tasks": null,
+      "budget_usd": 10.0,
+      "concurrency": 3,
+      "models": [
+        "gemini-3.1-pro-preview",
+        "gemini-3.8-flash",
+        "gemini-3.5-flash-lite"
+      ],
+      "status": "complete",
+      "finished_at": "2026-09-10T04:31:43.787071+00:00"
+    }
+  ],
+  "model_configs": {
+    "gemini-3.1-pro-preview": {
+      "id": "gemini-3.1-pro-preview",
+      "provider": "google",
+      "model": "gemini-3.1-pro-preview",
+      "display_name": "Gemini 3.1 Pro Preview",
+      "api_key_env": "GEMINI_API_KEY",
+      "source_url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview",
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "pricing_notes": "Standard online rates for prompts up to 200k tokens. Above 200k: $4 input / $18 output per million tokens. Output includes thinking tokens.",
+      "notes": "Latest documented Pro model. Preview; no announced shutdown date at verification.",
+      "base_url": null,
+      "input_per_m": 2.0,
+      "output_per_m": 12.0,
+      "max_output_tokens": 4096,
+      "enabled": true
+    },
+    "gemini-3.8-flash": {
+      "id": "gemini-3.8-flash",
+      "provider": "google",
+      "model": "gemini-3.8-flash",
+      "display_name": "Gemini 3.8 Flash",
+      "api_key_env": "GEMINI_API_KEY",
+      "source_url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash",
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "pricing_notes": "Standard introductory rates through 2026-12-31. From 2027-01-01: $1.50 input / $7.50 output per million tokens. Output includes thinking tokens.",
+      "notes": "Latest stable Flash; supports low, medium and high thinking, not minimal.",
+      "base_url": null,
+      "input_per_m": 0.75,
+      "output_per_m": 3.75,
+      "max_output_tokens": 4096,
+      "enabled": true
+    },
+    "gemini-3.5-flash-lite": {
+      "id": "gemini-3.5-flash-lite",
+      "provider": "google",
+      "model": "gemini-3.5-flash-lite",
+      "display_name": "Gemini 3.5 Flash-Lite",
+      "api_key_env": "GEMINI_API_KEY",
+      "source_url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite",
+      "pricing_source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "pricing_notes": "Standard text/image input and output rates. Output includes thinking tokens; no caching or batch discount assumed.",
+      "notes": "Latest Flash-Lite cost-focused model.",
+      "base_url": null,
+      "input_per_m": 0.3,
+      "output_per_m": 2.5,
+      "max_output_tokens": 1024,
+      "enabled": true
+    }
+  }
+}

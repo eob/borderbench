@@ -1,0 +1,55 @@
+{
+  "run_id": "gemini-sep10",
+  "release": "1.1.0",
+  "dataset_git_commit": "ec1dc044f39b45be7c4b6fea018026722640b947",
+  "dataset_fingerprint": "506b7372566e3dab8022311df478ba78d608b0584d7eaabd1435b9f9f8b0764c",
+  "evaluation_protocol": "36f674d3004f400d7bdc10eded7df6a8f1e0bfef9a2e203fb390146b916bcd5d",
+  "mock": false,
+  "expected_task_count": 120,
+  "budget_usd": 10.0,
+  "spent_cost_usd": 2.1890534999999933,
+  "status": "complete",
+  "models": {
+    "gemini-3.1-pro-preview": {
+      "provider": "google",
+      "model": "gemini-3.1-pro-preview",
+      "display_name": "Gemini 3.1 Pro Preview",
+      "completed": 120,
+      "attempted_tasks": 120,
+      "status": "complete",
+      "cost_usd": 1.4422079999999988,
+      "all_correct_accuracy": 52.5,
+      "has_border_accuracy": 86.67,
+      "avg_latency_sec": 7.698
+    },
+    "gemini-3.5-flash-lite": {
+      "provider": "google",
+      "model": "gemini-3.5-flash-lite",
+      "display_name": "Gemini 3.5 Flash-Lite",
+      "completed": 120,
+      "attempted_tasks": 120,
+      "status": "complete",
+      "cost_usd": 0.08573550000000002,
+      "all_correct_accuracy": 18.33,
+      "has_border_accuracy": 72.5,
+      "avg_latency_sec": 0.982
+    },
+    "gemini-3.8-flash": {
+      "provider": "google",
+      "model": "gemini-3.8-flash",
+      "display_name": "Gemini 3.8 Flash",
+      "completed": 120,
+      "attempted_tasks": 120,
+      "status": "complete",
+      "cost_usd": 0.6611100000000001,
+      "all_correct_accuracy": 47.5,
+      "has_border_accuracy": 90.0,
+      "avg_latency_sec": 5.078
+    }
+  },
+  "runner_git_commit": "62ced812519c7c9829f994229c6612e94e02346c",
+  "runner_git_dirty": true,
+  "created_at": "2026-09-10T04:22:31.352523+00:00",
+  "updated_at": "2026-09-10T04:31:43.787071+00:00",
+  "invocations": 1
+}
