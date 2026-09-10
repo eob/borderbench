@@ -7,8 +7,282 @@
     "valid": true,
     "sample_count": 120
   },
-  "shared_task_count": 0,
-  "configs": [],
+  "shared_task_count": 120,
+  "configs": [
+    {
+      "id": "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8",
+      "model_id": "gemini-3.1-pro-preview",
+      "display_name": "Gemini 3.1 Pro Preview",
+      "provider": "google",
+      "model": "gemini-3.1-pro-preview",
+      "max_output_tokens": 4096,
+      "runs": [
+        "gemini-sep10"
+      ],
+      "repeat_observations": 0,
+      "repeat_cost_usd": 0.0,
+      "total_cost_usd": 1.442208,
+      "completed": 120,
+      "expected": 120,
+      "metrics": {
+        "count": 120,
+        "exact": 0.525,
+        "has_border": 0.8667,
+        "border_sides": 0.8333,
+        "stroke_style": 0.8583,
+        "stroke_width": 0.8417,
+        "corner_radius": 0.8917,
+        "corner_uniformity": 0.8667,
+        "elevation": 0.775
+      },
+      "shared_metrics": {
+        "count": 120,
+        "exact": 0.525,
+        "has_border": 0.8667,
+        "border_sides": 0.8333,
+        "stroke_style": 0.8583,
+        "stroke_width": 0.8417,
+        "corner_radius": 0.8917,
+        "corner_uniformity": 0.8667,
+        "elevation": 0.775
+      },
+      "avg_latency_sec": 7.698
+    },
+    {
+      "id": "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77",
+      "model_id": "gemini-3.8-flash",
+      "display_name": "Gemini 3.8 Flash",
+      "provider": "google",
+      "model": "gemini-3.8-flash",
+      "max_output_tokens": 4096,
+      "runs": [
+        "gemini-sep10"
+      ],
+      "repeat_observations": 0,
+      "repeat_cost_usd": 0.0,
+      "total_cost_usd": 0.66111,
+      "completed": 120,
+      "expected": 120,
+      "metrics": {
+        "count": 120,
+        "exact": 0.475,
+        "has_border": 0.9,
+        "border_sides": 0.8917,
+        "stroke_style": 0.8917,
+        "stroke_width": 0.85,
+        "corner_radius": 0.725,
+        "corner_uniformity": 0.9083,
+        "elevation": 0.8083
+      },
+      "shared_metrics": {
+        "count": 120,
+        "exact": 0.475,
+        "has_border": 0.9,
+        "border_sides": 0.8917,
+        "stroke_style": 0.8917,
+        "stroke_width": 0.85,
+        "corner_radius": 0.725,
+        "corner_uniformity": 0.9083,
+        "elevation": 0.8083
+      },
+      "avg_latency_sec": 5.078
+    },
+    {
+      "id": "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366",
+      "model_id": "claude-fable-5-1",
+      "display_name": "Claude Fable 5.1",
+      "provider": "anthropic",
+      "model": "claude-fable-5-1",
+      "max_output_tokens": 4096,
+      "runs": [
+        "claude-sep10"
+      ],
+      "repeat_observations": 0,
+      "repeat_cost_usd": 0.0,
+      "total_cost_usd": 3.7635,
+      "completed": 120,
+      "expected": 120,
+      "metrics": {
+        "count": 120,
+        "exact": 0.3917,
+        "has_border": 0.9,
+        "border_sides": 0.9,
+        "stroke_style": 0.9,
+        "stroke_width": 0.6167,
+        "corner_radius": 0.8917,
+        "corner_uniformity": 0.875,
+        "elevation": 0.7333
+      },
+      "shared_metrics": {
+        "count": 120,
+        "exact": 0.3917,
+        "has_border": 0.9,
+        "border_sides": 0.9,
+        "stroke_style": 0.9,
+        "stroke_width": 0.6167,
+        "corner_radius": 0.8917,
+        "corner_uniformity": 0.875,
+        "elevation": 0.7333
+      },
+      "avg_latency_sec": 5.219
+    },
+    {
+      "id": "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c",
+      "model_id": "claude-opus-5",
+      "display_name": "Claude Opus 5",
+      "provider": "anthropic",
+      "model": "claude-opus-5",
+      "max_output_tokens": 4096,
+      "runs": [
+        "claude-sep10"
+      ],
+      "repeat_observations": 0,
+      "repeat_cost_usd": 0.0,
+      "total_cost_usd": 2.136925,
+      "completed": 120,
+      "expected": 120,
+      "metrics": {
+        "count": 120,
+        "exact": 0.1917,
+        "has_border": 0.8917,
+        "border_sides": 0.85,
+        "stroke_style": 0.8583,
+        "stroke_width": 0.6833,
+        "corner_radius": 0.6333,
+        "corner_uniformity": 0.85,
+        "elevation": 0.6167
+      },
+      "shared_metrics": {
+        "count": 120,
+        "exact": 0.1917,
+        "has_border": 0.8917,
+        "border_sides": 0.85,
+        "stroke_style": 0.8583,
+        "stroke_width": 0.6833,
+        "corner_radius": 0.6333,
+        "corner_uniformity": 0.85,
+        "elevation": 0.6167
+      },
+      "avg_latency_sec": 4.591
+    },
+    {
+      "id": "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9",
+      "model_id": "gemini-3.5-flash-lite",
+      "display_name": "Gemini 3.5 Flash-Lite",
+      "provider": "google",
+      "model": "gemini-3.5-flash-lite",
+      "max_output_tokens": 1024,
+      "runs": [
+        "gemini-sep10"
+      ],
+      "repeat_observations": 0,
+      "repeat_cost_usd": 0.0,
+      "total_cost_usd": 0.085736,
+      "completed": 120,
+      "expected": 120,
+      "metrics": {
+        "count": 120,
+        "exact": 0.1833,
+        "has_border": 0.725,
+        "border_sides": 0.6333,
+        "stroke_style": 0.675,
+        "stroke_width": 0.575,
+        "corner_radius": 0.5917,
+        "corner_uniformity": 0.8417,
+        "elevation": 0.6917
+      },
+      "shared_metrics": {
+        "count": 120,
+        "exact": 0.1833,
+        "has_border": 0.725,
+        "border_sides": 0.6333,
+        "stroke_style": 0.675,
+        "stroke_width": 0.575,
+        "corner_radius": 0.5917,
+        "corner_uniformity": 0.8417,
+        "elevation": 0.6917
+      },
+      "avg_latency_sec": 0.982
+    },
+    {
+      "id": "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88",
+      "model_id": "claude-sonnet-5",
+      "display_name": "Claude Sonnet 5",
+      "provider": "anthropic",
+      "model": "claude-sonnet-5",
+      "max_output_tokens": 4096,
+      "runs": [
+        "claude-sep10"
+      ],
+      "repeat_observations": 0,
+      "repeat_cost_usd": 0.0,
+      "total_cost_usd": 0.74508,
+      "completed": 120,
+      "expected": 120,
+      "metrics": {
+        "count": 120,
+        "exact": 0.0833,
+        "has_border": 0.8417,
+        "border_sides": 0.7667,
+        "stroke_style": 0.8333,
+        "stroke_width": 0.6167,
+        "corner_radius": 0.525,
+        "corner_uniformity": 0.8417,
+        "elevation": 0.275
+      },
+      "shared_metrics": {
+        "count": 120,
+        "exact": 0.0833,
+        "has_border": 0.8417,
+        "border_sides": 0.7667,
+        "stroke_style": 0.8333,
+        "stroke_width": 0.6167,
+        "corner_radius": 0.525,
+        "corner_uniformity": 0.8417,
+        "elevation": 0.275
+      },
+      "avg_latency_sec": 2.083
+    },
+    {
+      "id": "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c",
+      "model_id": "claude-haiku-4-5-20251001",
+      "display_name": "Claude Haiku 4.5",
+      "provider": "anthropic",
+      "model": "claude-haiku-4-5-20251001",
+      "max_output_tokens": 1024,
+      "runs": [
+        "claude-sep10"
+      ],
+      "repeat_observations": 0,
+      "repeat_cost_usd": 0.0,
+      "total_cost_usd": 0.31916,
+      "completed": 120,
+      "expected": 120,
+      "metrics": {
+        "count": 120,
+        "exact": 0.0583,
+        "has_border": 0.8167,
+        "border_sides": 0.725,
+        "stroke_style": 0.7583,
+        "stroke_width": 0.5333,
+        "corner_radius": 0.475,
+        "corner_uniformity": 0.85,
+        "elevation": 0.2917
+      },
+      "shared_metrics": {
+        "count": 120,
+        "exact": 0.0583,
+        "has_border": 0.8167,
+        "border_sides": 0.725,
+        "stroke_style": 0.7583,
+        "stroke_width": 0.5333,
+        "corner_radius": 0.475,
+        "corner_uniformity": 0.85,
+        "elevation": 0.2917
+      },
+      "avg_latency_sec": 2.124
+    }
+  ],
   "breakdowns": [
     {
       "key": "border_sides",
@@ -18,27 +292,522 @@
         {
           "label": "all-4",
           "available": 47,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 47,
+              "metrics": {
+                "count": 47,
+                "exact": 0.617,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 0.9787,
+                "corner_radius": 0.9149,
+                "corner_uniformity": 0.6809,
+                "elevation": 0.9787
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 47,
+              "metrics": {
+                "count": 47,
+                "exact": 0.5745,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 0.9149,
+                "corner_radius": 0.7872,
+                "corner_uniformity": 0.766,
+                "elevation": 1.0
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 47,
+              "metrics": {
+                "count": 47,
+                "exact": 0.4255,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 0.6383,
+                "corner_radius": 0.9362,
+                "corner_uniformity": 0.6809,
+                "elevation": 1.0
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 47,
+              "metrics": {
+                "count": 47,
+                "exact": 0.1702,
+                "has_border": 0.9787,
+                "border_sides": 0.9787,
+                "stroke_style": 0.9362,
+                "stroke_width": 0.8085,
+                "corner_radius": 0.5532,
+                "corner_uniformity": 0.617,
+                "elevation": 0.6809
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 47,
+              "metrics": {
+                "count": 47,
+                "exact": 0.2766,
+                "has_border": 0.9787,
+                "border_sides": 0.9787,
+                "stroke_style": 0.9149,
+                "stroke_width": 0.766,
+                "corner_radius": 0.6596,
+                "corner_uniformity": 0.617,
+                "elevation": 0.9362
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 47,
+              "metrics": {
+                "count": 47,
+                "exact": 0.0851,
+                "has_border": 0.9787,
+                "border_sides": 0.9787,
+                "stroke_style": 0.9787,
+                "stroke_width": 0.5957,
+                "corner_radius": 0.5957,
+                "corner_uniformity": 0.617,
+                "elevation": 0.3191
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 47,
+              "metrics": {
+                "count": 47,
+                "exact": 0.0638,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 0.9787,
+                "stroke_width": 0.5745,
+                "corner_radius": 0.5957,
+                "corner_uniformity": 0.617,
+                "elevation": 0.2766
+              }
+            }
+          }
         },
         {
           "label": "bottom-only",
           "available": 12,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.5833,
+                "has_border": 1.0,
+                "border_sides": 0.8333,
+                "stroke_style": 1.0,
+                "stroke_width": 1.0,
+                "corner_radius": 0.8333,
+                "corner_uniformity": 0.9167,
+                "elevation": 0.9167
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.5833,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 1.0,
+                "corner_radius": 0.6667,
+                "corner_uniformity": 1.0,
+                "elevation": 0.9167
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.5833,
+                "has_border": 0.9167,
+                "border_sides": 0.9167,
+                "stroke_style": 0.9167,
+                "stroke_width": 0.75,
+                "corner_radius": 0.9167,
+                "corner_uniformity": 1.0,
+                "elevation": 0.8333
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.1667,
+                "has_border": 0.9167,
+                "border_sides": 0.75,
+                "stroke_style": 0.9167,
+                "stroke_width": 0.4167,
+                "corner_radius": 0.75,
+                "corner_uniformity": 1.0,
+                "elevation": 0.9167
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.1667,
+                "has_border": 0.6667,
+                "border_sides": 0.25,
+                "stroke_style": 0.5,
+                "stroke_width": 0.4167,
+                "corner_radius": 0.5833,
+                "corner_uniformity": 1.0,
+                "elevation": 0.9167
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.0,
+                "has_border": 0.6667,
+                "border_sides": 0.5,
+                "stroke_style": 0.6667,
+                "stroke_width": 0.5,
+                "corner_radius": 0.5833,
+                "corner_uniformity": 0.9167,
+                "elevation": 0.1667
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.0,
+                "has_border": 0.5833,
+                "border_sides": 0.3333,
+                "stroke_style": 0.4167,
+                "stroke_width": 0.3333,
+                "corner_radius": 0.4167,
+                "corner_uniformity": 1.0,
+                "elevation": 0.1667
+              }
+            }
+          }
         },
         {
           "label": "left-only",
           "available": 12,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.5,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 0.9167,
+                "stroke_width": 0.8333,
+                "corner_radius": 0.75,
+                "corner_uniformity": 1.0,
+                "elevation": 0.75
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.4167,
+                "has_border": 1.0,
+                "border_sides": 0.9167,
+                "stroke_style": 0.9167,
+                "stroke_width": 0.9167,
+                "corner_radius": 0.5833,
+                "corner_uniformity": 1.0,
+                "elevation": 0.8333
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.3333,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 0.3333,
+                "corner_radius": 0.9167,
+                "corner_uniformity": 1.0,
+                "elevation": 0.8333
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.1667,
+                "has_border": 1.0,
+                "border_sides": 0.8333,
+                "stroke_style": 0.8333,
+                "stroke_width": 0.5833,
+                "corner_radius": 0.5833,
+                "corner_uniformity": 1.0,
+                "elevation": 0.8333
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.0,
+                "has_border": 0.5833,
+                "border_sides": 0.3333,
+                "stroke_style": 0.5,
+                "stroke_width": 0.3333,
+                "corner_radius": 0.1667,
+                "corner_uniformity": 1.0,
+                "elevation": 0.75
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.0833,
+                "has_border": 0.6667,
+                "border_sides": 0.5,
+                "stroke_style": 0.5833,
+                "stroke_width": 0.4167,
+                "corner_radius": 0.4167,
+                "corner_uniformity": 1.0,
+                "elevation": 0.25
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.0,
+                "has_border": 0.6667,
+                "border_sides": 0.5833,
+                "stroke_style": 0.5,
+                "stroke_width": 0.1667,
+                "corner_radius": 0.3333,
+                "corner_uniformity": 1.0,
+                "elevation": 0.25
+              }
+            }
+          }
         },
         {
           "label": "none",
           "available": 37,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 37,
+              "metrics": {
+                "count": 37,
+                "exact": 0.4865,
+                "has_border": 0.6216,
+                "border_sides": 0.6216,
+                "stroke_style": 0.6216,
+                "stroke_width": 0.6216,
+                "corner_radius": 0.9459,
+                "corner_uniformity": 1.0,
+                "elevation": 0.5405
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 37,
+              "metrics": {
+                "count": 37,
+                "exact": 0.4054,
+                "has_border": 0.7568,
+                "border_sides": 0.7568,
+                "stroke_style": 0.7568,
+                "stroke_width": 0.7568,
+                "corner_radius": 0.7027,
+                "corner_uniformity": 1.0,
+                "elevation": 0.5405
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 37,
+              "metrics": {
+                "count": 37,
+                "exact": 0.2973,
+                "has_border": 0.7027,
+                "border_sides": 0.7027,
+                "stroke_style": 0.7027,
+                "stroke_width": 0.7027,
+                "corner_radius": 0.8108,
+                "corner_uniformity": 1.0,
+                "elevation": 0.3243
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 37,
+              "metrics": {
+                "count": 37,
+                "exact": 0.2703,
+                "has_border": 0.7297,
+                "border_sides": 0.7297,
+                "stroke_style": 0.7297,
+                "stroke_width": 0.7297,
+                "corner_radius": 0.7027,
+                "corner_uniformity": 1.0,
+                "elevation": 0.4054
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 37,
+              "metrics": {
+                "count": 37,
+                "exact": 0.1892,
+                "has_border": 0.5946,
+                "border_sides": 0.5946,
+                "stroke_style": 0.5946,
+                "stroke_width": 0.5946,
+                "corner_radius": 0.6486,
+                "corner_uniformity": 1.0,
+                "elevation": 0.3784
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 37,
+              "metrics": {
+                "count": 37,
+                "exact": 0.1351,
+                "has_border": 0.8378,
+                "border_sides": 0.8378,
+                "stroke_style": 0.8378,
+                "stroke_width": 0.8378,
+                "corner_radius": 0.4324,
+                "corner_uniformity": 1.0,
+                "elevation": 0.3243
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 37,
+              "metrics": {
+                "count": 37,
+                "exact": 0.1081,
+                "has_border": 0.7027,
+                "border_sides": 0.7027,
+                "stroke_style": 0.7027,
+                "stroke_width": 0.7027,
+                "corner_radius": 0.4324,
+                "corner_uniformity": 1.0,
+                "elevation": 0.3784
+              }
+            }
+          }
         },
         {
           "label": "top-only",
           "available": 12,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.25,
+                "has_border": 0.8333,
+                "border_sides": 0.6667,
+                "stroke_style": 0.8333,
+                "stroke_width": 0.8333,
+                "corner_radius": 0.8333,
+                "corner_uniformity": 1.0,
+                "elevation": 0.5833
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.25,
+                "has_border": 0.75,
+                "border_sides": 0.75,
+                "stroke_style": 0.75,
+                "stroke_width": 0.6667,
+                "corner_radius": 0.75,
+                "corner_uniformity": 1.0,
+                "elevation": 0.75
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.4167,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 0.4167,
+                "corner_radius": 0.9167,
+                "corner_uniformity": 1.0,
+                "elevation": 0.75
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.0833,
+                "has_border": 0.9167,
+                "border_sides": 0.8333,
+                "stroke_style": 0.9167,
+                "stroke_width": 0.4167,
+                "corner_radius": 0.6667,
+                "corner_uniformity": 1.0,
+                "elevation": 0.5
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.0,
+                "has_border": 0.3333,
+                "border_sides": 0.0833,
+                "stroke_style": 0.3333,
+                "stroke_width": 0.1667,
+                "corner_radius": 0.5833,
+                "corner_uniformity": 0.9167,
+                "elevation": 0.4167
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.0,
+                "has_border": 0.6667,
+                "border_sides": 0.25,
+                "stroke_style": 0.6667,
+                "stroke_width": 0.3333,
+                "corner_radius": 0.5833,
+                "corner_uniformity": 1.0,
+                "elevation": 0.0833
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.0,
+                "has_border": 0.8333,
+                "border_sides": 0.25,
+                "stroke_style": 0.6667,
+                "stroke_width": 0.4167,
+                "corner_radius": 0.3333,
+                "corner_uniformity": 1.0,
+                "elevation": 0.25
+              }
+            }
+          }
         }
       ]
     },
@@ -50,22 +819,418 @@
         {
           "label": "dashed",
           "available": 18,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 18,
+              "metrics": {
+                "count": 18,
+                "exact": 0.5556,
+                "has_border": 1.0,
+                "border_sides": 0.8889,
+                "stroke_style": 1.0,
+                "stroke_width": 0.8889,
+                "corner_radius": 0.8889,
+                "corner_uniformity": 0.8889,
+                "elevation": 0.8333
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 18,
+              "metrics": {
+                "count": 18,
+                "exact": 0.3889,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 0.8889,
+                "corner_radius": 0.7222,
+                "corner_uniformity": 0.8889,
+                "elevation": 0.8333
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 18,
+              "metrics": {
+                "count": 18,
+                "exact": 0.6111,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 0.6667,
+                "corner_radius": 1.0,
+                "corner_uniformity": 0.9444,
+                "elevation": 0.8333
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 18,
+              "metrics": {
+                "count": 18,
+                "exact": 0.2778,
+                "has_border": 1.0,
+                "border_sides": 0.8333,
+                "stroke_style": 1.0,
+                "stroke_width": 0.7222,
+                "corner_radius": 0.7222,
+                "corner_uniformity": 0.8333,
+                "elevation": 0.8333
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 18,
+              "metrics": {
+                "count": 18,
+                "exact": 0.0556,
+                "has_border": 0.7778,
+                "border_sides": 0.6111,
+                "stroke_style": 0.7222,
+                "stroke_width": 0.5556,
+                "corner_radius": 0.5556,
+                "corner_uniformity": 0.8333,
+                "elevation": 0.8333
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 18,
+              "metrics": {
+                "count": 18,
+                "exact": 0.1111,
+                "has_border": 0.7778,
+                "border_sides": 0.6667,
+                "stroke_style": 0.7778,
+                "stroke_width": 0.5556,
+                "corner_radius": 0.7778,
+                "corner_uniformity": 0.7778,
+                "elevation": 0.5556
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 18,
+              "metrics": {
+                "count": 18,
+                "exact": 0.0556,
+                "has_border": 0.9444,
+                "border_sides": 0.7222,
+                "stroke_style": 0.7222,
+                "stroke_width": 0.3889,
+                "corner_radius": 0.3333,
+                "corner_uniformity": 0.8333,
+                "elevation": 0.6111
+              }
+            }
+          }
         },
         {
           "label": "dotted",
           "available": 16,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 16,
+              "metrics": {
+                "count": 16,
+                "exact": 0.4375,
+                "has_border": 1.0,
+                "border_sides": 0.9375,
+                "stroke_style": 0.9375,
+                "stroke_width": 1.0,
+                "corner_radius": 0.6875,
+                "corner_uniformity": 0.8125,
+                "elevation": 0.8125
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 16,
+              "metrics": {
+                "count": 16,
+                "exact": 0.4375,
+                "has_border": 0.9375,
+                "border_sides": 0.875,
+                "stroke_style": 0.875,
+                "stroke_width": 0.875,
+                "corner_radius": 0.625,
+                "corner_uniformity": 0.875,
+                "elevation": 0.9375
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 16,
+              "metrics": {
+                "count": 16,
+                "exact": 0.5625,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 0.6875,
+                "corner_radius": 0.8125,
+                "corner_uniformity": 0.875,
+                "elevation": 0.9375
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 16,
+              "metrics": {
+                "count": 16,
+                "exact": 0.0625,
+                "has_border": 0.9375,
+                "border_sides": 0.875,
+                "stroke_style": 0.6875,
+                "stroke_width": 0.625,
+                "corner_radius": 0.5,
+                "corner_uniformity": 0.875,
+                "elevation": 0.875
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 16,
+              "metrics": {
+                "count": 16,
+                "exact": 0.0,
+                "has_border": 0.5625,
+                "border_sides": 0.375,
+                "stroke_style": 0.25,
+                "stroke_width": 0.25,
+                "corner_radius": 0.4375,
+                "corner_uniformity": 0.8125,
+                "elevation": 0.8125
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 16,
+              "metrics": {
+                "count": 16,
+                "exact": 0.125,
+                "has_border": 0.75,
+                "border_sides": 0.5625,
+                "stroke_style": 0.6875,
+                "stroke_width": 0.4375,
+                "corner_radius": 0.625,
+                "corner_uniformity": 0.875,
+                "elevation": 0.4375
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 16,
+              "metrics": {
+                "count": 16,
+                "exact": 0.0,
+                "has_border": 0.5625,
+                "border_sides": 0.4375,
+                "stroke_style": 0.375,
+                "stroke_width": 0.1875,
+                "corner_radius": 0.3125,
+                "corner_uniformity": 0.875,
+                "elevation": 0.4375
+              }
+            }
+          }
         },
         {
           "label": "none",
           "available": 37,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 37,
+              "metrics": {
+                "count": 37,
+                "exact": 0.4865,
+                "has_border": 0.6216,
+                "border_sides": 0.6216,
+                "stroke_style": 0.6216,
+                "stroke_width": 0.6216,
+                "corner_radius": 0.9459,
+                "corner_uniformity": 1.0,
+                "elevation": 0.5405
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 37,
+              "metrics": {
+                "count": 37,
+                "exact": 0.4054,
+                "has_border": 0.7568,
+                "border_sides": 0.7568,
+                "stroke_style": 0.7568,
+                "stroke_width": 0.7568,
+                "corner_radius": 0.7027,
+                "corner_uniformity": 1.0,
+                "elevation": 0.5405
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 37,
+              "metrics": {
+                "count": 37,
+                "exact": 0.2973,
+                "has_border": 0.7027,
+                "border_sides": 0.7027,
+                "stroke_style": 0.7027,
+                "stroke_width": 0.7027,
+                "corner_radius": 0.8108,
+                "corner_uniformity": 1.0,
+                "elevation": 0.3243
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 37,
+              "metrics": {
+                "count": 37,
+                "exact": 0.2703,
+                "has_border": 0.7297,
+                "border_sides": 0.7297,
+                "stroke_style": 0.7297,
+                "stroke_width": 0.7297,
+                "corner_radius": 0.7027,
+                "corner_uniformity": 1.0,
+                "elevation": 0.4054
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 37,
+              "metrics": {
+                "count": 37,
+                "exact": 0.1892,
+                "has_border": 0.5946,
+                "border_sides": 0.5946,
+                "stroke_style": 0.5946,
+                "stroke_width": 0.5946,
+                "corner_radius": 0.6486,
+                "corner_uniformity": 1.0,
+                "elevation": 0.3784
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 37,
+              "metrics": {
+                "count": 37,
+                "exact": 0.1351,
+                "has_border": 0.8378,
+                "border_sides": 0.8378,
+                "stroke_style": 0.8378,
+                "stroke_width": 0.8378,
+                "corner_radius": 0.4324,
+                "corner_uniformity": 1.0,
+                "elevation": 0.3243
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 37,
+              "metrics": {
+                "count": 37,
+                "exact": 0.1081,
+                "has_border": 0.7027,
+                "border_sides": 0.7027,
+                "stroke_style": 0.7027,
+                "stroke_width": 0.7027,
+                "corner_radius": 0.4324,
+                "corner_uniformity": 1.0,
+                "elevation": 0.3784
+              }
+            }
+          }
         },
         {
           "label": "solid",
           "available": 49,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 49,
+              "metrics": {
+                "count": 49,
+                "exact": 0.5714,
+                "has_border": 0.9592,
+                "border_sides": 0.9388,
+                "stroke_style": 0.9592,
+                "stroke_width": 0.9388,
+                "corner_radius": 0.9184,
+                "corner_uniformity": 0.7755,
+                "elevation": 0.9184
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 49,
+              "metrics": {
+                "count": 49,
+                "exact": 0.5714,
+                "has_border": 0.9592,
+                "border_sides": 0.9592,
+                "stroke_style": 0.9592,
+                "stroke_width": 0.898,
+                "corner_radius": 0.7755,
+                "corner_uniformity": 0.8571,
+                "elevation": 0.9592
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 49,
+              "metrics": {
+                "count": 49,
+                "exact": 0.3265,
+                "has_border": 0.9796,
+                "border_sides": 0.9796,
+                "stroke_style": 0.9796,
+                "stroke_width": 0.5102,
+                "corner_radius": 0.9388,
+                "corner_uniformity": 0.7551,
+                "elevation": 0.9388
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 49,
+              "metrics": {
+                "count": 49,
+                "exact": 0.1429,
+                "has_border": 0.9592,
+                "border_sides": 0.9388,
+                "stroke_style": 0.9592,
+                "stroke_width": 0.6531,
+                "corner_radius": 0.5918,
+                "corner_uniformity": 0.7347,
+                "elevation": 0.6122
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 49,
+              "metrics": {
+                "count": 49,
+                "exact": 0.2857,
+                "has_border": 0.8571,
+                "border_sides": 0.7551,
+                "stroke_style": 0.8571,
+                "stroke_width": 0.6735,
+                "corner_radius": 0.6122,
+                "corner_uniformity": 0.7347,
+                "elevation": 0.8367
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 49,
+              "metrics": {
+                "count": 49,
+                "exact": 0.0204,
+                "has_border": 0.898,
+                "border_sides": 0.8163,
+                "stroke_style": 0.898,
+                "stroke_width": 0.5306,
+                "corner_radius": 0.4694,
+                "corner_uniformity": 0.7347,
+                "elevation": 0.0816
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 49,
+              "metrics": {
+                "count": 49,
+                "exact": 0.0408,
+                "has_border": 0.9388,
+                "border_sides": 0.8367,
+                "stroke_style": 0.9388,
+                "stroke_width": 0.5714,
+                "corner_radius": 0.6122,
+                "corner_uniformity": 0.7347,
+                "elevation": 0.0612
+              }
+            }
+          }
         }
       ]
     },
@@ -77,27 +1242,522 @@
         {
           "label": "0px",
           "available": 37,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 37,
+              "metrics": {
+                "count": 37,
+                "exact": 0.4865,
+                "has_border": 0.6216,
+                "border_sides": 0.6216,
+                "stroke_style": 0.6216,
+                "stroke_width": 0.6216,
+                "corner_radius": 0.9459,
+                "corner_uniformity": 1.0,
+                "elevation": 0.5405
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 37,
+              "metrics": {
+                "count": 37,
+                "exact": 0.4054,
+                "has_border": 0.7568,
+                "border_sides": 0.7568,
+                "stroke_style": 0.7568,
+                "stroke_width": 0.7568,
+                "corner_radius": 0.7027,
+                "corner_uniformity": 1.0,
+                "elevation": 0.5405
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 37,
+              "metrics": {
+                "count": 37,
+                "exact": 0.2973,
+                "has_border": 0.7027,
+                "border_sides": 0.7027,
+                "stroke_style": 0.7027,
+                "stroke_width": 0.7027,
+                "corner_radius": 0.8108,
+                "corner_uniformity": 1.0,
+                "elevation": 0.3243
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 37,
+              "metrics": {
+                "count": 37,
+                "exact": 0.2703,
+                "has_border": 0.7297,
+                "border_sides": 0.7297,
+                "stroke_style": 0.7297,
+                "stroke_width": 0.7297,
+                "corner_radius": 0.7027,
+                "corner_uniformity": 1.0,
+                "elevation": 0.4054
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 37,
+              "metrics": {
+                "count": 37,
+                "exact": 0.1892,
+                "has_border": 0.5946,
+                "border_sides": 0.5946,
+                "stroke_style": 0.5946,
+                "stroke_width": 0.5946,
+                "corner_radius": 0.6486,
+                "corner_uniformity": 1.0,
+                "elevation": 0.3784
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 37,
+              "metrics": {
+                "count": 37,
+                "exact": 0.1351,
+                "has_border": 0.8378,
+                "border_sides": 0.8378,
+                "stroke_style": 0.8378,
+                "stroke_width": 0.8378,
+                "corner_radius": 0.4324,
+                "corner_uniformity": 1.0,
+                "elevation": 0.3243
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 37,
+              "metrics": {
+                "count": 37,
+                "exact": 0.1081,
+                "has_border": 0.7027,
+                "border_sides": 0.7027,
+                "stroke_style": 0.7027,
+                "stroke_width": 0.7027,
+                "corner_radius": 0.4324,
+                "corner_uniformity": 1.0,
+                "elevation": 0.3784
+              }
+            }
+          }
         },
         {
           "label": "1px",
           "available": 30,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 30,
+              "metrics": {
+                "count": 30,
+                "exact": 0.5,
+                "has_border": 1.0,
+                "border_sides": 0.9,
+                "stroke_style": 0.9667,
+                "stroke_width": 1.0,
+                "corner_radius": 0.9333,
+                "corner_uniformity": 0.7,
+                "elevation": 0.9
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 30,
+              "metrics": {
+                "count": 30,
+                "exact": 0.6333,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 1.0,
+                "corner_radius": 0.8333,
+                "corner_uniformity": 0.8,
+                "elevation": 0.9333
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 30,
+              "metrics": {
+                "count": 30,
+                "exact": 0.5333,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 0.8333,
+                "corner_radius": 0.9667,
+                "corner_uniformity": 0.7,
+                "elevation": 0.9333
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 30,
+              "metrics": {
+                "count": 30,
+                "exact": 0.1,
+                "has_border": 0.9667,
+                "border_sides": 0.9,
+                "stroke_style": 0.9333,
+                "stroke_width": 0.6,
+                "corner_radius": 0.6,
+                "corner_uniformity": 0.6667,
+                "elevation": 0.6
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 30,
+              "metrics": {
+                "count": 30,
+                "exact": 0.2333,
+                "has_border": 0.9,
+                "border_sides": 0.7667,
+                "stroke_style": 0.8333,
+                "stroke_width": 0.9,
+                "corner_radius": 0.6333,
+                "corner_uniformity": 0.6667,
+                "elevation": 0.8667
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 30,
+              "metrics": {
+                "count": 30,
+                "exact": 0.0667,
+                "has_border": 0.9333,
+                "border_sides": 0.8,
+                "stroke_style": 0.9,
+                "stroke_width": 0.9,
+                "corner_radius": 0.5333,
+                "corner_uniformity": 0.6667,
+                "elevation": 0.1
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 30,
+              "metrics": {
+                "count": 30,
+                "exact": 0.0667,
+                "has_border": 0.9333,
+                "border_sides": 0.7667,
+                "stroke_style": 0.8,
+                "stroke_width": 0.9,
+                "corner_radius": 0.5,
+                "corner_uniformity": 0.6667,
+                "elevation": 0.2
+              }
+            }
+          }
         },
         {
           "label": "2px",
           "available": 28,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 28,
+              "metrics": {
+                "count": 28,
+                "exact": 0.5357,
+                "has_border": 0.9286,
+                "border_sides": 0.9286,
+                "stroke_style": 0.9286,
+                "stroke_width": 0.8929,
+                "corner_radius": 0.8571,
+                "corner_uniformity": 0.75,
+                "elevation": 0.8929
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 28,
+              "metrics": {
+                "count": 28,
+                "exact": 0.3571,
+                "has_border": 0.9286,
+                "border_sides": 0.8929,
+                "stroke_style": 0.8929,
+                "stroke_width": 0.7857,
+                "corner_radius": 0.6429,
+                "corner_uniformity": 0.8214,
+                "elevation": 0.9643
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 28,
+              "metrics": {
+                "count": 28,
+                "exact": 0.1786,
+                "has_border": 0.9643,
+                "border_sides": 0.9643,
+                "stroke_style": 0.9643,
+                "stroke_width": 0.25,
+                "corner_radius": 0.9286,
+                "corner_uniformity": 0.7857,
+                "elevation": 0.9286
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 28,
+              "metrics": {
+                "count": 28,
+                "exact": 0.1071,
+                "has_border": 1.0,
+                "border_sides": 0.9643,
+                "stroke_style": 0.8929,
+                "stroke_width": 0.6429,
+                "corner_radius": 0.6429,
+                "corner_uniformity": 0.7143,
+                "elevation": 0.7857
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 28,
+              "metrics": {
+                "count": 28,
+                "exact": 0.2857,
+                "has_border": 0.8929,
+                "border_sides": 0.75,
+                "stroke_style": 0.7857,
+                "stroke_width": 0.5714,
+                "corner_radius": 0.5714,
+                "corner_uniformity": 0.7143,
+                "elevation": 0.8571
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 28,
+              "metrics": {
+                "count": 28,
+                "exact": 0.0714,
+                "has_border": 0.9643,
+                "border_sides": 0.8571,
+                "stroke_style": 0.9643,
+                "stroke_width": 0.3571,
+                "corner_radius": 0.6429,
+                "corner_uniformity": 0.7143,
+                "elevation": 0.3929
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 28,
+              "metrics": {
+                "count": 28,
+                "exact": 0.0357,
+                "has_border": 0.8929,
+                "border_sides": 0.8214,
+                "stroke_style": 0.8571,
+                "stroke_width": 0.25,
+                "corner_radius": 0.5714,
+                "corner_uniformity": 0.7143,
+                "elevation": 0.25
+              }
+            }
+          }
         },
         {
           "label": "4px",
           "available": 16,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 16,
+              "metrics": {
+                "count": 16,
+                "exact": 0.625,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 0.875,
+                "corner_radius": 0.8125,
+                "corner_uniformity": 1.0,
+                "elevation": 0.8125
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 16,
+              "metrics": {
+                "count": 16,
+                "exact": 0.5,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 0.9375,
+                "corner_radius": 0.6875,
+                "corner_uniformity": 1.0,
+                "elevation": 0.8125
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 16,
+              "metrics": {
+                "count": 16,
+                "exact": 0.4375,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 0.4375,
+                "corner_radius": 0.875,
+                "corner_uniformity": 1.0,
+                "elevation": 0.8125
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 16,
+              "metrics": {
+                "count": 16,
+                "exact": 0.3125,
+                "has_border": 1.0,
+                "border_sides": 0.875,
+                "stroke_style": 1.0,
+                "stroke_width": 0.75,
+                "corner_radius": 0.5625,
+                "corner_uniformity": 1.0,
+                "elevation": 0.75
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 16,
+              "metrics": {
+                "count": 16,
+                "exact": 0.0,
+                "has_border": 0.5625,
+                "border_sides": 0.5,
+                "stroke_style": 0.5625,
+                "stroke_width": 0.25,
+                "corner_radius": 0.4375,
+                "corner_uniformity": 1.0,
+                "elevation": 0.75
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 16,
+              "metrics": {
+                "count": 16,
+                "exact": 0.0625,
+                "has_border": 0.75,
+                "border_sides": 0.625,
+                "stroke_style": 0.75,
+                "stroke_width": 0.3125,
+                "corner_radius": 0.5,
+                "corner_uniformity": 0.9375,
+                "elevation": 0.375
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 16,
+              "metrics": {
+                "count": 16,
+                "exact": 0.0,
+                "has_border": 0.9375,
+                "border_sides": 0.75,
+                "stroke_style": 0.9375,
+                "stroke_width": 0.25,
+                "corner_radius": 0.3125,
+                "corner_uniformity": 1.0,
+                "elevation": 0.3125
+              }
+            }
+          }
         },
         {
           "label": "8px",
           "available": 9,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.5556,
+                "has_border": 1.0,
+                "border_sides": 0.8889,
+                "stroke_style": 1.0,
+                "stroke_width": 1.0,
+                "corner_radius": 0.7778,
+                "corner_uniformity": 1.0,
+                "elevation": 0.8889
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.5556,
+                "has_border": 0.8889,
+                "border_sides": 0.8889,
+                "stroke_style": 0.8889,
+                "stroke_width": 0.7778,
+                "corner_radius": 0.7778,
+                "corner_uniformity": 1.0,
+                "elevation": 1.0
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.8889,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 1.0,
+                "corner_radius": 0.8889,
+                "corner_uniformity": 1.0,
+                "elevation": 1.0
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.2222,
+                "has_border": 0.7778,
+                "border_sides": 0.7778,
+                "stroke_style": 0.7778,
+                "stroke_width": 0.7778,
+                "corner_radius": 0.5556,
+                "corner_uniformity": 1.0,
+                "elevation": 0.7778
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 0.4444,
+                "border_sides": 0.2222,
+                "stroke_style": 0.3333,
+                "stroke_width": 0.0,
+                "corner_radius": 0.5556,
+                "corner_uniformity": 0.8889,
+                "elevation": 0.7778
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 0.3333,
+                "border_sides": 0.3333,
+                "stroke_style": 0.3333,
+                "stroke_width": 0.1111,
+                "corner_radius": 0.5556,
+                "corner_uniformity": 1.0,
+                "elevation": 0.1111
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 0.4444,
+                "border_sides": 0.3333,
+                "stroke_style": 0.2222,
+                "stroke_width": 0.0,
+                "corner_radius": 0.5556,
+                "corner_uniformity": 1.0,
+                "elevation": 0.3333
+              }
+            }
+          }
         }
       ]
     },
@@ -109,27 +1769,522 @@
         {
           "label": "large",
           "available": 30,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 30,
+              "metrics": {
+                "count": 30,
+                "exact": 0.6333,
+                "has_border": 0.9,
+                "border_sides": 0.8667,
+                "stroke_style": 0.9,
+                "stroke_width": 0.8667,
+                "corner_radius": 1.0,
+                "corner_uniformity": 0.8667,
+                "elevation": 0.8333
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 30,
+              "metrics": {
+                "count": 30,
+                "exact": 0.6,
+                "has_border": 0.9333,
+                "border_sides": 0.9,
+                "stroke_style": 0.9,
+                "stroke_width": 0.8,
+                "corner_radius": 1.0,
+                "corner_uniformity": 0.9333,
+                "elevation": 0.8333
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 30,
+              "metrics": {
+                "count": 30,
+                "exact": 0.5,
+                "has_border": 0.9667,
+                "border_sides": 0.9667,
+                "stroke_style": 0.9667,
+                "stroke_width": 0.7667,
+                "corner_radius": 1.0,
+                "corner_uniformity": 0.8667,
+                "elevation": 0.8
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 30,
+              "metrics": {
+                "count": 30,
+                "exact": 0.2,
+                "has_border": 0.9,
+                "border_sides": 0.8667,
+                "stroke_style": 0.8667,
+                "stroke_width": 0.7333,
+                "corner_radius": 1.0,
+                "corner_uniformity": 0.7667,
+                "elevation": 0.4333
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 30,
+              "metrics": {
+                "count": 30,
+                "exact": 0.3333,
+                "has_border": 0.8333,
+                "border_sides": 0.7333,
+                "stroke_style": 0.7333,
+                "stroke_width": 0.7,
+                "corner_radius": 1.0,
+                "corner_uniformity": 0.7333,
+                "elevation": 0.7333
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 30,
+              "metrics": {
+                "count": 30,
+                "exact": 0.1333,
+                "has_border": 0.8333,
+                "border_sides": 0.8333,
+                "stroke_style": 0.8333,
+                "stroke_width": 0.6,
+                "corner_radius": 1.0,
+                "corner_uniformity": 0.7333,
+                "elevation": 0.2667
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 30,
+              "metrics": {
+                "count": 30,
+                "exact": 0.0333,
+                "has_border": 0.8333,
+                "border_sides": 0.7667,
+                "stroke_style": 0.8,
+                "stroke_width": 0.6,
+                "corner_radius": 0.3667,
+                "corner_uniformity": 0.7667,
+                "elevation": 0.3
+              }
+            }
+          }
         },
         {
           "label": "medium",
           "available": 36,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 36,
+              "metrics": {
+                "count": 36,
+                "exact": 0.5278,
+                "has_border": 0.8611,
+                "border_sides": 0.8611,
+                "stroke_style": 0.8611,
+                "stroke_width": 0.8333,
+                "corner_radius": 0.9722,
+                "corner_uniformity": 0.8333,
+                "elevation": 0.75
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 36,
+              "metrics": {
+                "count": 36,
+                "exact": 0.3611,
+                "has_border": 0.8889,
+                "border_sides": 0.8889,
+                "stroke_style": 0.8889,
+                "stroke_width": 0.8611,
+                "corner_radius": 0.5,
+                "corner_uniformity": 0.8889,
+                "elevation": 0.8056
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 36,
+              "metrics": {
+                "count": 36,
+                "exact": 0.3333,
+                "has_border": 0.8611,
+                "border_sides": 0.8611,
+                "stroke_style": 0.8611,
+                "stroke_width": 0.5278,
+                "corner_radius": 0.8889,
+                "corner_uniformity": 0.8333,
+                "elevation": 0.75
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 36,
+              "metrics": {
+                "count": 36,
+                "exact": 0.0833,
+                "has_border": 0.9167,
+                "border_sides": 0.9167,
+                "stroke_style": 0.8889,
+                "stroke_width": 0.7778,
+                "corner_radius": 0.3056,
+                "corner_uniformity": 0.8333,
+                "elevation": 0.6389
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 36,
+              "metrics": {
+                "count": 36,
+                "exact": 0.1667,
+                "has_border": 0.75,
+                "border_sides": 0.7222,
+                "stroke_style": 0.7222,
+                "stroke_width": 0.5833,
+                "corner_radius": 0.5556,
+                "corner_uniformity": 0.8333,
+                "elevation": 0.6667
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 36,
+              "metrics": {
+                "count": 36,
+                "exact": 0.0278,
+                "has_border": 0.8333,
+                "border_sides": 0.8056,
+                "stroke_style": 0.8333,
+                "stroke_width": 0.5278,
+                "corner_radius": 0.4167,
+                "corner_uniformity": 0.8333,
+                "elevation": 0.1667
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 36,
+              "metrics": {
+                "count": 36,
+                "exact": 0.1389,
+                "has_border": 0.9167,
+                "border_sides": 0.8611,
+                "stroke_style": 0.8611,
+                "stroke_width": 0.5278,
+                "corner_radius": 0.9167,
+                "corner_uniformity": 0.8333,
+                "elevation": 0.2778
+              }
+            }
+          }
         },
         {
           "label": "pill",
           "available": 15,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 15,
+              "metrics": {
+                "count": 15,
+                "exact": 0.4,
+                "has_border": 0.6667,
+                "border_sides": 0.4667,
+                "stroke_style": 0.6667,
+                "stroke_width": 0.6667,
+                "corner_radius": 1.0,
+                "corner_uniformity": 0.9333,
+                "elevation": 0.5333
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 15,
+              "metrics": {
+                "count": 15,
+                "exact": 0.6,
+                "has_border": 0.8,
+                "border_sides": 0.8,
+                "stroke_style": 0.8,
+                "stroke_width": 0.8,
+                "corner_radius": 1.0,
+                "corner_uniformity": 1.0,
+                "elevation": 0.6
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 15,
+              "metrics": {
+                "count": 15,
+                "exact": 0.6,
+                "has_border": 0.8667,
+                "border_sides": 0.8667,
+                "stroke_style": 0.8667,
+                "stroke_width": 0.6667,
+                "corner_radius": 1.0,
+                "corner_uniformity": 1.0,
+                "elevation": 0.7333
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 15,
+              "metrics": {
+                "count": 15,
+                "exact": 0.3333,
+                "has_border": 0.8,
+                "border_sides": 0.5333,
+                "stroke_style": 0.8,
+                "stroke_width": 0.5333,
+                "corner_radius": 1.0,
+                "corner_uniformity": 1.0,
+                "elevation": 0.7333
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 15,
+              "metrics": {
+                "count": 15,
+                "exact": 0.1333,
+                "has_border": 0.5333,
+                "border_sides": 0.3333,
+                "stroke_style": 0.5333,
+                "stroke_width": 0.4,
+                "corner_radius": 0.4,
+                "corner_uniformity": 1.0,
+                "elevation": 0.6667
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 15,
+              "metrics": {
+                "count": 15,
+                "exact": 0.2667,
+                "has_border": 0.9333,
+                "border_sides": 0.6,
+                "stroke_style": 0.9333,
+                "stroke_width": 0.6667,
+                "corner_radius": 1.0,
+                "corner_uniformity": 1.0,
+                "elevation": 0.4667
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 15,
+              "metrics": {
+                "count": 15,
+                "exact": 0.0,
+                "has_border": 0.6667,
+                "border_sides": 0.4,
+                "stroke_style": 0.5333,
+                "stroke_width": 0.4,
+                "corner_radius": 0.0,
+                "corner_uniformity": 1.0,
+                "elevation": 0.2667
+              }
+            }
+          }
         },
         {
           "label": "sharp",
           "available": 20,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 20,
+              "metrics": {
+                "count": 20,
+                "exact": 0.7,
+                "has_border": 0.85,
+                "border_sides": 0.85,
+                "stroke_style": 0.8,
+                "stroke_width": 0.85,
+                "corner_radius": 1.0,
+                "corner_uniformity": 1.0,
+                "elevation": 0.8
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 20,
+              "metrics": {
+                "count": 20,
+                "exact": 0.7,
+                "has_border": 0.85,
+                "border_sides": 0.85,
+                "stroke_style": 0.85,
+                "stroke_width": 0.8,
+                "corner_radius": 1.0,
+                "corner_uniformity": 1.0,
+                "elevation": 0.8
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 20,
+              "metrics": {
+                "count": 20,
+                "exact": 0.25,
+                "has_border": 0.85,
+                "border_sides": 0.85,
+                "stroke_style": 0.85,
+                "stroke_width": 0.5,
+                "corner_radius": 0.75,
+                "corner_uniformity": 1.0,
+                "elevation": 0.65
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 20,
+              "metrics": {
+                "count": 20,
+                "exact": 0.35,
+                "has_border": 0.8,
+                "border_sides": 0.8,
+                "stroke_style": 0.75,
+                "stroke_width": 0.45,
+                "corner_radius": 0.9,
+                "corner_uniformity": 1.0,
+                "elevation": 0.7
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 20,
+              "metrics": {
+                "count": 20,
+                "exact": 0.2,
+                "has_border": 0.65,
+                "border_sides": 0.45,
+                "stroke_style": 0.6,
+                "stroke_width": 0.45,
+                "corner_radius": 0.7,
+                "corner_uniformity": 1.0,
+                "elevation": 0.65
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 20,
+              "metrics": {
+                "count": 20,
+                "exact": 0.05,
+                "has_border": 0.75,
+                "border_sides": 0.65,
+                "stroke_style": 0.7,
+                "stroke_width": 0.65,
+                "corner_radius": 0.05,
+                "corner_uniformity": 1.0,
+                "elevation": 0.3
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 20,
+              "metrics": {
+                "count": 20,
+                "exact": 0.05,
+                "has_border": 0.65,
+                "border_sides": 0.55,
+                "stroke_style": 0.6,
+                "stroke_width": 0.5,
+                "corner_radius": 0.25,
+                "corner_uniformity": 1.0,
+                "elevation": 0.2
+              }
+            }
+          }
         },
         {
           "label": "subtle",
           "available": 19,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 19,
+              "metrics": {
+                "count": 19,
+                "exact": 0.2632,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 0.9474,
+                "corner_radius": 0.3684,
+                "corner_uniformity": 0.7368,
+                "elevation": 0.8947
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 19,
+              "metrics": {
+                "count": 19,
+                "exact": 0.1579,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 1.0,
+                "corner_radius": 0.2105,
+                "corner_uniformity": 0.7368,
+                "elevation": 0.9474
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 19,
+              "metrics": {
+                "count": 19,
+                "exact": 0.3158,
+                "has_border": 0.9474,
+                "border_sides": 0.9474,
+                "stroke_style": 0.9474,
+                "stroke_width": 0.6316,
+                "corner_radius": 0.7895,
+                "corner_uniformity": 0.7368,
+                "elevation": 0.6842
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 19,
+              "metrics": {
+                "count": 19,
+                "exact": 0.1053,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 0.9474,
+                "stroke_width": 0.7895,
+                "corner_radius": 0.1053,
+                "corner_uniformity": 0.7368,
+                "elevation": 0.6842
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 19,
+              "metrics": {
+                "count": 19,
+                "exact": 0.0,
+                "has_border": 0.7368,
+                "border_sides": 0.7368,
+                "stroke_style": 0.6842,
+                "stroke_width": 0.6316,
+                "corner_radius": 0.0526,
+                "corner_uniformity": 0.7368,
+                "elevation": 0.7368
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 19,
+              "metrics": {
+                "count": 19,
+                "exact": 0.0,
+                "has_border": 0.8947,
+                "border_sides": 0.8421,
+                "stroke_style": 0.8947,
+                "stroke_width": 0.7368,
+                "corner_radius": 0.1053,
+                "corner_uniformity": 0.7368,
+                "elevation": 0.3158
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 19,
+              "metrics": {
+                "count": 19,
+                "exact": 0.0,
+                "has_border": 0.8947,
+                "border_sides": 0.8421,
+                "stroke_style": 0.8421,
+                "stroke_width": 0.5789,
+                "corner_radius": 0.4211,
+                "corner_uniformity": 0.7368,
+                "elevation": 0.4211
+              }
+            }
+          }
         }
       ]
     },
@@ -141,17 +2296,314 @@
         {
           "label": "all-corners",
           "available": 102,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 102,
+              "metrics": {
+                "count": 102,
+                "exact": 0.598,
+                "has_border": 0.8431,
+                "border_sides": 0.8039,
+                "stroke_style": 0.8333,
+                "stroke_width": 0.8235,
+                "corner_radius": 0.902,
+                "corner_uniformity": 0.9902,
+                "elevation": 0.7353
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 102,
+              "metrics": {
+                "count": 102,
+                "exact": 0.5098,
+                "has_border": 0.8824,
+                "border_sides": 0.8725,
+                "stroke_style": 0.8725,
+                "stroke_width": 0.8431,
+                "corner_radius": 0.7255,
+                "corner_uniformity": 1.0,
+                "elevation": 0.7745
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 102,
+              "metrics": {
+                "count": 102,
+                "exact": 0.4314,
+                "has_border": 0.8824,
+                "border_sides": 0.8824,
+                "stroke_style": 0.8824,
+                "stroke_width": 0.6078,
+                "corner_radius": 0.8922,
+                "corner_uniformity": 1.0,
+                "elevation": 0.6863
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 102,
+              "metrics": {
+                "count": 102,
+                "exact": 0.2255,
+                "has_border": 0.8824,
+                "border_sides": 0.8333,
+                "stroke_style": 0.8529,
+                "stroke_width": 0.6667,
+                "corner_radius": 0.6373,
+                "corner_uniformity": 1.0,
+                "elevation": 0.6078
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 102,
+              "metrics": {
+                "count": 102,
+                "exact": 0.2157,
+                "has_border": 0.6863,
+                "border_sides": 0.5784,
+                "stroke_style": 0.6373,
+                "stroke_width": 0.5392,
+                "corner_radius": 0.5882,
+                "corner_uniformity": 0.9902,
+                "elevation": 0.6471
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 102,
+              "metrics": {
+                "count": 102,
+                "exact": 0.098,
+                "has_border": 0.8235,
+                "border_sides": 0.7353,
+                "stroke_style": 0.8137,
+                "stroke_width": 0.598,
+                "corner_radius": 0.5196,
+                "corner_uniformity": 0.9902,
+                "elevation": 0.2745
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 102,
+              "metrics": {
+                "count": 102,
+                "exact": 0.0686,
+                "has_border": 0.7843,
+                "border_sides": 0.6765,
+                "stroke_style": 0.7255,
+                "stroke_width": 0.5,
+                "corner_radius": 0.4608,
+                "corner_uniformity": 1.0,
+                "elevation": 0.3039
+              }
+            }
+          }
         },
         {
           "label": "asymmetric",
           "available": 9,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.1111,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 1.0,
+                "corner_radius": 0.8889,
+                "corner_uniformity": 0.1111,
+                "elevation": 1.0
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.3333,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 1.0,
+                "corner_radius": 0.7778,
+                "corner_uniformity": 0.3333,
+                "elevation": 1.0
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 0.7778,
+                "corner_radius": 1.0,
+                "corner_uniformity": 0.0,
+                "elevation": 1.0
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 0.8889,
+                "border_sides": 0.8889,
+                "stroke_style": 0.8889,
+                "stroke_width": 0.6667,
+                "corner_radius": 0.4444,
+                "corner_uniformity": 0.0,
+                "elevation": 0.5556
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 1.0,
+                "corner_radius": 0.5556,
+                "corner_uniformity": 0.0,
+                "elevation": 0.8889
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 0.8889,
+                "border_sides": 0.8889,
+                "stroke_style": 0.8889,
+                "stroke_width": 0.8889,
+                "corner_radius": 0.5556,
+                "corner_uniformity": 0.0,
+                "elevation": 0.0
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 1.0,
+                "corner_radius": 0.6667,
+                "corner_uniformity": 0.0,
+                "elevation": 0.0
+              }
+            }
+          }
         },
         {
           "label": "top-only",
           "available": 9,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.1111,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 0.8889,
+                "corner_radius": 0.7778,
+                "corner_uniformity": 0.2222,
+                "elevation": 1.0
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.2222,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 0.7778,
+                "corner_radius": 0.6667,
+                "corner_uniformity": 0.4444,
+                "elevation": 1.0
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.3333,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 0.5556,
+                "corner_radius": 0.7778,
+                "corner_uniformity": 0.3333,
+                "elevation": 1.0
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 0.8889,
+                "stroke_width": 0.8889,
+                "corner_radius": 0.7778,
+                "corner_uniformity": 0.0,
+                "elevation": 0.7778
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 0.8889,
+                "border_sides": 0.8889,
+                "stroke_style": 0.7778,
+                "stroke_width": 0.5556,
+                "corner_radius": 0.6667,
+                "corner_uniformity": 0.0,
+                "elevation": 1.0
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 0.5556,
+                "corner_radius": 0.5556,
+                "corner_uniformity": 0.0,
+                "elevation": 0.5556
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 0.8889,
+                "stroke_width": 0.4444,
+                "corner_radius": 0.4444,
+                "corner_uniformity": 0.0,
+                "elevation": 0.4444
+              }
+            }
+          }
         }
       ]
     },
@@ -163,27 +2615,522 @@
         {
           "label": "floating-drop",
           "available": 9,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.8889,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 1.0,
+                "corner_radius": 0.8889,
+                "corner_uniformity": 1.0,
+                "elevation": 1.0
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.5556,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 1.0,
+                "corner_radius": 0.5556,
+                "corner_uniformity": 1.0,
+                "elevation": 0.8889
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 1.0,
+                "corner_radius": 0.3333,
+                "corner_uniformity": 1.0,
+                "elevation": 0.1111
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.3333,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 1.0,
+                "corner_radius": 0.5556,
+                "corner_uniformity": 1.0,
+                "elevation": 0.3333
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.1111,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 1.0,
+                "corner_radius": 0.7778,
+                "corner_uniformity": 1.0,
+                "elevation": 0.1111
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 1.0,
+                "corner_radius": 0.2222,
+                "corner_uniformity": 1.0,
+                "elevation": 0.0
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.3333,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 1.0,
+                "corner_radius": 0.4444,
+                "corner_uniformity": 1.0,
+                "elevation": 0.7778
+              }
+            }
+          }
         },
         {
           "label": "none",
           "available": 81,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 81,
+              "metrics": {
+                "count": 81,
+                "exact": 0.6296,
+                "has_border": 0.9753,
+                "border_sides": 0.9383,
+                "stroke_style": 0.963,
+                "stroke_width": 0.9506,
+                "corner_radius": 0.8765,
+                "corner_uniformity": 0.8025,
+                "elevation": 0.9877
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 81,
+              "metrics": {
+                "count": 81,
+                "exact": 0.5679,
+                "has_border": 0.963,
+                "border_sides": 0.9506,
+                "stroke_style": 0.9506,
+                "stroke_width": 0.8889,
+                "corner_radius": 0.7407,
+                "corner_uniformity": 0.8642,
+                "elevation": 1.0
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 81,
+              "metrics": {
+                "count": 81,
+                "exact": 0.5062,
+                "has_border": 0.9877,
+                "border_sides": 0.9877,
+                "stroke_style": 0.9877,
+                "stroke_width": 0.642,
+                "corner_radius": 0.9383,
+                "corner_uniformity": 0.8148,
+                "elevation": 0.9877
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 81,
+              "metrics": {
+                "count": 81,
+                "exact": 0.2099,
+                "has_border": 0.963,
+                "border_sides": 0.9259,
+                "stroke_style": 0.9136,
+                "stroke_width": 0.7037,
+                "corner_radius": 0.642,
+                "corner_uniformity": 0.7778,
+                "elevation": 0.7654
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 81,
+              "metrics": {
+                "count": 81,
+                "exact": 0.2222,
+                "has_border": 0.8025,
+                "border_sides": 0.7037,
+                "stroke_style": 0.7407,
+                "stroke_width": 0.5926,
+                "corner_radius": 0.6049,
+                "corner_uniformity": 0.7654,
+                "elevation": 0.9259
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 81,
+              "metrics": {
+                "count": 81,
+                "exact": 0.0617,
+                "has_border": 0.8642,
+                "border_sides": 0.7778,
+                "stroke_style": 0.8519,
+                "stroke_width": 0.5432,
+                "corner_radius": 0.5679,
+                "corner_uniformity": 0.7654,
+                "elevation": 0.2716
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 81,
+              "metrics": {
+                "count": 81,
+                "exact": 0.0247,
+                "has_border": 0.8765,
+                "border_sides": 0.7778,
+                "stroke_style": 0.8272,
+                "stroke_width": 0.4938,
+                "corner_radius": 0.4815,
+                "corner_uniformity": 0.7778,
+                "elevation": 0.2099
+              }
+            }
+          }
         },
         {
           "label": "ring-only",
           "available": 9,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 0.1111,
+                "border_sides": 0.1111,
+                "stroke_style": 0.1111,
+                "stroke_width": 0.1111,
+                "corner_radius": 1.0,
+                "corner_uniformity": 1.0,
+                "elevation": 0.0
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 0.1111,
+                "border_sides": 0.1111,
+                "stroke_style": 0.1111,
+                "stroke_width": 0.1111,
+                "corner_radius": 0.6667,
+                "corner_uniformity": 1.0,
+                "elevation": 0.0
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 0.1111,
+                "border_sides": 0.1111,
+                "stroke_style": 0.1111,
+                "stroke_width": 0.1111,
+                "corner_radius": 1.0,
+                "corner_uniformity": 1.0,
+                "elevation": 0.0
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 0.1111,
+                "border_sides": 0.1111,
+                "stroke_style": 0.1111,
+                "stroke_width": 0.1111,
+                "corner_radius": 0.7778,
+                "corner_uniformity": 1.0,
+                "elevation": 0.2222
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 0.0,
+                "border_sides": 0.0,
+                "stroke_style": 0.0,
+                "stroke_width": 0.0,
+                "corner_radius": 0.6667,
+                "corner_uniformity": 1.0,
+                "elevation": 0.0
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 0.3333,
+                "border_sides": 0.3333,
+                "stroke_style": 0.3333,
+                "stroke_width": 0.3333,
+                "corner_radius": 0.5556,
+                "corner_uniformity": 1.0,
+                "elevation": 0.0
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 0.2222,
+                "border_sides": 0.2222,
+                "stroke_style": 0.2222,
+                "stroke_width": 0.2222,
+                "corner_radius": 0.7778,
+                "corner_uniformity": 1.0,
+                "elevation": 0.0
+              }
+            }
+          }
         },
         {
           "label": "stroke+shadow",
           "available": 9,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 1.0,
+                "border_sides": 0.8889,
+                "stroke_style": 1.0,
+                "stroke_width": 0.8889,
+                "corner_radius": 0.7778,
+                "corner_uniformity": 1.0,
+                "elevation": 0.0
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.2222,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 1.0,
+                "corner_radius": 0.7778,
+                "corner_uniformity": 1.0,
+                "elevation": 0.3333
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.2222,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 0.3333,
+                "corner_radius": 0.8889,
+                "corner_uniformity": 1.0,
+                "elevation": 0.3333
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 1.0,
+                "border_sides": 0.7778,
+                "stroke_style": 1.0,
+                "stroke_width": 0.5556,
+                "corner_radius": 0.4444,
+                "corner_uniformity": 1.0,
+                "elevation": 0.2222
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 0.6667,
+                "border_sides": 0.3333,
+                "stroke_style": 0.5556,
+                "stroke_width": 0.5556,
+                "corner_radius": 0.3333,
+                "corner_uniformity": 1.0,
+                "elevation": 0.0
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.0,
+                "has_border": 0.7778,
+                "border_sides": 0.5556,
+                "stroke_style": 0.7778,
+                "stroke_width": 0.6667,
+                "corner_radius": 0.4444,
+                "corner_uniformity": 1.0,
+                "elevation": 0.0
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 9,
+              "metrics": {
+                "count": 9,
+                "exact": 0.1111,
+                "has_border": 0.8889,
+                "border_sides": 0.5556,
+                "stroke_style": 0.5556,
+                "stroke_width": 0.5556,
+                "corner_radius": 0.5556,
+                "corner_uniformity": 1.0,
+                "elevation": 0.4444
+              }
+            }
+          }
         },
         {
           "label": "subtle-drop",
           "available": 12,
-          "models": {}
+          "models": {
+            "6ef3a6e5b007c672a50902258a256900e6fc450affd9ab4d9373ac0ef70d0ce8": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.3333,
+                "has_border": 0.5,
+                "border_sides": 0.5,
+                "stroke_style": 0.5,
+                "stroke_width": 0.5,
+                "corner_radius": 1.0,
+                "corner_uniformity": 1.0,
+                "elevation": 0.3333
+              }
+            },
+            "7de720d7bc3a5dd06ed19c22ff2574e4c880b911ce7efdfc8a824db7afb0be77": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.3333,
+                "has_border": 0.9167,
+                "border_sides": 0.9167,
+                "stroke_style": 0.9167,
+                "stroke_width": 0.9167,
+                "corner_radius": 0.75,
+                "corner_uniformity": 1.0,
+                "elevation": 0.4167
+              }
+            },
+            "5651e81821421e372074e9b58db5cced4e5fb6d05ec21248e07c30ed8d2aa366": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.3333,
+                "has_border": 0.75,
+                "border_sides": 0.75,
+                "stroke_style": 0.75,
+                "stroke_width": 0.75,
+                "corner_radius": 0.9167,
+                "corner_uniformity": 1.0,
+                "elevation": 0.3333
+              }
+            },
+            "6873f7552015a1feec5bf8277ba96cf05c60c4667842dddb5aa6a1dbbec3598c": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.25,
+                "has_border": 0.8333,
+                "border_sides": 0.8333,
+                "stroke_style": 0.8333,
+                "stroke_width": 0.8333,
+                "corner_radius": 0.6667,
+                "corner_uniformity": 1.0,
+                "elevation": 0.4167
+              }
+            },
+            "1a87916f5fd901358d0a3564408464c0392096bd2f7b7412b727f9a9751abfe9": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.25,
+                "has_border": 0.5833,
+                "border_sides": 0.5833,
+                "stroke_style": 0.5833,
+                "stroke_width": 0.5833,
+                "corner_radius": 0.5,
+                "corner_uniformity": 1.0,
+                "elevation": 0.5833
+              }
+            },
+            "3eea74f353075099be73c9595a094bb3f7a468c7688d17c3b5cd217c93d9bb88": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.4167,
+                "has_border": 1.0,
+                "border_sides": 1.0,
+                "stroke_style": 1.0,
+                "stroke_width": 1.0,
+                "corner_radius": 0.5,
+                "corner_uniformity": 1.0,
+                "elevation": 0.9167
+              }
+            },
+            "0955227c94c7dc3da8e437be80ebacb3226b826411a0b59e4d37966e425f2a3c": {
+              "count": 12,
+              "metrics": {
+                "count": 12,
+                "exact": 0.0833,
+                "has_border": 0.6667,
+                "border_sides": 0.6667,
+                "stroke_style": 0.6667,
+                "stroke_width": 0.6667,
+                "corner_radius": 0.1667,
+                "corner_uniformity": 1.0,
+                "elevation": 0.5833
+              }
+            }
+          }
         }
       ]
     }
