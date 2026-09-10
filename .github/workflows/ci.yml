@@ -33,4 +33,6 @@ jobs:
         run: bun run typecheck
       - run: bun run validate:dataset
       - run: bun run validate:release
+      - name: Frozen 1.0.0 artifacts unchanged
+        run: git diff --quiet origin/main...HEAD -- dataset/borderbench-v1 releases/1.0.0.json
       - run: .venv/bin/python -m pip wheel . --no-deps --wheel-dir /tmp/borderbench-wheels

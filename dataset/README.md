@@ -30,7 +30,13 @@ subtitle 12px, body 13px, meta 11px; 40px pill avatar, 6px badge and
 button corners, 6px status dot. Inner content is identical and carries
 no signal.
 
-## Current release: `borderbench-v1` (120 images)
+## Current release: `borderbench-v1.1` (120 images)
+
+The V1.1.0 corpus. Same neutral cards and evidence as V1.0.0, with the
+Tailwind-grounded prompt, exact `shadow` / `shadow-lg` / `shadow-md`
+stacks, and no `double` style (redistributed to dashed/dotted heavies).
+
+## Superseded release: `borderbench-v1` (120 images, V1.0.0)
 
 The V1.0.0 corpus. Every card carries fixed neutral text; models must judge
 border, corner, and shadow pixels only. Each manifest task records the image

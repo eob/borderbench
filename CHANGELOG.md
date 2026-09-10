@@ -1,5 +1,28 @@
 # BorderBench changelog
 
+## V1.1.0 — 2026-09-10
+
+Tailwind Rosetta Stone release. Every label maps to Tailwind CSS
+utilities (see the [rosetta table](dataset/README.md)), the prompt
+declares the fixed text sizes and inner chrome, elevation stacks align
+exactly to Tailwind `shadow` / `shadow-lg` / `shadow-md`, and the
+unrealistic `double` style is removed (its 9 specimens redistribute to
+dashed/dotted heavies). Same 7-field schema; scores are incomparable
+with V1.0.0.
+
+| Identity | Frozen value |
+| --- | --- |
+| Version | `1.1.0` |
+| Release descriptor | [releases/1.1.0.json](releases/1.1.0.json) |
+| Dataset Git commit | [`ec1dc04`](https://github.com/eob/borderbench/commit/ec1dc044f39b45be7c4b6fea018026722640b947) |
+| Dataset fingerprint | `506b7372566e3dab8022311df478ba78d608b0584d7eaabd1435b9f9f8b0764c` |
+| Evaluation protocol fingerprint | `36f674d3004f400d7bdc10eded7df6a8f1e0bfef9a2e203fb390146b916bcd5d` |
+| Grading version | `2` |
+| Compatible release checkout | Git tag `v1.1.0` |
+
+V1.0.0 remains valid and immutable under tag `v1.0.0`; no scores
+transfer between releases.
+
 ## V1.0.0 — 2026-09-10
 
 First named, frozen benchmark release. The accepted corpus contains

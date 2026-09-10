@@ -1,6 +1,6 @@
 # Versioned run history
 
-Current release: **[BorderBench V1.0.0](../releases/1.0.0.json)**. The
+Current release: **[BorderBench V1.1.0](../releases/1.1.0.json)** (V1.0.0 remains valid under tag `v1.0.0`; scores never transfer). The
 [changelog](../CHANGELOG.md) records its Git commit, dataset fingerprint,
 and evaluation protocol.
 
@@ -10,9 +10,9 @@ website collects compatible records across all those directories. Reuse a
 run ID only to resume that same campaign.
 
 ```bash
-bun run benchmark --release 1.0.0 --run-id gpt-september --models gpt-6-astra --budget-usd 25
-bun run benchmark --release 1.0.0 --run-id gemini-later --models gemini-3.1-pro-preview --budget-usd 25
-bun run build:page --release 1.0.0 --results-dir results/runs --output-dir site
+bun run benchmark --release 1.1.0 --run-id gpt-september --models gpt-6-astra --budget-usd 25
+bun run benchmark --release 1.1.0 --run-id gemini-later --models gemini-3.1-pro-preview --budget-usd 25
+bun run build:page --release 1.1.0 --results-dir results/runs --output-dir site
 ```
 
 These example live commands have separate cumulative spending guards; they
@@ -36,7 +36,7 @@ Keys, locks, SQLite WAL/SHM files, and mock runs remain excluded. Wait for
 the runner to finish, then commit the complete run directory together:
 
 ```bash
-git add results/runs/1.0.0/gpt-september
+git add results/runs/1.1.0/gpt-september
 git commit -m 'results: record GPT evaluation on BorderBench V1.0.0'
 ```
 
