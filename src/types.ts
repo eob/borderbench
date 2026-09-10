@@ -1,5 +1,5 @@
 export type BorderSides = "all-4" | "bottom-only" | "left-only" | "top-only" | "none";
-export type StrokeStyle = "solid" | "dashed" | "dotted" | "double" | "none";
+export type StrokeStyle = "solid" | "dashed" | "dotted" | "none";
 export type StrokeWidth = "0px" | "1px" | "2px" | "4px" | "8px";
 export type CornerRadius = "sharp" | "subtle" | "medium" | "large" | "pill";
 export type CornerUniformity = "all-corners" | "top-only" | "asymmetric";

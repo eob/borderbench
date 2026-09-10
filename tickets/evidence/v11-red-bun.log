@@ -1,0 +1,44 @@
+bun test v1.3.14 (0d9b296a)
+
+src/shadow-tokens.test.ts:
+(pass) elevation shadow tokens > none renders its frozen token stack [0.36ms]
+(pass) elevation shadow tokens > subtle-drop renders its frozen token stack [0.03ms]
+30 |     ["ring-only", "box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12)"],
+31 |     ["stroke+shadow", "box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)"],
+32 |   ];
+33 |   for (const [elevation, stack] of stacks) {
+34 |     test(`${elevation} renders its frozen token stack`, () => {
+35 |       expect(generateCardHtml(specimen(elevation))).toContain(stack);
+                                                         ^
+error: expect(received).toContain(expected)
+
+Expected to contain: "box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)"
+Received: "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<style>\n  * { box-sizing: border-box; margin: 0; padding: 0; }\n  body {\n    width: 560px;\n    height: 360px;\n    background: #f1f5f9;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif;\n  }\n  .card {\n    width: 400px;\n    height: 240px;\n    background: #ffffff;\n    border-top: none;\n    border-right: none;\n    border-bottom: none;\n    border-left: none;\n    border-radius: 8px;\n    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.12), 0 4px 6px -4px rgba(0, 0, 0, 0.1);\n    padding: 24px;\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n    overflow: hidden;\n  }\n  .header {\n    display: flex;\n    align-items: center;\n    gap: 14px;\n  }\n  .avatar {\n    width: 40px;\n    height: 40px;\n    border-radius: 9999px;\n    background: #64748b;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    font-weight: 600;\n    color: #ffffff;\n    font-size: 14px;\n    flex-shrink: 0;\n  }\n  .title-group {\n    flex: 1;\n    min-width: 0;\n  }\n  .title {\n    font-size: 16px;\n    font-weight: 600;\n    color: #0f172a;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n  }\n  .subtitle {\n    font-size: 12px;\n    color: #64748b;\n    margin-top: 2px;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n  }\n  .badge {\n    font-size: 11px;\n    font-weight: 500;\n    padding: 3px 8px;\n    border-radius: 6px;\n    background: #64748b;\n    color: #ffffff;\n  }\n  .body {\n    font-size: 13px;\n    line-height: 1.5;\n    color: #64748b;\n  }\n  .meta-row {\n    display: flex;\n    gap: 16px;\n    margin-top: 6px;\n  }\n  .meta-item {\n    font-size: 11px;\n    color: #64748b;\n  }\n  .meta-item strong {\n    color: #0f172a;\n  }\n  .footer {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    padding-top: 12px;\n  }\n  .status {\n    font-size: 12px;\n    font-weight: 500;\n    color: #0f172a;\n    display: flex;\n    align-items: center;\n    gap: 6px;\n  }\n  .status-dot {\n    width: 6px;\n    height: 6px;\n    border-radius: 9999px;\n    background: #10b981;\n  }\n  .btn {\n    font-size: 12px;\n    font-weight: 500;\n    padding: 6px 14px;\n    border-radius: 6px;\n    background: #334155;\n    color: #ffffff;\n    border: none;\n    cursor: pointer;\n  }\n</style>\n</head>\n<body>\n  <div class=\"card\">\n    <div class=\"header\">\n      <div class=\"avatar\">S</div>\n      <div class=\"title-group\">\n        <div class=\"title\">Container Specimen</div>\n        <div class=\"subtitle\">Surface and edge sample</div>\n      </div>\n      <div class=\"badge\">Sample</div>\n    </div>\n    <div class=\"body\">\n      A neutral interface surface used to compare container edges across images.\n      <div class=\"meta-row\">\n        <div class=\"meta-item\">Section: <strong>Overview</strong></div>\n        <div class=\"meta-item\">State: <strong>Active</strong></div>\n      </div>\n    </div>\n    <div class=\"footer\">\n      <div class=\"status\"><span class=\"status-dot\"></span>Active</div>\n      <button class=\"btn\">Inspect</button>\n    </div>\n  </div>\n</body>\n</html>"
+
+      at <anonymous> (/mnt/disks/data/borderbench/src/shadow-tokens.test.ts:35:53)
+(fail) elevation shadow tokens > floating-drop renders its frozen token stack [0.17ms]
+(pass) elevation shadow tokens > ring-only renders its frozen token stack [0.07ms]
+(pass) elevation shadow tokens > stroke+shadow renders its frozen token stack [0.02ms]
+
+src/specimens.test.ts:
+(pass) BorderBench Specimens > generates exactly 120 specimens [0.03ms]
+(pass) BorderBench Specimens > unique specimen IDs [0.19ms]
+13 | 
+14 |   test("valid attributes across all specimens", () => {
+15 |     for (const s of SPECIMENS) {
+16 |       expect(typeof s.has_border).toBe("boolean");
+17 |       expect(["all-4", "bottom-only", "left-only", "top-only", "none"]).toContain(s.border_sides);
+18 |       expect(["solid", "dashed", "dotted", "none"]).toContain(s.stroke_style);
+                                                         ^
+error: expect(received).toContain(expected)
+
+Expected to contain: "double"
+Received: [ "solid", "dashed", "dotted", "none" ]
+
+      at <anonymous> (/mnt/disks/data/borderbench/src/specimens.test.ts:18:53)
+(fail) BorderBench Specimens > valid attributes across all specimens [0.24ms]
+
+ 6 pass
+ 2 fail
+ 101 expect() calls
+Ran 8 tests across 2 files. [281.00ms]

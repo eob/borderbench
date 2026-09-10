@@ -103,7 +103,7 @@ export function generateCardHtml(specimen: BorderSpecimenConfig): string {
   if (specimen.elevation === "subtle-drop") {
     boxShadowCss = "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)";
   } else if (specimen.elevation === "floating-drop") {
-    boxShadowCss = "0 10px 15px -3px rgba(0, 0, 0, 0.12), 0 4px 6px -4px rgba(0, 0, 0, 0.1)";
+    boxShadowCss = "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)";
   } else if (specimen.elevation === "ring-only") {
     boxShadowCss = "0 0 0 1px rgba(0, 0, 0, 0.12)";
   } else if (specimen.elevation === "stroke+shadow") {
@@ -430,11 +430,12 @@ async function main() {
       }
     }
 
-    const frozen = OUTPUT_DIR === path.resolve("dataset/borderbench-v1");
+    const dirName = path.basename(OUTPUT_DIR);
+    const releaseVersion = dirName === "borderbench-v1" ? "1.0.0" : dirName === "borderbench-v1.1" ? "1.1.0" : null;
     const manifest = {
-      benchmark_id: frozen ? "borderbench-v1" : "borderbench-candidate",
-      name: frozen ? "BorderBench V1" : "BorderBench candidate",
-      version: "1.0.0",
+      benchmark_id: releaseVersion ? dirName : "borderbench-candidate",
+      name: releaseVersion ? `BorderBench V${releaseVersion.replace(/\.0$/, "")}` : "BorderBench candidate",
+      version: releaseVersion ?? "0.0.0-candidate",
       description: "Visual border, corner radius, stroke style, and elevation identification benchmark for multimodal vision-language models.",
       total_tasks: manifestItems.length,
       canonical_canvas: {

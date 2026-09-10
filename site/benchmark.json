@@ -1,7 +1,7 @@
 {
-  "release": "1.0.0",
-  "dataset_fingerprint": "dcbff0b1c76a788e9516dfafd13ab0a345743ee94783d7e226a02efb8886d64d",
-  "evaluation_protocol": "154aa49f7a90b1f35c4f97db5f4b70e129e9e8310992d3affbd0a75a7b1a0ed8",
+  "release": "1.1.0",
+  "dataset_fingerprint": "506b7372566e3dab8022311df478ba78d608b0584d7eaabd1435b9f9f8b0764c",
+  "evaluation_protocol": "36f674d3004f400d7bdc10eded7df6a8f1e0bfef9a2e203fb390146b916bcd5d",
   "expected_task_count": 120,
   "gate": {
     "valid": true,
@@ -45,21 +45,16 @@
     {
       "key": "stroke_style",
       "title": "Stroke style",
-      "blurb": "Solid, dashed, dotted, double, or no stroke pattern.",
+      "blurb": "Solid, dashed, dotted, or no stroke pattern.",
       "groups": [
         {
           "label": "dashed",
-          "available": 14,
+          "available": 18,
           "models": {}
         },
         {
           "label": "dotted",
-          "available": 11,
-          "models": {}
-        },
-        {
-          "label": "double",
-          "available": 9,
+          "available": 16,
           "models": {}
         },
         {

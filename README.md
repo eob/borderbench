@@ -1,17 +1,18 @@
-# BorderBench V1.0.0
+# BorderBench V1.1.0
 
 BorderBench measures recognition of seven container properties from an
 image: border presence, edge selectivity, stroke style, stroke width,
-corner radius, corner uniformity, and elevation. **V1.0.0 freezes 120
+corner radius, corner uniformity, and elevation. **V1.1.0 freezes 120
 images** with fixed neutral card text, verified rendering evidence, and
 zero validation errors.
 
-The [release descriptor](releases/1.0.0.json) binds this version to
+The [release descriptor](releases/1.1.0.json) binds this version to
 dataset Git commit
-[`11adacb`](https://github.com/eob/borderbench/commit/11adacbfebcf92fac4c8680c1a2541d3fed546bc),
+[`ec1dc04`](https://github.com/eob/borderbench/commit/ec1dc044f39b45be7c4b6fea018026722640b947),
 the dataset fingerprint, and the evaluation protocol fingerprint.
-[CHANGELOG.md](CHANGELOG.md) records the release; Git tag `v1.0.0`
-identifies its compatible tooling.
+[CHANGELOG.md](CHANGELOG.md) records the release; Git tag `v1.1.0`
+identifies its compatible tooling. V1.0.0 remains valid under tag
+`v1.0.0`; scores never transfer between releases.
 
 The original 120-image set and its published scores are **invalid
 historical prototypes**: card text revealed the answers. Their inputs,
@@ -45,7 +46,7 @@ contacting a model.
 Run an offline smoke check first:
 
 ```bash
-bun run benchmark --release 1.0.0 --mock --run-id smoke --max-tasks 3
+bun run benchmark --release 1.1.0 --mock --run-id smoke --max-tasks 3
 ```
 
 Select models from [`config/models.json`](config/models.json), or provide
@@ -60,15 +61,15 @@ Separate runs can contribute to the same release:
 
 ```bash
 # Example: GPT in one campaign.
-bun run benchmark --release 1.0.0 --run-id gpt-september \
+bun run benchmark --release 1.1.0 --run-id gpt-september \
   --models gpt-6-astra --budget-usd 25
 
 # Example: Gemini in a later campaign.
-bun run benchmark --release 1.0.0 --run-id gemini-later \
+bun run benchmark --release 1.1.0 --run-id gemini-later \
   --models gemini-3.1-pro-preview --budget-usd 25
 
 # Rebuild the website from all compatible recorded runs.
-bun run build:page --release 1.0.0 --results-dir results/runs --output-dir site
+bun run build:page --release 1.1.0 --results-dir results/runs --output-dir site
 python3 -m http.server 8000 --directory site
 ```
 
@@ -76,7 +77,7 @@ These live commands make paid requests. The budget is a cumulative
 estimate for that run based on configured rates and conservative
 reservations, not a provider invoice or provider-enforced limit.
 
-Each run writes to `results/runs/1.0.0/<run-id>/`. Its `run.json` records
+Each run writes to `results/runs/1.1.0/<run-id>/`. Its `run.json` records
 the release, full dataset Git hash, data/protocol fingerprints, model
 configurations, timestamps, and executing code commit/dirty state.
 `state.sqlite3` is the resumable checkpoint; `attempts.jsonl` retains
@@ -119,7 +120,7 @@ prompt](baseline/prompt.txt) defines the labels:
 | --- | --- |
 | Presence | `has_border`: a stroke exists on any edge |
 | Sides | `all-4`, `bottom-only`, `left-only`, `top-only`, `none` |
-| Style | `solid`, `dashed`, `dotted`, `double` (needs ≥4px), `none` |
+| Style | `solid`, `dashed`, `dotted`, `none` |
 | Width | `0px`, `1px` (hairline), `2px`, `4px`, `8px` (heavy) |
 | Radius | `sharp` (0px), `subtle` (3px), `medium` (8px), `large` (18px), `pill` (9999px) |
 | Uniformity | `all-corners`, `top-only` (bottom sharp), `asymmetric` (2px acute corner) |

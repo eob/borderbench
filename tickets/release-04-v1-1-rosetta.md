@@ -1,12 +1,12 @@
 # release-04-v1-1-rosetta: Tailwind Rosetta Stone and realistic style set
 
-- **Status**: In Progress
+- **Status**: Completed
 - **Branch**: `release-04-v1-1-rosetta`
 - **Base**: `ee30b61`
 - **Machine**: `eob-dev2`
 - **Harness**: muse
 - **Session ID**: `01a08932-89e6-7782-b859-de207f01941f`
-- **PR**: Pending
+- **PR**: https://github.com/eob/borderbench/pull/2
 - **Assignee**: Edward Benson
 
 ## Goal
@@ -78,3 +78,21 @@ evidence.
 ## Handoff & Takeover Log
 
 - `2026-09-10`: Started by `muse` on `eob-dev2` (Session `01a08932-89e6-7782-b859-de207f01941f`).
+
+## Completion
+
+Shipped. Prompt names Tailwind equivalents and fixed text sizes; schema,
+specimens, exports, and page dropped `double`; floating stack aligned to
+exact `shadow-lg`. Corpus `dataset/borderbench-v1.1` (commit `ec1dc04`)
+validates with zero errors; release 1.1.0 descriptor, changelog, and
+rebuilt site committed.
+
+| Gate | Result |
+| --- | --- |
+| `bun run test` | 83 Python, 18 Bun, tsc clean |
+| `validate:dataset` / `validate:release` (1.1.0) | valid, 120 inputs |
+| Superseded 1.0.0 under new code | refused closed (protocol mismatch); passes under `v1.0.0` checkout |
+| Offline 1.1.0 mock + resume | 120 attempts, 0 dupes, $0, 2 invocations |
+| Page desktop/mobile | 0 JS errors, 0 overflow, 48 images, 7 tables |
+| Isolated v1.0.0 reversion | 4 Python + 1 Bun failures, 4 controls pass |
+| Frozen 1.0.0 artifacts | `git diff` clean on corpus and descriptor |

@@ -1,0 +1,10 @@
+=========================== short test summary info ============================
+FAILED tests/test_taxonomy_v11.py::test_prompt_is_tailwind_rosetta_with_fixed_context
+FAILED tests/test_taxonomy_v11.py::test_double_rejected_at_schema_boundary - ...
+FAILED tests/test_taxonomy_v11.py::test_rosetta_doc_covers_every_label - Asse...
+FAILED tests/test_taxonomy_v11.py::test_exports_list_no_double_style - Assert...
+4 failed in 0.13s
+ 4 pass
+ 1 fail
+ 5 expect() calls
+Ran 5 tests across 1 file. [366.00ms]

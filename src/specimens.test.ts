@@ -15,7 +15,7 @@ describe("BorderBench Specimens", () => {
     for (const s of SPECIMENS) {
       expect(typeof s.has_border).toBe("boolean");
       expect(["all-4", "bottom-only", "left-only", "top-only", "none"]).toContain(s.border_sides);
-      expect(["solid", "dashed", "dotted", "double", "none"]).toContain(s.stroke_style);
+      expect(["solid", "dashed", "dotted", "none"]).toContain(s.stroke_style);
       expect(["0px", "1px", "2px", "4px", "8px"]).toContain(s.stroke_width);
       expect(["sharp", "subtle", "medium", "large", "pill"]).toContain(s.corner_radius);
       expect(["all-corners", "top-only", "asymmetric"]).toContain(s.corner_uniformity);

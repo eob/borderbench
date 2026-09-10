@@ -13,8 +13,10 @@
     "benchmark": ".venv/bin/python -m baseline.runner",
     "benchmark:mock": ".venv/bin/python -m baseline.runner --mock --max-tasks 3",
     "build:page": ".venv/bin/python -m baseline.build_page",
-    "validate:dataset": ".venv/bin/python -m baseline.validate_dataset --manifest dataset/borderbench-v1/manifest.json",
-    "validate:release": ".venv/bin/python -m baseline.releases --release 1.0.0",
+    "validate:dataset": ".venv/bin/python -m baseline.validate_dataset --manifest dataset/borderbench-v1.1/manifest.json",
+    "validate:dataset-1.0": ".venv/bin/python -m baseline.validate_dataset --manifest dataset/borderbench-v1/manifest.json",
+    "validate:release": ".venv/bin/python -m baseline.releases --release 1.1.0",
+    "validate:release-1.0": ".venv/bin/python -m baseline.releases --release 1.0.0",
     "validate:candidate": ".venv/bin/python -m baseline.validate_dataset --manifest dataset/candidate-rendered/manifest.json"
   },
   "devDependencies": {
