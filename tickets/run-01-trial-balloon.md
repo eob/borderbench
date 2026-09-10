@@ -1,7 +1,7 @@
 # run-01-trial-balloon: First V1.1.0 measurements (Gemini + Claude)
 
 - **Status**: In Progress
-- **Branch**: `release-04-v1-1-rosetta` (results merge with PR #2)
+- **Branch**: `main` (PR #2 merged as `fc7bbec` before the campaign; results commit directly)
 - **Base**: `fc7bbec`
 - **Machine**: `eob-dev2`
 - **Harness**: muse
