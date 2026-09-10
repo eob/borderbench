@@ -17,19 +17,18 @@ import signal
 import threading
 from typing import Any
 
-from baseline.evaluator import BaselineEvaluator, TaskEvaluationResult, load_manifest
+from baseline.evaluator import BaselineEvaluator, TaskEvaluationResult, evaluation_protocol_fingerprint, load_manifest
 from baseline.model_config import load_model_config
 from baseline.run_state import RunStore
+from baseline.validate_dataset import require_valid_dataset
 
 
 def dataset_fingerprint(items: list[dict]) -> str:
-    digest = hashlib.sha256(b"borderbench-grading-1\n")
+    digest = hashlib.sha256(b"borderbench-dataset-2\n")
     for item in sorted(items, key=lambda x: x["taskId"]):
         metadata = {k: v for k, v in item.items() if k not in {"imagePath", "imageFilename"}}
-        digest.update(json.dumps(metadata, sort_keys=True, ensure_ascii=False).encode())
-        img_p = Path(item["imagePath"])
-        if img_p.exists():
-            digest.update(hashlib.sha256(img_p.read_bytes()).digest())
+        digest.update(json.dumps(metadata, sort_keys=True, ensure_ascii=False, allow_nan=False).encode())
+        digest.update(hashlib.sha256(Path(item["imagePath"]).read_bytes()).digest())
     return digest.hexdigest()
 
 
@@ -81,6 +80,8 @@ def run_benchmark(
     if not models:
         raise ValueError("No enabled models selected")
 
+    if not mock:
+        require_valid_dataset(manifest_path)
     items = load_manifest(str(manifest_path))
     fingerprint = dataset_fingerprint(items)
     items.sort(key=lambda x: x["taskId"])
@@ -113,15 +114,31 @@ def run_benchmark(
         }
 
         with RunStore(state_path) as store:
+            protocol = evaluation_protocol_fingerprint()
+            prior = {run["run_id"]: run for run in store.list_runs()}.get(run_id)
+            if prior is not None and prior["metadata"].get("evaluation_protocol") != protocol:
+                raise ValueError(
+                    f"Run {run_id!r} already exists with a different evaluation protocol; use a new run ID"
+                )
             store.register_run(
                 run_id, fingerprint,
-                {"manifest_path": str(Path(manifest_path).resolve()), "mock": mock, "expected_task_count": len(items)}
+                {"manifest_path": str(Path(manifest_path).resolve()), "mock": mock,
+                 "expected_task_count": len(items), "evaluation_protocol": protocol}
             )
             for model in models:
                 store.register_model(run_id, model["id"], model)
 
             reported_models = [state["config"] for state in store.model_states(run_id).values()]
             completed = {model["id"]: store.completed_results(run_id, model["id"]) for model in reported_models}
+            known_tasks = {item["taskId"] for item in items}
+            foreign = sorted(
+                {task_id for saved in completed.values() for task_id in saved} - known_tasks
+            )
+            if foreign:
+                raise ValueError(
+                    f"Checkpoint for run {run_id!r} contains {len(foreign)} unknown task IDs "
+                    f"(e.g. {foreign[0]!r}); restore the matching manifest or use a new run ID"
+                )
             pending = deque(
                 (model["id"], item)
                 for item in selected_items

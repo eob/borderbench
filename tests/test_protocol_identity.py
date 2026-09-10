@@ -1,17 +1,25 @@
 """Protocol identity, scorecard completeness, and resume correctness."""
 
+import io
 import json
 import re
 import sqlite3
 from pathlib import Path
 
 import pytest
+from PIL import Image
 
 from baseline.evaluator import BaselineEvaluator
 from baseline.runner import dataset_fingerprint, run_benchmark
 from baseline.run_state import RunStore
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+
+
+def _tiny_png() -> bytes:
+    buffer = io.BytesIO()
+    Image.new("RGB", (8, 8), (255, 255, 255)).save(buffer, format="PNG")
+    return buffer.getvalue()
 
 
 def _mock_result(task_id: str) -> dict:
@@ -50,6 +58,8 @@ def _mock_result(task_id: str) -> dict:
 
 
 def _write_manifest(path: Path, task_ids: list[str]) -> None:
+    for task_id in task_ids:
+        (path.parent / f"{task_id}.png").write_bytes(_tiny_png())
     tasks = [
         {
             "taskId": task_id,
@@ -164,6 +174,37 @@ def test_scorecard_complete_status():
 
 
 def test_foreign_checkpoint_tasks_rejected(tmp_path):
+    from baseline.evaluator import evaluation_protocol_fingerprint, load_manifest
+    from baseline.model_config import load_model_config
+
+    manifest = tmp_path / "manifest.json"
+    _write_manifest(manifest, ["t1"])
+    config = tmp_path / "models.json"
+    _write_config(config)
+    (model_config,) = load_model_config(config)
+    fingerprint = dataset_fingerprint(load_manifest(str(manifest)))
+    output = tmp_path / "runs"
+    directory = output / "mock-resume"
+    directory.mkdir(parents=True)
+    with RunStore(directory / "state.sqlite3") as store:
+        store.register_run(
+            "resume", fingerprint,
+            {"mock": True, "evaluation_protocol": evaluation_protocol_fingerprint()},
+        )
+        store.register_model("resume", "mock-model", model_config)
+        store.save_result("resume", "mock-model", "foreign-task", _mock_result("foreign-task"))
+    with pytest.raises(ValueError, match="[Cc]heckpoint|[Ff]oreign|[Uu]nknown task"):
+        run_benchmark(
+            manifest_path=manifest,
+            config_path=config,
+            output_dir=output,
+            run_id="resume",
+            budget_usd=None,
+            mock=True,
+        )
+
+
+def test_legacy_checkpoint_without_protocol_rejected(tmp_path):
     from baseline.evaluator import load_manifest
 
     manifest = tmp_path / "manifest.json"
@@ -172,18 +213,17 @@ def test_foreign_checkpoint_tasks_rejected(tmp_path):
     _write_config(config)
     fingerprint = dataset_fingerprint(load_manifest(str(manifest)))
     output = tmp_path / "runs"
-    directory = output / "mock-resume"
+    directory = output / "mock-legacy"
     directory.mkdir(parents=True)
     with RunStore(directory / "state.sqlite3") as store:
-        store.register_run("resume", fingerprint, {"mock": True})
-        store.register_model("resume", "mock-model", {"id": "mock-model"})
-        store.save_result("resume", "mock-model", "foreign-task", _mock_result("foreign-task"))
-    with pytest.raises(ValueError, match="[Cc]heckpoint|[Ff]oreign|[Uu]nknown task"):
+        store.register_run("legacy", fingerprint, {"mock": True})
+        store.register_model("legacy", "mock-model", {"id": "mock-model"})
+    with pytest.raises(ValueError, match="[Pp]rotocol"):
         run_benchmark(
             manifest_path=manifest,
             config_path=config,
             output_dir=output,
-            run_id="resume",
+            run_id="legacy",
             budget_usd=None,
             mock=True,
         )

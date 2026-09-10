@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import time
 from dataclasses import dataclass, field
@@ -9,17 +10,87 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
 
-from baseline.providers import PredictionClient, PredictionResponse, BorderPrediction
+from pydantic import ValidationError
+
+from baseline.providers import PredictionClient, PredictionResponse, BorderPrediction, parse_prediction
+
+
+GRADING_VERSION = "2"
+DEFAULT_PROMPT = Path(__file__).with_name("prompt.txt").read_text(encoding="utf-8").strip()
+
+THEMES = (
+    "white-on-gray",
+    "white-on-white",
+    "gray-tint-on-white",
+    "blue-tint-on-white",
+    "dark-mode",
+)
+
+
+def evaluation_protocol_fingerprint() -> str:
+    """Pin request construction, answer schema, grading, and the fallback prompt."""
+    digest = hashlib.sha256(json.dumps({
+        "grading_version": GRADING_VERSION, "default_prompt": DEFAULT_PROMPT,
+        "schema": BorderPrediction.model_json_schema(),
+    }, sort_keys=True).encode())
+    for name in ("evaluator.py", "providers.py"):
+        digest.update(Path(__file__).with_name(name).read_bytes().replace(b"\r\n", b"\n"))
+    return digest.hexdigest()
+
+
+def _canonical_ground_truth(item: dict, index: int) -> dict:
+    gt = item.get("groundTruth")
+    if not isinstance(gt, dict):
+        raise ValueError(f"Manifest task {index} must carry a groundTruth object")
+    targets = {
+        "has_border": gt.get("has_border"),
+        "border_sides": gt.get("border_sides"),
+        "stroke_style": gt.get("stroke_style"),
+        "stroke_width": gt.get("stroke_width"),
+        "corner_radius": gt.get("corner_radius"),
+        "corner_uniformity": gt.get("corner_uniformity"),
+        "elevation": gt.get("elevation"),
+    }
+    try:
+        if BorderPrediction.model_validate(targets).model_dump() != targets:
+            raise ValueError(f"Noncanonical border labels in manifest task {index}")
+    except ValidationError as error:
+        raise ValueError(f"Invalid border labels in manifest task {index}: {error}") from error
+    if gt.get("theme") not in THEMES:
+        raise ValueError(f"Manifest task {index} has an unknown theme")
+    return targets
 
 
 def load_manifest(manifest_path: str) -> list[dict]:
+    """Load canonically labeled tasks with image paths resolved beside the manifest."""
     with open(manifest_path, "r", encoding="utf-8") as f:
         data = json.load(f)
     if isinstance(data, dict):
-        return data.get("tasks", [])
-    if isinstance(data, list):
-        return data
-    raise ValueError("Manifest must be a JSON object with 'tasks' or a JSON array")
+        items = data.get("tasks", [])
+    elif isinstance(data, list):
+        items = data
+    else:
+        raise ValueError("Manifest must be a JSON object with 'tasks' or a JSON array")
+    if not isinstance(items, list):
+        raise ValueError("Manifest 'tasks' must be a JSON array")
+    task_ids = set()
+    for index, item in enumerate(items):
+        if not isinstance(item, dict):
+            raise ValueError(f"Manifest task {index} must be a JSON object")
+        task_id = item.get("taskId")
+        if not isinstance(task_id, str) or not task_id.strip():
+            raise ValueError(f"Manifest task {index} must have a non-empty taskId")
+        if task_id in task_ids:
+            raise ValueError(f"Duplicate manifest taskId: {task_id}")
+        task_ids.add(task_id)
+        _canonical_ground_truth(item, index)
+        if item.get("imageFilename"):
+            item["imagePath"] = str(Path(manifest_path).resolve().parent / item["imageFilename"])
+    return items
+
+
+def cohort_fingerprint(task_ids: list[str]) -> str:
+    return hashlib.sha256(",".join(sorted(task_ids)).encode()).hexdigest()
 
 
 @dataclass
@@ -81,9 +152,12 @@ class BorderBenchScorecard:
     model_name: str
     timestamp: str
     expected_task_count: int = 0
-    grading_version: str = "1"
+    grading_version: str = GRADING_VERSION
     provider: str = "google"
     task_results: List[TaskEvaluationResult] = field(default_factory=list)
+    status: str = "partial"
+    cohort_sha256: str = ""
+    invalid_responses: int = 0
 
 
 class BaselineEvaluator:
@@ -124,21 +198,31 @@ class BaselineEvaluator:
 
     def _eval_single_task(self, item: dict, prompt_default: str) -> TaskEvaluationResult:
         image_path = item["imagePath"]
-        prompt = item.get("prompt", prompt_default)
+        prompt = item.get("prompt", prompt_default) or DEFAULT_PROMPT
 
         start_t = time.perf_counter()
         response = self.predict_image(image_path, prompt)
         latency = time.perf_counter() - start_t
         raw_pred = response.raw_text
-        parsed_pred = response.parsed if not response.error else {}
+        error = response.error
+        error_kind = response.error_kind
+        try:
+            if error:
+                raise ValueError(error)
+            parsed_pred = parse_prediction(raw_pred)
+        except ValueError as invalid:
+            parsed_pred = {}
+            if not error:
+                error = str(invalid)
+                error_kind = "invalid_response"
 
         pred_has_border = bool(parsed_pred.get("has_border", False))
-        pred_sides = str(parsed_pred.get("border_sides", "")).strip().lower()
-        pred_style = str(parsed_pred.get("stroke_style", "")).strip().lower()
-        pred_width = str(parsed_pred.get("stroke_width", "")).strip().lower()
-        pred_radius = str(parsed_pred.get("corner_radius", "")).strip().lower()
-        pred_uniformity = str(parsed_pred.get("corner_uniformity", "")).strip().lower()
-        pred_elev = str(parsed_pred.get("elevation", "")).strip().lower()
+        pred_sides = str(parsed_pred.get("border_sides", ""))
+        pred_style = str(parsed_pred.get("stroke_style", ""))
+        pred_width = str(parsed_pred.get("stroke_width", ""))
+        pred_radius = str(parsed_pred.get("corner_radius", ""))
+        pred_uniformity = str(parsed_pred.get("corner_uniformity", ""))
+        pred_elev = str(parsed_pred.get("elevation", ""))
 
         gt = item.get("groundTruth", {})
         gt_has_border = bool(gt.get("has_border", False))
@@ -150,16 +234,17 @@ class BaselineEvaluator:
         gt_elev = str(gt.get("elevation", "")).strip().lower()
         theme = str(gt.get("theme", "white-on-gray"))
 
-        has_border_correct = pred_has_border == gt_has_border
-        border_sides_correct = pred_sides == gt_sides
-        stroke_style_correct = pred_style == gt_style
-        stroke_width_correct = pred_width == gt_width
-        corner_radius_correct = pred_radius == gt_radius
-        corner_uniformity_correct = pred_uniformity == gt_uniformity
-        elevation_correct = pred_elev == gt_elev
+        malformed = error_kind == "invalid_response"
+        has_border_correct = not malformed and pred_has_border == gt_has_border
+        border_sides_correct = not malformed and pred_sides == gt_sides
+        stroke_style_correct = not malformed and pred_style == gt_style
+        stroke_width_correct = not malformed and pred_width == gt_width
+        corner_radius_correct = not malformed and pred_radius == gt_radius
+        corner_uniformity_correct = not malformed and pred_uniformity == gt_uniformity
+        elevation_correct = not malformed and pred_elev == gt_elev
 
         all_correct = (
-            not response.error
+            not error
             and has_border_correct
             and border_sides_correct
             and stroke_style_correct
@@ -201,8 +286,8 @@ class BaselineEvaluator:
             output_tokens=response.output_tokens,
             request_attempts=response.request_attempts,
             unmetered_attempts=response.unmetered_attempts,
-            error=response.error,
-            error_kind=response.error_kind,
+            error=error,
+            error_kind=error_kind,
             model_name=self.model_name,
             provider=self.provider,
         )
@@ -249,6 +334,11 @@ class BaselineEvaluator:
         by_sides = build_slice(lambda r: r.border_sides_gt)
         by_elevation = build_slice(lambda r: r.elevation_gt)
 
+        expected = expected_task_count or total
+        invalid_responses = sum(1 for r in results if r.error_kind == "invalid_response")
+        retryable = any(r.error and r.error_kind != "invalid_response" for r in results)
+        status = "complete" if expected > 0 and total == expected and not retryable else "partial"
+
         return BorderBenchScorecard(
             total_tasks=total,
             overall_exact_match=round((exact_matches / denom) * 100, 2),
@@ -267,7 +357,10 @@ class BaselineEvaluator:
             accuracy_by_elevation=by_elevation,
             model_name=self.model_name,
             timestamp=datetime.now(timezone.utc).isoformat(),
-            expected_task_count=expected_task_count or total,
+            expected_task_count=expected,
             provider=self.provider,
             task_results=results,
+            status=status,
+            cohort_sha256=cohort_fingerprint([r.task_id for r in results]),
+            invalid_responses=invalid_responses,
         )

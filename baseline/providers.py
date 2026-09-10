@@ -14,13 +14,15 @@ from urllib.parse import quote
 
 import httpx
 from PIL import Image
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
 
 ErrorKind = Literal["credits", "rate_limit", "authentication", "unavailable", "invalid_response", "other"]
 
 
 class BorderPrediction(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
     has_border: bool = Field(description="True if the card has an explicit border stroke on any edge, false otherwise")
     border_sides: Literal["all-4", "bottom-only", "left-only", "top-only", "none"]
     stroke_style: Literal["solid", "dashed", "dotted", "double", "none"]
@@ -28,6 +30,57 @@ class BorderPrediction(BaseModel):
     corner_radius: Literal["sharp", "subtle", "medium", "large", "pill"]
     corner_uniformity: Literal["all-corners", "top-only", "asymmetric"]
     elevation: Literal["none", "subtle-drop", "floating-drop", "ring-only", "stroke+shadow"]
+
+
+PREDICTION_KEYS = (
+    "has_border",
+    "border_sides",
+    "stroke_style",
+    "stroke_width",
+    "corner_radius",
+    "corner_uniformity",
+    "elevation",
+)
+
+
+def _reject_duplicate_keys(pairs: list[tuple[str, object]]) -> dict:
+    obj: dict[str, object] = {}
+    for key, value in pairs:
+        if key in obj:
+            raise ValueError(f"Duplicate prediction key: {key!r}")
+        obj[key] = value
+    return obj
+
+
+def parse_prediction(raw_text: str) -> dict:
+    """Strictly parse one model prediction; ambiguous answers raise ValueError."""
+    try:
+        parsed = json.loads(raw_text, object_pairs_hook=_reject_duplicate_keys)
+    except json.JSONDecodeError as error:
+        raise ValueError(f"Prediction must be a JSON object: {error}") from error
+    if not isinstance(parsed, dict):
+        raise ValueError("Prediction must be a JSON object")
+    missing = [key for key in PREDICTION_KEYS if key not in parsed]
+    if missing:
+        raise ValueError(f"Missing prediction keys: {', '.join(missing)}")
+    unknown = [key for key in parsed if key not in PREDICTION_KEYS]
+    if unknown:
+        raise ValueError(f"Unknown prediction keys: {', '.join(sorted(str(key) for key in unknown))}")
+    if type(parsed["has_border"]) is not bool:
+        raise ValueError("Prediction field 'has_border' must be a boolean")
+    normalized: dict[str, object] = {"has_border": parsed["has_border"]}
+    for key in PREDICTION_KEYS[1:]:
+        value = parsed[key]
+        if not isinstance(value, str):
+            raise ValueError(f"Prediction field {key!r} must be a string")
+        stripped = value.strip().lower()
+        if not stripped:
+            raise ValueError(f"Blank prediction value for field {key!r}")
+        normalized[key] = stripped
+    try:
+        return BorderPrediction.model_validate(normalized).model_dump()
+    except ValidationError as error:
+        raise ValueError(f"Invalid prediction value: {error}") from error
 
 
 @dataclass
@@ -216,15 +269,12 @@ class PredictionClient:
                 if response.is_success and not body.get("error"):
                     try:
                         result.raw_text = self._text(body).replace(api_key, "[REDACTED]")
-                        parsed = json.loads(result.raw_text)
-                        if isinstance(parsed, dict):
-                            parsed = {key: value.strip().lower() if isinstance(value, str) else value
-                                      for key, value in parsed.items()}
-                        result.parsed = BorderPrediction.model_validate(parsed).model_dump()
+                        result.parsed = parse_prediction(result.raw_text)
                         result.error = result.error_kind = None
                     except (ValueError, TypeError, KeyError, AttributeError) as error:
                         result.error = str(error).replace(api_key, "[REDACTED]")
                         result.error_kind = "invalid_response"
+                        result.parsed = {}
                     return result
                 error = body.get("error") or {"message": result.raw_text}
                 if not isinstance(error, dict):
