@@ -96,3 +96,5 @@ rebuilt site committed.
 | Page desktop/mobile | 0 JS errors, 0 overflow, 48 images, 7 tables |
 | Isolated v1.0.0 reversion | 4 Python + 1 Bun failures, 4 controls pass |
 | Frozen 1.0.0 artifacts | `git diff` clean on corpus and descriptor |
+
+Merged to main via PR #2 (merge commit; dataset commit `ec1dc04` is an ancestor of main). Release tooling tagged `v1.1.0`.
