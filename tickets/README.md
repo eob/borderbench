@@ -16,8 +16,9 @@ leakage, export integrity, and reporting instead of Harbor packaging.
 | [release-01](release-01-versioned-runs.md) | High | V1.0.0 identity, Git anchor, resumable dated runs and attempt logs | Completed |
 | [release-02](release-02-aggregate-run-history.md) | High | Aggregate compatible model runs across time and publish origins | Completed |
 | [release-03](release-03-protect-frozen-artifacts.md) | High | Protect frozen directories and isolate candidate generation | Completed |
+| [valid-07](valid-07-perceptual-rigor.md) | Critical | FontBench parity, calibrated perceptual design, sealed publication | Ready for review |
 
-The current 120-image set and its published scores are **invalid historical
+The original 120-image prototype and its published scores are **invalid historical
 prototypes**: card text reveals the answers, rare classes have single samples,
 and grading is permissive. They are preserved in Git history and labeled in
 [results](../results/README.md); no scores carry forward into V1.0.0.

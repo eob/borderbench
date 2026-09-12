@@ -1,0 +1,2 @@
+PASS: 13 models, identical predetermined128 inputs,1664 unique final attempts,zero errors/unmetered calls,clean source for all3invocations,checkpoint intact.
+Recorded cost: 21.279321899999946

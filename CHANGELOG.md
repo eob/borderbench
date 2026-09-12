@@ -1,5 +1,22 @@
 # BorderBench changelog
 
+
+## 1.2.0 — 2026-09-12
+
+- Replaces the corpus with 477 calibrated inputs: 53 geometry recipes crossed
+  with three light themes and three independent shadow levels.
+- Uses exact coarse Tailwind 3.4.17 radius anchors (0/4/12/24/full), visible
+  nonuniform corners, and fixed 16px DejaVu Sans text plus a 64px scale guide.
+- Removes ring-only and stroke+shadow provenance categories; border and shadow
+  are scored independently. Prevents border-induced inner layout shifts.
+- Adds catalog, pinned font evidence, pixel width/style/corner checks, matched
+  shadow controls, and mandatory live preflight. Protects every frozen dataset.
+- Verifies raw answers and attempt chronology before aggregation; uses shared
+  image cohorts for rankings and reports conditional/macro/confusion diagnostics.
+- Adds offline result sealing and independent verification against committed
+  source checkpoints, immutable final answers, and complete cost histories.
+- Preserves all earlier releases/results unchanged. Old scores do not transfer.
+
 ## V1.1.0 — 2026-09-10
 
 Tailwind Rosetta Stone release. Every label maps to Tailwind CSS

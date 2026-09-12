@@ -28,20 +28,9 @@ describe("card neutrality", () => {
     expect(leaked).toEqual([]);
   });
 
-  test("footer carries no divider border", () => {
-    const html = generateCardHtml(SPECIMENS[0]);
-    const css = html.slice(0, html.indexOf("</style>"));
-    const footer = css.match(/\.footer\s*\{[^}]*\}/)?.[0] ?? "";
-    expect(footer).not.toContain("border");
-  });
-
-  test("inner chrome geometry is constant across specimens", () => {
-    const first = generateCardHtml(SPECIMENS[0]);
-    const last = generateCardHtml(SPECIMENS[SPECIMENS.length - 1]);
-    const chrome = (html: string) => {
-      const css = html.slice(0, html.indexOf("</style>"));
-      return [...css.matchAll(/\.(avatar|badge|btn|status-dot)\s*\{[^}]*\}/g)].map((m) => m[0]).join("\n");
-    };
-    expect(chrome(first)).toBe(chrome(last));
+  test("reference text and markup are identical on every specimen", () => {
+    const body = (html: string) => html.slice(html.indexOf("<body>"));
+    const expected = body(generateCardHtml(SPECIMENS[0]));
+    for (const specimen of SPECIMENS) expect(body(generateCardHtml(specimen))).toBe(expected);
   });
 });

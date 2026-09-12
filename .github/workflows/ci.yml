@@ -33,6 +33,12 @@ jobs:
         run: bun run typecheck
       - run: bun run validate:dataset
       - run: bun run validate:release
-      - name: Frozen 1.0.0 artifacts unchanged
-        run: git diff --quiet origin/main...HEAD -- dataset/borderbench-v1 releases/1.0.0.json
+      - name: All previously registered releases remain frozen
+        env:
+          RELEASE_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          if [[ -z "$RELEASE_BASE" || "$RELEASE_BASE" =~ ^0+$ ]]; then
+            RELEASE_BASE=$(git merge-base origin/main HEAD)
+          fi
+          .venv/bin/python scripts/check_frozen_artifacts.py --base "$RELEASE_BASE"
       - run: .venv/bin/python -m pip wheel . --no-deps --wheel-dir /tmp/borderbench-wheels

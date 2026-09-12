@@ -6,7 +6,8 @@ fingerprints, and the expected task count.
 
 | Release | Corpus | Status |
 | --- | --- | --- |
-| [1.1.0](1.1.0.json) | `dataset/borderbench-v1.1` (120 images) | Current |
+| [1.2.0](1.2.0.json) | `dataset/borderbench-v1.2` (477 images) | Current |
+| [1.1.0](1.1.0.json) | `dataset/borderbench-v1.1` (120 images) | Superseded; see perceptual audit |
 | [1.0.0](1.0.0.json) | `dataset/borderbench-v1` (120 images) | Superseded but valid; incomparable scores |
 
 Scores never transfer across releases. The 1.0.0 corpus, descriptor,

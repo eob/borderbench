@@ -1,6 +1,6 @@
 # Versioned run history
 
-Current release: **[BorderBench V1.1.0](../releases/1.1.0.json)** (V1.0.0 remains valid under tag `v1.0.0`; scores never transfer). The
+Current release: **[BorderBench V1.2.0](../releases/1.2.0.json)** (V1.0.0 remains valid under tag `v1.0.0`; scores never transfer). The
 [changelog](../CHANGELOG.md) records its Git commit, dataset fingerprint,
 and evaluation protocol.
 
@@ -10,9 +10,9 @@ website collects compatible records across all those directories. Reuse a
 run ID only to resume that same campaign.
 
 ```bash
-bun run benchmark --release 1.1.0 --run-id gpt-september --models gpt-6-astra --budget-usd 25
-bun run benchmark --release 1.1.0 --run-id gemini-later --models gemini-3.1-pro-preview --budget-usd 25
-bun run build:page --release 1.1.0 --results-dir results/runs --output-dir site
+bun run benchmark --release 1.2.0 --run-id gpt-september --models gpt-6-astra --budget-usd 25
+bun run benchmark --release 1.2.0 --run-id gemini-later --models gemini-3.1-pro-preview --budget-usd 25
+bun run build:page --release 1.2.0 --results-dir results/runs --output-dir site
 ```
 
 These example live commands have separate cumulative spending guards; they
@@ -20,6 +20,20 @@ are not issued by the release-preparation work. Configure provider keys
 and verify the selected model's rates/availability first. Use
 `--mock --max-tasks 3` for an offline smoke test; mock directories are
 ignored and excluded from comparisons.
+
+The default [combined catalog](../config/models.all.json) includes all 13 models
+from FontBench, including Muse Spark 1.2 and 1.3. All models in a campaign share
+one cumulative budget. See the [catalog guide](../config/README.md) for source
+snapshots, credential variables, Anthropic workspace routing, and the extended
+Meta transport timeout.
+
+## First V1.2.0 comparison
+
+The [September 12 campaign](runs/1.2.0/2026-09-12-first-campaign/README.md) seals
+13 models on the same 128/477 images: 1,664 final responses, no errors, and
+$21.2793219 in recorded token cost. Source answers, checkpoint, fixed comparison,
+class diagnostics and verification hashes are retained together. The selected
+partial cohort and its sparse groups are documented explicitly.
 
 ## Retained run artifacts
 
@@ -36,8 +50,8 @@ Keys, locks, SQLite WAL/SHM files, and mock runs remain excluded. Wait for
 the runner to finish, then commit the complete run directory together:
 
 ```bash
-git add results/runs/1.1.0/gpt-september
-git commit -m 'results: record GPT evaluation on BorderBench V1.0.0'
+git add results/runs/1.2.0/gpt-september
+git commit -m 'results: record GPT evaluation on BorderBench V1.2.0'
 ```
 
 The runner writes the local repository; it does not commit unrelated work
@@ -82,3 +96,7 @@ pre-release artifacts as **invalid historical data**:
 Their original JSON predictions and paid checkpoint are preserved for
 inspection. They are excluded from the V1.0.0 website and must not be
 resumed into or relabeled as that release.
+
+## Sealed comparisons
+
+After committing a completed run, use [offline finalization](../releases/FINALIZATION.md) to freeze the exact roster and common/full cohort. The seal adds `final_results.json` and `finalization.json`; it replays grades and binds every source artifact to committed bytes. Sealed run IDs cannot resume. The first V1.2.0 comparison is sealed; older trial data stays under its original release.

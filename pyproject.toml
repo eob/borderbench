@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "borderbench"
-version = "0.1.0"
+version = "1.2.0"
 description = "Visual border, corner radius, stroke style, and elevation identification benchmark for multimodal models"
 authors = [{ name = "Edward Benson" }]
 readme = "README.md"

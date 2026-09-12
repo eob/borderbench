@@ -1,0 +1,57 @@
+FFFFF                                                                    [100%]
+=================================== FAILURES ===================================
+_______ test_hidden_css_provenance_is_not_an_answer_category[ring-only] ________
+
+elevation = 'ring-only'
+
+    @pytest.mark.parametrize("elevation", ["ring-only", "stroke+shadow"])
+    def test_hidden_css_provenance_is_not_an_answer_category(elevation):
+>       with pytest.raises(ValueError, match="Invalid"):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_perceptual_protocol.py:17: Failed
+_____ test_hidden_css_provenance_is_not_an_answer_category[stroke+shadow] ______
+
+elevation = 'stroke+shadow'
+
+    @pytest.mark.parametrize("elevation", ["ring-only", "stroke+shadow"])
+    def test_hidden_css_provenance_is_not_an_answer_category(elevation):
+>       with pytest.raises(ValueError, match="Invalid"):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_perceptual_protocol.py:17: Failed
+______________ test_prompt_defines_exact_coarse_versioned_anchors ______________
+
+    def test_prompt_defines_exact_coarse_versioned_anchors():
+        for token in ("3.4.17", "rounded-xl", "rounded-3xl", "12px", "24px", "DejaVu Sans"):
+>           assert token in DEFAULT_PROMPT
+E           AssertionError: assert '3.4.17' in 'Analyze the visual border and surface properties of the primary UI card container in this image.\nThe image shows a s...ow-md).\n\nCard and canvas colors vary by theme; a visible boundary may come from a stroke, a shadow, or a tonal step.'
+
+tests/test_perceptual_protocol.py:23: AssertionError
+____ test_partial_accuracy_uses_observed_final_answers_and_reports_coverage ____
+
+    def test_partial_accuracy_uses_observed_final_answers_and_reports_coverage():
+        evaluator = BaselineEvaluator(mock=True)
+        result = evaluator._eval_single_task(dict(taskId="sample", imagePath="unused.png",
+            groundTruth={**TARGET, "theme": "white-on-gray"}), DEFAULT_PROMPT)
+        infrastructure = replace(result, task_id="unavailable", error="timeout", error_kind="unavailable")
+        card = evaluator.score_results([result, infrastructure], expected_task_count=10)
+>       assert card.total_tasks == 1
+E       AssertionError: assert 2 == 1
+E        +  where 2 = BorderBenchScorecard(total_tasks=2, overall_exact_match=20.0, has_border_accuracy=20.0, border_sides_accuracy=20.0, st...tatus='partial', cohort_sha256='066131d7552d82f6094e39be231c87eae592e2b0a5e4ff267422fc95f23b2f55', invalid_responses=0).total_tasks
+
+tests/test_perceptual_protocol.py:32: AssertionError
+______________ test_grading_purely_compares_perceptual_dimensions ______________
+
+    def test_grading_purely_compares_perceptual_dimensions():
+>       from baseline.evaluator import grade_border_prediction
+E       ImportError: cannot import name 'grade_border_prediction' from 'baseline.evaluator' (/mnt/disks/data/borderbench/baseline/evaluator.py)
+
+tests/test_perceptual_protocol.py:39: ImportError
+=========================== short test summary info ============================
+FAILED tests/test_perceptual_protocol.py::test_hidden_css_provenance_is_not_an_answer_category[ring-only]
+FAILED tests/test_perceptual_protocol.py::test_hidden_css_provenance_is_not_an_answer_category[stroke+shadow]
+FAILED tests/test_perceptual_protocol.py::test_prompt_defines_exact_coarse_versioned_anchors
+FAILED tests/test_perceptual_protocol.py::test_partial_accuracy_uses_observed_final_answers_and_reports_coverage
+FAILED tests/test_perceptual_protocol.py::test_grading_purely_compares_perceptual_dimensions
+5 failed in 0.11s

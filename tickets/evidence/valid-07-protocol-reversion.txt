@@ -1,0 +1,65 @@
+FFFFFFFF                                                                 [100%]
+=================================== FAILURES ===================================
+_______ test_hidden_css_provenance_is_not_an_answer_category[ring-only] ________
+tests/test_perceptual_protocol.py:17: in test_hidden_css_provenance_is_not_an_answer_category
+    with pytest.raises(ValueError, match="Invalid"):
+E   Failed: DID NOT RAISE ValueError
+_____ test_hidden_css_provenance_is_not_an_answer_category[stroke+shadow] ______
+tests/test_perceptual_protocol.py:17: in test_hidden_css_provenance_is_not_an_answer_category
+    with pytest.raises(ValueError, match="Invalid"):
+E   Failed: DID NOT RAISE ValueError
+______________ test_prompt_defines_exact_coarse_versioned_anchors ______________
+tests/test_perceptual_protocol.py:23: in test_prompt_defines_exact_coarse_versioned_anchors
+    assert token in DEFAULT_PROMPT
+E   AssertionError: assert '3.4.17' in 'Analyze the visual border and surface properties of the primary UI card container in this image.\nThe image shows a s...ow-md).\n\nCard and canvas colors vary by theme; a visible boundary may come from a stroke, a shadow, or a tonal step.'
+____ test_partial_accuracy_uses_observed_final_answers_and_reports_coverage ____
+tests/test_perceptual_protocol.py:32: in test_partial_accuracy_uses_observed_final_answers_and_reports_coverage
+    assert card.total_tasks == 1
+E   AssertionError: assert 2 == 1
+E    +  where 2 = BorderBenchScorecard(total_tasks=2, overall_exact_match=20.0, has_border_accuracy=20.0, border_sides_accuracy=20.0, st...tatus='partial', cohort_sha256='066131d7552d82f6094e39be231c87eae592e2b0a5e4ff267422fc95f23b2f55', invalid_responses=0).total_tasks
+______________ test_grading_purely_compares_perceptual_dimensions ______________
+tests/test_perceptual_protocol.py:39: in test_grading_purely_compares_perceptual_dimensions
+    from baseline.evaluator import grade_border_prediction
+E   ImportError: cannot import name 'grade_border_prediction' from 'baseline.evaluator' (/tmp/borderbench-protocol-control-57ff9ocv/baseline/evaluator.py)
+_ test_class_balance_diagnostics_expose_majority_predictors_and_absence_shortcuts _
+tests/test_statistics.py:5: in test_class_balance_diagnostics_expose_majority_predictors_and_absence_shortcuts
+    stats = importlib.import_module("baseline.statistics")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1206: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1178: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1142: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'baseline.statistics'
+_______________ test_empty_diagnostic_cohort_is_unknown_not_zero _______________
+tests/test_statistics.py:27: in test_empty_diagnostic_cohort_is_unknown_not_zero
+    stats = importlib.import_module("baseline.statistics")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.11/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1206: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1178: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1142: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'baseline.statistics'
+_______________ test_matched_blocks_require_complete_level_sets ________________
+tests/test_statistics.py:35: in test_matched_blocks_require_complete_level_sets
+    from baseline.statistics import matched_block_metrics
+E   ModuleNotFoundError: No module named 'baseline.statistics'
+=========================== short test summary info ============================
+FAILED tests/test_perceptual_protocol.py::test_hidden_css_provenance_is_not_an_answer_category[ring-only]
+FAILED tests/test_perceptual_protocol.py::test_hidden_css_provenance_is_not_an_answer_category[stroke+shadow]
+FAILED tests/test_perceptual_protocol.py::test_prompt_defines_exact_coarse_versioned_anchors
+FAILED tests/test_perceptual_protocol.py::test_partial_accuracy_uses_observed_final_answers_and_reports_coverage
+FAILED tests/test_perceptual_protocol.py::test_grading_purely_compares_perceptual_dimensions
+FAILED tests/test_statistics.py::test_class_balance_diagnostics_expose_majority_predictors_and_absence_shortcuts
+FAILED tests/test_statistics.py::test_empty_diagnostic_cohort_is_unknown_not_zero
+FAILED tests/test_statistics.py::test_matched_blocks_require_complete_level_sets
+8 failed in 0.14s
