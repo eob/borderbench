@@ -1,0 +1,5341 @@
+{
+  "validation_version": 2,
+  "valid": true,
+  "sample_count": 477,
+  "errors": [],
+  "distributions": {
+    "has_border": {
+      "False": 81,
+      "True": 396
+    },
+    "border_sides": {
+      "all-4": 234,
+      "bottom-only": 54,
+      "left-only": 54,
+      "none": 81,
+      "top-only": 54
+    },
+    "stroke_style": {
+      "dashed": 126,
+      "dotted": 99,
+      "none": 81,
+      "solid": 171
+    },
+    "stroke_width": {
+      "0px": 81,
+      "1px": 27,
+      "2px": 180,
+      "4px": 126,
+      "8px": 63
+    },
+    "corner_radius": {
+      "large": 90,
+      "medium": 234,
+      "pill": 54,
+      "sharp": 54,
+      "subtle": 45
+    },
+    "corner_uniformity": {
+      "all-corners": 405,
+      "asymmetric": 36,
+      "top-only": 36
+    },
+    "elevation": {
+      "floating-drop": 159,
+      "none": 159,
+      "subtle-drop": 159
+    },
+    "theme": {
+      "blue-tint-on-white": 159,
+      "gray-tint-on-white": 159,
+      "white-on-gray": 159
+    }
+  },
+  "shortcut_accuracy": {
+    "has_border": {
+      "majority_class": 0.8302,
+      "theme_lookup": 0.8302
+    },
+    "border_sides": {
+      "majority_class": 0.4906,
+      "theme_lookup": 0.4906
+    },
+    "stroke_style": {
+      "majority_class": 0.3585,
+      "theme_lookup": 0.3585
+    },
+    "stroke_width": {
+      "majority_class": 0.3774,
+      "theme_lookup": 0.3774
+    },
+    "corner_radius": {
+      "majority_class": 0.4906,
+      "theme_lookup": 0.4906
+    },
+    "corner_uniformity": {
+      "majority_class": 0.8491,
+      "theme_lookup": 0.8491
+    },
+    "elevation": {
+      "majority_class": 0.3333,
+      "theme_lookup": 0.3333
+    },
+    "theme": {
+      "majority_class": 0.3333,
+      "theme_lookup": 1.0
+    }
+  },
+  "manifest_sha256": "4e002e7efb02446843fe11b60755137bdfb419f2861315bcec2d4e839fe617a2",
+  "pixel_evidence": {
+    "borderbench-001": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-002": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-003": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-004": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-005": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-006": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-007": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-008": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-009": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-010": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-011": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-012": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-013": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-014": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-015": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-016": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-017": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-018": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-019": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-020": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-021": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-022": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-023": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-024": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-025": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-026": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-027": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-028": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-029": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-030": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-031": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-032": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-033": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-034": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-035": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-036": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-037": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-038": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-039": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-040": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-041": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-042": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-043": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-044": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-045": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-046": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-047": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-048": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-049": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-050": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-051": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-052": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-053": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-054": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-055": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-056": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-057": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-058": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-059": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-060": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-061": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-062": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-063": {
+      "border_widths_physical_px": {
+        "top": 2,
+        "bottom": 2,
+        "left": 2,
+        "right": 2
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-064": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-065": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-066": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-067": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-068": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-069": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-070": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-071": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-072": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-073": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-074": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-075": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-076": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-077": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-078": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-079": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-080": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-081": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-082": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-083": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-084": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-085": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-086": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-087": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-088": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-089": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-090": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-091": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-092": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-093": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-094": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-095": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-096": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-097": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-098": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-099": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-100": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-101": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-102": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-103": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-104": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-105": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-106": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-107": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-108": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-109": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-110": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-111": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-112": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-113": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-114": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-115": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-116": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-117": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-118": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-119": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-120": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-121": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-122": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-123": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-124": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-125": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-126": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-127": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-128": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-129": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-130": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-131": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-132": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-133": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-134": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-135": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-136": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-137": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-138": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-139": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-140": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-141": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-142": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-143": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-144": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-145": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-146": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-147": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-148": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-149": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-150": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-151": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-152": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-153": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-154": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-155": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-156": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-157": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-158": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-159": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-160": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-161": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-162": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-163": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-164": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-165": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-166": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-167": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-168": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-169": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-170": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-171": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-172": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-173": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-174": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-175": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-176": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-177": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-178": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-179": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-180": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 4,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-181": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-182": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-183": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-184": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-185": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-186": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-187": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-188": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-189": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 4,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-190": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-191": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-192": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-193": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-194": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-195": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-196": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-197": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-198": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41458,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-199": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-200": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 10264,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 6
+    },
+    "borderbench-201": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 43742,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 36
+    },
+    "borderbench-202": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-203": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 10264,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 6
+    },
+    "borderbench-204": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 43742,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 36
+    },
+    "borderbench-205": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-206": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 10264,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 6
+    },
+    "borderbench-207": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 43742,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 36
+    },
+    "borderbench-208": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-209": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12682,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-210": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41920,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-211": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-212": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12682,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-213": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41920,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-214": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-215": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12682,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-216": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41920,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-217": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-218": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 11404,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-219": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 39979,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-220": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-221": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 11404,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-222": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 39979,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-223": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-224": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 11404,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-225": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 39979,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-226": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-227": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 4422,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-228": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 20464,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-229": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-230": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 4422,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-231": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 20464,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-232": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-233": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 4422,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-234": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 20464,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-235": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-236": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 10264,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 6
+    },
+    "borderbench-237": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 43742,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 36
+    },
+    "borderbench-238": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-239": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 10264,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 6
+    },
+    "borderbench-240": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 43742,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 36
+    },
+    "borderbench-241": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-242": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 10264,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 6
+    },
+    "borderbench-243": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 43742,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 36
+    },
+    "borderbench-244": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-245": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 12682,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-246": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 41920,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-247": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-248": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 12682,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-249": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 41920,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-250": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-251": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 12682,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-252": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 41920,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-253": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-254": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 11404,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-255": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 39979,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-256": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-257": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 11404,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-258": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 39979,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-259": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-260": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 11404,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-261": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 39979,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-262": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-263": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 4422,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-264": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 20464,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-265": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-266": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 4422,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-267": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 20464,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-268": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-269": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 4422,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-270": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 20464,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-271": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-272": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 10264,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 6
+    },
+    "borderbench-273": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 43742,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 36
+    },
+    "borderbench-274": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-275": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 10264,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 6
+    },
+    "borderbench-276": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 43742,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 36
+    },
+    "borderbench-277": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-278": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 10264,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 6
+    },
+    "borderbench-279": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 43742,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 36
+    },
+    "borderbench-280": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-281": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 12682,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-282": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 41920,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-283": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-284": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 12682,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-285": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 41920,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-286": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-287": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 12682,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-288": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 41920,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-289": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-290": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 11404,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-291": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 39979,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-292": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-293": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 11404,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-294": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 39979,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-295": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-296": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 11404,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-297": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 39979,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-298": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-299": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 4422,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-300": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 20464,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-301": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-302": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 4422,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-303": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 20464,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-304": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-305": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 4422,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-306": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 20464,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-307": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-308": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12534,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-309": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41763,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-310": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-311": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12534,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-312": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41763,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-313": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-314": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12534,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-315": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41763,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-316": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-317": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12370,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-318": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41610,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-319": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-320": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12370,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-321": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41610,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-322": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-323": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12370,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-324": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41610,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-325": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-326": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 12534,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-327": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 41763,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-328": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-329": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 12534,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-330": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 41763,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-331": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-332": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 12534,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-333": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 41763,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-334": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-335": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 12370,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-336": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 41610,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-337": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-338": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 12370,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-339": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 41610,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-340": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-341": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 12370,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-342": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 41610,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-343": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-344": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-345": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41302,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-346": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-347": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-348": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41302,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-349": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-350": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-351": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41302,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-352": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-353": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 11805,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-354": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 40640,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-355": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-356": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 11805,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-357": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 40640,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-358": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-359": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 11805,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-360": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 40640,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-361": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-362": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-363": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 41302,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-364": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-365": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-366": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 41302,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-367": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-368": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 12206,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-369": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 41302,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-370": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-371": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 11805,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-372": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 40640,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-373": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-374": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 11805,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-375": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 40640,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-376": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-377": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 11805,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-378": {
+      "border_widths_physical_px": {
+        "top": 4,
+        "bottom": 4,
+        "left": 4,
+        "right": 4
+      },
+      "shadow_changed_pixels": 40640,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-379": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-380": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 10264,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 6
+    },
+    "borderbench-381": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 43742,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 36
+    },
+    "borderbench-382": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-383": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 10264,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 6
+    },
+    "borderbench-384": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 43742,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 36
+    },
+    "borderbench-385": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-386": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 10264,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 6
+    },
+    "borderbench-387": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 16,
+        "left": 16,
+        "right": 16
+      },
+      "shadow_changed_pixels": 43742,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 36
+    },
+    "borderbench-388": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-389": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 11404,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-390": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 39979,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-391": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-392": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 11404,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-393": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 39979,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-394": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-395": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 11404,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-396": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 8,
+        "left": 8,
+        "right": 8
+      },
+      "shadow_changed_pixels": 39979,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-397": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 16,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-398": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 16,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12682,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-399": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 16,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41920,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-400": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 16,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-401": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 16,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12682,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-402": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 16,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41920,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-403": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 16,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-404": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 16,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12682,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-405": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 16,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41920,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-406": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 8,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-407": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 8,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 11404,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-408": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 8,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 39979,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-409": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 8,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-410": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 8,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 11404,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-411": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 8,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 39979,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-412": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 8,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-413": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 8,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 11404,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-414": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 8,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 39979,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-415": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 8,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-416": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 8,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 4422,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-417": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 8,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 20464,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-418": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 8,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-419": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 8,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 4422,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-420": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 8,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 20464,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-421": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 8,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-422": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 8,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 4422,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-423": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 8,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 20464,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-424": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 16,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-425": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 16,
+        "right": 0
+      },
+      "shadow_changed_pixels": 11404,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-426": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 16,
+        "right": 0
+      },
+      "shadow_changed_pixels": 39979,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-427": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 16,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-428": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 16,
+        "right": 0
+      },
+      "shadow_changed_pixels": 11404,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-429": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 16,
+        "right": 0
+      },
+      "shadow_changed_pixels": 39979,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-430": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 16,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-431": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 16,
+        "right": 0
+      },
+      "shadow_changed_pixels": 11404,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-432": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 16,
+        "right": 0
+      },
+      "shadow_changed_pixels": 39979,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-433": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 8,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-434": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 8,
+        "right": 0
+      },
+      "shadow_changed_pixels": 4422,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-435": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 8,
+        "right": 0
+      },
+      "shadow_changed_pixels": 20464,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-436": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 8,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-437": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 8,
+        "right": 0
+      },
+      "shadow_changed_pixels": 4422,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-438": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 8,
+        "right": 0
+      },
+      "shadow_changed_pixels": 20464,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-439": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 8,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-440": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 8,
+        "right": 0
+      },
+      "shadow_changed_pixels": 4422,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-441": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 8,
+        "right": 0
+      },
+      "shadow_changed_pixels": 20464,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-442": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 8,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-443": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 8,
+        "right": 0
+      },
+      "shadow_changed_pixels": 10264,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 6
+    },
+    "borderbench-444": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 8,
+        "right": 0
+      },
+      "shadow_changed_pixels": 43742,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 36
+    },
+    "borderbench-445": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 8,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-446": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 8,
+        "right": 0
+      },
+      "shadow_changed_pixels": 10264,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 6
+    },
+    "borderbench-447": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 8,
+        "right": 0
+      },
+      "shadow_changed_pixels": 43742,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 36
+    },
+    "borderbench-448": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 8,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-449": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 8,
+        "right": 0
+      },
+      "shadow_changed_pixels": 10264,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 6
+    },
+    "borderbench-450": {
+      "border_widths_physical_px": {
+        "top": 0,
+        "bottom": 0,
+        "left": 8,
+        "right": 0
+      },
+      "shadow_changed_pixels": 43742,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 36
+    },
+    "borderbench-451": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-452": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 4422,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-453": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 20464,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-454": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-455": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 4422,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-456": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 20464,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-457": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-458": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 4422,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-459": {
+      "border_widths_physical_px": {
+        "top": 16,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 20464,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-460": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-461": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 10264,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 6
+    },
+    "borderbench-462": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 43742,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 36
+    },
+    "borderbench-463": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-464": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 10264,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 6
+    },
+    "borderbench-465": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 43742,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 36
+    },
+    "borderbench-466": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-467": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 10264,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 6
+    },
+    "borderbench-468": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 43742,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 36
+    },
+    "borderbench-469": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-470": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12682,
+      "shadow_max_channel_delta": 26,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-471": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41920,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-472": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-473": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12682,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-474": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41920,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    },
+    "borderbench-475": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 0,
+      "shadow_max_channel_delta": 0,
+      "shadow_extent_physical_px": 0
+    },
+    "borderbench-476": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 12682,
+      "shadow_max_channel_delta": 27,
+      "shadow_extent_physical_px": 7
+    },
+    "borderbench-477": {
+      "border_widths_physical_px": {
+        "top": 8,
+        "bottom": 0,
+        "left": 0,
+        "right": 0
+      },
+      "shadow_changed_pixels": 41920,
+      "shadow_max_channel_delta": 32,
+      "shadow_extent_physical_px": 35
+    }
+  },
+  "font_asset_count": 1,
+  "unique_pixel_count": 477,
+  "error_counts": {}
+}
