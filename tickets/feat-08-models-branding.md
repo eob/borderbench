@@ -170,3 +170,17 @@ The 128-image extension was gracefully checkpointed after 463 total responses
 finished before the runner exited with its expected interruption status. This
 changes execution scheduling only; the same run ID, cumulative budget, selected
 prefix, prompt, output caps, and model configurations are retained on resume.
+
+## Completed first batch
+
+All 13 models completed the same predetermined **128/477 images**, producing
+**1,664 unique final responses in 1,664 attempts**. There were no malformed
+answers, infrastructure failures, duplicate final pairs, unmetered calls, or
+estimated retry reservations. Recorded token cost is **$21.2793219**, below the
+$25 cumulative guard. All three invocations record clean committed source.
+SQLite integrity passed and checkpoint/ledger counts agree exactly. The source
+run is committed before sealing its 13-model common cohort.
+
+The higher-concurrency review independently checked 186 new responses across
+all models, confirming raw/protocol validation, token pricing, output caps,
+correct invocation provenance and no duplicate final pairs.
