@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BorderBench 1.1.0</title>
+<title>BorderBench 1.2.0</title>
 <style>
 body { font-family: Arial, sans-serif; margin: 0 auto; max-width: 1200px; padding: 24px; color: #0f172a; }
 small { display: block; color: #64748b; font-weight: 400; }
@@ -18,10 +18,11 @@ code { font-size: 12px; }
 </style>
 </head>
 <body>
-<h1>BorderBench 1.1.0</h1>
-<p>120 inputs · dataset <code>506b7372566e</code> · protocol <code>36f674d3004f</code> · gate passed</p>
-<p>Shared cohort: 120 inputs measured by every listed configuration. Repeats keep the earliest observation; repeat costs stay in the ledger.</p>
-<div class="table-scroll"><table><thead><tr><th scope="col">Model</th><th scope="col">All seven correct</th><th scope="col">Border presence</th><th scope="col">Edge selectivity</th><th scope="col">Stroke style</th><th scope="col">Stroke width</th><th scope="col">Corner radius</th><th scope="col">Corner uniformity</th><th scope="col">Elevation</th></tr></thead><tbody><tr><th scope="row">Gemini 3.1 Pro Preview<small>google · 120/120 · 1 run(s)</small></th><td>52.5%</td><td>86.7%</td><td>83.3%</td><td>85.8%</td><td>84.2%</td><td>89.2%</td><td>86.7%</td><td>77.5%</td></tr><tr><th scope="row">Gemini 3.8 Flash<small>google · 120/120 · 1 run(s)</small></th><td>47.5%</td><td>90.0%</td><td>89.2%</td><td>89.2%</td><td>85.0%</td><td>72.5%</td><td>90.8%</td><td>80.8%</td></tr><tr><th scope="row">Claude Fable 5.1<small>anthropic · 120/120 · 1 run(s)</small></th><td>39.2%</td><td>90.0%</td><td>90.0%</td><td>90.0%</td><td>61.7%</td><td>89.2%</td><td>87.5%</td><td>73.3%</td></tr><tr><th scope="row">Claude Opus 5<small>anthropic · 120/120 · 1 run(s)</small></th><td>19.2%</td><td>89.2%</td><td>85.0%</td><td>85.8%</td><td>68.3%</td><td>63.3%</td><td>85.0%</td><td>61.7%</td></tr><tr><th scope="row">Gemini 3.5 Flash-Lite<small>google · 120/120 · 1 run(s)</small></th><td>18.3%</td><td>72.5%</td><td>63.3%</td><td>67.5%</td><td>57.5%</td><td>59.2%</td><td>84.2%</td><td>69.2%</td></tr><tr><th scope="row">Claude Sonnet 5<small>anthropic · 120/120 · 1 run(s)</small></th><td>8.3%</td><td>84.2%</td><td>76.7%</td><td>83.3%</td><td>61.7%</td><td>52.5%</td><td>84.2%</td><td>27.5%</td></tr><tr><th scope="row">Claude Haiku 4.5<small>anthropic · 120/120 · 1 run(s)</small></th><td>5.8%</td><td>81.7%</td><td>72.5%</td><td>75.8%</td><td>53.3%</td><td>47.5%</td><td>85.0%</td><td>29.2%</td></tr></tbody></table></div>
+<h1>BorderBench 1.2.0</h1>
+<p>477 inputs · dataset <code>85a9c8d4d23a</code> · protocol <code>d22d04185da1</code> · gate passed</p>
+<p>Shared cohort: 0 inputs measured by every configuration with observations. All comparison scores and breakdowns use this same cohort; unmeasured configurations remain unranked. Repeats keep the earliest final observation; total costs include every attempt. Per-model observed scores and confusion matrices are available in the structured export.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Model</th><th scope="col">All seven correct</th><th scope="col">Border presence</th><th scope="col">Edge selectivity</th><th scope="col">Stroke style</th><th scope="col">Stroke width</th><th scope="col">Corner radius</th><th scope="col">Corner uniformity</th><th scope="col">Elevation</th></tr></thead><tbody><tr><td colspan="9">No measurements yet.</td></tr></tbody></table></div>
+
 
 <section><h2>Edge selectivity</h2><p>Which card edges carry a stroke.</p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 476" role="img">
 <title>Edge selectivity</title>
@@ -29,306 +30,306 @@ code { font-size: 12px; }
 <g>
 <rect x="12" y="12" width="280" height="220" rx="8" fill="#fff"/>
 <image x="20" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-001.png"/>
-<text x="24" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">all-4</text>
-<text x="24" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
+<text x="24" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">none</text>
+<text x="24" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="304" y="12" width="280" height="220" rx="8" fill="#fff"/>
-<image x="312" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-006.png"/>
-<text x="316" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">none</text>
-<text x="316" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
+<image x="312" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-010.png"/>
+<text x="316" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">all-4</text>
+<text x="316" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
 </g>
 <g>
 <rect x="596" y="12" width="280" height="220" rx="8" fill="#fff"/>
-<image x="604" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-016.png"/>
+<image x="604" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-118.png"/>
 <text x="608" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">bottom-only</text>
-<text x="608" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
+<text x="608" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">2px solid</text>
 </g>
 <g>
 <rect x="888" y="12" width="280" height="220" rx="8" fill="#fff"/>
-<image x="896" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-017.png"/>
+<image x="896" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-127.png"/>
 <text x="900" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">left-only</text>
-<text x="900" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">4px solid</text>
+<text x="900" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">2px solid</text>
 </g>
 <g>
 <rect x="12" y="244" width="280" height="220" rx="8" fill="#fff"/>
-<image x="20" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-018.png"/>
+<image x="20" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-136.png"/>
 <text x="24" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">top-only</text>
 <text x="24" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">2px solid</text>
 </g>
 <g>
 <rect x="304" y="244" width="280" height="220" rx="8" fill="#fff"/>
 <image x="312" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-002.png"/>
-<text x="316" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">all-4</text>
-<text x="316" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
+<text x="316" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">none</text>
+<text x="316" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="596" y="244" width="280" height="220" rx="8" fill="#fff"/>
-<image x="604" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-019.png"/>
-<text x="608" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">none</text>
-<text x="608" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
+<image x="604" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-011.png"/>
+<text x="608" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">all-4</text>
+<text x="608" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
 </g>
 <g>
 <rect x="888" y="244" width="280" height="220" rx="8" fill="#fff"/>
-<image x="896" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-071.png"/>
+<image x="896" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-119.png"/>
 <text x="900" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">bottom-only</text>
-<text x="900" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">8px dotted</text>
+<text x="900" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">2px solid</text>
 </g>
-</svg><div class="table-scroll"><table><thead><tr><th scope="col">Input group<small>All seven correct</small></th><th scope="col">Gemini 3.1 Pro Preview</th><th scope="col">Gemini 3.8 Flash</th><th scope="col">Claude Fable 5.1</th><th scope="col">Claude Opus 5</th><th scope="col">Gemini 3.5 Flash-Lite</th><th scope="col">Claude Sonnet 5</th><th scope="col">Claude Haiku 4.5</th></tr></thead><tbody><tr><th scope="row">all-4<small>47 inputs</small></th><td>61.7%<small>n=47</small></td><td>57.5%<small>n=47</small></td><td>42.5%<small>n=47</small></td><td>17.0%<small>n=47</small></td><td>27.7%<small>n=47</small></td><td>8.5%<small>n=47</small></td><td>6.4%<small>n=47</small></td></tr><tr><th scope="row">bottom-only<small>12 inputs</small></th><td>58.3%<small>n=12</small></td><td>58.3%<small>n=12</small></td><td>58.3%<small>n=12</small></td><td>16.7%<small>n=12</small></td><td>16.7%<small>n=12</small></td><td>0.0%<small>n=12</small></td><td>0.0%<small>n=12</small></td></tr><tr><th scope="row">left-only<small>12 inputs</small></th><td>50.0%<small>n=12</small></td><td>41.7%<small>n=12</small></td><td>33.3%<small>n=12</small></td><td>16.7%<small>n=12</small></td><td>0.0%<small>n=12</small></td><td>8.3%<small>n=12</small></td><td>0.0%<small>n=12</small></td></tr><tr><th scope="row">none<small>37 inputs</small></th><td>48.6%<small>n=37</small></td><td>40.5%<small>n=37</small></td><td>29.7%<small>n=37</small></td><td>27.0%<small>n=37</small></td><td>18.9%<small>n=37</small></td><td>13.5%<small>n=37</small></td><td>10.8%<small>n=37</small></td></tr><tr><th scope="row">top-only<small>12 inputs</small></th><td>25.0%<small>n=12</small></td><td>25.0%<small>n=12</small></td><td>41.7%<small>n=12</small></td><td>8.3%<small>n=12</small></td><td>0.0%<small>n=12</small></td><td>0.0%<small>n=12</small></td><td>0.0%<small>n=12</small></td></tr></tbody></table></div></section><section><h2>Stroke style</h2><p>Solid, dashed, dotted, or no stroke pattern.</p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 476" role="img">
+</svg><div class="table-scroll"><table><thead><tr><th scope="col">Input group<small>All seven correct</small></th></tr></thead><tbody><tr><th scope="row">all-4<small>234 inputs</small></th></tr><tr><th scope="row">bottom-only<small>54 inputs</small></th></tr><tr><th scope="row">left-only<small>54 inputs</small></th></tr><tr><th scope="row">none<small>81 inputs</small></th></tr><tr><th scope="row">top-only<small>54 inputs</small></th></tr></tbody></table></div></section><section><h2>Stroke style</h2><p>Solid, dashed, dotted, or no stroke pattern.</p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 476" role="img">
 <title>Stroke style</title>
 <rect width="100%" height="100%" fill="#f1f5f9"/>
 <g>
 <rect x="12" y="12" width="280" height="220" rx="8" fill="#fff"/>
 <image x="20" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-001.png"/>
-<text x="24" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">solid</text>
-<text x="24" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
+<text x="24" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">none</text>
+<text x="24" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="304" y="12" width="280" height="220" rx="8" fill="#fff"/>
-<image x="312" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-006.png"/>
-<text x="316" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">none</text>
-<text x="316" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
+<image x="312" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-010.png"/>
+<text x="316" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">solid</text>
+<text x="316" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
 </g>
 <g>
 <rect x="596" y="12" width="280" height="220" rx="8" fill="#fff"/>
-<image x="604" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-012.png"/>
+<image x="604" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-046.png"/>
 <text x="608" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">dashed</text>
-<text x="608" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">2px dashed</text>
+<text x="608" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px dashed</text>
 </g>
 <g>
 <rect x="888" y="12" width="280" height="220" rx="8" fill="#fff"/>
-<image x="896" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-013.png"/>
+<image x="896" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-055.png"/>
 <text x="900" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">dotted</text>
-<text x="900" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">2px dotted</text>
+<text x="900" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px dotted</text>
 </g>
 <g>
 <rect x="12" y="244" width="280" height="220" rx="8" fill="#fff"/>
 <image x="20" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-002.png"/>
-<text x="24" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">solid</text>
-<text x="24" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
+<text x="24" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">none</text>
+<text x="24" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="304" y="244" width="280" height="220" rx="8" fill="#fff"/>
-<image x="312" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-014.png"/>
-<text x="316" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">dotted</text>
-<text x="316" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">4px dotted</text>
+<image x="312" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-011.png"/>
+<text x="316" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">solid</text>
+<text x="316" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
 </g>
 <g>
 <rect x="596" y="244" width="280" height="220" rx="8" fill="#fff"/>
-<image x="604" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-019.png"/>
-<text x="608" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">none</text>
-<text x="608" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
+<image x="604" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-047.png"/>
+<text x="608" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">dashed</text>
+<text x="608" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px dashed</text>
 </g>
 <g>
 <rect x="888" y="244" width="280" height="220" rx="8" fill="#fff"/>
-<image x="896" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-047.png"/>
-<text x="900" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">dashed</text>
-<text x="900" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">2px dashed</text>
+<image x="896" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-056.png"/>
+<text x="900" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">dotted</text>
+<text x="900" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px dotted</text>
 </g>
-</svg><div class="table-scroll"><table><thead><tr><th scope="col">Input group<small>All seven correct</small></th><th scope="col">Gemini 3.1 Pro Preview</th><th scope="col">Gemini 3.8 Flash</th><th scope="col">Claude Fable 5.1</th><th scope="col">Claude Opus 5</th><th scope="col">Gemini 3.5 Flash-Lite</th><th scope="col">Claude Sonnet 5</th><th scope="col">Claude Haiku 4.5</th></tr></thead><tbody><tr><th scope="row">dashed<small>18 inputs</small></th><td>55.6%<small>n=18</small></td><td>38.9%<small>n=18</small></td><td>61.1%<small>n=18</small></td><td>27.8%<small>n=18</small></td><td>5.6%<small>n=18</small></td><td>11.1%<small>n=18</small></td><td>5.6%<small>n=18</small></td></tr><tr><th scope="row">dotted<small>16 inputs</small></th><td>43.8%<small>n=16</small></td><td>43.8%<small>n=16</small></td><td>56.2%<small>n=16</small></td><td>6.2%<small>n=16</small></td><td>0.0%<small>n=16</small></td><td>12.5%<small>n=16</small></td><td>0.0%<small>n=16</small></td></tr><tr><th scope="row">none<small>37 inputs</small></th><td>48.6%<small>n=37</small></td><td>40.5%<small>n=37</small></td><td>29.7%<small>n=37</small></td><td>27.0%<small>n=37</small></td><td>18.9%<small>n=37</small></td><td>13.5%<small>n=37</small></td><td>10.8%<small>n=37</small></td></tr><tr><th scope="row">solid<small>49 inputs</small></th><td>57.1%<small>n=49</small></td><td>57.1%<small>n=49</small></td><td>32.6%<small>n=49</small></td><td>14.3%<small>n=49</small></td><td>28.6%<small>n=49</small></td><td>2.0%<small>n=49</small></td><td>4.1%<small>n=49</small></td></tr></tbody></table></div></section><section><h2>Stroke width</h2><p>Hairline 1px through heavy 8px strokes.</p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 476" role="img">
+</svg><div class="table-scroll"><table><thead><tr><th scope="col">Input group<small>All seven correct</small></th></tr></thead><tbody><tr><th scope="row">dashed<small>126 inputs</small></th></tr><tr><th scope="row">dotted<small>99 inputs</small></th></tr><tr><th scope="row">none<small>81 inputs</small></th></tr><tr><th scope="row">solid<small>171 inputs</small></th></tr></tbody></table></div></section><section><h2>Stroke width</h2><p>Hairline 1px through heavy 8px strokes.</p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 476" role="img">
 <title>Stroke width</title>
 <rect width="100%" height="100%" fill="#f1f5f9"/>
 <g>
 <rect x="12" y="12" width="280" height="220" rx="8" fill="#fff"/>
 <image x="20" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-001.png"/>
-<text x="24" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">1px</text>
-<text x="24" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
+<text x="24" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">0px</text>
+<text x="24" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="304" y="12" width="280" height="220" rx="8" fill="#fff"/>
-<image x="312" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-006.png"/>
-<text x="316" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">0px</text>
-<text x="316" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
+<image x="312" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-010.png"/>
+<text x="316" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">1px</text>
+<text x="316" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
 </g>
 <g>
 <rect x="596" y="12" width="280" height="220" rx="8" fill="#fff"/>
-<image x="604" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-008.png"/>
+<image x="604" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-019.png"/>
 <text x="608" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">2px</text>
 <text x="608" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">2px solid</text>
 </g>
 <g>
 <rect x="888" y="12" width="280" height="220" rx="8" fill="#fff"/>
-<image x="896" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-009.png"/>
+<image x="896" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-028.png"/>
 <text x="900" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">4px</text>
 <text x="900" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">4px solid</text>
 </g>
 <g>
 <rect x="12" y="244" width="280" height="220" rx="8" fill="#fff"/>
-<image x="20" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-010.png"/>
+<image x="20" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-037.png"/>
 <text x="24" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">8px</text>
 <text x="24" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">8px solid</text>
 </g>
 <g>
 <rect x="304" y="244" width="280" height="220" rx="8" fill="#fff"/>
 <image x="312" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-002.png"/>
-<text x="316" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">1px</text>
-<text x="316" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
+<text x="316" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">0px</text>
+<text x="316" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="596" y="244" width="280" height="220" rx="8" fill="#fff"/>
 <image x="604" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-011.png"/>
-<text x="608" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">2px</text>
-<text x="608" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">2px solid</text>
+<text x="608" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">1px</text>
+<text x="608" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
 </g>
 <g>
 <rect x="888" y="244" width="280" height="220" rx="8" fill="#fff"/>
-<image x="896" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-014.png"/>
-<text x="900" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">4px</text>
-<text x="900" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">4px dotted</text>
+<image x="896" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-020.png"/>
+<text x="900" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">2px</text>
+<text x="900" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">2px solid</text>
 </g>
-</svg><div class="table-scroll"><table><thead><tr><th scope="col">Input group<small>All seven correct</small></th><th scope="col">Gemini 3.1 Pro Preview</th><th scope="col">Gemini 3.8 Flash</th><th scope="col">Claude Fable 5.1</th><th scope="col">Claude Opus 5</th><th scope="col">Gemini 3.5 Flash-Lite</th><th scope="col">Claude Sonnet 5</th><th scope="col">Claude Haiku 4.5</th></tr></thead><tbody><tr><th scope="row">0px<small>37 inputs</small></th><td>48.6%<small>n=37</small></td><td>40.5%<small>n=37</small></td><td>29.7%<small>n=37</small></td><td>27.0%<small>n=37</small></td><td>18.9%<small>n=37</small></td><td>13.5%<small>n=37</small></td><td>10.8%<small>n=37</small></td></tr><tr><th scope="row">1px<small>30 inputs</small></th><td>50.0%<small>n=30</small></td><td>63.3%<small>n=30</small></td><td>53.3%<small>n=30</small></td><td>10.0%<small>n=30</small></td><td>23.3%<small>n=30</small></td><td>6.7%<small>n=30</small></td><td>6.7%<small>n=30</small></td></tr><tr><th scope="row">2px<small>28 inputs</small></th><td>53.6%<small>n=28</small></td><td>35.7%<small>n=28</small></td><td>17.9%<small>n=28</small></td><td>10.7%<small>n=28</small></td><td>28.6%<small>n=28</small></td><td>7.1%<small>n=28</small></td><td>3.6%<small>n=28</small></td></tr><tr><th scope="row">4px<small>16 inputs</small></th><td>62.5%<small>n=16</small></td><td>50.0%<small>n=16</small></td><td>43.8%<small>n=16</small></td><td>31.2%<small>n=16</small></td><td>0.0%<small>n=16</small></td><td>6.2%<small>n=16</small></td><td>0.0%<small>n=16</small></td></tr><tr><th scope="row">8px<small>9 inputs</small></th><td>55.6%<small>n=9</small></td><td>55.6%<small>n=9</small></td><td>88.9%<small>n=9</small></td><td>22.2%<small>n=9</small></td><td>0.0%<small>n=9</small></td><td>0.0%<small>n=9</small></td><td>0.0%<small>n=9</small></td></tr></tbody></table></div></section><section><h2>Corner radius</h2><p>Sharp corners through full pill capsules.</p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 476" role="img">
+</svg><div class="table-scroll"><table><thead><tr><th scope="col">Input group<small>All seven correct</small></th></tr></thead><tbody><tr><th scope="row">0px<small>81 inputs</small></th></tr><tr><th scope="row">1px<small>27 inputs</small></th></tr><tr><th scope="row">2px<small>180 inputs</small></th></tr><tr><th scope="row">4px<small>126 inputs</small></th></tr><tr><th scope="row">8px<small>63 inputs</small></th></tr></tbody></table></div></section><section><h2>Corner radius</h2><p>Sharp corners through full pill capsules.</p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 476" role="img">
 <title>Corner radius</title>
 <rect width="100%" height="100%" fill="#f1f5f9"/>
 <g>
 <rect x="12" y="12" width="280" height="220" rx="8" fill="#fff"/>
 <image x="20" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-001.png"/>
-<text x="24" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">sharp</text>
-<text x="24" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
+<text x="24" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">medium</text>
+<text x="24" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="304" y="12" width="280" height="220" rx="8" fill="#fff"/>
-<image x="312" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-002.png"/>
-<text x="316" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">subtle</text>
-<text x="316" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
+<image x="312" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-199.png"/>
+<text x="316" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">sharp</text>
+<text x="316" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="596" y="12" width="280" height="220" rx="8" fill="#fff"/>
-<image x="604" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-003.png"/>
-<text x="608" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">medium</text>
-<text x="608" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
+<image x="604" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-208.png"/>
+<text x="608" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">subtle</text>
+<text x="608" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="888" y="12" width="280" height="220" rx="8" fill="#fff"/>
-<image x="896" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-004.png"/>
+<image x="896" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-217.png"/>
 <text x="900" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">large</text>
-<text x="900" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
+<text x="900" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="12" y="244" width="280" height="220" rx="8" fill="#fff"/>
-<image x="20" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-005.png"/>
+<image x="20" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-226.png"/>
 <text x="24" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">pill</text>
-<text x="24" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
+<text x="24" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="304" y="244" width="280" height="220" rx="8" fill="#fff"/>
-<image x="312" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-006.png"/>
+<image x="312" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-002.png"/>
 <text x="316" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">medium</text>
 <text x="316" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="596" y="244" width="280" height="220" rx="8" fill="#fff"/>
-<image x="604" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-015.png"/>
+<image x="604" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-200.png"/>
 <text x="608" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">sharp</text>
-<text x="608" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
+<text x="608" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="888" y="244" width="280" height="220" rx="8" fill="#fff"/>
-<image x="896" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-021.png"/>
-<text x="900" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">large</text>
-<text x="900" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
+<image x="896" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-209.png"/>
+<text x="900" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">subtle</text>
+<text x="900" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
-</svg><div class="table-scroll"><table><thead><tr><th scope="col">Input group<small>All seven correct</small></th><th scope="col">Gemini 3.1 Pro Preview</th><th scope="col">Gemini 3.8 Flash</th><th scope="col">Claude Fable 5.1</th><th scope="col">Claude Opus 5</th><th scope="col">Gemini 3.5 Flash-Lite</th><th scope="col">Claude Sonnet 5</th><th scope="col">Claude Haiku 4.5</th></tr></thead><tbody><tr><th scope="row">large<small>30 inputs</small></th><td>63.3%<small>n=30</small></td><td>60.0%<small>n=30</small></td><td>50.0%<small>n=30</small></td><td>20.0%<small>n=30</small></td><td>33.3%<small>n=30</small></td><td>13.3%<small>n=30</small></td><td>3.3%<small>n=30</small></td></tr><tr><th scope="row">medium<small>36 inputs</small></th><td>52.8%<small>n=36</small></td><td>36.1%<small>n=36</small></td><td>33.3%<small>n=36</small></td><td>8.3%<small>n=36</small></td><td>16.7%<small>n=36</small></td><td>2.8%<small>n=36</small></td><td>13.9%<small>n=36</small></td></tr><tr><th scope="row">pill<small>15 inputs</small></th><td>40.0%<small>n=15</small></td><td>60.0%<small>n=15</small></td><td>60.0%<small>n=15</small></td><td>33.3%<small>n=15</small></td><td>13.3%<small>n=15</small></td><td>26.7%<small>n=15</small></td><td>0.0%<small>n=15</small></td></tr><tr><th scope="row">sharp<small>20 inputs</small></th><td>70.0%<small>n=20</small></td><td>70.0%<small>n=20</small></td><td>25.0%<small>n=20</small></td><td>35.0%<small>n=20</small></td><td>20.0%<small>n=20</small></td><td>5.0%<small>n=20</small></td><td>5.0%<small>n=20</small></td></tr><tr><th scope="row">subtle<small>19 inputs</small></th><td>26.3%<small>n=19</small></td><td>15.8%<small>n=19</small></td><td>31.6%<small>n=19</small></td><td>10.5%<small>n=19</small></td><td>0.0%<small>n=19</small></td><td>0.0%<small>n=19</small></td><td>0.0%<small>n=19</small></td></tr></tbody></table></div></section><section><h2>Corner uniformity</h2><p>Equal, top-only, or asymmetric corner curvature.</p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 476" role="img">
+</svg><div class="table-scroll"><table><thead><tr><th scope="col">Input group<small>All seven correct</small></th></tr></thead><tbody><tr><th scope="row">large<small>90 inputs</small></th></tr><tr><th scope="row">medium<small>234 inputs</small></th></tr><tr><th scope="row">pill<small>54 inputs</small></th></tr><tr><th scope="row">sharp<small>54 inputs</small></th></tr><tr><th scope="row">subtle<small>45 inputs</small></th></tr></tbody></table></div></section><section><h2>Corner uniformity</h2><p>Equal, top-only, or asymmetric corner curvature.</p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 476" role="img">
 <title>Corner uniformity</title>
 <rect width="100%" height="100%" fill="#f1f5f9"/>
 <g>
 <rect x="12" y="12" width="280" height="220" rx="8" fill="#fff"/>
 <image x="20" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-001.png"/>
 <text x="24" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">all-corners</text>
-<text x="24" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
+<text x="24" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="304" y="12" width="280" height="220" rx="8" fill="#fff"/>
-<image x="312" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-021.png"/>
+<image x="312" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-307.png"/>
 <text x="316" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">top-only</text>
-<text x="316" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
+<text x="316" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="596" y="12" width="280" height="220" rx="8" fill="#fff"/>
-<image x="604" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-022.png"/>
+<image x="604" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-316.png"/>
 <text x="608" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">asymmetric</text>
-<text x="608" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
+<text x="608" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="888" y="12" width="280" height="220" rx="8" fill="#fff"/>
 <image x="896" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-002.png"/>
 <text x="900" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">all-corners</text>
-<text x="900" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
+<text x="900" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="12" y="244" width="280" height="220" rx="8" fill="#fff"/>
-<image x="20" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-038.png"/>
-<text x="24" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">asymmetric</text>
-<text x="24" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
+<image x="20" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-308.png"/>
+<text x="24" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">top-only</text>
+<text x="24" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="304" y="244" width="280" height="220" rx="8" fill="#fff"/>
-<image x="312" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-046.png"/>
-<text x="316" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">top-only</text>
-<text x="316" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">2px solid</text>
+<image x="312" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-317.png"/>
+<text x="316" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">asymmetric</text>
+<text x="316" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="596" y="244" width="280" height="220" rx="8" fill="#fff"/>
 <image x="604" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-003.png"/>
 <text x="608" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">all-corners</text>
-<text x="608" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
+<text x="608" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="888" y="244" width="280" height="220" rx="8" fill="#fff"/>
-<image x="896" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-039.png"/>
-<text x="900" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">asymmetric</text>
-<text x="900" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
+<image x="896" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-309.png"/>
+<text x="900" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">top-only</text>
+<text x="900" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
-</svg><div class="table-scroll"><table><thead><tr><th scope="col">Input group<small>All seven correct</small></th><th scope="col">Gemini 3.1 Pro Preview</th><th scope="col">Gemini 3.8 Flash</th><th scope="col">Claude Fable 5.1</th><th scope="col">Claude Opus 5</th><th scope="col">Gemini 3.5 Flash-Lite</th><th scope="col">Claude Sonnet 5</th><th scope="col">Claude Haiku 4.5</th></tr></thead><tbody><tr><th scope="row">all-corners<small>102 inputs</small></th><td>59.8%<small>n=102</small></td><td>51.0%<small>n=102</small></td><td>43.1%<small>n=102</small></td><td>22.6%<small>n=102</small></td><td>21.6%<small>n=102</small></td><td>9.8%<small>n=102</small></td><td>6.9%<small>n=102</small></td></tr><tr><th scope="row">asymmetric<small>9 inputs</small></th><td>11.1%<small>n=9</small></td><td>33.3%<small>n=9</small></td><td>0.0%<small>n=9</small></td><td>0.0%<small>n=9</small></td><td>0.0%<small>n=9</small></td><td>0.0%<small>n=9</small></td><td>0.0%<small>n=9</small></td></tr><tr><th scope="row">top-only<small>9 inputs</small></th><td>11.1%<small>n=9</small></td><td>22.2%<small>n=9</small></td><td>33.3%<small>n=9</small></td><td>0.0%<small>n=9</small></td><td>0.0%<small>n=9</small></td><td>0.0%<small>n=9</small></td><td>0.0%<small>n=9</small></td></tr></tbody></table></div></section><section><h2>Elevation</h2><p>Flat cards, drop shadows, rings, and combined borders.</p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 476" role="img">
+</svg><div class="table-scroll"><table><thead><tr><th scope="col">Input group<small>All seven correct</small></th></tr></thead><tbody><tr><th scope="row">all-corners<small>405 inputs</small></th></tr><tr><th scope="row">asymmetric<small>36 inputs</small></th></tr><tr><th scope="row">top-only<small>36 inputs</small></th></tr></tbody></table></div></section><section><h2>Elevation</h2><p>Flat cards and two coarse Tailwind drop-shadow levels, independent of the border.</p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 476" role="img">
 <title>Elevation</title>
 <rect width="100%" height="100%" fill="#f1f5f9"/>
 <g>
 <rect x="12" y="12" width="280" height="220" rx="8" fill="#fff"/>
 <image x="20" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-001.png"/>
 <text x="24" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">none</text>
-<text x="24" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
+<text x="24" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="304" y="12" width="280" height="220" rx="8" fill="#fff"/>
-<image x="312" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-024.png"/>
+<image x="312" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-002.png"/>
 <text x="316" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">subtle-drop</text>
 <text x="316" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="596" y="12" width="280" height="220" rx="8" fill="#fff"/>
-<image x="604" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-025.png"/>
+<image x="604" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-003.png"/>
 <text x="608" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">floating-drop</text>
 <text x="608" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="888" y="12" width="280" height="220" rx="8" fill="#fff"/>
-<image x="896" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-026.png"/>
-<text x="900" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">ring-only</text>
+<image x="896" y="20" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-004.png"/>
+<text x="900" y="193" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">none</text>
 <text x="900" y="214" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="12" y="244" width="280" height="220" rx="8" fill="#fff"/>
-<image x="20" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-027.png"/>
-<text x="24" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">stroke+shadow</text>
-<text x="24" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
+<image x="20" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-005.png"/>
+<text x="24" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">subtle-drop</text>
+<text x="24" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="304" y="244" width="280" height="220" rx="8" fill="#fff"/>
-<image x="312" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-002.png"/>
-<text x="316" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">none</text>
-<text x="316" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">1px solid</text>
+<image x="312" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-006.png"/>
+<text x="316" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">floating-drop</text>
+<text x="316" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="596" y="244" width="280" height="220" rx="8" fill="#fff"/>
-<image x="604" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-031.png"/>
-<text x="608" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">subtle-drop</text>
+<image x="604" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-007.png"/>
+<text x="608" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">none</text>
 <text x="608" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
 <g>
 <rect x="888" y="244" width="280" height="220" rx="8" fill="#fff"/>
-<image x="896" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-054.png"/>
-<text x="900" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">floating-drop</text>
+<image x="896" y="252" width="264" height="150" preserveAspectRatio="xMidYMid meet" href="inputs/borderbench-008.png"/>
+<text x="900" y="425" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#0f172a">subtle-drop</text>
 <text x="900" y="446" font-family="Arial,sans-serif" font-size="11" fill="#64748b">0px none</text>
 </g>
-</svg><div class="table-scroll"><table><thead><tr><th scope="col">Input group<small>All seven correct</small></th><th scope="col">Gemini 3.1 Pro Preview</th><th scope="col">Gemini 3.8 Flash</th><th scope="col">Claude Fable 5.1</th><th scope="col">Claude Opus 5</th><th scope="col">Gemini 3.5 Flash-Lite</th><th scope="col">Claude Sonnet 5</th><th scope="col">Claude Haiku 4.5</th></tr></thead><tbody><tr><th scope="row">floating-drop<small>9 inputs</small></th><td>88.9%<small>n=9</small></td><td>55.6%<small>n=9</small></td><td>0.0%<small>n=9</small></td><td>33.3%<small>n=9</small></td><td>11.1%<small>n=9</small></td><td>0.0%<small>n=9</small></td><td>33.3%<small>n=9</small></td></tr><tr><th scope="row">none<small>81 inputs</small></th><td>63.0%<small>n=81</small></td><td>56.8%<small>n=81</small></td><td>50.6%<small>n=81</small></td><td>21.0%<small>n=81</small></td><td>22.2%<small>n=81</small></td><td>6.2%<small>n=81</small></td><td>2.5%<small>n=81</small></td></tr><tr><th scope="row">ring-only<small>9 inputs</small></th><td>0.0%<small>n=9</small></td><td>0.0%<small>n=9</small></td><td>0.0%<small>n=9</small></td><td>0.0%<small>n=9</small></td><td>0.0%<small>n=9</small></td><td>0.0%<small>n=9</small></td><td>0.0%<small>n=9</small></td></tr><tr><th scope="row">stroke+shadow<small>9 inputs</small></th><td>0.0%<small>n=9</small></td><td>22.2%<small>n=9</small></td><td>22.2%<small>n=9</small></td><td>0.0%<small>n=9</small></td><td>0.0%<small>n=9</small></td><td>0.0%<small>n=9</small></td><td>11.1%<small>n=9</small></td></tr><tr><th scope="row">subtle-drop<small>12 inputs</small></th><td>33.3%<small>n=12</small></td><td>33.3%<small>n=12</small></td><td>33.3%<small>n=12</small></td><td>25.0%<small>n=12</small></td><td>25.0%<small>n=12</small></td><td>41.7%<small>n=12</small></td><td>8.3%<small>n=12</small></td></tr></tbody></table></div></section>
+</svg><div class="table-scroll"><table><thead><tr><th scope="col">Input group<small>All seven correct</small></th></tr></thead><tbody><tr><th scope="row">floating-drop<small>159 inputs</small></th></tr><tr><th scope="row">none<small>159 inputs</small></th></tr><tr><th scope="row">subtle-drop<small>159 inputs</small></th></tr></tbody></table></div></section>
 </body>
 </html>

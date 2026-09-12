@@ -85,7 +85,24 @@ def test_malformed_rows_warn_and_preserve_peers(tmp_path):
     card = _scorecard("m1", [_row("t1", True), bad])
     path = tmp_path / "scorecard_m1.json"
     path.write_text(json.dumps(card), encoding="utf-8")
-    summary = build_structured_benchmark([path])
+    peer = tmp_path / "scorecard_m2.json"
+    peer.write_text(json.dumps(_scorecard("m2", [_row("t1", False)])))
+    summary = build_structured_benchmark([path, peer])
     (model,) = summary["models"]
-    assert model["all_correct_accuracy"] == 100.0
-    assert summary["warnings"], "malformed rows must warn, not crash or poison peers"
+    assert model["model_id"] == "m2"
+    assert summary["warnings"], "malformed cards must warn without dropping individual hard rows"
+
+
+def test_unknown_cost_is_not_reported_as_free(tmp_path):
+    path = tmp_path / 'scorecard_m1.json'
+    path.write_text(json.dumps(_scorecard('m1', [_row('t1', True, None)])))
+    result = build_structured_benchmark([path])
+    assert result['models'][0]['avg_cost_usd'] is None
+    assert result['benchmark_id'] == 'borderbench-unversioned'
+
+
+def test_duplicate_task_rows_are_refused(tmp_path):
+    path = tmp_path / 'scorecard_m1.json'
+    path.write_text(json.dumps(_scorecard('m1', [_row('t1', True), _row('t1', False)])))
+    with pytest.raises(ValueError, match='[Dd]uplicate|[Nn]o valid'):
+        build_structured_benchmark([path])

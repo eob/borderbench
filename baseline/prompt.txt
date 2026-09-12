@@ -1,7 +1,7 @@
 Analyze the visual border and surface properties of the primary UI card container in this image.
-The image shows a standardized 400x240 CSS px card rendered on a canvas.
+The card is 400x240 CSS px on a 560x360 CSS px canvas, rendered at 2 device pixels per CSS px.
 
-Inner content is fixed and identical on every image: system font stack, title 16px semibold, subtitle 12px, body 13px, meta 11px; 40px pill avatar, 6px badge and button corners, 6px status dot. Judge only the outer boundary, corners, and shadow of the primary card. Labels below name Tailwind CSS utilities as a reference.
+The fixed inner text uses DejaVu Sans at 16px with 24px line height; the ruler is 64px long. These provide scale references even if the image is resized. Judge only the outer boundary, corners, and cast shadow; inner content is identical in every image. Tailwind CSS 3.4.17 defaults with a 16px root size define the reference scale below. Choose among the listed, coarsely spaced anchors; intermediate Tailwind sizes are not used.
 
 Evaluate these 7 design attributes and respond ONLY with a valid JSON object matching this schema:
 {
@@ -11,16 +11,19 @@ Evaluate these 7 design attributes and respond ONLY with a valid JSON object mat
   "stroke_width": "0px" | "1px" | "2px" | "4px" | "8px",
   "corner_radius": "sharp" | "subtle" | "medium" | "large" | "pill",
   "corner_uniformity": "all-corners" | "top-only" | "asymmetric",
-  "elevation": "none" | "subtle-drop" | "floating-drop" | "ring-only" | "stroke+shadow"
+  "elevation": "none" | "subtle-drop" | "floating-drop"
 }
 
-Definitions (Tailwind equivalents in parentheses):
-- has_border: true if the card has an explicit border stroke on any edge, false otherwise.
-- border_sides: which edges carry a stroke (border / border-b / border-l / border-t). If has_border is false, this is "none" (border-0).
-- stroke_style: line pattern (border-solid / border-dashed / border-dotted). If has_border is false, this is "none".
-- stroke_width: stroke thickness: 0px (border-0, none), 1px (border, hairline), 2px (border-2, medium), 4px (border-4, thick), 8px (border-8, heavy).
-- corner_radius: corner curvature: sharp 0px (rounded-none), subtle 3px (near rounded-sm), medium 8px (rounded-lg), large 18px (near rounded-2xl), pill 9999px circular/capsule (rounded-full).
-- corner_uniformity: all-corners (equal curvature on all 4 corners), top-only (only top corners rounded, bottom sharp; modal sheet), asymmetric (different radii; accent corner).
-- elevation: box-shadow appearance: none (flat), subtle-drop (shadow), floating-drop (shadow-lg), ring-only (1px neutral outline near ring-1, without stroke), stroke+shadow (border plus shadow-md).
+Definitions (exact Tailwind reference utilities):
+- has_border: true if a visible border stroke appears on any edge. A tonal surface boundary or a diffuse shadow alone is not a stroke.
+- border_sides: all-4, bottom-only, left-only, or top-only (border / border-b / border-l / border-t). If there is no stroke, answer none.
+- stroke_style: solid, dashed, or dotted (border-solid / border-dashed / border-dotted); no stroke means none.
+- stroke_width: 0px (border-0), 1px (border), 2px (border-2), 4px (border-4), or 8px (border-8). Measure the stroke perpendicular to its edge; for dots use their diameter. These are CSS pixel values, not pixels in the displayed image.
+- corner_radius: sharp 0px (rounded-none), subtle 4px (rounded), medium 12px (rounded-xl), large 24px (rounded-3xl), or pill 9999px (rounded-full, a capsule). For nonuniform corners, classify the rounded corners, excluding the sharp ones.
+- corner_uniformity: all-corners means equal curvature at all four corners (including an entirely sharp card); top-only means both top corners rounded and both bottom corners sharp; asymmetric means three rounded corners with only the bottom-left corner sharp. Nonuniform examples use medium or large rounding.
+- elevation: none means no diffuse cast shadow (shadow-none); subtle-drop is the compact Tailwind shadow; floating-drop is the broader Tailwind shadow-lg. Either shadow can coexist with any border, so judge shadow independently of stroke presence or thickness.
 
-Card and canvas colors vary by theme; a visible boundary may come from a stroke, a shadow, or a tonal step.
+The shadow references use these exact CSS stacks:
+shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1).
+shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1).
+Card and canvas colors vary. Surface color is not scored. All examples have a visible surface boundary. No example requires identifying whether an outline was implemented using a CSS ring, border, or pseudo-element.

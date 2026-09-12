@@ -1,0 +1,64 @@
+bun test v1.3.14 (0d9b296a)
+
+src/perception-design.test.ts:
+ 5 | 
+ 6 | describe("perceptually identifiable design", () => {
+ 7 |   test("radii use coarse exact Tailwind tokens and nonuniform corners differ visibly", () => {
+ 8 |     const px = { sharp: 0, subtle: 4, medium: 12, large: 24, pill: 9999 };
+ 9 |     for (const s of SPECIMENS) {
+10 |       if (s.corner_uniformity === "all-corners") expect(s.corner_radius_px).toBe(px[s.corner_radius]);
+                                                                                 ^
+error: expect(received).toBe(expected)
+
+Expected: 4
+Received: 3
+
+      at <anonymous> (/tmp/borderbench-perception-reversion-1zig2yfs/src/perception-design.test.ts:10:77)
+(fail) perceptually identifiable design > radii use coarse exact Tailwind tokens and nonuniform corners differ visibly [0.31ms]
+24 |       if (!groups.has(key)) groups.set(key, new Set());
+25 |       groups.get(key)!.add(`${s.theme}:${s.elevation}`);
+26 |     }
+27 |     const expected = ["white-on-gray", "gray-tint-on-white", "blue-tint-on-white"].flatMap(t =>
+28 |       ["none", "subtle-drop", "floating-drop"].map(e => `${t}:${e}`)).sort();
+29 |     for (const levels of groups.values()) expect([...levels].sort()).toEqual(expected);
+                                                                          ^
+error: expect(received).toEqual(expected)
+
+  [
+-   "blue-tint-on-white:floating-drop",
+-   "blue-tint-on-white:none",
+-   "blue-tint-on-white:subtle-drop",
+-   "gray-tint-on-white:floating-drop",
+-   "gray-tint-on-white:none",
+-   "gray-tint-on-white:subtle-drop",
+-   "white-on-gray:floating-drop",
++   "dark-mode:none",
+    "white-on-gray:none",
+-   "white-on-gray:subtle-drop",
+  ]
+
+- Expected  - 8
++ Received  + 1
+
+      at <anonymous> (/tmp/borderbench-perception-reversion-1zig2yfs/src/perception-design.test.ts:29:70)
+(fail) perceptually identifiable design > every geometry has all shadow levels in every light theme [0.84ms]
+68 |       for (const specimen of variants) {
+69 |         await page.setContent(generateCardHtml(specimen));
+70 |         await page.evaluate(() => document.fonts.ready);
+71 |         crops.push(await page.screenshot({ clip: { x: 160, y: 132, width: 240, height: 96 } }));
+72 |       }
+73 |       for (const crop of crops.slice(1)) expect(crop.equals(crops[0])).toBe(true);
+                                                                            ^
+error: expect(received).toBe(expected)
+
+Expected: true
+Received: false
+
+      at <anonymous> (/tmp/borderbench-perception-reversion-1zig2yfs/src/perception-design.test.ts:73:72)
+(fail) perceptually identifiable design > inner reference pixels remain fixed across widths, sides, styles, radii, shadows [523.69ms]
+
+ 0 pass
+ 1 filtered out
+ 3 fail
+ 4 expect() calls
+Ran 3 tests across 1 file. [673.00ms]

@@ -1,0 +1,29 @@
+...FF                                                                    [100%]
+=================================== FAILURES ===================================
+__________________ test_unknown_cost_is_not_reported_as_free ___________________
+
+tmp_path = PosixPath('/tmp/pytest-of-ted/pytest-195/test_unknown_cost_is_not_repor0')
+
+    def test_unknown_cost_is_not_reported_as_free(tmp_path):
+        path = tmp_path / 'scorecard_m1.json'
+        path.write_text(json.dumps(_scorecard('m1', [_row('t1', True, None)])))
+        result = build_structured_benchmark([path])
+>       assert result['models'][0]['avg_cost_usd'] is None
+E       assert 0.0 is None
+
+tests/test_export_integrity.py:98: AssertionError
+_____________________ test_duplicate_task_rows_are_refused _____________________
+
+tmp_path = PosixPath('/tmp/pytest-of-ted/pytest-195/test_duplicate_task_rows_are_r0')
+
+    def test_duplicate_task_rows_are_refused(tmp_path):
+        path = tmp_path / 'scorecard_m1.json'
+        path.write_text(json.dumps(_scorecard('m1', [_row('t1', True), _row('t1', False)])))
+>       with pytest.raises(ValueError, match='[Dd]uplicate|[Nn]o valid'):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_export_integrity.py:105: Failed
+=========================== short test summary info ============================
+FAILED tests/test_export_integrity.py::test_unknown_cost_is_not_reported_as_free
+FAILED tests/test_export_integrity.py::test_duplicate_task_rows_are_refused
+2 failed, 3 passed in 0.05s

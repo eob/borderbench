@@ -23,13 +23,13 @@ ErrorKind = Literal["credits", "rate_limit", "authentication", "unavailable", "i
 class BorderPrediction(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    has_border: bool = Field(description="True if the card has an explicit border stroke on any edge, false otherwise")
+    has_border: bool = Field(strict=True, description="True if the card has a visible border stroke on any edge, false otherwise")
     border_sides: Literal["all-4", "bottom-only", "left-only", "top-only", "none"]
     stroke_style: Literal["solid", "dashed", "dotted", "none"]
     stroke_width: Literal["0px", "1px", "2px", "4px", "8px"]
     corner_radius: Literal["sharp", "subtle", "medium", "large", "pill"]
     corner_uniformity: Literal["all-corners", "top-only", "asymmetric"]
-    elevation: Literal["none", "subtle-drop", "floating-drop", "ring-only", "stroke+shadow"]
+    elevation: Literal["none", "subtle-drop", "floating-drop"]
 
 
 PREDICTION_KEYS = (

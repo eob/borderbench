@@ -1,171 +1,130 @@
-# BorderBench V1.1.0
+# BorderBench V1.2.0
 
-BorderBench measures recognition of seven container properties from an
-image: border presence, edge selectivity, stroke style, stroke width,
-corner radius, corner uniformity, and elevation. **V1.1.0 freezes 120
-images** with fixed neutral card text, verified rendering evidence, and
-zero validation errors.
+BorderBench measures recognition of visible card borders, corner geometry, and
+cast shadows. V1.2.0 contains **477 images: 53 shape recipes × 3 themes × 3 shadow
+levels**, with a fixed visual scale and controlled comparisons. It is ready for
+an initial model campaign; it does not yet have V1.2.0 model results or a measured
+human agreement baseline.
 
-The [release descriptor](releases/1.1.0.json) binds this version to
-dataset Git commit
-[`ec1dc04`](https://github.com/eob/borderbench/commit/ec1dc044f39b45be7c4b6fea018026722640b947),
-the dataset fingerprint, and the evaluation protocol fingerprint.
-[CHANGELOG.md](CHANGELOG.md) records the release; Git tag `v1.1.0`
-identifies its compatible tooling. V1.0.0 remains valid under tag
-`v1.0.0`; scores never transfer between releases.
+The [methodology](docs/methodology.md) explains the design, scoring, validation,
+and remaining limits. The [audit ticket](tickets/valid-07-perceptual-rigor.md)
+compares the implementation with FontBench and retains regression evidence.
 
-The original 120-image set and its published scores are **invalid
-historical prototypes**: card text revealed the answers. Their inputs,
-paid checkpoint, and reports are preserved and labeled in the [dataset
-guide](dataset/README.md) and [historical result
-catalog](results/historical.json). The [ticket
-catalog](tickets/README.md) records the defects, repairs, and regression
-evidence.
+## Setup and validate
 
-## Setup and validate the release
-
-Requires Bun 1.3.14, Python 3.10+, Git history containing the dataset
-commit, and Chromium for rendering.
+Requires Bun 1.3.14, Python 3.10+, Git history containing the dataset commit, and
+Chromium for browser checks and rendering.
 
 ```bash
 bun install --frozen-lockfile
 bunx playwright install chromium
 python3 -m venv .venv
 .venv/bin/python -m pip install -e .
-bun run validate:release
-```
-
-On Linux, `bunx playwright install --with-deps chromium` can install
-browser system dependencies. The release validator runs offline: it
-verifies the committed manifest bytes, dataset and protocol fingerprints,
-and the independent all-image gate. Live runs require this gate before
-contacting a model.
-
-## Run any supported vision model, now or later
-
-Run an offline smoke check first:
-
-```bash
-bun run benchmark --release 1.1.0 --mock --run-id smoke --max-tasks 3
-```
-
-Select models from [`config/models.json`](config/models.json), or provide
-your own catalog with `--config path/to/models.json`. Native adapters
-support OpenAI Responses, Anthropic Messages, and Google generateContent;
-an OpenAI-compatible endpoint can use `base_url`. Set the API key
-environment variable specified by each configuration. Catalog IDs and
-prices are dated records; verify availability and rates when scheduling a
-new campaign.
-
-Separate runs can contribute to the same release:
-
-```bash
-# Example: GPT in one campaign.
-bun run benchmark --release 1.1.0 --run-id gpt-september \
-  --models gpt-6-astra --budget-usd 25
-
-# Example: Gemini in a later campaign.
-bun run benchmark --release 1.1.0 --run-id gemini-later \
-  --models gemini-3.1-pro-preview --budget-usd 25
-
-# Rebuild the website from all compatible recorded runs.
-bun run build:page --release 1.1.0 --results-dir results/runs --output-dir site
-python3 -m http.server 8000 --directory site
-```
-
-These live commands make paid requests. The budget is a cumulative
-estimate for that run based on configured rates and conservative
-reservations, not a provider invoice or provider-enforced limit.
-
-Each run writes to `results/runs/1.1.0/<run-id>/`. Its `run.json` records
-the release, full dataset Git hash, data/protocol fingerprints, model
-configurations, timestamps, and executing code commit/dirty state.
-`state.sqlite3` is the resumable checkpoint; `attempts.jsonl` retains
-every attempt; summaries and scorecards expose the scored observations.
-Commit a completed run directory to contribute it to this repository. The
-runner does not commit or push automatically. See the [run log
-guide](results/README.md) for the artifact layout and contribution
-workflow.
-
-Repeat the same command to resume. `--max-tasks N` selects a reproducible
-subset that can be extended later; `--concurrency N` controls simultaneous
-requests. Omitting `--run-id` creates a unique run. New model IDs can be
-added in separate runs at any time. Changed inference settings need a new
-run ID and remain separate configurations on the website. Explicit
-`--manifest` runs are unversioned experiments and do not enter the release
-leaderboard.
-
-The website combines complementary observations for the same
-provider/model/endpoint/output limit, keeps the earliest final observation
-for each input, and retains all contributing run records and attempt
-costs. Repeating a task cannot replace a lower score with a higher one.
-Mocks, incompatible releases, and malformed reports are excluded. Rankings
-use shared task cohorts; partial coverage is displayed explicitly.
-
-Completed answers and malformed model outputs are final datapoints.
-Malformed outputs receive zero; infrastructure failures remain retryable
-and appear in error counts. The report leads with exact match: all seven
-fields must be correct. It also shows the seven individual attribute
-accuracies. Extra fields, duplicate JSON keys, missing fields, and invalid
-enum values invalidate the whole prediction.
-
-## What the benchmark measures
-
-Every input shows the same neutral card (400×240 CSS px at 2× DPR) with
-identical text and inner chrome. Only the outer boundary, corners,
-shadow, and theme colors vary. The [shared
-prompt](baseline/prompt.txt) defines the labels:
-
-| Dimension | Labels and definition |
-| --- | --- |
-| Presence | `has_border`: a stroke exists on any edge |
-| Sides | `all-4`, `bottom-only`, `left-only`, `top-only`, `none` |
-| Style | `solid`, `dashed`, `dotted`, `none` |
-| Width | `0px`, `1px` (hairline), `2px`, `4px`, `8px` (heavy) |
-| Radius | `sharp` (0px), `subtle` (3px), `medium` (8px), `large` (18px), `pill` (9999px) |
-| Uniformity | `all-corners`, `top-only` (bottom sharp), `asymmetric` (2px acute corner) |
-| Elevation | `none`, `subtle-drop`, `floating-drop`, `ring-only`, `stroke+shadow` |
-
-`theme` (card/canvas colors) is an unscored condition, not a graded
-field: it varies the contrast the boundary must survive. A visible
-boundary may come from a stroke, a shadow, or a tonal step; every image
-passes a measured boundary-contrast gate. Theme carries no label
-shortcut: theme-conditioned lookups match majority-class accuracy on
-every axis.
-
-Accepted design limits: presence is encoded across four coordinated
-fields (`has_border`, sides, style, width), so exact match weighs it
-more than a single field; `stroke+shadow` implies a border;
-`top-only`/`asymmetric` apply only to rounded radii; shadow-only pale
-cards expose corners through the shadow silhouette. The 120-image corpus
-favors cheap full reruns over exhaustive combinations; per-value counts
-are published in the frozen validation report. Inspect per-group results
-and contact sheets alongside aggregate scores.
-
-## Candidate generation
-
-The release inputs are already checked in. Generation commands create
-development candidates; they refuse to overwrite registered release or
-historical directories.
-
-```bash
-bun run render
-# renders to dataset/candidate-rendered, then:
-bun run validate:candidate
-```
-
-The renderer verifies the computed border widths, styles, radii, and
-shadows Chromium actually used, and records image hashes, card geometry,
-and browser provenance. Initial rendering needs a local Chromium; no
-network font or API access is used.
-
-## Development checks
-
-```bash
 bun run test
 bun run validate:release
 ```
 
-The checks cover Python, TypeScript, local Chromium page checks, and
-frozen release integrity. No provider access or API keys are needed.
-Repository code is MIT licensed. See [LICENSE](LICENSE).
+On Linux, `bunx playwright install --with-deps chromium` installs browser system
+dependencies. Validation is offline. Frozen live runs run the complete dataset
+gate before creating provider clients.
+
+## What the model sees and answers
+
+Each image shows a 400×240 CSS px card on a 560×360 canvas at 2× DPR. The same
+bundled DejaVu Sans text appears at 16px with 24px line height, with a 64px
+scale guide. This supplies both a familiar typographic reference and an explicit
+scale even when a provider resizes the image. Inner content stays in the same
+position and cannot shift with border width or edge selection.
+
+The shared [prompt](baseline/prompt.txt) defines exact anchors from **Tailwind
+CSS 3.4.17 with a 16px root size**. Nearby intermediate classes are omitted.
+
+| Attribute | Answer categories |
+| --- | --- |
+| Presence | `has_border`: visible stroke on any edge |
+| Sides | `all-4`, `bottom-only`, `left-only`, `top-only`, `none` |
+| Style | `solid`, `dashed`, `dotted`, `none` |
+| Width | `0px`, `1px`, `2px`, `4px`, `8px`: `border-0`, `border`, `border-2`, `border-4`, `border-8` |
+| Radius | `sharp` 0px, `subtle` 4px, `medium` 12px, `large` 24px, `pill`: `rounded-none`, `rounded`, `rounded-xl`, `rounded-3xl`, `rounded-full` |
+| Uniformity | `all-corners`, `top-only`, `asymmetric` (only bottom-left sharp) |
+| Shadow | `none`, `subtle-drop`, `floating-drop`: `shadow-none`, `shadow`, `shadow-lg` |
+
+Every shadow level appears with every shape and theme. The task does not ask the
+model to infer invisible CSS implementation details such as ring versus border.
+Nonuniform corners use 12px or 24px rounding against a sharp corner. Themes are
+unscored and repeat identically across all geometry/shadow combinations.
+
+## Run a campaign
+
+First exercise the pipeline without provider requests:
+
+```bash
+bun run benchmark --release 1.2.0 --mock --run-id smoke --max-tasks 3
+```
+
+Choose explicit model IDs from [config/models.json](config/models.json), or pass
+`--config path/to/models.json`. The catalog records dated model IDs and prices;
+verify them against provider documentation before a paid campaign. Set the API
+key environment variable named by each selected configuration.
+
+```bash
+bun run benchmark --release 1.2.0 --run-id first-batch \
+  --models YOUR_MODEL_ID --budget-usd 25
+```
+
+The live command makes paid requests. The budget uses configured prices and
+conservative reservations; it is an estimate, not a provider-enforced spending
+limit. Unknown usage is identified explicitly rather than priced as zero.
+
+Repeat the same command to resume. A deterministic shuffled `--max-tasks N`
+subset can be extended later. Changed inference settings require a different
+run ID. Lost checkpoints and sealed publications refuse resume. Valid responses
+and malformed model answers are final observations; malformed answers score
+zero, while infrastructure failures remain retryable.
+
+Runs are saved under `results/runs/1.2.0/<run-id>/`, including SQLite checkpoint,
+every attempt, raw answers, recorded usage, configuration and code identity,
+summary, and scorecards. No provider requests are needed to replay grading.
+
+```bash
+bun run build:page --release 1.2.0 --results-dir results/runs --output-dir site
+python3 -m http.server 8000 --directory site
+```
+
+All ranked models and breakdowns use the same shared image cohort. Complementary
+runs can contribute observations; repeats retain the earliest final answer by
+observation time. Costs retain all attempts, including retries. The structured
+export includes class recalls, confusion matrices, majority baselines, balanced
+accuracies, and stroke scores conditional on a border being present.
+
+Before publishing a measured comparison, commit its source run and freeze its
+roster/cohort using the [finalization workflow](releases/FINALIZATION.md):
+
+```bash
+.venv/bin/python -m baseline.finalize \
+  --run-dir results/runs/1.2.0/first-batch --scope full
+.venv/bin/python -m baseline.finalize \
+  --run-dir results/runs/1.2.0/first-batch --verify
+```
+
+Use `--scope common` for a deliberately partial comparison. Sealing independently
+checks raw-response grades, checkpoint, exports, chronology, and committed bytes.
+
+## Regenerate and inspect
+
+```bash
+bun run render
+bun run validate:candidate
+```
+
+Generation writes `dataset/candidate-rendered`; it refuses paths overlapping
+frozen releases and historical inputs. Candidates retain the font and license,
+recipe catalog, image hashes, computed styles, browser and font evidence, scale
+geometry, and paired flat controls. A new dataset or protocol needs a new release.
+
+V1.0.0 and V1.1.0 inputs and trial results remain unchanged and incomparable with
+V1.2.0. Their compatible tooling is available at the corresponding Git tags.
+The earlier answer-leaking prototype remains explicitly invalid. See the
+[dataset guide](dataset/README.md), [releases](releases/README.md), and
+[results guide](results/README.md). Code is MIT licensed; the bundled font retains
+its [license](src/assets/DejaVuSans.LICENSE).

@@ -16,6 +16,7 @@ from baseline.releases import (
     load_release,
     model_config_fingerprint,
     release_manifest_path,
+    validate_release,
 )
 from baseline.reporting import DIMENSIONS, metrics, read_report_json, scorecard_tasks
 from baseline.validate_dataset import validate_dataset
@@ -37,7 +38,7 @@ AXES = [
     ("stroke_width", "Stroke width", "Hairline 1px through heavy 8px strokes."),
     ("corner_radius", "Corner radius", "Sharp corners through full pill capsules."),
     ("corner_uniformity", "Corner uniformity", "Equal, top-only, or asymmetric corner curvature."),
-    ("elevation", "Elevation", "Flat cards, drop shadows, rings, and combined borders."),
+    ("elevation", "Elevation", "Flat cards and two coarse Tailwind drop-shadow levels, independent of the border."),
 ]
 
 
@@ -84,80 +85,12 @@ def _percent(value: float | None) -> str:
     return "—" if value is None else f"{value * 100:.1f}%"
 
 
-def collect_observations(release: dict, results_dir: Path) -> tuple[dict, list[str]]:
-    """Aggregate first-recorded observations per inference configuration."""
-    warnings: list[str] = []
-    fingerprint = release["dataset_fingerprint"]
-    runs_root = results_dir / release["benchmark_version"]
-    observations: dict[tuple[str, str], dict] = {}
-    configs: dict[str, dict] = {}
-    if runs_root.is_dir():
-        run_dirs = sorted([d for d in runs_root.iterdir() if d.is_dir() and not d.name.startswith("mock-")])
-    else:
-        run_dirs = []
-    for run_dir in run_dirs:
-        run_meta = read_report_json(run_dir / "run.json", warnings)
-        if not run_meta:
-            warnings.append(f"{run_dir.name}: missing run.json; skipped")
-            continue
-        if (
-            run_meta.get("release") != release["benchmark_version"]
-            or run_meta.get("dataset_fingerprint") != fingerprint
-            or run_meta.get("evaluation_protocol") != release["evaluation_protocol_fingerprint"]
-            or run_meta.get("mock") is not False
-        ):
-            warnings.append(f"{run_dir.name}: incompatible release, dataset, protocol, or mock run; skipped")
-            continue
-        created = run_meta.get("created_at", "")
-        for scorecard_path in sorted(run_dir.glob("scorecard_*.json")):
-            card = read_report_json(scorecard_path, warnings)
-            if not card:
-                continue
-            if card.get("mock") is not False:
-                continue
-            try:
-                tasks = scorecard_tasks(card, dataset_fingerprint=fingerprint)
-            except ValueError as error:
-                warnings.append(f"{run_dir.name}/{scorecard_path.name}: {error}; skipped")
-                continue
-            model_id = card.get("model_id") or card.get("model_name")
-            full_config = (run_meta.get("model_configs") or {}).get(model_id)
-            if not isinstance(full_config, dict) or "provider" not in full_config or "model" not in full_config:
-                warnings.append(f"{run_dir.name}/{scorecard_path.name}: missing run configuration; skipped")
-                continue
-            config_id = model_config_fingerprint(full_config)
-            configs.setdefault(config_id, {
-                "id": config_id,
-                "model_id": model_id,
-                "display_name": card.get("display_name") or model_id,
-                "provider": full_config["provider"],
-                "model": full_config["model"],
-                "max_output_tokens": full_config.get("max_output_tokens", 1024),
-                "runs": [],
-                "repeat_observations": 0,
-                "repeat_cost_usd": 0.0,
-                "total_cost_usd": 0.0,
-            })
-            if run_dir.name not in configs[config_id]["runs"]:
-                configs[config_id]["runs"].append(run_dir.name)
-            for task in tasks:
-                key = (config_id, task["task_id"])
-                cost = task.get("cost_usd") or 0.0
-                configs[config_id]["total_cost_usd"] += cost
-                candidate = (str(created), run_dir.name, task)
-                if key not in observations:
-                    observations[key] = {"created": str(created), "run": run_dir.name, "task": task}
-                else:
-                    prior = observations[key]
-                    configs[config_id]["repeat_observations"] += 1
-                    configs[config_id]["repeat_cost_usd"] += cost
-                    if (str(created), run_dir.name) < (prior["created"], prior["run"]):
-                        observations[key] = {"created": str(created), "run": run_dir.name, "task": task}
-    for config in configs.values():
-        config["runs"].sort()
-        config["total_cost_usd"] = round(config["total_cost_usd"], 6)
-        config["repeat_cost_usd"] = round(config["repeat_cost_usd"], 6)
-    return {"observations": observations, "configs": configs}, warnings
+def collect_observations(release: dict, results_dir: Path, items: list[dict] | None = None) -> tuple[dict, list[str]]:
+    from baseline.reporting import aggregate_release_runs
+    if items is None:
+        items = load_manifest(str(release_manifest_path(release))) if "dataset_manifest" in release else []
+    history = aggregate_release_runs(release, items, results_dir)
+    return history, history["warnings"]
 
 
 def _breakdown_table(section: dict, models: list[dict]) -> str:
@@ -193,19 +126,20 @@ def build_page(
     validity = validate_dataset(manifest_path)
     if not validity["valid"]:
         raise ValueError(f"Release corpus failed validation with {len(validity['errors'])} errors")
-    items = load_manifest(str(manifest_path))
+    items = validate_release(release)
     if not items:
         raise ValueError("A benchmark page needs at least one rendered input")
-    by_id = {item["taskId"]: item for item in items}
 
-    collected, warnings = collect_observations(release, Path(results_dir))
+    collected, warnings = collect_observations(release, Path(results_dir), items)
     observations = collected["observations"]
     configs = collected["configs"]
 
     per_config_tasks: dict[str, list[dict]] = {cid: [] for cid in configs}
     for (config_id, _task_id), obs in observations.items():
         per_config_tasks[config_id].append(obs["task"])
-    shared_ids = set.intersection(*[set(t["task_id"] for t in tasks) for tasks in per_config_tasks.values()]) if per_config_tasks else set()
+    shared_ids = set.intersection(*[set(t["task_id"] for t in tasks) for tasks in per_config_tasks.values() if tasks]) if any(per_config_tasks.values()) else set()
+
+    from baseline.statistics import diagnostic_metrics, matched_block_metrics
 
     leaderboard = []
     for config_id, config in sorted(configs.items(), key=lambda kv: kv[1]["display_name"]):
@@ -217,9 +151,14 @@ def build_page(
             "expected": release["expected_task_count"],
             "metrics": metrics(tasks),
             "shared_metrics": metrics(shared),
-            "avg_latency_sec": round(sum(float(t.get("latency_sec", 0.0)) for t in tasks) / len(tasks), 3) if tasks else None,
+            "diagnostics": diagnostic_metrics(tasks),
+            "shared_diagnostics": diagnostic_metrics(shared),
+            "shared_matched_blocks": matched_block_metrics(shared, items),
+            "status": "complete" if len(tasks) == len(items) else "partial" if tasks else "pending",
+            "invalid_responses": sum(task.get("error_kind") == "invalid_response" for task in tasks),
+            "avg_latency_sec": round(sum(t["latency_sec"] for t in tasks) / len(tasks), 3) if tasks and all(t.get("latency_sec") is not None for t in tasks) else None,
         })
-    leaderboard.sort(key=lambda row: (-(row["metrics"]["exact"] or -1), row["display_name"]))
+    leaderboard.sort(key=lambda row: (-(row["shared_metrics"]["exact"] if row["shared_metrics"]["exact"] is not None else -1), row["display_name"]))
 
     breakdowns = []
     for key, title, blurb in AXES:
@@ -229,7 +168,7 @@ def build_page(
             per_model = {}
             for row in leaderboard:
                 config_id = row["id"]
-                measured = [t for t in per_config_tasks[config_id] if t["task_id"] in available]
+                measured = [t for t in per_config_tasks[config_id] if t["task_id"] in available & shared_ids]
                 per_model[config_id] = {"count": len(measured), "metrics": metrics(measured)}
             groups.append({"label": value, "available": len(available), "models": per_model})
         breakdowns.append({"key": key, "title": title, "blurb": blurb, "groups": groups})
@@ -241,6 +180,21 @@ def build_page(
     inputs_dir.mkdir(parents=True, exist_ok=True)
     for item in items:
         shutil.copyfile(item["imagePath"], inputs_dir / item["imageFilename"])
+
+    run_links = []
+    for run in collected["runs"]:
+        source = Path(results_dir) / release_version / run["run_id"]
+        destination = output / "runs" / run["run_id"]
+        if not source.is_dir():
+            continue
+        destination.mkdir(parents=True, exist_ok=True)
+        names = ["run.json", "summary.json", "attempts.jsonl", "finalization.json", "final_results.json"]
+        names.extend(path.name for path in source.glob("scorecard_*.json"))
+        for name in names:
+            if (source / name).is_file():
+                shutil.copyfile(source / name, destination / name)
+        run_links.append(f'<li><a href="runs/{escape(run["run_id"], quote=True)}/run.json">{escape(run["run_id"])}</a> · <a href="runs/{escape(run["run_id"], quote=True)}/attempts.jsonl">attempt ledger</a></li>')
+    run_history = "<h2>Recorded runs</h2><ul>" + "".join(run_links) + "</ul>" if run_links else ""
 
     sections = []
     for key, title, blurb in AXES:
@@ -256,7 +210,7 @@ def build_page(
 
     rows = []
     for row in leaderboard:
-        cells = "".join(f"<td>{_percent(row['metrics'][m])}</td>" for m in ("exact", *DIMENSIONS))
+        cells = "".join(f"<td>{_percent(row['shared_metrics'][m])}</td>" for m in ("exact", *DIMENSIONS))
         rows.append(
             f"<tr><th scope=\"row\">{escape(row['display_name'])}<small>{escape(row['provider'])} · {row['completed']}/{row['expected']} · {len(row['runs'])} run(s)</small></th>{cells}</tr>"
         )
@@ -294,9 +248,10 @@ code {{ font-size: 12px; }}
 <body>
 <h1>BorderBench {escape(release_version)}</h1>
 <p>{len(items)} inputs · dataset <code>{release["dataset_fingerprint"][:12]}</code> · protocol <code>{release["evaluation_protocol_fingerprint"][:12]}</code> · gate passed</p>
-<p>Shared cohort: {len(shared_ids)} inputs measured by every listed configuration. Repeats keep the earliest observation; repeat costs stay in the ledger.</p>
+<p>Shared cohort: {len(shared_ids)} inputs measured by every configuration with observations. All comparison scores and breakdowns use this same cohort; unmeasured configurations remain unranked. Repeats keep the earliest final observation; total costs include every attempt. Per-model observed scores and confusion matrices are available in the structured export.</p>
 {leaderboard_html}
 {warnings_block}
+{run_history}
 {sections_html}
 </body>
 </html>
@@ -310,7 +265,13 @@ code {{ font-size: 12px; }}
         "expected_task_count": release["expected_task_count"],
         "gate": {"valid": True, "sample_count": len(items)},
         "shared_task_count": len(shared_ids),
+        "shared_task_ids": sorted(shared_ids),
+        "runs": collected["runs"],
+        "excluded_runs": collected["excluded_runs"],
+        "duplicate_policy": collected["duplicate_policy"],
         "configs": leaderboard,
+        "observations": [{"config_id": config_id, "task_id": task_id, **observation}
+                         for (config_id, task_id), observation in sorted(observations.items())],
         "breakdowns": breakdowns,
         "warnings": warnings,
     }

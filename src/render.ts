@@ -9,32 +9,49 @@ import * as path from "node:path";
 const MANAGED_PREFIX = "borderbench-";
 const HISTORICAL_DIRS = ["dataset/borderbench-1", "dataset/rendered"];
 
-function releaseDatasetPaths(): string[] {
-  const releasesDir = path.resolve("releases");
-  if (!fs.existsSync(releasesDir)) return [];
+export function releaseDatasetPaths(repository = path.resolve(import.meta.dir, "..")): string[] {
+  const releasesDir = path.join(repository, "releases");
   const registered: string[] = [];
   for (const file of fs.readdirSync(releasesDir)) {
     if (!file.endsWith(".json")) continue;
-    try {
-      const descriptor = JSON.parse(fs.readFileSync(path.join(releasesDir, file), "utf-8"));
-      if (typeof descriptor?.dataset_path === "string") registered.push(path.resolve(descriptor.dataset_path));
-    } catch {
-      continue;
+    const descriptor = JSON.parse(fs.readFileSync(path.join(releasesDir, file), "utf-8"));
+    for (const key of ["dataset_path", "dataset_manifest"]) {
+      const value = descriptor?.[key];
+      if (typeof value !== "string" || !value || path.isAbsolute(value) || value.includes("\\")
+          || value.split("/").some(part => !part || part === "." || part === "..")) {
+        throw new Error(`Invalid ${key} in release registry ${file}`);
+      }
     }
+    if (descriptor.dataset_manifest !== `${descriptor.dataset_path}/manifest.json`) {
+      throw new Error(`Invalid dataset manifest in release registry ${file}`);
+    }
+    registered.push(path.join(repository, descriptor.dataset_path));
   }
   return registered;
 }
 
-export function refuseProtectedDir(chosen: string, registered: string[]): void {
-  const resolved = path.resolve(chosen);
-  for (const historical of HISTORICAL_DIRS) {
-    if (resolved === path.resolve(historical)) {
-      throw new Error(`Refusing to overwrite historical dataset: ${chosen}`);
+function physicalPath(filename: string): string {
+  let existing = path.resolve(filename);
+  const suffix: string[] = [];
+  while (!fs.existsSync(existing)) {
+    if (fs.lstatSync(existing, { throwIfNoEntry: false })?.isSymbolicLink()) {
+      throw new Error(`Cannot resolve output symlink: ${existing}`);
     }
+    suffix.unshift(path.basename(existing));
+    existing = path.dirname(existing);
   }
-  for (const releaseDir of registered) {
-    if (resolved === path.resolve(releaseDir)) {
-      throw new Error(`Refusing to overwrite registered release dataset: ${chosen}. Render a candidate instead.`);
+  return path.join(fs.realpathSync(existing), ...suffix);
+}
+
+export function refuseProtectedDir(chosen: string, registered: string[]): void {
+  const resolved = physicalPath(chosen);
+  const historical = HISTORICAL_DIRS.map(directory => path.resolve(import.meta.dir, "..", directory));
+  for (const directory of [...historical, ...registered]) {
+    const protectedDir = physicalPath(directory);
+    if (resolved === protectedDir || resolved.startsWith(protectedDir + path.sep)
+        || protectedDir.startsWith(resolved.endsWith(path.sep) ? resolved : resolved + path.sep)) {
+      const kind = historical.includes(directory) ? "historical" : "registered release";
+      throw new Error(`Refusing to overwrite ${kind} dataset: ${chosen}. Render a separate candidate instead.`);
     }
   }
 }
@@ -46,220 +63,47 @@ function resolveOutputDir(): string {
   return path.resolve(chosen);
 }
 
+export const REFERENCE_FONT_PATH = new URL("./assets/DejaVuSans.ttf", import.meta.url);
+const FONT_BYTES = fs.readFileSync(REFERENCE_FONT_PATH);
+export const REFERENCE_FONT_SHA256 = crypto.createHash("sha256").update(FONT_BYTES).digest("hex");
+const FONT_DATA = FONT_BYTES.toString("base64");
+export const SHADOWS = {
+  none: "none",
+  "subtle-drop": "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)",
+  "floating-drop": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)",
+} as const;
+
 export function generateCardHtml(specimen: BorderSpecimenConfig): string {
-  let canvasBg = "#f1f5f9";
-  let cardBg = "#ffffff";
-  let textColor = "#0f172a";
-  let mutedColor = "#64748b";
-  let borderColor = "#cbd5e1";
-
-  if (specimen.theme === "white-on-white") {
-    canvasBg = "#ffffff";
-    cardBg = "#ffffff";
-    borderColor = "#cbd5e1";
-  } else if (specimen.theme === "gray-tint-on-white") {
-    canvasBg = "#ffffff";
-    cardBg = "#f8fafc";
-    borderColor = "#cbd5e1";
-  } else if (specimen.theme === "blue-tint-on-white") {
-    canvasBg = "#ffffff";
-    cardBg = "#eff6ff";
-    borderColor = "#93c5fd";
-  } else if (specimen.theme === "dark-mode") {
-    canvasBg = "#020617";
-    cardBg = "#1e293b";
-    textColor = "#f8fafc";
-    mutedColor = "#94a3b8";
-    borderColor = "rgba(255, 255, 255, 0.16)";
-  }
-
-  let borderTop = "none";
-  let borderRight = "none";
-  let borderBottom = "none";
-  let borderLeft = "none";
-
-  if (specimen.has_border && specimen.stroke_width_px > 0 && specimen.stroke_style !== "none") {
-    const strokeStr = `${specimen.stroke_width_px}px ${specimen.stroke_style} ${borderColor}`;
-    if (specimen.border_sides === "all-4") {
-      borderTop = borderRight = borderBottom = borderLeft = strokeStr;
-    } else if (specimen.border_sides === "bottom-only") {
-      borderBottom = strokeStr;
-    } else if (specimen.border_sides === "left-only") {
-      borderLeft = strokeStr;
-    } else if (specimen.border_sides === "top-only") {
-      borderTop = strokeStr;
-    }
-  }
-
-  let borderRadiusCss = "0px";
-  if (Array.isArray(specimen.corner_radius_px)) {
-    const [tl, tr, br, bl] = specimen.corner_radius_px;
-    borderRadiusCss = `${tl}px ${tr}px ${br}px ${bl}px`;
-  } else {
-    borderRadiusCss = `${specimen.corner_radius_px}px`;
-  }
-
-  let boxShadowCss = "none";
-  if (specimen.elevation === "subtle-drop") {
-    boxShadowCss = "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)";
-  } else if (specimen.elevation === "floating-drop") {
-    boxShadowCss = "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)";
-  } else if (specimen.elevation === "ring-only") {
-    boxShadowCss = "0 0 0 1px rgba(0, 0, 0, 0.12)";
-  } else if (specimen.elevation === "stroke+shadow") {
-    boxShadowCss = "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)";
-  }
-
+  const palette = {
+    "white-on-gray": ["#f1f5f9", "#ffffff", "#cbd5e1"],
+    "gray-tint-on-white": ["#ffffff", "#e2e8f0", "#94a3b8"],
+    "blue-tint-on-white": ["#ffffff", "#eff6ff", "#93c5fd"],
+  };
+  const colors = palette[specimen.theme as keyof typeof palette];
+  if (!colors) throw new Error(`Unsupported candidate theme: ${specimen.theme}`);
+  const [canvasBg, cardBg, borderColor] = colors;
+  const stroke = `${specimen.stroke_width_px}px ${specimen.stroke_style} ${borderColor}`;
+  const side = (name: string) => specimen.has_border && (specimen.border_sides === "all-4" || specimen.border_sides === `${name}-only`) ? stroke : "none";
+  const radius = Array.isArray(specimen.corner_radius_px)
+    ? specimen.corner_radius_px.map(px => `${px}px`).join(" ") : `${specimen.corner_radius_px}px`;
   return `<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<style>
+<html><head><meta charset="utf-8"><style>
+  @font-face { font-family: "BorderBench Reference"; src: url(data:font/ttf;base64,${FONT_DATA}) format("truetype"); font-style: normal; font-weight: 400; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    width: 560px;
-    height: 360px;
-    background: ${canvasBg};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  }
-  .card {
-    width: 400px;
-    height: 240px;
-    background: ${cardBg};
-    border-top: ${borderTop};
-    border-right: ${borderRight};
-    border-bottom: ${borderBottom};
-    border-left: ${borderLeft};
-    border-radius: ${borderRadiusCss};
-    box-shadow: ${boxShadowCss};
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
-  }
-  .header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 9999px;
-    background: #64748b;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    color: #ffffff;
-    font-size: 14px;
-    flex-shrink: 0;
-  }
-  .title-group {
-    flex: 1;
-    min-width: 0;
-  }
-  .title {
-    font-size: 16px;
-    font-weight: 600;
-    color: ${textColor};
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .subtitle {
-    font-size: 12px;
-    color: ${mutedColor};
-    margin-top: 2px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .badge {
-    font-size: 11px;
-    font-weight: 500;
-    padding: 3px 8px;
-    border-radius: 6px;
-    background: #64748b;
-    color: #ffffff;
-  }
-  .body {
-    font-size: 13px;
-    line-height: 1.5;
-    color: ${mutedColor};
-  }
-  .meta-row {
-    display: flex;
-    gap: 16px;
-    margin-top: 6px;
-  }
-  .meta-item {
-    font-size: 11px;
-    color: ${mutedColor};
-  }
-  .meta-item strong {
-    color: ${textColor};
-  }
-  .footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 12px;
-  }
-  .status {
-    font-size: 12px;
-    font-weight: 500;
-    color: ${textColor};
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .status-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 9999px;
-    background: #10b981;
-  }
-  .btn {
-    font-size: 12px;
-    font-weight: 500;
-    padding: 6px 14px;
-    border-radius: 6px;
-    background: #334155;
-    color: #ffffff;
-    border: none;
-    cursor: pointer;
-  }
-</style>
-</head>
-<body>
-  <div class="card">
-    <div class="header">
-      <div class="avatar">S</div>
-      <div class="title-group">
-        <div class="title">${specimen.title}</div>
-        <div class="subtitle">${specimen.subtitle}</div>
-      </div>
-      <div class="badge">${specimen.tag}</div>
-    </div>
-    <div class="body">
-      A neutral interface surface used to compare container edges across images.
-      <div class="meta-row">
-        <div class="meta-item">Section: <strong>Overview</strong></div>
-        <div class="meta-item">State: <strong>Active</strong></div>
-      </div>
-    </div>
-    <div class="footer">
-      <div class="status"><span class="status-dot"></span>Active</div>
-      <button class="btn">Inspect</button>
-    </div>
-  </div>
-</body>
-</html>`;
+  body { position: relative; width: 560px; height: 360px; background: ${canvasBg}; }
+  .card { position: absolute; left: 80px; top: 60px; width: 400px; height: 240px;
+    background: ${cardBg}; border-top: ${side("top")}; border-right: ${side("right")};
+    border-bottom: ${side("bottom")}; border-left: ${side("left")};
+    border-radius: ${radius}; box-shadow: ${SHADOWS[specimen.elevation]}; }
+  .reference { position: absolute; left: 160px; top: 132px; width: 240px; height: 96px;
+    color: #334155; font-family: "BorderBench Reference"; font-synthesis: none;
+    font-size: 16px; line-height: 24px; font-weight: 400; text-align: center; }
+  .reference p { white-space: nowrap; }
+  .scale-rule { width: 64px; height: 2px; margin: 12px auto 0; background: #334155; }
+</style></head><body>
+  <div class="card"></div>
+  <div class="reference"><p>${specimen.title}</p><p>${specimen.subtitle}</p><p>${specimen.tag}</p><div class="scale-rule"></div></div>
+</body></html>`;
 }
 
 interface ComputedEvidence {
@@ -280,6 +124,10 @@ interface ComputedEvidence {
   cardY: number;
   cardWidth: number;
   cardHeight: number;
+  referenceFontFamily: string;
+  referenceFontSize: string;
+  referenceLineHeight: string;
+  ruleWidth: number;
 }
 
 function expectedWidths(specimen: BorderSpecimenConfig): [string, string, string, string] {
@@ -329,6 +177,10 @@ function verifyComputed(specimen: BorderSpecimenConfig, computed: ComputedEviden
   if (specimen.elevation !== "none" && computed.boxShadow === "none") {
     throw new Error(`${specimen.id}: expected a rendered box-shadow for ${specimen.elevation}, got none`);
   }
+  if (computed.referenceFontFamily !== "BorderBench Reference" || computed.referenceFontSize !== "16px"
+      || computed.referenceLineHeight !== "24px" || computed.ruleWidth !== 64) {
+    throw new Error(`${specimen.id}: reference scale differs from 16px/24px text and 64px rule`);
+  }
   for (const [name, got, want] of [["x", computed.cardX, 80], ["y", computed.cardY, 60], ["width", computed.cardWidth, 400], ["height", computed.cardHeight, 240]] as const) {
     if (Math.abs(got - want) > 2) {
       throw new Error(`${specimen.id}: card geometry ${name} expected ${want}, got ${got}`);
@@ -349,6 +201,12 @@ async function main() {
       deviceScaleFactor: 2,
     });
     const browserVersion = browser.version();
+    const cdp = await page.context().newCDPSession(page);
+    await cdp.send("DOM.enable");
+    await cdp.send("CSS.enable");
+    fs.mkdirSync(path.join(staging, "fonts"));
+    fs.copyFileSync(REFERENCE_FONT_PATH, path.join(staging, "fonts/DejaVuSans.ttf"));
+    fs.copyFileSync(new URL("./assets/DejaVuSans.LICENSE", import.meta.url), path.join(staging, "fonts/DejaVuSans.LICENSE"));
     const manifestItems: BorderBenchmarkManifestItem[] = [];
 
     for (let i = 0; i < SPECIMENS.length; i++) {
@@ -356,10 +214,12 @@ async function main() {
       const filename = `${specimen.id}.png`;
       const outputPath = path.join(staging, filename);
       await page.setContent(generateCardHtml(specimen));
+      await page.evaluate(() => document.fonts.ready);
       const computed = await page.evaluate((): ComputedEvidence => {
         const card = document.querySelector(".card") as HTMLElement;
         const style = getComputedStyle(card);
         const rect = card.getBoundingClientRect();
+        const referenceStyle = getComputedStyle(document.querySelector(".reference")!);
         return {
           borderTopWidth: style.borderTopWidth,
           borderRightWidth: style.borderRightWidth,
@@ -378,14 +238,25 @@ async function main() {
           cardY: rect.y,
           cardWidth: rect.width,
           cardHeight: rect.height,
+          referenceFontFamily: referenceStyle.fontFamily.replaceAll('"', ""),
+          referenceFontSize: referenceStyle.fontSize,
+          referenceLineHeight: referenceStyle.lineHeight,
+          ruleWidth: document.querySelector(".scale-rule")!.getBoundingClientRect().width,
         };
       });
       verifyComputed(specimen, computed);
+      const documentRoot = await cdp.send("DOM.getDocument");
+      const referenceNode = await cdp.send("DOM.querySelector", { nodeId: documentRoot.root.nodeId, selector: ".reference" });
+      const { fonts } = await cdp.send("CSS.getPlatformFontsForNode", { nodeId: referenceNode.nodeId });
+      if (!fonts.length || fonts.some(font => font.familyName !== "DejaVu Sans" || !font.isCustomFont || font.glyphCount <= 0)) {
+        throw new Error(`${specimen.id}: reference text used unexpected font: ${JSON.stringify(fonts)}`);
+      }
       await page.screenshot({ path: outputPath, type: "png" });
       const bytes = fs.readFileSync(outputPath);
 
       manifestItems.push({
         taskId: specimen.id,
+        design: specimen.design,
         imagePath: filename,
         imageFilename: filename,
         groundTruth: {
@@ -404,6 +275,8 @@ async function main() {
         imageSha256: crypto.createHash("sha256").update(bytes).digest("hex"),
         rendered: {
           browser: browserVersion,
+          font: { path: "fonts/DejaVuSans.ttf", sha256: REFERENCE_FONT_SHA256, family: "DejaVu Sans", platformFonts: fonts },
+          reference: { fontFamily: computed.referenceFontFamily, fontSizePx: Number.parseFloat(computed.referenceFontSize), lineHeightPx: Number.parseFloat(computed.referenceLineHeight), ruleWidthPx: computed.ruleWidth },
           platform: process.platform,
           viewport: { width: 560, height: 360, deviceScaleFactor: 2 },
           card: { x: computed.cardX, y: computed.cardY, width: computed.cardWidth, height: computed.cardHeight },
@@ -430,12 +303,20 @@ async function main() {
       }
     }
 
-    const dirName = path.basename(OUTPUT_DIR);
-    const releaseVersion = dirName === "borderbench-v1" ? "1.0.0" : dirName === "borderbench-v1.1" ? "1.1.0" : null;
+    for (const item of manifestItems) {
+      const reference = manifestItems.find(other => other.design?.recipeId === item.design?.recipeId
+        && other.groundTruth.theme === item.groundTruth.theme && other.groundTruth.elevation === "none");
+      if (!reference?.imageSha256) throw new Error(`Missing flat control for ${item.taskId}`);
+      item.rendered!.shadowReference = { imageFilename: reference.imageFilename, imageSha256: reference.imageSha256 };
+    }
+    fs.writeFileSync(path.join(staging, "catalog.json"), JSON.stringify({
+      schema_version: 1, tasks: manifestItems.map(item => ({ taskId: item.taskId, groundTruth: item.groundTruth, design: item.design })),
+      referenceFont: { path: "fonts/DejaVuSans.ttf", sha256: REFERENCE_FONT_SHA256 }, prompt: PROMPT_TEXT,
+    }, null, 2) + "\n");
     const manifest = {
-      benchmark_id: releaseVersion ? dirName : "borderbench-candidate",
-      name: releaseVersion ? `BorderBench V${releaseVersion.replace(/\.0$/, "")}` : "BorderBench candidate",
-      version: releaseVersion ?? "0.0.0-candidate",
+      benchmark_id: "borderbench-candidate",
+      name: "BorderBench candidate",
+      version: "0.0.0-candidate",
       description: "Visual border, corner radius, stroke style, and elevation identification benchmark for multimodal vision-language models.",
       total_tasks: manifestItems.length,
       canonical_canvas: {
@@ -456,7 +337,7 @@ async function main() {
       }
     }
     for (const file of fs.readdirSync(staging)) {
-      fs.renameSync(path.join(staging, file), path.join(OUTPUT_DIR, file));
+      fs.cpSync(path.join(staging, file), path.join(OUTPUT_DIR, file), { recursive: true, force: true });
     }
     console.log(`Finished rendering! Manifest written to ${path.join(OUTPUT_DIR, "manifest.json")}`);
   } finally {

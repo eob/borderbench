@@ -1,0 +1,23 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________________ test_offline_finalizer_is_available ______________________
+
+    def test_offline_finalizer_is_available():
+>       assert callable(finalizer().finalize_run)
+                        ^^^^^^^^^^^
+
+tests/test_finalization.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def finalizer():
+>       assert importlib.util.find_spec('baseline.finalize') is not None, 'Offline finalization tooling is missing'
+E       AssertionError: Offline finalization tooling is missing
+E       assert None is not None
+E        +  where None = <function find_spec at 0x7f4882b66980>('baseline.finalize')
+E        +    where <function find_spec at 0x7f4882b66980> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests/test_finalization.py:21: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_finalization.py::test_offline_finalizer_is_available - Asse...
+1 failed in 0.15s

@@ -18,12 +18,13 @@ import signal
 import threading
 from typing import Any
 
-from baseline.evaluator import BaselineEvaluator, TaskEvaluationResult, evaluation_protocol_fingerprint, load_manifest
+from baseline.evaluator import GRADING_VERSION, BaselineEvaluator, TaskEvaluationResult, evaluation_protocol_fingerprint, load_manifest
 from baseline.model_config import load_model_config
 from baseline.releases import (
     DEFAULT_RELEASE,
     git_code_identity,
     load_release,
+    model_config_fingerprint,
     release_manifest_path,
     validate_release,
 )
@@ -49,16 +50,16 @@ def write_json(path: Path, data: dict) -> None:
 
 @contextmanager
 def _run_lock(directory: Path):
+    import fcntl
     with (directory / ".runner.lock").open("a+b") as lock:
         try:
-            import fcntl
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
-            try:
-                yield
-            finally:
-                fcntl.flock(lock, fcntl.LOCK_UN)
-        except (ImportError, BlockingIOError) as e:
-            raise RuntimeError(f"Benchmark run is already running: {directory}") from e
+        except BlockingIOError as error:
+            raise RuntimeError(f"Benchmark run is already running: {directory}") from error
+        try:
+            yield
+        finally:
+            fcntl.flock(lock, fcntl.LOCK_UN)
 
 
 def run_benchmark(
@@ -93,6 +94,10 @@ def run_benchmark(
         models = [model for model in models if model["id"] in selected_models]
     if not models:
         raise ValueError("No enabled models selected")
+    if not mock and budget_usd is not None and any(
+        model.get("input_per_m") is None or model.get("output_per_m") is None for model in models
+    ):
+        raise ValueError("A budgeted live run requires known input and output prices")
 
     if descriptor is not None:
         manifest_path = release_manifest_path(descriptor)
@@ -104,6 +109,7 @@ def run_benchmark(
         items = load_manifest(str(manifest_path))
     fingerprint = dataset_fingerprint(items)
     items.sort(key=lambda x: x["taskId"])
+    random.Random(0).shuffle(items)
     selected_items = items[:max_tasks] if max_tasks is not None else items
 
     version = descriptor["benchmark_version"] if descriptor else None
@@ -114,7 +120,14 @@ def run_benchmark(
     protocol = evaluation_protocol_fingerprint()
 
     with _run_lock(directory), ExitStack() as resources:
+        if any((directory / name).exists() for name in ("finalization.json", "final_results.json")):
+            raise ValueError("This run is finalized or awaiting its seal; use a new run ID")
         state_path = directory / "state.sqlite3"
+        if not state_path.exists() and (
+            any((directory / name).exists() for name in ("run.json", "summary.json", "attempts.jsonl"))
+            or any(directory.glob("scorecard_*.json"))
+        ):
+            raise ValueError("Existing run artifacts have no checkpoint; restore state.sqlite3 before resuming")
         result_fields = {f.name for f in fields(TaskEvaluationResult)}
         clients = {}
         for model in models:
@@ -131,14 +144,15 @@ def run_benchmark(
 
         model_by_id = {model["id"]: model for model in models}
         reserve = {
-            model["id"]: 0.0 if mock else (
-                (5000 * (model.get("input_per_m") or 1.0) + model.get("max_output_tokens", 1024) * (model.get("output_per_m") or 1.0)) / 1_000_000
-            ) for model in models
+            model["id"]: 0.0 if mock else None if model.get("input_per_m") is None or model.get("output_per_m") is None else (
+                5000 * model["input_per_m"] + model.get("max_output_tokens", 1024) * model["output_per_m"]
+            ) / 1_000_000 for model in models
         }
 
         with RunStore(state_path) as store:
             run_path = directory / "run.json"
             identity = {
+                "schema_version": 1, "run_id": run_id, "grading_version": GRADING_VERSION,
                 "release": version,
                 "dataset_git_commit": descriptor["dataset_git_commit"] if descriptor else None,
                 "dataset_fingerprint": fingerprint,
@@ -147,6 +161,17 @@ def run_benchmark(
                 "mock": mock,
                 "expected_task_count": len(items),
             }
+            prior = {run["run_id"]: run for run in store.list_runs()}.get(run_id)
+            checkpoint_states = store.model_states(run_id)
+            if prior is not None and (prior["fingerprint"] != fingerprint or any(
+                prior["metadata"].get(key) != value for key, value in identity.items()
+            )):
+                raise ValueError("Checkpoint disagrees with the dataset/evaluation protocol identity")
+            if budget_usd is not None and store.has_unknown_costs(run_id):
+                raise ValueError("Cannot enforce a cumulative budget: prior attempts have unknown costs")
+            for model in models:
+                if model["id"] in checkpoint_states and checkpoint_states[model["id"]]["config"] != model:
+                    raise ValueError(f"Model {model['id']!r} already has a different config")
             if run_path.exists():
                 try:
                     run_metadata = json.loads(run_path.read_text(encoding="utf-8"))
@@ -157,8 +182,17 @@ def run_benchmark(
                 ):
                     raise ValueError("Run metadata disagrees with the checkpoint/release identity")
                 history = run_metadata.get("invocations")
-                if not isinstance(history, list):
+                if (not isinstance(history, list) or not history or any(
+                    not isinstance(entry, dict) or not isinstance(entry.get("models"), list)
+                    or not entry["models"] or any(not isinstance(model, dict) for model in entry["models"])
+                    for entry in history
+                )):
                     raise ValueError("Run metadata has malformed invocation history")
+                historical_configs = [model for entry in history for model in entry["models"]]
+                if any(state["config"] not in historical_configs or
+                       run_metadata.get("model_configs", {}).get(model_id) != state["config"]
+                       for model_id, state in checkpoint_states.items()):
+                    raise ValueError("Run metadata has lost or changed a checkpoint model configuration")
             else:
                 if any((directory / name).exists() for name in ("summary.json", "attempts.jsonl")) or store.list_runs():
                     raise ValueError("Existing checkpoint has lost run metadata. Restore run.json before resuming.")
@@ -175,40 +209,31 @@ def run_benchmark(
                 "max_tasks": max_tasks,
                 "budget_usd": budget_usd,
                 "concurrency": concurrency,
-                "models": [model["id"] for model in models],
+                "models": models,
             }
-            run_metadata["invocations"].append(invocation)
-            for model in models:
-                run_metadata.setdefault("model_configs", {})[model["id"]] = model
-            write_json(run_path, run_metadata)
-
-            prior = {run["run_id"]: run for run in store.list_runs()}.get(run_id)
-            if prior is not None and prior["metadata"].get("evaluation_protocol") != protocol:
-                raise ValueError(
-                    f"Run {run_id!r} already exists with a different evaluation protocol; use a new run ID"
-                )
-            store.register_run(
-                run_id, fingerprint,
-                {"manifest_path": str(Path(manifest_path).resolve()), "mock": mock,
-                 "expected_task_count": len(items), "evaluation_protocol": protocol}
-            )
+            store.register_run(run_id, fingerprint, identity)
             for model in models:
                 store.register_model(run_id, model["id"], model)
+            run_metadata["invocations"].append(invocation)
+            for model in models:
+                run_metadata["model_configs"][model["id"]] = model
 
             reported_models = [state["config"] for state in store.model_states(run_id).values()]
-            lost_configs = [model["id"] for model in reported_models if model["id"] not in run_metadata["model_configs"]]
-            if lost_configs:
-                raise ValueError(f"Run invocation history has lost a checkpoint model configuration: {lost_configs[0]!r}")
             completed = {model["id"]: store.completed_results(run_id, model["id"]) for model in reported_models}
             known_tasks = {item["taskId"] for item in items}
             foreign = sorted(
-                {task_id for saved in completed.values() for task_id in saved} - known_tasks
+                {task_id for model in reported_models for task_id in store.results(run_id, model["id"])} - known_tasks
             )
             if foreign:
                 raise ValueError(
                     f"Checkpoint for run {run_id!r} contains {len(foreign)} unknown task IDs "
                     f"(e.g. {foreign[0]!r}); restore the matching manifest or use a new run ID"
                 )
+            from baseline.reporting import validate_task_result
+            by_id = {item["taskId"]: item for item in items}
+            for model in reported_models:
+                for task_id, result in completed[model["id"]].items():
+                    validate_task_result(result, by_id[task_id], model)
             pending = deque(
                 (model["id"], item)
                 for item in selected_items
@@ -223,21 +248,16 @@ def run_benchmark(
 
             def snapshot(changed_model_id: str | None = None) -> dict:
                 state = store.model_states(run_id)
+                updated_at = datetime.now(timezone.utc).isoformat()
+                provenance = {**identity, **code_identity, "created_at": run_metadata["created_at"], "updated_at": updated_at}
                 summary = {
-                    "run_id": run_id,
-                    "release": version,
-                    "dataset_git_commit": descriptor["dataset_git_commit"] if descriptor else None,
-                    "dataset_fingerprint": fingerprint,
-                    "evaluation_protocol": protocol,
-                    "mock": mock,
-                    "expected_task_count": len(items),
+                    **provenance,
                     "budget_usd": budget_usd,
                     "spent_cost_usd": store.spent_cost(run_id),
+                    "cost_incomplete": store.has_unknown_costs(run_id),
+                    "interruption_signal": int(interruption_signal) if interrupted else None,
                     "status": status,
                     "models": {},
-                    **code_identity,
-                    "created_at": run_metadata["created_at"],
-                    "updated_at": datetime.now(timezone.utc).isoformat(),
                     "invocations": len(run_metadata["invocations"]),
                 }
                 for model in reported_models:
@@ -253,10 +273,10 @@ def run_benchmark(
                         scorecard.pop("task_results", None)
                         scorecard["tasks"] = list(saved.values())
                         scorecard.update(
-                            mock=mock,
-                            release=version,
-                            dataset_fingerprint=fingerprint,
-                            evaluation_protocol=protocol,
+                            **provenance,
+                            model_config=model,
+                            model_config_fingerprint=model_config_fingerprint(model),
+                            max_output_tokens=model.get("max_output_tokens", 1024),
                             model_id=m_id,
                             model_name=model["model"],
                             display_name=model.get("display_name", m_id),
@@ -272,26 +292,36 @@ def run_benchmark(
                     scorecard = scorecards[m_id]
                     cur = state.get(m_id, {})
                     summary["models"][m_id] = {
+                        "model_config": model,
+                        "model_config_fingerprint": model_config_fingerprint(model),
+                        "max_output_tokens": model.get("max_output_tokens", 1024),
                         "provider": model["provider"],
                         "model": model["model"],
                         "display_name": model.get("display_name", m_id),
                         "completed": len(saved),
                         "attempted_tasks": len(attempted_ids[m_id]),
                         "status": "complete" if len(saved) == len(items) else cur.get("status", "pending"),
-                        "cost_usd": store.spent_cost(run_id, m_id),
+                        "reason": cur.get("reason"),
+                        "cost_usd": None if any(a["result"].get("cost_usd") is None for a in store.attempts(run_id, m_id)) else store.spent_cost(run_id, m_id),
                         "all_correct_accuracy": scorecard["overall_exact_match"],
                         "has_border_accuracy": scorecard["has_border_accuracy"],
                         "avg_latency_sec": scorecard["avg_latency_sec"],
                     }
                 write_json(directory / "summary.json", summary)
+                invocation.update(status=status, updated_at=updated_at)
+                if status != "running":
+                    invocation["finished_at"] = updated_at
+                write_json(run_path, run_metadata)
                 attempts_path = directory / "attempts.jsonl"
-                attempts_path.write_text(
+                attempts_temporary = attempts_path.with_suffix(".jsonl.tmp")
+                attempts_temporary.write_text(
                     "".join(
                         json.dumps(attempt, sort_keys=True, ensure_ascii=False) + "\n"
                         for attempt in store.attempts(run_id)
                     ),
                     encoding="utf-8",
                 )
+                attempts_temporary.replace(attempts_path)
                 return summary
 
             interrupted = False
@@ -336,13 +366,17 @@ def run_benchmark(
 
                 if mock:
                     res_dict["cost_usd"] = 0.0
+                elif reserve[m_id] is None:
+                    res_dict["cost_usd"] = None
                 elif worker_failed:
                     res_dict["cost_usd"] = req_reserve
                 else:
                     in_m = model.get("input_per_m") or 0.0
                     out_m = model.get("output_per_m") or 0.0
                     metered = ((res_dict.get("input_tokens") or 0) * in_m + (res_dict.get("output_tokens") or 0) * out_m) / 1_000_000
-                    res_dict["cost_usd"] = metered
+                    res_dict["cost_usd"] = metered + reserve[m_id] * (res_dict.get("unmetered_attempts") or 0)
+                res_dict["cost_estimated"] = worker_failed or bool(res_dict.get("unmetered_attempts"))
+                res_dict["recorded_at"] = datetime.now(timezone.utc).isoformat()
 
                 store.save_result(run_id, m_id, task_id, res_dict)
                 failure = res_dict.get("error_kind")
@@ -404,13 +438,18 @@ def run_benchmark(
                 status = "failed"
             elif interrupted:
                 status = "interrupted"
-            elif all(len(completed[m["id"]]) == len(items) for m in models):
+            elif all(len(saved) == len(items) for saved in completed.values()):
                 status = "complete"
+            elif status != "budget_exhausted":
+                status = "paused" if blocked_providers or blocked_models else "partial"
 
             for model in models:
                 m_id = model["id"]
                 if len(completed[m_id]) == len(items):
                     store.save_model_state(run_id, m_id, "complete")
+                elif m_id not in blocked_models and model["provider"] not in blocked_providers:
+                    reason = str(fatal_error) if fatal_error else "Interrupted; resume to continue" if interrupted else None
+                    store.save_model_state(run_id, m_id, "paused" if fatal_error or interrupted else "partial", reason)
 
             summary = snapshot()
             invocation.update(status=status, finished_at=summary["updated_at"])
@@ -448,6 +487,8 @@ def main() -> None:
         mock=args.mock,
     )
     print(json.dumps(summary, indent=2))
+    if summary["status"] == "interrupted":
+        raise SystemExit(128 + summary["interruption_signal"])
 
 
 if __name__ == "__main__":
