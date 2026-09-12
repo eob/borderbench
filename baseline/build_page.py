@@ -9,10 +9,12 @@ import shutil
 from collections import Counter
 from html import escape
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from baseline.evaluator import load_manifest
 from baseline.releases import (
     DEFAULT_RELEASE,
+    REPO_ROOT,
     load_release,
     model_config_fingerprint,
     release_manifest_path,
@@ -40,6 +42,8 @@ AXES = [
     ("corner_uniformity", "Corner uniformity", "Equal, top-only, or asymmetric corner curvature."),
     ("elevation", "Elevation", "Flat cards and two coarse Tailwind drop-shadow levels, independent of the border."),
 ]
+
+DEFAULT_SITE_URL = "https://edwardbenson.com/benchmarks/borderbench/"
 
 
 def _select_samples(items: list[dict], key: str, count: int) -> list[dict]:
@@ -111,8 +115,9 @@ def main() -> None:
     parser.add_argument("--release", default=DEFAULT_RELEASE)
     parser.add_argument("--results-dir", default="results/runs")
     parser.add_argument("--output-dir", default="site")
+    parser.add_argument("--site-url", default=DEFAULT_SITE_URL, help="Public URL where the generated site and assets will be served")
     args = parser.parse_args()
-    benchmark = build_page(args.release, args.results_dir, args.output_dir)
+    benchmark = build_page(args.release, args.results_dir, args.output_dir, site_url=args.site_url)
     print(f"Built page for release {args.release}: {len(benchmark['configs'])} configurations, {benchmark['shared_task_count']} shared inputs.")
 
 
@@ -120,7 +125,13 @@ def build_page(
     release_version: str = DEFAULT_RELEASE,
     results_dir: str | Path = "results/runs",
     output_dir: str | Path = "site",
+    *,
+    site_url: str = DEFAULT_SITE_URL,
 ) -> dict:
+    address = urlsplit(site_url)
+    if address.scheme not in ("http", "https") or not address.netloc or address.query or address.fragment:
+        raise ValueError("site_url must be an absolute HTTP(S) directory URL without a query or fragment")
+    site_url = site_url.rstrip("/") + "/"
     release = load_release(release_version)
     manifest_path = release_manifest_path(release)
     validity = validate_dataset(manifest_path)
@@ -174,6 +185,10 @@ def build_page(
         breakdowns.append({"key": key, "title": title, "blurb": blurb, "groups": groups})
 
     output = Path(output_dir)
+    assets = output / "assets"
+    assets.mkdir(parents=True, exist_ok=True)
+    for name in ("borderbench-logo.svg", "borderbench-share.png"):
+        shutil.copyfile(REPO_ROOT / "branding" / name, assets / name)
     inputs_dir = output / "inputs"
     if inputs_dir.exists():
         shutil.rmtree(inputs_dir)
@@ -231,7 +246,24 @@ def build_page(
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BorderBench {escape(release_version)}</title>
+<title>BorderBench — Can a model see the edge?</title>
+<meta name="description" content="A visual benchmark for how language models perceive borders, corners, and shadows. Seven attributes. A fixed scale. Reproducible comparisons.">
+<link rel="canonical" href="{escape(site_url, quote=True)}">
+<link rel="icon" type="image/svg+xml" href="assets/borderbench-logo.svg">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{escape(site_url, quote=True)}">
+<meta property="og:title" content="BorderBench — Can a model see the edge?">
+<meta property="og:description" content="Measuring how language models perceive borders, corners, and shadows.">
+<meta property="og:image" content="{escape(site_url, quote=True)}assets/borderbench-share.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="BorderBench. Can a model see the edge? A study of border patterns, widths, corners, and shadows.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BorderBench — Can a model see the edge?">
+<meta name="twitter:description" content="Measuring how language models perceive borders, corners, and shadows.">
+<meta name="twitter:image" content="{escape(site_url, quote=True)}assets/borderbench-share.png">
+<meta name="twitter:image:alt" content="BorderBench. Can a model see the edge? A study of border patterns, widths, corners, and shadows.">
 <style>
 body {{ font-family: Arial, sans-serif; margin: 0 auto; max-width: 1200px; padding: 24px; color: #0f172a; }}
 small {{ display: block; color: #64748b; font-weight: 400; }}
@@ -243,10 +275,20 @@ section {{ margin-top: 32px; }}
 svg {{ max-width: 100%; height: auto; }}
 .warnings {{ background: #fef9c3; border: 1px solid #eab308; padding: 8px 16px; }}
 code {{ font-size: 12px; }}
+.brand {{ display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 20px; margin-bottom: 24px; }}
+.brand img {{ width: 40px; height: 40px; }}
+.share-card {{ display: block; width: 100%; height: auto; border-radius: 16px; }}
+h1 {{ font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.035em; margin-bottom: 12px; }}
+.intro {{ max-width: 760px; font-size: 18px; line-height: 1.5; }}
 </style>
 </head>
 <body>
-<h1>BorderBench {escape(release_version)}</h1>
+<header>
+<div class="brand"><img src="assets/borderbench-logo.svg" alt="" width="40" height="40">BorderBench <small>V{escape(release_version)}</small></div>
+<img class="share-card" src="assets/borderbench-share.png" alt="BorderBench — Can a model see the edge?" width="1200" height="630">
+<h1>Can a model see the edge?</h1>
+<p class="intro">A visual benchmark for how language models perceive borders, corners, and shadows. Seven attributes, coarse Tailwind categories, and a fixed visual scale.</p>
+</header>
 <p>{len(items)} inputs · dataset <code>{release["dataset_fingerprint"][:12]}</code> · protocol <code>{release["evaluation_protocol_fingerprint"][:12]}</code> · gate passed</p>
 <p>Shared cohort: {len(shared_ids)} inputs measured by every configuration with observations. All comparison scores and breakdowns use this same cohort; unmeasured configurations remain unranked. Repeats keep the earliest final observation; total costs include every attempt. Per-model observed scores and confusion matrices are available in the structured export.</p>
 {leaderboard_html}

@@ -1,5 +1,7 @@
 # BorderBench V1.2.0
 
+![BorderBench — Can a model see the edge?](branding/borderbench-share.png)
+
 BorderBench measures recognition of visible card borders, corner geometry, and
 cast shadows. V1.2.0 contains **477 images: 53 shape recipes × 3 themes × 3 shadow
 levels**, with a fixed visual scale and controlled comparisons. It is ready for
@@ -62,7 +64,7 @@ First exercise the pipeline without provider requests:
 bun run benchmark --release 1.2.0 --mock --run-id smoke --max-tasks 3
 ```
 
-Choose explicit model IDs from [config/models.json](config/models.json), or pass
+Choose explicit model IDs from the default [13-model catalog](config/models.all.json), or pass
 `--config path/to/models.json`. The catalog records dated model IDs and prices;
 verify them against provider documentation before a paid campaign. Set the API
 key environment variable named by each selected configuration.

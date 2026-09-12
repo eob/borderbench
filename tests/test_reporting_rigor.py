@@ -117,12 +117,31 @@ def test_page_uses_shared_scores_for_ranking_and_rendering(tmp_path, monkeypatch
     monkeypatch.setattr(page, 'validate_release', lambda *a: items)
     monkeypatch.setattr(page, 'validate_dataset', lambda *a: {'valid': True, 'distributions': {}})
     monkeypatch.setattr(page, 'collect_observations', lambda *a: (collected, []))
-    result = page.build_page('9.9.9', tmp_path, tmp_path / 'site')
+    result = page.build_page('9.9.9', tmp_path, tmp_path / 'site', site_url='https://example.org/benchmarks/borders/')
     assert result['shared_task_ids'] == ['t1']
     assert [row['display_name'] for row in result['configs']] == ['Alpha', 'Zeta']
     assert [row['shared_metrics']['exact'] for row in result['configs']] == [1, 1]
     assert result['configs'][0]['metrics']['exact'] == .5
-    assert '50.0%' not in (tmp_path / 'site/index.html').read_text()
+    html = (tmp_path / 'site/index.html').read_text()
+    assert '50.0%' not in html
+    from html.parser import HTMLParser
+    class Metadata(HTMLParser):
+        values = {}
+        def handle_starttag(self, tag, attrs):
+            attrs = dict(attrs)
+            if tag == 'meta':
+                self.values[attrs.get('property', attrs.get('name'))] = attrs.get('content')
+    metadata = Metadata()
+    metadata.feed(html)
+    assert metadata.values['twitter:card'] == 'summary_large_image'
+    assert metadata.values['og:image'] == 'https://example.org/benchmarks/borders/assets/borderbench-share.png'
+    assert metadata.values['twitter:image'] == metadata.values['og:image']
+    assert metadata.values['og:image:width'] == '1200'
+    assert metadata.values['og:image:height'] == '630'
+    from PIL import Image
+    with Image.open(tmp_path / 'site/assets/borderbench-share.png') as card:
+        assert card.size == (1200, 630)
+    assert (tmp_path / 'site/assets/borderbench-logo.svg').is_file()
 
 
 def test_parseable_correct_answer_cannot_be_relabeled_invalid(tmp_path):

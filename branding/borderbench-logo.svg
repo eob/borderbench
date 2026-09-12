@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" role="img" aria-labelledby="title">
+  <title id="title">BorderBench</title>
+  <rect width="80" height="80" rx="18" fill="#142c38"/>
+  <rect x="17" y="14" width="48" height="44" rx="9" fill="none" stroke="#ff825d" stroke-width="3" stroke-dasharray="5 5"/>
+  <path d="M15 27h35a10 10 0 0 1 10 10v13a15 15 0 0 1-15 15H15Z" fill="#142c38" stroke="#fff7e9" stroke-width="5"/>
+  <path d="M27 39h20M27 51h12" stroke="#fff7e9" stroke-width="4" stroke-linecap="round"/>
+</svg>

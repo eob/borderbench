@@ -13,6 +13,7 @@
     "benchmark": ".venv/bin/python -m baseline.runner",
     "benchmark:mock": ".venv/bin/python -m baseline.runner --mock --max-tasks 3",
     "build:page": ".venv/bin/python -m baseline.build_page",
+    "build:branding": "bun run branding/render.ts",
     "validate:dataset": ".venv/bin/python -m baseline.validate_dataset --manifest dataset/borderbench-v1.2/manifest.json",
     "validate:dataset-1.0": ".venv/bin/python -m baseline.validate_dataset --manifest dataset/borderbench-v1/manifest.json",
     "validate:release": ".venv/bin/python -m baseline.releases --release 1.2.0",

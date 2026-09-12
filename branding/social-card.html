@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<title>BorderBench share card</title>
+<style>
+@font-face { font-family: Bench; src: url('../src/assets/DejaVuSans.ttf'); font-weight: 100 900; }
+* { box-sizing: border-box; }
+body { width: 1200px; height: 630px; margin: 0; overflow: hidden; background: #fff7e9; color: #142c38; font-family: Bench, sans-serif; }
+main { position: relative; width: 100%; height: 100%; border: 12px solid #142c38; }
+.brand { position: absolute; top: 44px; left: 48px; display: flex; align-items: center; gap: 18px; }
+.brand img { width: 58px; height: 58px; }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 2px; line-height: 1.65; }
+h1 { position: absolute; left: 45px; top: 184px; margin: 0; font-size: 86px; font-weight: 700; letter-spacing: -5px; line-height: 1.1; }
+.tagline { position: absolute; left: 50px; top: 293px; margin: 0; font-size: 29px; letter-spacing: -1px; }
+.subline { position: absolute; left: 50px; top: 347px; margin: 0; font-size: 16px; line-height: 1.65; color: #50636a; }
+.axes { position: absolute; left: 50px; bottom: 60px; display: flex; align-items: center; gap: 23px; }
+.axis { font-size: 11px; font-weight: 700; letter-spacing: 1.6px; display: flex; flex-direction: column; gap: 17px; }
+.rule { height: 6px; width: 100px; border-top: 2px solid #142c38; }
+.axis:nth-child(2) .rule { border-top: 5px solid #142c38; }
+.axis:nth-child(3) .rule { border-top: 3px dashed #142c38; }
+.axis:nth-child(4) .rule { border-top: 4px dotted #142c38; }
+.art { position: absolute; right: 24px; top: 83px; width: 445px; height: 470px; }
+.folio { position: absolute; right: 46px; bottom: 26px; font-size: 10px; letter-spacing: 2px; color: #50636a; }
+</style>
+<main>
+  <div class="brand"><img src="borderbench-logo.svg" alt=""><div class="eyebrow">A BENCHMARK FOR<br>VISUAL PERCEPTION</div></div>
+  <h1>BorderBench</h1>
+  <p class="tagline">Can a model see the edge?</p>
+  <p class="subline">Measuring how language models perceive<br>borders, corners, and shadows.</p>
+  <div class="axes" aria-label="Border variations">
+    <div class="axis"><div class="rule"></div>HAIRLINE</div>
+    <div class="axis"><div class="rule"></div>HEAVY</div>
+    <div class="axis"><div class="rule"></div>DASHED</div>
+    <div class="axis"><div class="rule"></div>DOTTED</div>
+  </div>
+  <svg class="art" viewBox="0 0 445 470" aria-label="Layered cards with contrasting borders, corners, and shadows">
+    <defs>
+      <pattern id="grid" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#cfc8b9"/></pattern>
+      <filter id="shadow" x="-40%" y="-40%" width="190%" height="200%"><feDropShadow dx="0" dy="17" stdDeviation="13" flood-color="#142c38" flood-opacity=".19"/></filter>
+    </defs>
+    <rect x="68" y="0" width="362" height="450" fill="url(#grid)"/>
+    <rect x="122" y="34" width="239" height="267" rx="54" fill="#ff825d"/>
+    <rect x="69" y="92" width="256" height="277" rx="5" fill="#fff7e9" stroke="#142c38" stroke-width="3" stroke-dasharray="11 10"/>
+    <rect x="132" y="151" width="258" height="251" rx="33" fill="#fffdfa" filter="url(#shadow)"/>
+    <path d="M132 184a33 33 0 0 1 33-33h192a33 33 0 0 1 33 33v153a65 65 0 0 1-65 65H132Z" fill="#fffdfa" stroke="#142c38" stroke-width="8"/>
+    <path d="M176 233h124M176 258h89" fill="none" stroke="#142c38" stroke-width="8" stroke-linecap="round"/>
+    <path d="M176 297h164" fill="none" stroke="#ff825d" stroke-width="3" stroke-dasharray="1 11" stroke-linecap="round"/>
+    <path d="M358 354v23h-23" fill="none" stroke="#ff825d" stroke-width="3"/>
+    <circle cx="78" cy="409" r="17" fill="#142c38"/>
+    <path d="M71 409h14M78 402v14" stroke="#fff7e9" stroke-width="2"/>
+  </svg>
+  <div class="folio">BORDERS / CORNERS / SHADOWS</div>
+</main>
+</html>

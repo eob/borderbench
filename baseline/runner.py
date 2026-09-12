@@ -11,6 +11,7 @@ from datetime import datetime, timezone
 import hashlib
 import json
 import math
+import os
 from pathlib import Path
 import random
 import re
@@ -18,8 +19,11 @@ import signal
 import threading
 from typing import Any
 
+import httpx
+
 from baseline.evaluator import GRADING_VERSION, BaselineEvaluator, TaskEvaluationResult, evaluation_protocol_fingerprint, load_manifest
 from baseline.model_config import load_model_config
+from baseline.providers import PROVIDERS
 from baseline.releases import (
     DEFAULT_RELEASE,
     git_code_identity,
@@ -30,6 +34,9 @@ from baseline.releases import (
 )
 from baseline.run_state import RunStore
 from baseline.validate_dataset import require_valid_dataset
+
+META_API_BASE_URL = "https://api.meta.ai/v1"
+META_REQUEST_TIMEOUT = 300.0
 
 
 def dataset_fingerprint(items: list[dict]) -> str:
@@ -64,7 +71,7 @@ def _run_lock(directory: Path):
 
 def run_benchmark(
     manifest_path: str | Path | None = None,
-    config_path: str | Path = "config/models.json",
+    config_path: str | Path = "config/models.all.json",
     output_dir: str | Path = "results/runs",
     run_id: str | None = None,
     release: str | None = None,
@@ -99,6 +106,12 @@ def run_benchmark(
     ):
         raise ValueError("A budgeted live run requires known input and output prices")
 
+    anthropic_workspace_id = None
+    if not mock and any(model["provider"] == "anthropic" for model in models):
+        anthropic_workspace_id = os.environ.get("ANTHROPIC_WORKSPACE_ID", "").strip() or None
+        if anthropic_workspace_id and not re.fullmatch(r"wrkspc_[A-Za-z0-9]+", anthropic_workspace_id):
+            raise ValueError("ANTHROPIC_WORKSPACE_ID must be a wrkspc_ workspace ID")
+
     if descriptor is not None:
         manifest_path = release_manifest_path(descriptor)
         items = validate_release(descriptor)
@@ -130,6 +143,7 @@ def run_benchmark(
             raise ValueError("Existing run artifacts have no checkpoint; restore state.sqlite3 before resuming")
         result_fields = {f.name for f in fields(TaskEvaluationResult)}
         clients = {}
+        request_timeouts = {}
         for model in models:
             client = BaselineEvaluator(
                 model_name=model["model"],
@@ -140,9 +154,21 @@ def run_benchmark(
                 max_output_tokens=model.get("max_output_tokens", 1024),
             )
             resources.callback(client.close)
+            if client._client is not None:
+                if model["provider"] == "anthropic" and anthropic_workspace_id:
+                    client._client._http.headers["anthropic-workspace-id"] = anthropic_workspace_id
+                if (model.get("base_url") or "").rstrip("/") == META_API_BASE_URL:
+                    # FontBench observed Muse reasoning exceeding the default transport wait.
+                    client._client._http.timeout = httpx.Timeout(META_REQUEST_TIMEOUT)
+                request_timeouts[model["id"]] = client._client._http.timeout.read
             clients[model["id"]] = client
 
         model_by_id = {model["id"]: model for model in models}
+        provider_scopes = {
+            model["id"]: (model["provider"], (model.get("base_url") or PROVIDERS[model["provider"]][0]).rstrip("/"),
+                          model.get("api_key_env") or PROVIDERS[model["provider"]][1])
+            for model in models
+        }
         reserve = {
             model["id"]: 0.0 if mock else None if model.get("input_per_m") is None or model.get("output_per_m") is None else (
                 5000 * model["input_per_m"] + model.get("max_output_tokens", 1024) * model["output_per_m"]
@@ -210,7 +236,10 @@ def run_benchmark(
                 "budget_usd": budget_usd,
                 "concurrency": concurrency,
                 "models": models,
+                "request_timeouts_sec": request_timeouts,
             }
+            if anthropic_workspace_id:
+                invocation["anthropic_workspace_id"] = anthropic_workspace_id
             store.register_run(run_id, fingerprint, identity)
             for model in models:
                 store.register_model(run_id, model["id"], model)
@@ -240,7 +269,7 @@ def run_benchmark(
                 for model in models
                 if item["taskId"] not in completed[model["id"]]
             )
-            blocked_providers: set[str] = set()
+            blocked_providers: set[tuple[str, str, str]] = set()
             blocked_models: set[str] = set()
             status = "running"
             scorecards = {}
@@ -386,9 +415,9 @@ def run_benchmark(
                     completed[m_id][task_id] = res_dict
 
                 if failure in {"credits", "authentication", "rate_limit"}:
-                    blocked_providers.add(model["provider"])
+                    blocked_providers.add(provider_scopes[m_id])
                     for sib in models:
-                        if sib["provider"] == model["provider"]:
+                        if provider_scopes[sib["id"]] == provider_scopes[m_id]:
                             store.save_model_state(run_id, sib["id"], "paused", res_dict.get("error"))
                 elif res_dict.get("error") and failure != "invalid_response":
                     blocked_models.add(m_id)
@@ -406,7 +435,7 @@ def run_benchmark(
                         while pending and len(running) < concurrency and not interrupted:
                             m_id, item = pending.popleft()
                             model = model_by_id[m_id]
-                            if m_id in blocked_models or model["provider"] in blocked_providers:
+                            if m_id in blocked_models or provider_scopes[m_id] in blocked_providers:
                                 continue
                             req_reserve = 2 * (reserve[m_id] or 0.0)
                             if budget_usd is not None and store.spent_cost(run_id) + req_reserve > budget_usd + 1e-9:
@@ -447,7 +476,7 @@ def run_benchmark(
                 m_id = model["id"]
                 if len(completed[m_id]) == len(items):
                     store.save_model_state(run_id, m_id, "complete")
-                elif m_id not in blocked_models and model["provider"] not in blocked_providers:
+                elif m_id not in blocked_models and provider_scopes[m_id] not in blocked_providers:
                     reason = str(fatal_error) if fatal_error else "Interrupted; resume to continue" if interrupted else None
                     store.save_model_state(run_id, m_id, "paused" if fatal_error or interrupted else "partial", reason)
 
@@ -463,7 +492,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--manifest", default=None, help="Unversioned custom manifest (excluded from release comparisons)")
     parser.add_argument("--release", default=None, help=f"Frozen benchmark version (default: {DEFAULT_RELEASE})")
-    parser.add_argument("--config", default="config/models.json")
+    parser.add_argument("--config", default="config/models.all.json")
     parser.add_argument("--output-dir", default="results/runs")
     parser.add_argument("--run-id", default=None, help="Run name; a unique one is generated when omitted")
     parser.add_argument("--models", nargs="+")

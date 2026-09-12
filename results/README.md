@@ -21,6 +21,12 @@ and verify the selected model's rates/availability first. Use
 `--mock --max-tasks 3` for an offline smoke test; mock directories are
 ignored and excluded from comparisons.
 
+The default [combined catalog](../config/models.all.json) includes all 13 models
+from FontBench, including Muse Spark 1.2 and 1.3. All models in a campaign share
+one cumulative budget. See the [catalog guide](../config/README.md) for source
+snapshots, credential variables, Anthropic workspace routing, and the extended
+Meta transport timeout.
+
 ## Retained run artifacts
 
 | Artifact | Purpose |
