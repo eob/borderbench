@@ -296,7 +296,8 @@ def test_aggregator_excludes_tampered_sealed_run(campaign,monkeypatch):
     f=finalizer();monkeypatch.setattr(f,'REPO_ROOT',campaign['root'])
     f.finalize_run(campaign['directory'],scope='common',root=campaign['root'])
     release=load_release('1.0.0', root=campaign['root']);items=validate_release(release,root=campaign['root'])
-    assert len(aggregate_release_runs(release,items,campaign['root']/'results/runs')['configs'])==2
+    history = aggregate_release_runs(release, items, campaign['root']/'results/runs')
+    assert len(history['configs']) == 2, history['warnings']
     card=campaign['directory']/'scorecard_model-a.json';card.write_bytes(card.read_bytes()+b' ')
     history=aggregate_release_runs(release,items,campaign['root']/'results/runs')
     assert history['configs']=={}
@@ -330,7 +331,8 @@ def test_aggregation_verification_respects_explicit_repository_root(campaign):
     from baseline.releases import load_release,validate_release
     finalizer().finalize_run(campaign['directory'],scope='common',root=campaign['root'])
     release=load_release('1.0.0', root=campaign['root']);items=validate_release(release,root=campaign['root'])
-    assert len(aggregate_release_runs(release,items,campaign['root']/'results/runs',root=campaign['root'])['configs'])==2
+    history = aggregate_release_runs(release, items, campaign['root']/'results/runs', root=campaign['root'])
+    assert len(history['configs']) == 2, history['warnings']
 
 
 @pytest.mark.parametrize('roster',[[{}],[None]])

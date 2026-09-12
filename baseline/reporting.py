@@ -268,7 +268,10 @@ def aggregate_release_runs(release: dict, items: list[dict], results_root: str |
                     raise ValueError("Scorecard rows disagree with final attempt records")
                 model_costs = cost_by_model.get(model_id, [])
                 model_cost = None if any(cost is None for cost in model_costs) else sum(model_costs)
-                if state.get("cost_usd") != model_cost:
+                state_cost = state.get("cost_usd")
+                if ((model_cost is None and state_cost is not None)
+                        or (model_cost is not None and (not finite_nonnegative(state_cost)
+                            or not math.isclose(state_cost, model_cost, rel_tol=0, abs_tol=1e-12)))):
                     raise ValueError("Model cost disagrees with its attempt ledger")
                 for task in tasks:
                     item = by_id.get(task["task_id"])

@@ -113,3 +113,17 @@ are preserved unchanged.
 ## Delivery
 
 Implementation, documentation, corpus, and regenerated local release page are committed and pushed on `valid-07-perceptual-rigor`. PR #3 is the review boundary; no merge or paid inference was performed. The existing brain project note links this audit and distinguishes earlier result snapshots from V1.2.0.
+
+## Remote CI follow-up
+
+The first remote run failed two finalizer/aggregation checks: a per-model cost
+used exact floating-point equality even though the whole-run check used a
+numeric tolerance. The same ledger values accumulated using ordinary sum versus
+compensated sum differ by one unit in the last place. A controlled regression
+reproduced the model exclusion; a $0.000001 corruption control remained rejected.
+The collector now allows at most $0.000000000001 absolute rounding difference
+and still requires finite nonnegative costs and matching unknown-cost markers.
+Reporting/finalizer checks:52 passed, including both new controls. Isolated
+reversion:1 failed/1 passed, as expected. See the
+[CI log](evidence/valid-07-ci-first-run.log) and
+[rounding evidence](evidence/valid-07-evaluation.md#remote-ci-follow-up-floating-point-ledger-sums).

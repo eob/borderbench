@@ -164,3 +164,39 @@ def test_unknown_latency_stays_an_unknown_measurement(tmp_path):
     assert not warnings
     observation, = data['observations'].values()
     assert observation['task']['latency_sec'] is None
+
+
+@pytest.mark.parametrize('cost_adjustment,accepted', [(0.0, True), (0.000001, False)])
+def test_ledger_cost_comparison_tolerates_only_float_roundoff(tmp_path, cost_adjustment, accepted):
+    import math
+    from test_release_runs import _items
+    root = tmp_path / '9.9.9'; root.mkdir()
+    rows = [_row('t1', True), _row('t2', True)]
+    for row in rows:
+        row['cost_usd'] = .0004
+    _write_run(root, 'retry-costs', rows, '2026-09-10T00:00:00+00:00')
+    directory = root / 'retry-costs'
+    ledger_path = directory / 'attempts.jsonl'
+    ledger = [json.loads(line) for line in ledger_path.read_text().splitlines()]
+    for attempt in ledger:
+        attempt['sequence'] += 1
+    failed_cost = .014096
+    ledger.insert(0, {
+        **ledger[0], 'sequence': 1, 'attempt_id': 'failed', 'cost_usd': failed_cost,
+        'result': {'task_id': 't1', 'error': 'timeout', 'error_kind': 'unavailable', 'cost_usd': failed_cost},
+    })
+    ledger_path.write_text(''.join(json.dumps(attempt) + '\n' for attempt in ledger))
+    costs = [attempt['cost_usd'] for attempt in ledger]
+    # SQLite and Python can use different floating point accumulation methods.
+    assert math.fsum(costs) != sum(costs)
+    summary_path = directory / 'summary.json'
+    summary = json.loads(summary_path.read_text())
+    summary['spent_cost_usd'] = math.fsum(costs)
+    summary['models']['mock-model']['cost_usd'] = math.fsum(costs) + cost_adjustment
+    summary_path.write_text(json.dumps(summary))
+    data, warnings = collect_observations(_release(), tmp_path, _items())
+    assert bool(data['configs']) is accepted, warnings
+    if accepted:
+        assert not warnings
+    else:
+        assert any('Model cost disagrees' in warning for warning in warnings)

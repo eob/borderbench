@@ -48,3 +48,26 @@ All provider paths in these tests use local fake evaluators or HTTP transports. 
 Completed malformed answers remain final zero-credit observations; infrastructure errors remain retryable and retain all costs. Missing classes/cohorts are shown as null rather than invented zero accuracy. Repeats cannot replace a poorer answer with a later better answer. Comparison scores describe this fixed corpus and shared cohort; repeated themes are not independent evidence for population confidence claims. Historical records and released corpus files were not rewritten by this lane. A final simplification pass removed duplicated summary identity state and dead aggregation code.
 
 Independent review added symmetric guards for parseable answers falsely labeled invalid, and preservation of unknown latency (null rather than an invented zero or partial mean). Both new cases were recorded red before correction; see [invalid replay red](valid-07-invalid-replay-red.log) and [unknown latency red](valid-07-unknown-latency-red.log). An earlier invalid final answer remains zero after a later correct repeat and both costs remain counted. The page copies validated run ledgers and scorecards and exports selected raw observations with source run and recorded time.
+
+
+## CI cost accumulation follow-up
+
+Base commit: `41afb754c0df2678f76a4aacebe8d76dd0322f99`. CI passed 171 tests but rejected model A in two sealed-run aggregation tests ([initial CI log](valid-07-ci-first-run.log)). Inspection isolated a strict equality comparison between SQLite's accumulated model cost and Python's re-summed JSONL costs. No chronology checks were relaxed.
+
+A controlled fixture retains identical per-attempt costs `[0.014096, 0.0004, 0.0004]` but records their compensated sum in the summary. Ordinary Python summation yields `0.014895999999999998`; compensated summation yields `0.014896`. Before the fix this one-ulp difference produced:
+
+```text
+E       AssertionError: ['Excluded retry-costs/scorecard_mock-model.json: Model cost disagrees with its attempt ledger']
+1 failed, 1 passed in 0.16s
+```
+
+[Full red evidence](valid-07-cost-roundoff-red.log). The symmetric control adds $0.000001 to the model summary and remains rejected. The fix requires finite nonnegative values and accepts only absolute floating point roundoff up to $0.000000000001, with zero relative tolerance; null costs must still agree. The experiment proves the exact-equality defect. Different SQLite accumulation implementations are the leading explanation for the CI/local difference; CI's actual SQLite library version was not recorded in the failing log.
+
+| Gate | Result |
+| --- | --- |
+| Compensated-sum regression and material-corruption control | 2 passed in 0.13s |
+| Reporting plus finalization suites | 52 passed in 10.59s |
+| Restore baseline reporting.py in isolated temporary source copy | Same compensated-sum failure; material-corruption control still passes |
+| `git diff --check` | Clean |
+
+[Reversion evidence](valid-07-cost-roundoff-reversion.log). All checks were offline; source report and dataset identities are unchanged.
