@@ -164,3 +164,9 @@ The initial 24-image stage finished with **312/312 final responses**, zero model
 or infrastructure errors, and $3.9574901 of metered cost. Independent source
 validation reconciled every raw response and grade, usage/cost record, checkpoint,
 scorecard, chronology, and export before extending to the planned 128 images.
+
+The 128-image extension was gracefully checkpointed after 463 total responses
+($5.90220495) to raise request concurrency from 13 to 26. Every in-flight request
+finished before the runner exited with its expected interruption status. This
+changes execution scheduling only; the same run ID, cumulative budget, selected
+prefix, prompt, output caps, and model configurations are retained on resume.
