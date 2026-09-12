@@ -1,12 +1,12 @@
 # valid-07-perceptual-rigor: Calibrated perceptual benchmark and FontBench parity
 
-- **Status**: In Progress
+- **Status**: Implemented; PR review pending
 - **Branch**: `valid-07-perceptual-rigor`
 - **Base**: BorderBench `077578b`; FontBench `14b09c3ad89e5b587c19abee5b66978968252f85`
 - **Machine**: `/mnt/disks/data/borderbench`
 - **Harness**: codex
 - **Session ID**: not exposed
-- **PR**: local review pending
+- **PR**: https://github.com/eob/borderbench/pull/3
 - **Assignee**: Edward Benson
 
 ## Research brief
@@ -89,7 +89,7 @@ and inset/colored shadows are outside this release. See the
 ## Validation gate matrix
 
 Tests ran on this branch against base BorderBench `077578b` and dataset commit
-`b8c3a6b`; the final implementation commit follows this evidence.
+`b8c3a6b`; implementation commit `00b322812e39d167f379a5c97b5ea191678aee0a` contains the verified code.
 
 | Gate | Result |
 | --- | --- |
@@ -109,3 +109,7 @@ Tests ran on this branch against base BorderBench `077578b` and dataset commit
 Paid inference was not started. The mock checkpoint is ignored and cannot enter
 the leaderboard. Earlier frozen datasets/descriptors and all paid source runs
 are preserved unchanged.
+
+## Delivery
+
+Implementation, documentation, corpus, and regenerated local release page are committed and pushed on `valid-07-perceptual-rigor`. PR #3 is the review boundary; no merge or paid inference was performed. The existing brain project note links this audit and distinguishes earlier result snapshots from V1.2.0.
