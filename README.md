@@ -4,9 +4,11 @@
 
 BorderBench measures recognition of visible card borders, corner geometry, and
 cast shadows. V1.2.0 contains **477 images: 53 shape recipes × 3 themes × 3 shadow
-levels**, with a fixed visual scale and controlled comparisons. It is ready for
-an initial model campaign; it does not yet have V1.2.0 model results or a measured
-human agreement baseline.
+levels**, with a fixed visual scale and controlled comparisons. The
+[first measured comparison](results/runs/1.2.0/2026-09-12-first-campaign/README.md)
+covers **13 models × 128 shared images: 1,664 responses for $21.28**, with zero
+response or infrastructure errors. This is partial corpus coverage; human
+category agreement remains unmeasured.
 
 The [methodology](docs/methodology.md) explains the design, scoring, validation,
 and remaining limits. The [audit ticket](tickets/valid-07-perceptual-rigor.md)

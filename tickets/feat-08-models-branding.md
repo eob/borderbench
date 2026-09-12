@@ -1,6 +1,6 @@
 # feat-08: FontBench model parity, branding, and first measurements
 
-- **Status**: In Progress
+- **Status**: Complete; PR review pending
 - **Branch**: `valid-07-perceptual-rigor` (continuation of the unmerged release PR)
 - **Base**: `6bcc695ab2833deed36ad25da410c518c4bcab4e`
 - **FontBench reference**: `14b09c3ad89e5b587c19abee5b66978968252f85`
@@ -109,8 +109,8 @@ support ([red output](evidence/feat-08-branding-red.txt)), then passed while
 retaining the same shared-cohort ranking assertions.
 
 Full preparation suite: 194 Python tests, 21 Bun tests (5,631 assertions), and
-TypeScript checking passed. The generated V1.2.0 page passes the complete frozen
-dataset gate and currently contains zero live observations. Simplification
+TypeScript checking passed. At preparation time the generated V1.2.0 page passed the complete frozen
+dataset gate and contained zero live observations. Simplification
 review kept rendering in one small script and transport changes at the existing
 runner boundary; no new provider abstraction or evaluation protocol was added.
 
@@ -184,3 +184,35 @@ run is committed before sealing its 13-model common cohort.
 The higher-concurrency review independently checked 186 new responses across
 all models, confirming raw/protocol validation, token pricing, output caps,
 correct invocation provenance and no duplicate final pairs.
+
+## Final publication and delivery
+
+The common 13-model/128-image comparison was sealed against committed source
+`8e6b751d9210bdf480a77bee1f2e9d9100f815ad` with clean finalizer source at that
+same commit. All 18 artifact hashes, every raw answer/grade, the authoritative
+checkpoint, source Git bytes, chronology, roster, cohort, and costs passed the
+independent `baseline.finalize --verify` command.
+
+The regenerated page contains 13 configurations, 128 shared inputs, 1,664
+observations, one sealed run, zero warnings and zero excluded runs. All 18
+copied publication artifacts match source bytes. Final Chromium checks at
+1440×1000 and 390×844 show 13 model rows, working run links, no page errors,
+broken images or page overflow. Wide tables scroll inside their wrappers.
+Open Graph/Twitter metadata agrees with the actual 1200×630 card.
+
+The [first-batch report](../results/runs/1.2.0/2026-09-12-first-campaign/README.md)
+contains every model/attribute score, recorded costs, source links and sampling
+limits. The [share card](../branding/borderbench-share.png) and editable logo
+are ready to use. No separate website deployment or social post was performed.
+Future measurements require a new run ID because this comparison is sealed.
+
+A separate ceiling check independently replayed Astra's 128/128 exact matches:
+100 distinct prediction tuples cover every class, metering and cohort agree,
+and every image matches its frozen hash. Astra recorded 257,280 input tokens,
+10,296 output tokens, $3.087600, and one request per image with no unmetered
+attempts. Offline reconstruction of the frozen request path sends only the
+image bytes, identical prompt, and common response schema/options; no task IDs,
+filenames, ground-truth objects, recipes or rendered metadata are sent. PNGs
+contain only IHDR/IDAT/IEND chunks. This checks the source request construction,
+not independently captured live HTTP payload logs. No defect was found that
+would invalidate the observed sample ceiling.

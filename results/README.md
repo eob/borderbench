@@ -27,6 +27,14 @@ one cumulative budget. See the [catalog guide](../config/README.md) for source
 snapshots, credential variables, Anthropic workspace routing, and the extended
 Meta transport timeout.
 
+## First V1.2.0 comparison
+
+The [September 12 campaign](runs/1.2.0/2026-09-12-first-campaign/README.md) seals
+13 models on the same 128/477 images: 1,664 final responses, no errors, and
+$21.2793219 in recorded token cost. Source answers, checkpoint, fixed comparison,
+class diagnostics and verification hashes are retained together. The selected
+partial cohort and its sparse groups are documented explicitly.
+
 ## Retained run artifacts
 
 | Artifact | Purpose |
@@ -91,4 +99,4 @@ resumed into or relabeled as that release.
 
 ## Sealed comparisons
 
-After committing a completed run, use [offline finalization](../releases/FINALIZATION.md) to freeze the exact roster and common/full cohort. The seal adds `final_results.json` and `finalization.json`; it replays grades and binds every source artifact to committed bytes. Sealed run IDs cannot resume. V1.2.0 has no paid measurements yet; older trial data stays under its original release.
+After committing a completed run, use [offline finalization](../releases/FINALIZATION.md) to freeze the exact roster and common/full cohort. The seal adds `final_results.json` and `finalization.json`; it replays grades and binds every source artifact to committed bytes. Sealed run IDs cannot resume. The first V1.2.0 comparison is sealed; older trial data stays under its original release.
