@@ -123,7 +123,7 @@ compensated sum differ by one unit in the last place. A controlled regression
 reproduced the model exclusion; a $0.000001 corruption control remained rejected.
 The collector now allows at most $0.000000000001 absolute rounding difference
 and still requires finite nonnegative costs and matching unknown-cost markers.
-Reporting/finalizer checks:52 passed, including both new controls. Isolated
-reversion:1 failed/1 passed, as expected. See the
+Reporting/finalizer checks: 52 passed, including both new controls. Isolated
+reversion: 1 failed/1 passed, as expected. See the
 [CI log](evidence/valid-07-ci-first-run.log) and
-[rounding evidence](evidence/valid-07-evaluation.md#remote-ci-follow-up-floating-point-ledger-sums).
+[rounding evidence](evidence/valid-07-evaluation.md#ci-cost-accumulation-follow-up).
