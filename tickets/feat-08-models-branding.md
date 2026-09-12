@@ -113,3 +113,54 @@ TypeScript checking passed. The generated V1.2.0 page passes the complete frozen
 dataset gate and currently contains zero live observations. Simplification
 review kept rendering in one small script and transport changes at the existing
 runner boundary; no new provider abstraction or evaluation protocol was added.
+
+## Live campaign plan and independent review
+
+Preparation was committed/pushed at `654c7ea42b902e6e85d3e851486db50b55adf62d`.
+Both remote CI jobs passed on that commit. Independent review also passed 37
+reporting/model tests, a real release build, and Chromium checks at 1440×1000
+and 390×844 with no page errors, broken images or page overflow. Branding replay
+was byte-identical (SHA-256
+`56672a5a9b46e7ad917cab888e22aa5ada502caaa91e8cc405f217140a1da967`), used the
+bundled DejaVu font, and made no external requests.
+
+The authorized campaign started at 2026-09-12T19:41:07Z with all 13 models,
+`--run-id 2026-09-12-first-campaign --max-tasks 24 --concurrency 13 --budget-usd 25`.
+The first invocation records clean preparation source and the frozen protocol.
+A read-only audit replayed the first 107 observations across all 13 models:
+raw answers, seven-field grades, usage, costs, output caps and release identity
+passed; no malformed answers or infrastructure errors were present.
+
+The planned final starter cohort is the first **128 shuffled images**, extending
+the same run and cumulative budget. This choice uses costs and corpus metadata,
+not model scores. At approximately $0.16 per shared image, 128 costs about $20.48,
+leaving room under $25. If the spending guard intervenes, preserve the actual
+completed intersection rather than claiming the planned count was achieved.
+
+An offline prefix comparison considered 96/128/144 images. All contain every
+answer label. The 128 prefix covers 52/53 recipes, versus 47 at 96; 144 adds no
+recipe coverage and leaves less budget headroom. The fixed seed/order is unchanged.
+
+| Category order | First 128 counts |
+| --- | --- |
+| Border absent / present | 26 / 102 |
+| Sides: all / bottom / left / none / top | 56 / 12 / 20 / 26 / 14 |
+| Style: dashed / dotted / none / solid | 32 / 28 / 26 / 42 |
+| Width: 0 / 1 / 2 / 4 / 8 px | 26 / 7 / 45 / 33 / 17 |
+| Radius: large / medium / pill / sharp / subtle | 25 / 61 / 14 / 15 / 13 |
+| Corners: all / asymmetric / top-only | 107 / 13 / 8 |
+| Shadow: floating / none / subtle | 44 / 41 / 43 |
+| Theme: blue / gray / white-on-gray | 43 / 41 / 44 |
+
+This prefix has only two complete shadow blocks and two complete style blocks;
+other complete matched-block counts are zero. It omits the bordered medium-radius
+asymmetric recipe. Sparse cells (seven 1px examples, one of them dashed) and
+sampling imbalance limit subgroup conclusions. Random prefixes do not preserve
+full-factorial independence; a theme-conditioned shadow majority lookup reaches
+41.4% here versus a 34.4% overall majority. These are descriptive recognition
+results on a fixed partial corpus, not a broad causal or human-agreement study.
+
+The initial 24-image stage finished with **312/312 final responses**, zero model
+or infrastructure errors, and $3.9574901 of metered cost. Independent source
+validation reconciled every raw response and grade, usage/cost record, checkpoint,
+scorecard, chronology, and export before extending to the planned 128 images.
