@@ -1,6 +1,6 @@
 # valid-07-perceptual-rigor: Calibrated perceptual benchmark and FontBench parity
 
-- **Status**: In progress — independent publication review
+- **Status**: Completed
 - **Branch**: `valid-07-perceptual-rigor`
 - **Base**: BorderBench `077578b`; FontBench `14b09c3ad89e5b587c19abee5b66978968252f85`
 - **Machine**: `/mnt/disks/data/borderbench`
@@ -27,6 +27,10 @@
   repaired and regenerated offline. See the
   [publication review](../docs/publication-review-2026-09-14.md) for the final
   gate matrix and remaining scientific limits. No paid rerun was necessary.
+- `2026-09-14 02:13 UTC`: PR #3 merged as
+  `8591705bbc8751cc466182e604abce7fda40d52c` after both remote validation jobs
+  passed. Local `main` fast-forwarded to the verified remote merge. The remote
+  feature branch remains available.
 
 ## Research brief
 
