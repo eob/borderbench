@@ -1,0 +1,19 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______________ test_unknown_latency_stays_an_unknown_measurement _______________
+
+tmp_path = PosixPath('/tmp/pytest-of-ted/pytest-212/test_unknown_latency_stays_an_0')
+
+    def test_unknown_latency_stays_an_unknown_measurement(tmp_path):
+        from test_release_runs import _items
+        root = tmp_path / '9.9.9'; root.mkdir()
+        row = _row('t1', True); row['latency_sec'] = None
+        _write_run(root, 'unknown-latency', [row], '2026-09-10T00:00:00+00:00')
+        data, warnings = collect_observations(_release(), tmp_path, _items())
+>       assert not warnings
+E       AssertionError: assert not ['Excluded unknown-latency/scorecard_mock-model.json: Invalid observation latency']
+
+tests/test_reporting_rigor.py:164: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_reporting_rigor.py::test_unknown_latency_stays_an_unknown_measurement
+1 failed in 0.16s

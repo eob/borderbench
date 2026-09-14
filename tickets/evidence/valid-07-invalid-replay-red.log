@@ -1,0 +1,22 @@
+.............F.                                                          [100%]
+=================================== FAILURES ===================================
+__________ test_parseable_correct_answer_cannot_be_relabeled_invalid ___________
+
+tmp_path = PosixPath('/tmp/pytest-of-ted/pytest-210/test_parseable_correct_answer_0')
+
+    def test_parseable_correct_answer_cannot_be_relabeled_invalid(tmp_path):
+        from test_release_runs import _items
+        root = tmp_path / '9.9.9'; root.mkdir()
+        row = _row('t1', True)
+        row.update(error='claimed malformed', error_kind='invalid_response')
+        for key in list(row):
+            if key.endswith('_correct'): row[key] = False
+        _write_run(root, 'forged', [row], '2026-09-10T00:00:00+00:00')
+        data, warnings = collect_observations(_release(), tmp_path, _items())
+>       assert not data['observations']
+E       AssertionError: assert not {('d2ea4128de9a64f7345f2e57145a83754f67e42f7b20d897c949de6c31f60b92', 't1'): {'recorded_at': '2026-09-10T00:00:01+00:0...k': {'task_id': 't1', 'has_border_correct': False, 'border_sides_correct': False, 'stroke_style_correct': False, ...}}}
+
+tests/test_reporting_rigor.py:137: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_reporting_rigor.py::test_parseable_correct_answer_cannot_be_relabeled_invalid
+1 failed, 14 passed in 0.20s

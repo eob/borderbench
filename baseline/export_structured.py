@@ -47,8 +47,14 @@ def _valid_row(row: object) -> dict | None:
     for attribute in ATTRIBUTES:
         if type(row.get(f"{attribute}_correct")) is not bool:
             return None
-    latency = row.get("latency_sec", 0.0)
-    if not _is_finite_number(latency) or latency < 0:
+    if row["all_correct"] != all(row[f"{attribute}_correct"] for attribute in ATTRIBUTES):
+        return None
+    if row.get("error_kind") not in (None, "invalid_response") or row.get("error") and row.get("error_kind") != "invalid_response":
+        return None
+    if row.get("error_kind") == "invalid_response" and any(row[f"{attribute}_correct"] for attribute in ATTRIBUTES):
+        return None
+    latency = row.get("latency_sec")
+    if latency is not None and (not _is_finite_number(latency) or latency < 0):
         return None
     cost = row.get("cost_usd", 0.0)
     if cost is not None and (not _is_finite_number(cost) or cost < 0):
@@ -83,11 +89,15 @@ def _summarize_model(model_id: str, card: dict, warnings: list[str]) -> dict | N
     if not isinstance(tasks, list) or not tasks:
         warnings.append(f"{model_id}: scorecard has no task rows; skipped")
         return None
+    ids = [row.get("task_id") for row in tasks if isinstance(row, dict)]
+    if len(ids) != len(set(ids)):
+        raise ValueError(f"Duplicate task rows for {model_id!r}")
     rows = []
     for row in tasks:
         valid = _valid_row(row)
         if valid is None:
-            warnings.append(f"{model_id}: malformed task row excluded")
+            warnings.append(f"{model_id}: malformed task row; entire scorecard excluded to preserve the denominator")
+            return None
         else:
             rows.append(valid)
     if not rows:
@@ -102,8 +112,8 @@ def _summarize_model(model_id: str, card: dict, warnings: list[str]) -> dict | N
         "total_tasks": total,
         "evaluated_at": card.get("timestamp"),
         "all_correct_accuracy": round(sum(1 for r in rows if r["all_correct"]) / total * 100, 1),
-        "avg_latency_sec": round(sum(float(r.get("latency_sec", 0.0)) for r in rows) / total, 2),
-        "avg_cost_usd": round(sum(float(c) for c in costs) / len(costs), 6) if costs else 0.0,
+        "avg_latency_sec": round(sum(r["latency_sec"] for r in rows) / total, 2) if all(r.get("latency_sec") is not None for r in rows) else None,
+        "avg_cost_usd": round(sum(float(c) for c in costs) / total, 6) if len(costs) == total else None,
         "pricing": card.get("pricing") or {},
     }
     for attribute in ATTRIBUTES:
@@ -137,11 +147,13 @@ def build_structured_benchmark(scorecards: list[str | Path]) -> Dict[str, Any]:
             models_output.append(entry)
     if not models_output:
         raise ValueError("No valid model scorecards to summarize")
-    models_output.sort(key=lambda m: (m["all_correct_accuracy"], -m["avg_latency_sec"]), reverse=True)
+    models_output.sort(key=lambda m: m["display_name"])
     totals = {model["total_tasks"] for model in models_output}
     return {
-        "benchmark_id": "borderbench-v1",
-        "name": "BorderBench V1",
+        "benchmark_id": "borderbench-unversioned",
+        "release": None,
+        "comparison_policy": "Descriptive observed scores only; differing cohorts are not ranked.",
+        "name": "BorderBench unversioned observations",
         "description": "Visual border, corner radius, stroke style, and elevation identification benchmark for multimodal vision-language models.",
         "eval_date": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -153,7 +165,7 @@ def build_structured_benchmark(scorecards: list[str | Path]) -> Dict[str, Any]:
             "stroke_widths": ["0px", "1px", "2px", "4px", "8px"],
             "corner_radii": ["sharp", "subtle", "medium", "large", "pill"],
             "corner_uniformity": ["all-corners", "top-only", "asymmetric"],
-            "elevations": ["none", "subtle-drop", "floating-drop", "ring-only", "stroke+shadow"],
+            "elevations": ["none", "subtle-drop", "floating-drop"],
             "themes": [
                 "white-on-gray",
                 "white-on-white",

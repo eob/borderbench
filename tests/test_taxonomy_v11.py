@@ -21,7 +21,7 @@ VALID = {
 
 def test_prompt_is_tailwind_rosetta_with_fixed_context():
     prompt = (REPO_ROOT / "baseline" / "prompt.txt").read_text(encoding="utf-8")
-    for token in ("Tailwind", "border-8", "rounded-full", "shadow-lg", "system font stack", "16px"):
+    for token in ("Tailwind", "border-8", "rounded-full", "shadow-lg", "DejaVu Sans", "16px"):
         assert token in prompt, f"prompt must declare {token}"
     assert '"double"' not in prompt, "double borders left the taxonomy in 1.1.0"
 

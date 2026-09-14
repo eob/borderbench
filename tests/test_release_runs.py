@@ -8,7 +8,7 @@ import pytest
 from PIL import Image
 
 from baseline.build_page import collect_observations
-from baseline.evaluator import cohort_fingerprint, evaluation_protocol_fingerprint
+from baseline.evaluator import GRADING_VERSION, cohort_fingerprint, evaluation_protocol_fingerprint
 from baseline.releases import load_release
 from baseline.runner import run_benchmark
 
@@ -74,89 +74,80 @@ def _write_config(path: Path) -> None:
     )
 
 
+def _items() -> list[dict]:
+    return [{"taskId": task_id, "groundTruth": {
+        "has_border": True, "border_sides": "all-4", "stroke_style": "solid", "stroke_width": "1px",
+        "corner_radius": "medium", "corner_uniformity": "all-corners", "elevation": "none",
+        "theme": "white-on-gray",
+    }} for task_id in ("t1", "t2")]
+
+
 def _row(task_id: str, correct: bool) -> dict:
+    from baseline.evaluator import grade_border_prediction
+    target = _items()[0]["groundTruth"]
+    parsed = {key: value for key, value in target.items() if key != "theme"} if correct else {
+        "has_border": False, "border_sides": "none", "stroke_style": "none", "stroke_width": "0px",
+        "corner_radius": "sharp", "corner_uniformity": "top-only", "elevation": "subtle-drop",
+    }
     return {
-        "task_id": task_id,
-        "all_correct": correct,
-        "has_border_correct": correct,
-        "border_sides_correct": correct,
-        "stroke_style_correct": correct,
-        "stroke_width_correct": correct,
-        "corner_radius_correct": correct,
-        "corner_uniformity_correct": correct,
-        "elevation_correct": correct,
-        "latency_sec": 1.0,
-        "cost_usd": 0.01,
-        "error": None,
-        "error_kind": None,
+        "task_id": task_id, **grade_border_prediction(parsed, target),
+        **{f"{key}_gt": value for key, value in target.items() if key != "theme"},
+        **{f"predicted_{key}": value for key, value in parsed.items()},
+        "theme": target["theme"], "raw_prediction": json.dumps(parsed),
+        "model_name": "mock-model", "provider": "google",
+        "latency_sec": 1.0, "cost_usd": 0.01, "error": None, "error_kind": None,
     }
 
 
-def _write_run(
-    root: Path,
-    name: str,
-    rows: list[dict],
-    created: str,
-    *,
-    protocol: str = PROTOCOL,
-    fingerprint: str = FINGERPRINT,
-    mock: bool = False,
-) -> None:
+def _write_run(root: Path, name: str, rows: list[dict], created: str, *, protocol: str = PROTOCOL,
+               fingerprint: str = FINGERPRINT, mock: bool = False) -> None:
+    from datetime import datetime, timedelta
+    from baseline.model_config import _ModelConfig
+    from baseline.releases import model_config_fingerprint
     run_dir = root / name
     run_dir.mkdir(parents=True)
-    config = {
-        "id": "mock-model",
-        "provider": "google",
-        "model": "mock-model",
-        "display_name": "Mock",
-        "max_output_tokens": 16,
+    config = _ModelConfig.model_validate_json(json.dumps({
+        "id": "mock-model", "provider": "google", "model": "mock-model", "display_name": "Mock",
+        "api_key_env": "GEMINI_API_KEY", "source_url": "https://example.com/model", "max_output_tokens": 16,
+    })).model_dump(mode="json")
+    try:
+        updated = (datetime.fromisoformat(created) + timedelta(seconds=1)).isoformat()
+    except ValueError:
+        updated = created
+    for row in rows:
+        row.setdefault("recorded_at", updated)
+    updated = max([updated, *[row["recorded_at"] for row in rows]])
+    provenance = {
+        "schema_version": 1, "run_id": name, "release": "9.9.9", "dataset_git_commit": "a" * 40,
+        "dataset_fingerprint": fingerprint, "evaluation_protocol": protocol, "grading_version": GRADING_VERSION,
+        "mock": mock, "expected_task_count": 2, "created_at": created, "updated_at": updated,
+        "runner_git_commit": None, "runner_git_dirty": None,
     }
-    (run_dir / "run.json").write_text(
-        json.dumps(
-            {
-                "release": "9.9.9",
-                "dataset_git_commit": "a" * 40,
-                "dataset_fingerprint": fingerprint,
-                "evaluation_protocol": protocol,
-                "mock": mock,
-                "expected_task_count": 2,
-                "created_at": created,
-                "invocations": [],
-                "model_configs": {"mock-model": config},
-            }
-        ),
-        encoding="utf-8",
-    )
-    ids = [row["task_id"] for row in rows]
-    (run_dir / "scorecard_mock-model.json").write_text(
-        json.dumps(
-            {
-                "model_id": "mock-model",
-                "model_name": "mock-model",
-                "display_name": "Mock",
-                "provider": "google",
-                "mock": mock,
-                "dataset_fingerprint": fingerprint,
-                "evaluation_protocol": protocol,
-                "grading_version": "2",
-                "total_tasks": len(rows),
-                "expected_task_count": 2,
-                "status": "complete" if len(rows) == 2 else "partial",
-                "cohort_sha256": cohort_fingerprint(ids),
-                "timestamp": created,
-                "tasks": rows,
-            }
-        ),
-        encoding="utf-8",
-    )
+    invocation = {"started_at": created, "updated_at": updated, "finished_at": updated,
+                  "models": [config], "runner_git_commit": None, "runner_git_dirty": None}
+    (run_dir / "run.json").write_text(json.dumps({**provenance, "invocations": [invocation],
+                                                  "model_configs": {"mock-model": config}}))
+    costs = [row["cost_usd"] for row in rows]
+    total_cost = sum(costs)
+    state = {"model_config": config, "model_config_fingerprint": model_config_fingerprint(config),
+             "completed": len(rows), "cost_usd": total_cost}
+    (run_dir / "summary.json").write_text(json.dumps({**provenance, "spent_cost_usd": total_cost,
+        "cost_incomplete": False, "models": {"mock-model": state}}))
+    (run_dir / "attempts.jsonl").write_text("".join(json.dumps({
+        "sequence": index + 1, "run_id": name, "attempt_id": str(index), "model_id": "mock-model",
+        "task_id": row["task_id"], "created_at": row["recorded_at"], "result": row, "cost_usd": row["cost_usd"],
+    }) + "\n" for index, row in enumerate(rows)))
+    (run_dir / "scorecard_mock-model.json").write_text(json.dumps({
+        **provenance, "model_id": "mock-model", "model_name": "mock-model", "display_name": "Mock",
+        "provider": "google", "model_config": config, "model_config_fingerprint": model_config_fingerprint(config),
+        "max_output_tokens": 16, "total_tasks": len(rows), "status": "complete" if len(rows) == 2 else "partial",
+        "cohort_sha256": cohort_fingerprint([row["task_id"] for row in rows]), "tasks": rows,
+    }))
 
 
 def _release() -> dict:
-    return {
-        "benchmark_version": "9.9.9",
-        "dataset_fingerprint": FINGERPRINT,
-        "evaluation_protocol_fingerprint": PROTOCOL,
-    }
+    return {"benchmark_version": "9.9.9", "dataset_fingerprint": FINGERPRINT,
+            "evaluation_protocol_fingerprint": PROTOCOL, "dataset_git_commit": "a" * 40, "expected_task_count": 2}
 
 
 def test_unknown_release_rejected(tmp_path):
@@ -180,7 +171,7 @@ def test_mock_release_run_writes_ledgers_and_resumes(tmp_path):
     assert run_meta["evaluation_protocol"] == PROTOCOL
     assert len(run_meta["invocations"]) == 1
     assert (run_dir / "attempts.jsonl").read_text(encoding="utf-8").count("\n") == 1
-    assert first["status"] == "running"
+    assert first["status"] == "partial"
     second = run_benchmark(
         manifest_path=manifest, config_path=config, output_dir=output,
         run_id="ledger", budget_usd=None, mock=True,
@@ -208,7 +199,7 @@ def test_first_observation_wins_repeats(tmp_path):
     root.mkdir(parents=True)
     _write_run(root, "run-a", [_row("t1", True), _row("t2", True)], "2026-09-10T01:00:00+00:00")
     _write_run(root, "run-b", [_row("t1", False), _row("t2", True)], "2026-09-10T02:00:00+00:00")
-    collected, warnings = collect_observations(_release(), tmp_path / "runs")
+    collected, warnings = collect_observations(_release(), tmp_path / "runs", _items())
     assert warnings == []
     (config,) = collected["configs"].values()
     assert config["repeat_observations"] == 2
@@ -225,6 +216,6 @@ def test_incompatible_and_mock_runs_excluded(tmp_path):
     _write_run(root, "good", [_row("t1", True)], "2026-09-10T01:00:00+00:00")
     _write_run(root, "bad-protocol", [_row("t1", True)], "2026-09-10T02:00:00+00:00", protocol="0" * 64)
     _write_run(root, "mock-run", [_row("t1", True)], "2026-09-10T03:00:00+00:00", mock=True)
-    collected, warnings = collect_observations(_release(), tmp_path / "runs")
+    collected, warnings = collect_observations(_release(), tmp_path / "runs", _items())
     assert len(collected["observations"]) == 1
     assert any("bad-protocol" in warning for warning in warnings)

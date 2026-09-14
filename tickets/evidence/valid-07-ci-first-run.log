@@ -1,0 +1,90 @@
+test	Python tests	﻿2026-09-12T19:03:04.4224636Z ##[group]Run bun run test:python
+test	Python tests	2026-09-12T19:03:04.4225469Z ^[[36;1mbun run test:python^[[0m
+test	Python tests	2026-09-12T19:03:04.4279048Z shell: /usr/bin/bash -e {0}
+test	Python tests	2026-09-12T19:03:04.4279505Z env:
+test	Python tests	2026-09-12T19:03:04.4279972Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.16/x64
+test	Python tests	2026-09-12T19:03:04.4280777Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib/pkgconfig
+test	Python tests	2026-09-12T19:03:04.4281606Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+test	Python tests	2026-09-12T19:03:04.4282331Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+test	Python tests	2026-09-12T19:03:04.4283061Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+test	Python tests	2026-09-12T19:03:04.4283778Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib
+test	Python tests	2026-09-12T19:03:04.4284393Z ##[endgroup]
+test	Python tests	2026-09-12T19:03:04.4379899Z $ .venv/bin/python -m pytest
+test	Python tests	2026-09-12T19:03:05.2917520Z ============================= test session starts ==============================
+test	Python tests	2026-09-12T19:03:05.2918402Z platform linux -- Python 3.11.16, pytest-9.1.1, pluggy-1.6.0
+test	Python tests	2026-09-12T19:03:05.2919186Z rootdir: /home/runner/work/borderbench/borderbench
+test	Python tests	2026-09-12T19:03:05.2919773Z configfile: pyproject.toml
+test	Python tests	2026-09-12T19:03:05.2920204Z testpaths: tests
+test	Python tests	2026-09-12T19:03:05.2920587Z plugins: anyio-4.15.1
+test	Python tests	2026-09-12T19:03:05.2920992Z collected 173 items
+test	Python tests	2026-09-12T19:03:05.2921215Z 
+test	Python tests	2026-09-12T19:03:05.2936287Z tests/test_evaluator.py ..                                               [  1%]
+test	Python tests	2026-09-12T19:03:05.6489490Z tests/test_execution_rigor.py ........                                   [  5%]
+test	Python tests	2026-09-12T19:03:05.6763766Z tests/test_export_integrity.py .....                                     [  8%]
+test	Python tests	2026-09-12T19:03:10.5838981Z tests/test_finalization.py ...........................F...F..            [ 28%]
+test	Python tests	2026-09-12T19:03:10.6311838Z tests/test_frozen_ci.py .                                                [ 28%]
+test	Python tests	2026-09-12T19:03:10.6634661Z tests/test_model_config.py ........................                      [ 42%]
+test	Python tests	2026-09-12T19:03:10.6671344Z tests/test_perceptual_protocol.py .....                                  [ 45%]
+test	Python tests	2026-09-12T19:03:10.7397742Z tests/test_protocol_identity.py ........                                 [ 50%]
+test	Python tests	2026-09-12T19:03:10.8266807Z tests/test_release_preflight.py ....                                     [ 52%]
+test	Python tests	2026-09-12T19:03:10.8763344Z tests/test_release_runs.py .....                                         [ 55%]
+test	Python tests	2026-09-12T19:03:10.9272068Z tests/test_reporting_rigor.py ................                           [ 64%]
+test	Python tests	2026-09-12T19:03:11.1446167Z tests/test_run_state.py .................                                [ 74%]
+test	Python tests	2026-09-12T19:03:11.1480386Z tests/test_statistics.py ...                                             [ 76%]
+test	Python tests	2026-09-12T19:03:11.1558771Z tests/test_strict_grading.py ..........                                  [ 82%]
+test	Python tests	2026-09-12T19:03:11.1587721Z tests/test_taxonomy_v11.py ....                                          [ 84%]
+test	Python tests	2026-09-12T19:03:12.9702887Z tests/test_validate_dataset.py ...........................               [100%]
+test	Python tests	2026-09-12T19:03:12.9703750Z 
+test	Python tests	2026-09-12T19:03:12.9704047Z =================================== FAILURES ===================================
+test	Python tests	2026-09-12T19:03:12.9705308Z _________________ test_aggregator_excludes_tampered_sealed_run _________________
+test	Python tests	2026-09-12T19:03:12.9706006Z 
+test	Python tests	2026-09-12T19:03:12.9707628Z campaign = {'root': PosixPath('/tmp/pytest-of-runner/pytest-0/test_aggregator_excludes_tampe0'), 'directory': PosixPath('/tmp/pyt...n      "has_border_accuracy": 100.0,\n      "avg_latency_sec": 0.001\n    }\n  },\n  "invocations": 3\n}\n', ...}, ...}
+test	Python tests	2026-09-12T19:03:12.9709993Z monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f68a5ce2e90>
+test	Python tests	2026-09-12T19:03:12.9710624Z 
+test	Python tests	2026-09-12T19:03:12.9710979Z     def test_aggregator_excludes_tampered_sealed_run(campaign,monkeypatch):
+test	Python tests	2026-09-12T19:03:12.9711711Z         from baseline.reporting import aggregate_release_runs
+test	Python tests	2026-09-12T19:03:12.9712185Z         from baseline.releases import load_release,validate_release
+test	Python tests	2026-09-12T19:03:12.9713040Z         f=finalizer();monkeypatch.setattr(f,'REPO_ROOT',campaign['root'])
+test	Python tests	2026-09-12T19:03:12.9713594Z         f.finalize_run(campaign['directory'],scope='common',root=campaign['root'])
+test	Python tests	2026-09-12T19:03:12.9714290Z         release=load_release('1.0.0', root=campaign['root']);items=validate_release(release,root=campaign['root'])
+test	Python tests	2026-09-12T19:03:12.9715495Z >       assert len(aggregate_release_runs(release,items,campaign['root']/'results/runs')['configs'])==2
+test	Python tests	2026-09-12T19:03:12.9716282Z E       AssertionError: assert 1 == 2
+test	Python tests	2026-09-12T19:03:12.9717740Z E        +  where 1 = len({'a2fe842c81a806c765f3fa0bc1c7ec4a26d81fbcc18413ff2e5d0c937615f3ce': {'id': 'a2fe842c81a806c765f3fa0bc1c7ec4a26d81fbcc18413ff2e5d0c937615f3ce', 'model_id': 'model-b', 'display_name': 'B', 'provider': 'google', ...}})
+test	Python tests	2026-09-12T19:03:12.9719251Z 
+test	Python tests	2026-09-12T19:03:12.9719501Z tests/test_finalization.py:299: AssertionError
+test	Python tests	2026-09-12T19:03:12.9720203Z ---------------------------- Captured stdout setup -----------------------------
+test	Python tests	2026-09-12T19:03:12.9721108Z [model-a] task-0: error: credits | total spent: $0.0141
+test	Python tests	2026-09-12T19:03:12.9721740Z [model-a] task-0: all_correct | total spent: $0.0145
+test	Python tests	2026-09-12T19:03:12.9722362Z [model-b] task-0: all_correct | total spent: $0.0147
+test	Python tests	2026-09-12T19:03:12.9722953Z [model-a] task-2: all_correct | total spent: $0.0151
+test	Python tests	2026-09-12T19:03:12.9723534Z [model-b] task-2: all_correct | total spent: $0.0153
+test	Python tests	2026-09-12T19:03:12.9724116Z [model-a] task-1: all_correct | total spent: $0.0157
+test	Python tests	2026-09-12T19:03:12.9725304Z _______ test_aggregation_verification_respects_explicit_repository_root ________
+test	Python tests	2026-09-12T19:03:12.9725883Z 
+test	Python tests	2026-09-12T19:03:12.9726881Z campaign = {'root': PosixPath('/tmp/pytest-of-runner/pytest-0/test_aggregation_verification_0'), 'directory': PosixPath('/tmp/pyt...n      "has_border_accuracy": 100.0,\n      "avg_latency_sec": 0.001\n    }\n  },\n  "invocations": 3\n}\n', ...}, ...}
+test	Python tests	2026-09-12T19:03:12.9727758Z 
+test	Python tests	2026-09-12T19:03:12.9727998Z     def test_aggregation_verification_respects_explicit_repository_root(campaign):
+test	Python tests	2026-09-12T19:03:12.9728495Z         from baseline.reporting import aggregate_release_runs
+test	Python tests	2026-09-12T19:03:12.9728910Z         from baseline.releases import load_release,validate_release
+test	Python tests	2026-09-12T19:03:12.9729427Z         finalizer().finalize_run(campaign['directory'],scope='common',root=campaign['root'])
+test	Python tests	2026-09-12T19:03:12.9730094Z         release=load_release('1.0.0', root=campaign['root']);items=validate_release(release,root=campaign['root'])
+test	Python tests	2026-09-12T19:03:12.9731123Z >       assert len(aggregate_release_runs(release,items,campaign['root']/'results/runs',root=campaign['root'])['configs'])==2
+test	Python tests	2026-09-12T19:03:12.9731680Z E       AssertionError: assert 1 == 2
+test	Python tests	2026-09-12T19:03:12.9732633Z E        +  where 1 = len({'a2fe842c81a806c765f3fa0bc1c7ec4a26d81fbcc18413ff2e5d0c937615f3ce': {'id': 'a2fe842c81a806c765f3fa0bc1c7ec4a26d81fbcc18413ff2e5d0c937615f3ce', 'model_id': 'model-b', 'display_name': 'B', 'provider': 'google', ...}})
+test	Python tests	2026-09-12T19:03:12.9733491Z 
+test	Python tests	2026-09-12T19:03:12.9733639Z tests/test_finalization.py:333: AssertionError
+test	Python tests	2026-09-12T19:03:12.9734047Z ---------------------------- Captured stdout setup -----------------------------
+test	Python tests	2026-09-12T19:03:12.9734484Z [model-a] task-0: error: credits | total spent: $0.0141
+test	Python tests	2026-09-12T19:03:12.9735139Z [model-a] task-0: all_correct | total spent: $0.0145
+test	Python tests	2026-09-12T19:03:12.9735477Z [model-b] task-0: all_correct | total spent: $0.0147
+test	Python tests	2026-09-12T19:03:12.9735798Z [model-a] task-2: all_correct | total spent: $0.0151
+test	Python tests	2026-09-12T19:03:12.9736130Z [model-b] task-2: all_correct | total spent: $0.0153
+test	Python tests	2026-09-12T19:03:12.9736455Z [model-a] task-1: all_correct | total spent: $0.0157
+test	Python tests	2026-09-12T19:03:12.9736805Z =========================== short test summary info ============================
+test	Python tests	2026-09-12T19:03:12.9737485Z FAILED tests/test_finalization.py::test_aggregator_excludes_tampered_sealed_run - AssertionError: assert 1 == 2
+test	Python tests	2026-09-12T19:03:12.9738688Z  +  where 1 = len({'a2fe842c81a806c765f3fa0bc1c7ec4a26d81fbcc18413ff2e5d0c937615f3ce': {'id': 'a2fe842c81a806c765f3fa0bc1c7ec4a26d81fbcc18413ff2e5d0c937615f3ce', 'model_id': 'model-b', 'display_name': 'B', 'provider': 'google', ...}})
+test	Python tests	2026-09-12T19:03:12.9740110Z FAILED tests/test_finalization.py::test_aggregation_verification_respects_explicit_repository_root - AssertionError: assert 1 == 2
+test	Python tests	2026-09-12T19:03:12.9741354Z  +  where 1 = len({'a2fe842c81a806c765f3fa0bc1c7ec4a26d81fbcc18413ff2e5d0c937615f3ce': {'id': 'a2fe842c81a806c765f3fa0bc1c7ec4a26d81fbcc18413ff2e5d0c937615f3ce', 'model_id': 'model-b', 'display_name': 'B', 'provider': 'google', ...}})
+test	Python tests	2026-09-12T19:03:12.9742340Z ======================== 2 failed, 171 passed in 8.03s =========================
+test	Python tests	2026-09-12T19:03:13.0161915Z error: script "test:python" exited with code 1
+test	Python tests	2026-09-12T19:03:13.0182280Z ##[error]Process completed with exit code 1.

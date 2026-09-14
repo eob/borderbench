@@ -1,0 +1,60 @@
+FF..                                                                     [100%]
+=================================== FAILURES ===================================
+_ test_finalizer_checks_checkpoint_configuration_and_cost_completeness[run.json-<lambda>] _
+
+campaign = {'root': PosixPath('/tmp/pytest-of-ted/pytest-214/test_finalizer_checks_checkpoi0'), 'directory': PosixPath('/tmp/pyte...task_id":"task-1","theme":"white-on-gray","unmetered_attempts":0}?:6\xe2\xeb\x1cC-2026-09-12T18:55:09.777Z', ...}, ...}
+filename = 'run.json', change = <function <lambda> at 0x7f3d61b08d60>
+
+    @pytest.mark.parametrize('filename,change', [
+        ('run.json', lambda record: record.update(model_configs={})),
+        ('summary.json', lambda record: record.update(cost_incomplete=True)),
+    ])
+    def test_finalizer_checks_checkpoint_configuration_and_cost_completeness(campaign, filename, change):
+        path = campaign['directory'] / filename
+        record = json.loads(path.read_text())
+        change(record)
+        path.write_text(json.dumps(record))
+        git(campaign['root'], 'add', '.')
+        git(campaign['root'], 'commit', '-qm', 'Change fixture metadata')
+>       with pytest.raises(ValueError, match='configuration|cost completeness'):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_finalization.py:40: Failed
+---------------------------- Captured stdout setup -----------------------------
+[model-a] task-0: error: credits | total spent: $0.0141
+[model-a] task-0: all_correct | total spent: $0.0145
+[model-b] task-0: all_correct | total spent: $0.0147
+[model-a] task-2: all_correct | total spent: $0.0151
+[model-b] task-2: all_correct | total spent: $0.0153
+[model-a] task-1: all_correct | total spent: $0.0157
+_ test_finalizer_checks_checkpoint_configuration_and_cost_completeness[summary.json-<lambda>] _
+
+campaign = {'root': PosixPath('/tmp/pytest-of-ted/pytest-214/test_finalizer_checks_checkpoi1'), 'directory': PosixPath('/tmp/pyte...task_id":"task-1","theme":"white-on-gray","unmetered_attempts":0}?:6\xe2\xeb\x1cC-2026-09-12T18:55:10.016Z', ...}, ...}
+filename = 'summary.json', change = <function <lambda> at 0x7f3d61b08e00>
+
+    @pytest.mark.parametrize('filename,change', [
+        ('run.json', lambda record: record.update(model_configs={})),
+        ('summary.json', lambda record: record.update(cost_incomplete=True)),
+    ])
+    def test_finalizer_checks_checkpoint_configuration_and_cost_completeness(campaign, filename, change):
+        path = campaign['directory'] / filename
+        record = json.loads(path.read_text())
+        change(record)
+        path.write_text(json.dumps(record))
+        git(campaign['root'], 'add', '.')
+        git(campaign['root'], 'commit', '-qm', 'Change fixture metadata')
+>       with pytest.raises(ValueError, match='configuration|cost completeness'):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_finalization.py:40: Failed
+---------------------------- Captured stdout setup -----------------------------
+[model-a] task-0: error: credits | total spent: $0.0141
+[model-a] task-0: all_correct | total spent: $0.0145
+[model-b] task-0: all_correct | total spent: $0.0147
+[model-a] task-2: all_correct | total spent: $0.0151
+[model-b] task-2: all_correct | total spent: $0.0153
+[model-a] task-1: all_correct | total spent: $0.0157
+=========================== short test summary info ============================
+FAILED tests/test_finalization.py::test_finalizer_checks_checkpoint_configuration_and_cost_completeness[run.json-<lambda>]
+FAILED tests/test_finalization.py::test_finalizer_checks_checkpoint_configuration_and_cost_completeness[summary.json-<lambda>]
+2 failed, 2 passed, 30 deselected in 0.92s

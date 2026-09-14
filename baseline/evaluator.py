@@ -12,10 +12,10 @@ from typing import Any, Dict, List
 
 from pydantic import ValidationError
 
-from baseline.providers import PredictionClient, PredictionResponse, BorderPrediction, parse_prediction
+from baseline.providers import PredictionClient, PredictionResponse, BorderPrediction, PREDICTION_KEYS, parse_prediction
 
 
-GRADING_VERSION = "2"
+GRADING_VERSION = "3"
 DEFAULT_PROMPT = Path(__file__).with_name("prompt.txt").read_text(encoding="utf-8").strip()
 
 THEMES = (
@@ -91,6 +91,13 @@ def load_manifest(manifest_path: str) -> list[dict]:
 
 def cohort_fingerprint(task_ids: list[str]) -> str:
     return hashlib.sha256(",".join(sorted(task_ids)).encode()).hexdigest()
+
+
+def grade_border_prediction(parsed: dict, ground_truth: dict) -> dict[str, bool]:
+    """Compare the seven visual attributes; malformed answers score zero."""
+    flags = {key + "_correct": key in parsed and parsed[key] == ground_truth[key]
+             for key in PREDICTION_KEYS}
+    return {**flags, "all_correct": all(flags.values())}
 
 
 @dataclass
@@ -234,25 +241,7 @@ class BaselineEvaluator:
         gt_elev = str(gt.get("elevation", "")).strip().lower()
         theme = str(gt.get("theme", "white-on-gray"))
 
-        malformed = error_kind == "invalid_response"
-        has_border_correct = not malformed and pred_has_border == gt_has_border
-        border_sides_correct = not malformed and pred_sides == gt_sides
-        stroke_style_correct = not malformed and pred_style == gt_style
-        stroke_width_correct = not malformed and pred_width == gt_width
-        corner_radius_correct = not malformed and pred_radius == gt_radius
-        corner_uniformity_correct = not malformed and pred_uniformity == gt_uniformity
-        elevation_correct = not malformed and pred_elev == gt_elev
-
-        all_correct = (
-            not error
-            and has_border_correct
-            and border_sides_correct
-            and stroke_style_correct
-            and stroke_width_correct
-            and corner_radius_correct
-            and corner_uniformity_correct
-            and elevation_correct
-        )
+        flags = grade_border_prediction({} if error else parsed_pred, gt)
 
         return TaskEvaluationResult(
             task_id=item["taskId"],
@@ -273,14 +262,7 @@ class BaselineEvaluator:
             predicted_corner_radius=pred_radius,
             predicted_corner_uniformity=pred_uniformity,
             predicted_elevation=pred_elev,
-            has_border_correct=has_border_correct,
-            border_sides_correct=border_sides_correct,
-            stroke_style_correct=stroke_style_correct,
-            stroke_width_correct=stroke_width_correct,
-            corner_radius_correct=corner_radius_correct,
-            corner_uniformity_correct=corner_uniformity_correct,
-            elevation_correct=elevation_correct,
-            all_correct=all_correct,
+            **flags,
             latency_sec=latency,
             input_tokens=response.input_tokens,
             output_tokens=response.output_tokens,
@@ -293,8 +275,13 @@ class BaselineEvaluator:
         )
 
     def score_results(self, results: list[TaskEvaluationResult], expected_task_count: int = 0) -> BorderBenchScorecard:
+        results = [r for r in results if not r.error or r.error_kind == "invalid_response"]
+        if len({r.task_id for r in results}) != len(results):
+            raise ValueError("Cannot score duplicate task observations")
         total = len(results)
-        denom = float(expected_task_count) if expected_task_count > 0 else float(total or 1)
+        if expected_task_count and total > expected_task_count:
+            raise ValueError("Observed tasks exceed the expected corpus")
+        denom = float(total or 1)
 
         exact_matches = sum(1 for r in results if r.all_correct)
         has_border_matches = sum(1 for r in results if r.has_border_correct)

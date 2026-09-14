@@ -42,12 +42,12 @@ describe("BorderBench recipes", () => {
   test("large radius maps to one pixel value", () => {
     for (const s of SPECIMENS.filter((s) => s.corner_radius === "large")) {
       if (!Array.isArray(s.corner_radius_px)) {
-        expect(s.corner_radius_px).toBe(18);
+        expect(s.corner_radius_px).toBe(24);
       } else if (s.corner_uniformity === "asymmetric") {
-        // Three rounded corners carry the label; the acute corner is fixed 2px by design.
-        expect([...s.corner_radius_px].sort((a, b) => a - b)).toEqual([2, 18, 18, 18]);
+        // Three rounded corners carry the label; the accent corner is sharp by design.
+        expect([...s.corner_radius_px].sort((a, b) => a - b)).toEqual([0, 24, 24, 24]);
       } else {
-        expect(s.corner_radius_px.filter((v) => v > 0).every((v) => v === 18)).toBe(true);
+        expect(s.corner_radius_px.filter((v) => v > 0).every((v) => v === 24)).toBe(true);
       }
     }
   });

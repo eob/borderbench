@@ -1,78 +1,71 @@
 # BorderBench datasets
 
-## Tailwind Rosetta Stone
+## V1.2.0: calibrated perceptual corpus
 
-Every graded label maps to Tailwind CSS utilities (v3 scale). Names stay
-benchmark-local; the utilities are the external reference designers know.
+`borderbench-v1.2` contains 477 images: 53 unique shape recipes crossed with three
+light themes and three independent shadow levels. The [methodology](../docs/methodology.md)
+documents matched comparisons and interpretation limits. The
+[shared prompt](../baseline/prompt.txt) is the complete response contract.
 
-| BorderBench label | Tailwind equivalent |
+### Tailwind Rosetta Stone
+
+Exact Tailwind CSS **3.4.17**, 16px root-size anchors:
+
+| BorderBench | Tailwind reference |
 | --- | --- |
-| `0px` / `1px` / `2px` / `4px` / `8px` | `border-0` / `border` / `border-2` / `border-4` / `border-8` |
-| `solid` / `dashed` / `dotted` / `none` | `border-solid` / `border-dashed` / `border-dotted` / `border-none` |
-| `all-4` / `bottom-only` / `left-only` / `top-only` / `none` | `border` / `border-b` / `border-l` / `border-t` / `border-0` |
-| `sharp` 0 / `subtle` 3 / `medium` 8 / `large` 18 / `pill` 9999 | `rounded-none` / between `rounded-sm` 2 and `rounded` 4 / `rounded-lg` 8 / near `rounded-2xl` 16 / `rounded-full` |
-| `all-corners` / `top-only` / `asymmetric` | uniform rounding / `rounded-t-*` modal sheet / brand accent |
-| `none` | flat, no shadow |
-| `subtle-drop` | `shadow` (v3 default stack, exact) |
-| `floating-drop` | `shadow-lg` (exact) |
-| `ring-only` | near `ring-1` in neutral (our stack stays neutral gray) |
-| `stroke+shadow` | `border` + `shadow-md` (exact) |
+| Width `0px`, `1px`, `2px`, `4px`, `8px` | `border-0`, `border`, `border-2`, `border-4`, `border-8` |
+| Style `solid`, `dashed`, `dotted`, `none` | `border-solid`, `border-dashed`, `border-dotted`, `border-none` |
+| Sides `all-4`, `bottom-only`, `left-only`, `top-only`, `none` | `border`, `border-b`, `border-l`, `border-t`, `border-0` |
+| Radius `sharp` 0, `subtle` 4, `medium` 12, `large` 24, `pill` 9999px | `rounded-none`, `rounded`, `rounded-xl`, `rounded-3xl`, `rounded-full` |
+| Uniformity `all-corners`, `top-only`, `asymmetric` | equal radii, rounded top pair, three rounded corners with bottom-left sharp |
+| Shadow `none`, `subtle-drop`, `floating-drop` | `shadow-none`, `shadow`, `shadow-lg` |
 
-Frozen elevation stacks (`rgba` spells Tailwind's `rgb(0 0 0 / ...)`):
+Nonuniform corners use only 12px/24px versus 0. Exact shadow stacks are in the
+prompt and renderer. Border presence and shadow are independent. No question
+asks whether a visible outline originated from `ring-1` or a CSS border.
 
-- `subtle-drop`: `0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)`
-- `floating-drop`: `0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)`
-- `ring-only`: `0 0 0 1px rgba(0, 0, 0, 0.12)`
-- `stroke+shadow`: `0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)`
+Every image uses the same bundled DejaVu Sans text at 16px/24px and 64px scale guide.
+The foreground text/ruler pixels remain fixed even when borders are thicker,
+partial, patterned, or capsule-shaped. Font license and binary travel with the
+corpus. The frozen manifest retains browser-computed styles, actual font-use and
+scale evidence, recipe membership, hashes, and paired flat-shadow controls.
 
-Fixed context on every image: system font stack, title 16px semibold,
-subtitle 12px, body 13px, meta 11px; 40px pill avatar, 6px badge and
-button corners, 6px status dot. Inner content is identical and carries
-no signal.
-
-## Current release: `borderbench-v1.1` (120 images)
-
-The V1.1.0 corpus. Same neutral cards and evidence as V1.0.0, with the
-Tailwind-grounded prompt, exact `shadow` / `shadow-lg` / `shadow-md`
-stacks, and no `double` style (redistributed to dashed/dotted heavies).
-
-## Superseded release: `borderbench-v1` (120 images, V1.0.0)
-
-The V1.0.0 corpus. Every card carries fixed neutral text; models must judge
-border, corner, and shadow pixels only. Each manifest task records the image
-SHA-256, the Chromium computed styles that were verified at render time
-(border widths/styles, corner radii, box-shadow), the card box, and the
-browser version.
-
-```bash
-bun run validate:dataset
-```
-
-The gate decodes every PNG with Pillow and checks dimensions, hashes,
-duplicates, label/enum conformance, prompt identity, evidence consistency,
-per-label quotas (minimum 8 samples per graded value), and a measurable
-card boundary on every image. Re-rendering reproduces byte-identical PNGs
-on the same browser and platform; system font rendering may differ
-elsewhere, so the committed bytes are the benchmark, not the generator.
-
-Validate a development candidate the same way:
+### Generation and validation
 
 ```bash
 bun run render
 bun run validate:candidate
+bun run validate:dataset
+bun run validate:release
 ```
 
-`bun run render` writes to `dataset/candidate-rendered/` (gitignored) and
-refuses registered release directories and historical paths. Freezing a
-candidate as a new release means validating it, moving it to a new
-`dataset/` directory, and registering a new descriptor under `releases/`.
+The default renderer writes to ignored `candidate-rendered/`, and refuses
+symlink aliases or parent/child overlaps with any frozen or historical dataset.
+Keep manifest, catalog, fonts, and PNGs together. The committed pixels define the
+benchmark; other browser versions may rasterize differently. New pixels,
+prompts, taxonomy, or scoring require a separate release descriptor.
 
-## Historical prototype (invalid, preserved)
+Validation checks every image, complete label coverage, exact geometry/styles,
+font/reference evidence, contrast and paired shadow differences. A nonempty
+border edge is not sufficient proof of visible corners or shadows. Automated
+pixel checks are not a human agreement study.
 
-`dataset/borderbench-1/manifest.json` + `dataset/rendered/` (120 images) is
-the September 2026 prototype. Its card text reveals the answers ("Stroke
-Width 8px", "Theme: dark-mode"), rare classes have single samples
-(`asymmetric=1`, `floating-drop=1`), and its manifest carries absolute
-image paths. It fails the release gate and must not be compared with
-V1.0.0. The files stay in Git history and in the worktree as audit
-evidence; the renderer refuses to overwrite them.
+## V1.1.0 and V1.0.0: preserved releases
+
+`borderbench-v1.1` and `borderbench-v1` each retain 120 images, their original
+prompts, evidence, descriptors, and trial results unchanged. Use tags `v1.1.0`
+and `v1.0.0` for their compatible tooling. Scores cannot transfer to V1.2.0.
+
+V1.1 used radius values 0/3/8/18/full (including `rounded-lg`8px), approximate
+Tailwind radius descriptions, `ring-only` near `ring-1`, and `stroke+shadow`
+using `shadow-md`. Its system-font inner layout shifted with borders, and some
+dark shadows and asymmetric corners were poorly separated. These limitations
+are recorded in [the audit](../tickets/valid-07-perceptual-rigor.md). Preserving
+those records is not a claim of parity with the revised perceptual design.
+
+## Historical prototype: invalid
+
+`borderbench-1/manifest.json` and `rendered/` are the original 120-image prototype.
+Card text reveals answers, rare classes have single examples, and the manifest
+uses absolute image paths. It is invalid for perception evaluation and remains
+only as historical audit evidence. The renderer refuses to overwrite it.

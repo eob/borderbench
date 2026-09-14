@@ -14,7 +14,7 @@ from baseline.providers import PROVIDERS
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_RELEASE = "1.1.0"
+DEFAULT_RELEASE = "1.2.0"
 _VERSION = r"(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)"
 
 
@@ -84,6 +84,29 @@ def validate_release(
         raise ValueError("Dataset task count differs from the frozen release")
     if dataset_fingerprint(items) != release["dataset_fingerprint"]:
         raise ValueError("Dataset fingerprint differs from the frozen release")
+    from baseline.validate_dataset import require_valid_dataset
+
+    require_valid_dataset(manifest)
+    dataset_path = str(manifest.parent.relative_to(repository))
+    try:
+        committed_files = set(subprocess.run(
+            ["git", "ls-tree", "-r", "--name-only", release["dataset_git_commit"], "--", dataset_path],
+            cwd=repository, text=True, capture_output=True, check=True,
+        ).stdout.splitlines())
+        actual_files = set()
+        for artifact in manifest.parent.rglob("*"):
+            if artifact.is_symlink():
+                raise ValueError("Frozen dataset artifacts must not be symlinks")
+            if artifact.is_file():
+                actual_files.add(str(artifact.relative_to(repository)))
+        if actual_files != committed_files:
+            raise ValueError("Dataset artifact census differs from its recorded Git commit")
+        subprocess.run(
+            ["git", "diff", "--no-ext-diff", "--no-textconv", "--exit-code", release["dataset_git_commit"], "--", dataset_path],
+            cwd=repository, capture_output=True, check=True,
+        )
+    except (OSError, subprocess.CalledProcessError) as error:
+        raise ValueError("Dataset artifacts differ from their recorded Git commit") from error
     return items
 
 
@@ -107,14 +130,12 @@ def git_code_identity(*, root: str | Path | None = None) -> dict:
 
 def main() -> None:
     import argparse
-    from baseline.validate_dataset import require_valid_dataset
 
     parser = argparse.ArgumentParser(description="Validate a frozen BorderBench release and print its identity")
     parser.add_argument("--release", default=DEFAULT_RELEASE)
     args = parser.parse_args()
     release = load_release(args.release)
     validate_release(release)
-    require_valid_dataset(release_manifest_path(release))
     print(json.dumps(release, indent=2))
 
 

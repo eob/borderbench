@@ -1,0 +1,45 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_____________ test_unsupported_and_inconsistent_rows_are_excluded ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-ted/pytest-184/test_unsupported_and_inconsist0')
+
+    def test_unsupported_and_inconsistent_rows_are_excluded(tmp_path):
+        root = tmp_path / '9.9.9'
+        root.mkdir()
+        row = _row('foreign-task', True)
+        row.update(raw_prediction='{}', stroke_width_correct=False)
+        _write_run(root, 'bad', [row], 'not-a-date')
+        collected, warnings = collect_observations(_release(), tmp_path)
+>       assert collected['observations'] == {}
+E       AssertionError: assert {('d2ea4128de...: True, ...}}} == {}
+E         
+E         Left contains 1 more item:
+E         {('d2ea4128de9a64f7345f2e57145a83754f67e42f7b20d897c949de6c31f60b92', 'foreign-task'): {'created': 'not-a-date',
+E                                                                                                 'run': 'bad',
+E                                                                                                 'task': {'all_correct': True,
+E                                                                                                          'border_sides_correct': True,
+E                                                                                                          'corner_radius_correct': True,...
+E         
+E         ...Full output truncated (12 lines hidden), use '-vv' to show
+
+tests/test_reporting_rigor.py:19: AssertionError
+____________________ test_inconsistent_exact_flag_rejected _____________________
+
+tmp_path = PosixPath('/tmp/pytest-of-ted/pytest-184/test_inconsistent_exact_flag_r0')
+
+    def test_inconsistent_exact_flag_rejected(tmp_path):
+        root = tmp_path / '9.9.9'
+        root.mkdir()
+        row = _row('t1', True)
+        row['stroke_width_correct'] = False
+        _write_run(root, 'bad', [row], '2026-09-10T00:00:00+00:00')
+        card = json.loads((root / 'bad' / 'scorecard_mock-model.json').read_text())
+>       with pytest.raises(ValueError, match='grading|exact|flags'):
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_reporting_rigor.py:30: Failed
+=========================== short test summary info ============================
+FAILED tests/test_reporting_rigor.py::test_unsupported_and_inconsistent_rows_are_excluded
+FAILED tests/test_reporting_rigor.py::test_inconsistent_exact_flag_rejected
+2 failed in 0.13s
