@@ -1,12 +1,13 @@
 # feat-08: FontBench model parity, branding, and first measurements
 
-- **Status**: Complete; PR review pending
+- **Status**: Completed; PR #3 merged on 2026-09-14
 - **Branch**: `valid-07-perceptual-rigor` (continuation of the unmerged release PR)
 - **Base**: `6bcc695ab2833deed36ad25da410c518c4bcab4e`
 - **FontBench reference**: `14b09c3ad89e5b587c19abee5b66978968252f85`
 - **Harness / machine**: codex / eob-dev2
 - **Session**: not exposed
 - **PR**: https://github.com/eob/borderbench/pull/3
+- **Merge commit**: `8591705bbc8751cc466182e604abce7fda40d52c`
 
 ## Authorized work
 
