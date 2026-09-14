@@ -208,7 +208,13 @@ def build_page(
         for name in names:
             if (source / name).is_file():
                 shutil.copyfile(source / name, destination / name)
-        run_links.append(f'<li><a href="runs/{escape(run["run_id"], quote=True)}/run.json">{escape(run["run_id"])}</a> · <a href="runs/{escape(run["run_id"], quote=True)}/attempts.jsonl">attempt ledger</a></li>')
+        run_url = f'runs/{escape(run["run_id"], quote=True)}'
+        publication_links = (
+            f' · <a href="{run_url}/final_results.json">sealed results</a>'
+            f' · <a href="{run_url}/finalization.json">publication seal</a>'
+            if (source / "final_results.json").is_file() and (source / "finalization.json").is_file() else ""
+        )
+        run_links.append(f'<li><a href="{run_url}/run.json">{escape(run["run_id"])}</a> · <a href="{run_url}/attempts.jsonl">attempt ledger</a>{publication_links}</li>')
     run_history = "<h2>Recorded runs</h2><ul>" + "".join(run_links) + "</ul>" if run_links else ""
 
     sections = []
@@ -291,8 +297,16 @@ h1 {{ font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.035em; margin-bottom
 </header>
 <p>{len(items)} inputs · dataset <code>{release["dataset_fingerprint"][:12]}</code> · protocol <code>{release["evaluation_protocol_fingerprint"][:12]}</code> · gate passed</p>
 <p>Shared cohort: {len(shared_ids)} inputs measured by every configuration with observations. All comparison scores and breakdowns use this same cohort; unmeasured configurations remain unranked. Repeats keep the earliest final observation; total costs include every attempt. Per-model observed scores and confusion matrices are available in the structured export.</p>
+<h2>Reading the results</h2>
+<p>Exact match requires all seven attributes to be correct on an image. Attribute scores locate the errors; border presence, sides, style, and width share absence semantics and are not independent measures. Malformed model answers receive zero credit. Infrastructure failures remain outside accuracy until resolved.</p>
+<p>This comparison covers {len(shared_ids)}/{len(items)} release images. Scores describe that fixed shared sample; a perfect sample score does not establish perfect performance on unmeasured images. Small ranking differences do not establish population differences.</p>
 {leaderboard_html}
 {warnings_block}
+<h2>Design and limits</h2>
+<p>The corpus crosses 53 card geometries with three light themes and three shadow levels. A fixed 400×240 CSS pixel card, bundled 16px text, and a 64px guide establish scale. The prompt defines exact, coarsely spaced Tailwind CSS 3.4.17 anchors. Inner content stays identical across images.</p>
+<p>Class frequencies differ. Read per-class recall, balanced accuracy, majority baselines, and border-present stroke scores alongside raw accuracy. A partial sample may contain very few rare categories or complete matched comparisons. Theme repeats share geometry and are correlated observations.</p>
+<p>These are synthetic cards in one layout, font, browser, and pixel scale. Dark themes and arbitrary screenshots are outside this release. Automated image checks establish visible differences, while human category agreement remains unmeasured.</p>
+<p><a href="benchmark.json">Download structured results and diagnostics</a> · <a href="https://github.com/eob/borderbench/blob/main/docs/methodology.md">Read the methodology</a> · <a href="https://github.com/eob/borderbench">Dataset, code, and reproduction instructions</a></p>
 {run_history}
 {sections_html}
 </body>

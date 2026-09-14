@@ -13,6 +13,8 @@ category agreement remains unmeasured.
 The [methodology](docs/methodology.md) explains the design, scoring, validation,
 and remaining limits. The [audit ticket](tickets/valid-07-perceptual-rigor.md)
 compares the implementation with FontBench and retains regression evidence.
+The [September 14 publication review](docs/publication-review-2026-09-14.md)
+independently reproduces every reported grade and diagnostic and all 477 images.
 
 ## Setup and validate
 

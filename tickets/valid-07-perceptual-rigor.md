@@ -1,6 +1,6 @@
 # valid-07-perceptual-rigor: Calibrated perceptual benchmark and FontBench parity
 
-- **Status**: Implemented; PR review pending
+- **Status**: In progress — independent publication review
 - **Branch**: `valid-07-perceptual-rigor`
 - **Base**: BorderBench `077578b`; FontBench `14b09c3ad89e5b587c19abee5b66978968252f85`
 - **Machine**: `/mnt/disks/data/borderbench`
@@ -8,6 +8,25 @@
 - **Session ID**: not exposed
 - **PR**: https://github.com/eob/borderbench/pull/3
 - **Assignee**: Edward Benson
+
+## Handoff & Takeover Log
+
+- `2026-09-14`: Codex `/root/review_borderbench` on
+  `/mnt/disks/data/borderbench` continued the existing PR for the authorized
+  publication review. Session UUID is not exposed. Before changes, `07ee683`
+  passed 194 Python tests, 21 TypeScript/browser tests, typecheck, the complete
+  477-image release gate, and the sealed campaign verification.
+- Review plan: independently replay raw answers and diagnostic calculations;
+  regenerate all candidate stimuli and compare frozen pixels; inspect stimuli,
+  sampling, provider isolation, provenance, and report claims; repair proven
+  reporting gaps; regenerate exports offline; record results and merge the PR
+  after final local and remote gates.
+- `2026-09-14`: Independent review completed: all 477 candidate PNGs reproduce
+  byte for byte; all 1,664 raw grades, subgroup diagnostics, matched blocks, and
+  token costs reproduce. Standalone report limitations and download links
+  repaired and regenerated offline. See the
+  [publication review](../docs/publication-review-2026-09-14.md) for the final
+  gate matrix and remaining scientific limits. No paid rerun was necessary.
 
 ## Research brief
 
